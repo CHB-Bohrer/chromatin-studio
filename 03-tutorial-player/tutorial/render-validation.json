@@ -1,0 +1,24 @@
+{
+  "video": "chromatin-studio-tutorial.mp4",
+  "duration_seconds": 610.4,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 30,
+  "expected_frames": 18312,
+  "decoded_frames": 18312,
+  "full_decode_passed": true,
+  "audio_nonempty_in_every_chapter": true,
+  "chapters": 16,
+  "captures": 38,
+  "timed_key_points": 49,
+  "words_per_minute_range": [
+    148.6784140969163,
+    157.88122539791203
+  ],
+  "audio_acceleration": 1,
+  "narration_truncated": false,
+  "video_sha256": "c7f29a260a67307d79d91ca4774aa33691acd1e33654b4917668ba83e1b88c58",
+  "auditory_review": "No claimed human listening review; waveform, phoneme, source and timing checks are recorded separately."
+}

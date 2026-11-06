@@ -1,0 +1,1139 @@
+{
+  "schema_version": 1,
+  "title": "Chromatin Studio — build, inspect, and test a model",
+  "subtitle": "An editable walkthrough of the actual application",
+  "language": "en",
+  "playback_speed": 1,
+  "normal_duration_seconds": 610.4,
+  "delivery": {
+    "preferred_resolution": "1920x1080",
+    "frame_rate": 30,
+    "caption_first": true,
+    "optional_narration": true,
+    "persistent_badge": "At your pace",
+    "show_scene_numbers": true,
+    "capture_directory": "captures",
+    "output_filename": "chromatin-studio-tutorial.mp4",
+    "timing_rule": "Scene, keyframe and caption times are editable reference timings. The renderer scales each scene to its measured natural-paced neural narration plus a 1.25-second reading pause, rounded up to a video frame. Audio is never accelerated or truncated. Final timings are saved in render-timeline.json and render-manifest.json.",
+    "rendering_rule": "Use actual application captures. A keyframe change represents the documented UI action. Pans and emphasis may help readability, but must not imply that a still image is a live trajectory. Do not fabricate events, data, bindings, RNA molecules, or successful cluster execution.",
+    "narration_engine": "Local Kokoro-82M v1.0; af_heart voice; target 155 words per minute",
+    "narration_manifest": "narration-neural/narration-manifest.json"
+  },
+  "capture_session": {
+    "starting_preset": "twenty_mb",
+    "demonstration_preset": "manuscript_locus",
+    "starting_preset_label": "20 Mb chromatin",
+    "demonstration_preset_label": "Manuscript hypotheses · 80 kb",
+    "preparation": [
+      "Use an isolated recording instance or preserve and restore the user's current model, run state and history.",
+      "Keep the user's working application untouched while preparing tutorial examples.",
+      "Capture the 20 Mb starting model for orientation, then explicitly switch the isolated recording instance to the 80 kb manuscript-hypothesis preset.",
+      "Use real simulation steps to obtain any demonstrated bonds, contacts, polymerases or RNA. Retain the seed and run provenance used for those captures.",
+      "For chapters 03 and 16, explicitly switch a separate isolated recording instance to nucleosome_access (128 beads × 200 bp). Return to the saved 80 kb manuscript example for chapter 04 onward. Preserve both model/run records.",
+      "Pause before inspecting a state so the selected object and displayed measurements remain consistent.",
+      "Read the current UI before each capture. Actions below describe semantic targets rather than brittle screen coordinates."
+    ],
+    "display_notes": [
+      "Choose a readable capture window before recording and use it consistently.",
+      "Capture full views and, where useful, a second close view of the actual panel. Do not crop away an uncertainty label or the distinction between draft and applied model.",
+      "Focus rectangles are intentionally unspecified. Set them from the captured layout after checking that the relevant text remains readable.",
+      "Use displayed values from the recording run. Do not substitute the numbers in a prior screenshot or assume that stochastic events will occur on a particular frame."
+    ],
+    "binding_preset": "nucleosome_access",
+    "binding_preset_label": "Live nucleosome access · 25.6 kb"
+  },
+  "scenes": [
+    {
+      "id": "01-overview",
+      "title": "Start with the workbench",
+      "normal_duration_seconds": 28.733333333333334,
+      "primary_capture": "01-overview.png",
+      "narration": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. The starting example spans twenty megabases using two thousand beads, so each bead represents ten kilobases. That is a coarse genomic mapping, not nucleosome resolution. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the scale, the run status, and the physical-clock label.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 8.979166666666668,
+          "text": "Build on the left. Inspect the applied model in the center. Follow measurements and events."
+        },
+        {
+          "start": 8.979166666666668,
+          "end": 19.754166666666666,
+          "text": "20 Mb example = 2,000 beads × 10 kb. Individual nucleosomes are unresolved at this scale."
+        },
+        {
+          "start": 19.754166666666666,
+          "end": 28.733333333333334,
+          "text": "Draft settings and the current run are different. Check the scale and calibration status first."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "01-overview.png",
+          "duration": 16.1625,
+          "actions": [
+            "Open the recording instance with the 20 Mb chromatin preset paused.",
+            "Show the 3D nucleus, genomic-scale label, and run controls."
+          ]
+        },
+        {
+          "capture": "01-overview-inspector.png",
+          "duration": 12.570833333333333,
+          "actions": [
+            "Select a visible chromatin bead or protein in the actual 3D view.",
+            "Show its inspector alongside the paused run."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "The twenty_mb starting preset does not itself demonstrate every regional TF or individual-RNA feature.",
+        "Do not call reduced time seconds unless the applied model has a documented calibration record."
+      ],
+      "source_duration_seconds": 32.0,
+      "narration_audio": {
+        "path": "narration-neural/01-overview.wav",
+        "sha256": "d023b37ab27343fbbfb87731309cf05acc6689f885bee8c5ff6420a8057d718f",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 27.465333333333334,
+        "words_per_minute": 151.30537974683543,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2680000000000007
+      }
+    },
+    {
+      "id": "02-build-and-learn",
+      "title": "Choose a focused experiment",
+      "normal_duration_seconds": 32.3,
+      "primary_capture": "02-build-and-learn.png",
+      "narration": "For the detailed walkthrough, choose Manuscript hypotheses at eighty kilobases. Four hundred coarse units represent two hundred base pairs each, with nucleosome occupancy and individual transcripts enabled. The preset includes transcription factors, coactivators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 10.766666666666666,
+          "text": "Choose “Manuscript hypotheses · 80 kb” for a focused experiment with occupancy and individual RNA."
+        },
+        {
+          "start": 10.766666666666666,
+          "end": 21.53333333333333,
+          "text": "400 beads × 200 bp: coarse nucleosome units, without wrapped-DNA or histone-tail geometry."
+        },
+        {
+          "start": 21.53333333333333,
+          "end": 32.3,
+          "text": "“How it works” is a separate learning sandbox. Its controls leave the simulation unchanged."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "02-build-and-learn.png",
+          "duration": 16.15,
+          "actions": [
+            "In the isolated recording instance, select Manuscript hypotheses · 80 kb.",
+            "Show the new genomic scale and enabled model components.",
+            "Use Expand builder when demonstrating full-width parameter editing."
+          ]
+        },
+        {
+          "capture": "02-motion-lesson.png",
+          "duration": 16.15,
+          "actions": [
+            "Open How it works, then Motion.",
+            "Change the diffusion illustration slider and capture the updated equation result.",
+            "Keep the illustration-only notice visible."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "Make the preset change explicit; do not present the small-locus run as a nucleosome-resolved 20 Mb simulation.",
+        "The motion lesson shows an analytical example, not a measured trajectory."
+      ],
+      "source_duration_seconds": 36.0,
+      "narration_audio": {
+        "path": "narration-neural/02-build-and-learn.wav",
+        "sha256": "37dbb73c50f4db2f5e4ce9ef0a715bcb1cd5073503942b6958d753743e4f3c11",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 31.044,
+        "words_per_minute": 153.2215819800943,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2559999999999967
+      }
+    },
+    {
+      "id": "13-confinement",
+      "title": "Set the confining domain",
+      "normal_duration_seconds": 38.733333333333334,
+      "primary_capture": "13-confinement.png",
+      "narration": "The polymer already has confinement. System now makes the wall explicit: outside the chosen radius, a harmonic force pushes particles inward. Increasing wall stiffness reduces penetration; zero switches the force off. This is a soft wall, so particles are not clipped back to the boundary. The diagnostics report excursions for mechanical particles and released RNA. For a small locus, this sphere is a modeled domain, not automatically an entire nucleus. Compare radius and wall strength, because packing can change contacts and transcription even when every biochemical parameter stays the same.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 12.911111111111111,
+          "text": "The soft wall pushes inward outside R: U = ½k max(r − R, 0)²."
+        },
+        {
+          "start": 12.911111111111111,
+          "end": 25.822222222222223,
+          "text": "Wall strength 0 disables confinement. Small penetrations are allowed and reported."
+        },
+        {
+          "start": 25.822222222222223,
+          "end": 38.733333333333334,
+          "text": "The modeled domain is not automatically the whole nucleus. Control packing and wall effects."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "13-confinement.png",
+          "duration": 19.366666666666667,
+          "actions": [
+            "Open System and show radius and wall strength."
+          ]
+        },
+        {
+          "capture": "13-confinement-detail.png",
+          "duration": 19.366666666666667,
+          "actions": [
+            "Expand builder and show the soft-wall illustration and actual excursion diagnostics."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "Actual UI captures; all response parameters are illustrative unless independently calibrated."
+      ],
+      "source_duration_seconds": 42.0,
+      "narration_audio": {
+        "path": "narration-neural/13-confinement.wav",
+        "sha256": "f55ed5d311b622d28c1ca7b6a3245363954144ace2f755e1a7cef61de38a0481",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 37.465333333333334,
+        "words_per_minute": 149.32910113980665,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2680000000000007
+      }
+    },
+    {
+      "id": "03-genome",
+      "title": "Watch binding along the chromosome",
+      "normal_duration_seconds": 51.7,
+      "primary_capture": "03-genome.png",
+      "narration": "For a clear binding example, choose the twenty-five point six kilobase nucleosome-access preset. Open the one-dimensional genome and choose Live binding. Genes, nucleosome occupancy and directly bound proteins share one genomic axis. Navigate to a gene, then use Binding detail to see individual sites. Here, two hundred base pairs per bead represents a coarse nucleosome unit. In the twenty-megabase example, each symbol instead represents a much larger bin. Each molecule marker comes from a real chromatin bond; proximity alone is not binding. Run to watch bindings change, then pause and select a site. The table separates association and release hazards for each species. Times remain reduced until an empirical physical mapping is attached. All tracks restores the wider view of marks, loops, polymerases and protein preferences.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 17.233333333333334,
+          "text": "Choose the 25.6 kb nucleosome-access example, then Live binding. Use Binding detail to inspect individual sites."
+        },
+        {
+          "start": 17.233333333333334,
+          "end": 34.46666666666667,
+          "text": "200 bp beads show coarse nucleosome units; 10 kb beads show effective bins. Proximity alone is not binding."
+        },
+        {
+          "start": 34.46666666666667,
+          "end": 51.7,
+          "text": "Select a site to compare association and release hazards. Times remain reduced unless a physical mapping is attached."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "03-genome.png",
+          "duration": 15.31851851851852,
+          "actions": [
+            "In the isolated recording instance, explicitly choose Live nucleosome access · 25.6 kb (nucleosome_access): 128 beads × 200 bp.",
+            "Open 1D genome, choose Live binding and show the full locus, run time and legend."
+          ]
+        },
+        {
+          "capture": "03-genome-detail.png",
+          "duration": 19.14814814814815,
+          "actions": [
+            "Navigate to a gene, then use Binding detail to zoom to approximately 24 beads.",
+            "Show occupied and vacant nucleosome symbols and actual directly bound protein markers.",
+            "Advance real simulation steps if necessary, then pause; do not fabricate a marker or manually inject a bond."
+          ],
+          "focus_rect": [
+            294,
+            340,
+            1368,
+            555
+          ]
+        },
+        {
+          "capture": "03-genome-affinities.png",
+          "duration": 17.233333333333334,
+          "actions": [
+            "Select a bead in the detail view.",
+            "Show the site-level Association / t and Release / t table with occupancy state and reduced-time explanation.",
+            "Retain the applied-model state and any draft warning."
+          ],
+          "focus_rect": [
+            294,
+            240,
+            1368,
+            630
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "Only label occupancy as measured when the mechanism is enabled. Zoomed-out summaries aggregate beads or molecule counts.",
+        "A nucleosome symbol represents occupancy at a genomic site, not a persistent histone identity or resolved wrapped DNA.",
+        "Protein glyphs represent actual direct molecule–chromatin attachments; multiple IDR domains do not become multiple molecules.",
+        "Capture hazards are not equilibrium Kd or macroscopic molar kon. Site release hazards use the current occupancy state.",
+        "This video uses paused captures from genuine engine runs; the app itself updates the view while running.",
+        "Do not call reduced time seconds unless the applied model carries a documented physical mapping.",
+        "This chapter explicitly changes the recording preset from the preceding 80 kb example. The following remodeler chapter uses this same 25.6 kb example."
+      ],
+      "source_duration_seconds": 54.0,
+      "narration_audio": {
+        "path": "narration-neural/03-genome.wav",
+        "sha256": "8a44924aece0cadde27ddf374c097bacbf02f5ec84e6f5bd4d77173e6009e133",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 50.43066666666667,
+        "words_per_minute": 151.40995513779106,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2693333333333356
+      }
+    },
+    {
+      "id": "16-remodelers",
+      "title": "Create gaps and recruit remodelers",
+      "normal_duration_seconds": 58.3,
+      "primary_capture": "16-nucleosome-gaps.png",
+      "narration": "Stay in the nucleosome-access example. In Chromatin, define an initially vacant interval to create a nucleosome-free region. This sets the starting state; reassembly can fill the gap later. In Proteins, each species has separate occupied and vacant capture and release multipliers. Opening a site can favor one species and disfavor another, especially when eviction also removes a mark. Add chromatin remodeler creates an editable species and enables occupancy in the draft. Its eviction, reassembly and sliding rates act when it is attached to chromatin or recruited through a configured transcription factor. Eviction clears marks. Reassembly starts unmarked. Sliding moves occupancy and its marks into an adjacent vacant bead, conserving nucleosome number. Inspect Recorded binding and remodeling events to follow what actually occurred. These are recent recorded events, not a complete microscopic history. Apply changes only when ready to start a new run.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 14.575,
+          "text": "An initially vacant interval creates a starting gap. Reassembly and remodeling can change it later."
+        },
+        {
+          "start": 14.575,
+          "end": 29.15,
+          "text": "Set occupied/vacant capture and release independently for each species. A gap need not favor every protein."
+        },
+        {
+          "start": 29.15,
+          "end": 43.724999999999994,
+          "text": "Eviction clears marks; reassembly starts unmarked; sliding moves occupancy and marks to an adjacent vacant bead."
+        },
+        {
+          "start": 43.724999999999994,
+          "end": 58.3,
+          "text": "Inspect actual recorded events. Sliding conserves nucleosome number; the recent event buffer is not a full trajectory."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "16-nucleosome-gaps.png",
+          "duration": 14.575,
+          "actions": [
+            "Keep the isolated 25.6 kb nucleosome-access example.",
+            "Open Chromatin → Nucleosome occupancy and show its configured vacant interval.",
+            "Keep the explanation that these are initial conditions, not permanent exclusions."
+          ],
+          "focus_rect": [
+            274,
+            450,
+            1005,
+            350
+          ]
+        },
+        {
+          "capture": "16-access-rates.png",
+          "duration": 14.575,
+          "actions": [
+            "Open Proteins and choose a configured TF species.",
+            "Show Nucleosome access & release: occupied/vacant capture and release multipliers.",
+            "Keep the distinction between per-encounter association and per-bond release hazards visible."
+          ],
+          "focus_rect": [
+            290,
+            275,
+            990,
+            495
+          ]
+        },
+        {
+          "capture": "16-remodelers.png",
+          "duration": 14.575,
+          "actions": [
+            "Select the configured remodeler species and show Chromatin remodeling.",
+            "Show eviction, reassembly and sliding rates and the coarse-mechanism explanation.",
+            "Show Add chromatin remodeler if it fits; do not change the recording model merely for the capture."
+          ],
+          "focus_rect": [
+            290,
+            145,
+            990,
+            595
+          ]
+        },
+        {
+          "capture": "16-remodeler-events.png",
+          "duration": 14.575,
+          "actions": [
+            "Advance genuine simulation steps to collect binding, release and remodeling events; pause before capturing.",
+            "Open 1D genome → Live binding and show Recorded binding & remodeling events.",
+            "Retain real event identities, times, interval-resolution note and any truncated-history warning.",
+            "If a particular event type did not occur, retain the actual record rather than adding or claiming that event."
+          ],
+          "focus_rect": [
+            294,
+            325,
+            1368,
+            300
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "The 25.6 kb example is illustrative and uncalibrated; all rates and event times are reduced units unless a valid physical mapping is attached.",
+        "Sliding is an adjacent-bead relocation of binary occupancy and marks, not base-pair-resolved remodeling or DNA unwrapping.",
+        "Remodelers use prescribed kinetic rates; there is no ATP, explicit histone reservoir, remodeler mechanochemical cycle or persistent histone identity.",
+        "Occupancy-sensitive release changes chromatin bond hazards at reaction updates. It does not force immediate release on eviction or change protein–protein off-rates.",
+        "Binding and release records come from actual engine transitions. Turnover records report interval endpoint changes and mark-reset intervals; they do not enumerate every hidden turnover within an interval.",
+        "The recent event buffer is bounded; absence from the retained list is not evidence that a transition never occurred.",
+        "Initial occupancy intervals and editor changes remain draft settings until Apply and restart.",
+        "Binding/release/sliding carry sampled conditional times; turnover records carry interval endpoints. Event IDs order emitted observations, not a globally interleaved exact reaction timeline."
+      ],
+      "source_duration_seconds": 64.0,
+      "narration_audio": {
+        "path": "narration-neural/16-remodelers.wav",
+        "sha256": "03f546486ad59c772ff5025fe61a89ae4abaef91f7222fe4e0eb95ab1b2a6b54",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 57.022666666666666,
+        "words_per_minute": 150.73598792224948,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2773333333333312
+      }
+    },
+    {
+      "id": "04-proteins",
+      "title": "Define many proteins and their roles",
+      "normal_duration_seconds": 39.63333333333333,
+      "primary_capture": "04-proteins.png",
+      "narration": "Return to the eighty-kilobase manuscript example for the rest of the walkthrough. The Proteins editor defines each species independently. Expand builder gives these settings room. Set abundance, free diffusion, binding valence, mark preferences, and occupied-versus-vacant capture and release factors. A species can also write or erase a mark, or remodel nucleosomes. An IDR representation expands a molecule into a flexible chain of domain beads with binding stickers. This supports higher-order assemblies, but it is not an amino-acid-resolved protein model. Choose roles and interactions as explicit hypotheses; a biological name is not a calibrated parameter set.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 12.880833333333333,
+          "text": "Use “Expand builder” to inspect each species’ abundance, free mobility, valence and chromatin preferences."
+        },
+        {
+          "start": 12.880833333333333,
+          "end": 26.7525,
+          "text": "Writer, eraser and remodeling settings connect protein binding to chromatin-state changes."
+        },
+        {
+          "start": 26.7525,
+          "end": 39.63333333333333,
+          "text": "IDRs are coarse domain-and-sticker chains. Biological names do not imply fitted molecular parameters."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "04-proteins.png",
+          "duration": 19.816666666666666,
+          "actions": [
+            "Return the isolated recording instance to Manuscript hypotheses · 80 kb; leave the saved 25.6 kb recording provenance separate.",
+            "Open Proteins and select the configured HP1 reader species.",
+            "Show mark preferences and occupied/vacant capture and release factors without changing the model.",
+            "Activate Expand builder to show the complete protein form at a readable width."
+          ],
+          "focus_rect": [
+            280,
+            325,
+            1005,
+            620
+          ]
+        },
+        {
+          "capture": "04-proteins-idr.png",
+          "duration": 19.816666666666666,
+          "actions": [
+            "Select a configured IDR scaffold species, if available in the demonstration model.",
+            "Show its representation, domain count and valence.",
+            "If no IDR exists in this preset, use the learning architecture illustration and clearly label that capture as an illustration."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "Free molecular diffusion is an input; apparent bound or assembly mobility is an emergent measurement.",
+        "Do not imply sequence-specific CALVADOS parameterization or explicit histone-tail chemistry."
+      ],
+      "source_duration_seconds": 40.0,
+      "narration_audio": {
+        "path": "narration-neural/04-proteins.wav",
+        "sha256": "7a7bea603aafc83f065f043d04e581819ed0b0b0ed60e4d70f62ea13d1009190",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 38.382666666666665,
+        "words_per_minute": 153.6322680557511,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2506666666666675
+      }
+    },
+    {
+      "id": "05-interactions",
+      "title": "Inspect binding in its context",
+      "normal_duration_seconds": 32.93333333333333,
+      "primary_capture": "05-interactions.png",
+      "narration": "The interaction view shows the current molecular network. Distinguish molecules with their own chromatin bond from those tethered indirectly through another protein. Protein pairs can bind while both are free, while one is directly chromatin-bound, or while both are bound. The affinity calculator explores an ideal diffusion-limited association estimate after physical scales are supplied. Its nominal dissociation rate follows the requested Kd under independent, well-mixed assumptions. It does not turn the simulator's local encounter hazard into a measured molar association rate.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 10.478787878787879,
+          "text": "Inspect free, directly bound and indirectly tethered molecules in the current binding network."
+        },
+        {
+          "start": 10.478787878787879,
+          "end": 21.706060606060603,
+          "text": "Higher-order assemblies can contain free–free, bound–free and bound–bound protein contacts."
+        },
+        {
+          "start": 21.706060606060603,
+          "end": 32.93333333333333,
+          "text": "The Kd calculator is an ideal physical estimate. It does not calibrate multivalent avidity or microscopic hazards."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "05-interactions.png",
+          "duration": 16.466666666666665,
+          "actions": [
+            "Advance the recording simulation if needed, then pause.",
+            "Open Interactions and select a species or existing assembly.",
+            "Show actual binding-context counts; if a context is empty, retain its zero rather than fabricating an example."
+          ]
+        },
+        {
+          "capture": "05-binding-estimate.png",
+          "duration": 16.466666666666665,
+          "actions": [
+            "Open the binding estimate or the learning Binding → Ideal physical estimate pane.",
+            "Show the equations, physical assumptions and estimate-only notice.",
+            "If using the learning pane, retain its illustration label."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "The local on_rate is a per-eligible-pair inverse-time hazard, not M⁻¹ s⁻¹.",
+        "A visible assembly is not by itself evidence of liquid–liquid phase separation."
+      ],
+      "source_duration_seconds": 44.0,
+      "narration_audio": {
+        "path": "narration-neural/05-interactions.wav",
+        "sha256": "17139425f9c271975f581969ed4a710dad7c2c8479592ea05da0e5842b79212c",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 31.662666666666667,
+        "words_per_minute": 157.88122539791203,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2706666666666635
+      }
+    },
+    {
+      "id": "06-chromatin",
+      "title": "Connect accessibility, marks and stiffness",
+      "normal_duration_seconds": 35.3,
+      "primary_capture": "06-chromatin.png",
+      "narration": "Nucleosome occupancy is an explicit local state when this option is enabled. Eviction can expose a TF site, clears marks at that site, and changes the configured local persistence multiplier. Bound writers and recruited coactivators can alter marks; spreading follows three-dimensional chromatin contacts. Mark-dependent chromatin attraction is a separate interaction from a protein's mark preference. The learning example lets you compare occupied and vacant capture hazards and persistence values. Those numerical relationships explain a hypothesis; the illustration is not an equilibrium polymer calculation.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 11.23181818181818,
+          "text": "Nucleosome eviction can alter TF access and local stiffness, while clearing local histone marks."
+        },
+        {
+          "start": 11.23181818181818,
+          "end": 23.26590909090909,
+          "text": "Protein mark preferences and chromatin–chromatin attraction are separate model mechanisms."
+        },
+        {
+          "start": 23.26590909090909,
+          "end": 35.3,
+          "text": "Compare occupied and vacant states in the guide, then inspect the corresponding applied-model tracks."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "06-chromatin.png",
+          "duration": 17.65,
+          "actions": [
+            "Open Chromatin and show enabled occupancy, occupied/vacant persistence factors and state interactions.",
+            "Keep the draft/applied distinction visible."
+          ]
+        },
+        {
+          "capture": "06-accessibility-lesson.png",
+          "duration": 17.65,
+          "actions": [
+            "Open the Chromatin learning topic.",
+            "Choose the TF species, toggle nucleosome occupancy, and capture the updated capture hazard and local persistence values.",
+            "Do not describe the cartoon curvature as a computed polymer shape."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "At coarse 10 kb resolution this is an effective bin state; the recording preset instead uses coarse 200 bp nucleosome units.",
+        "Persistence changes are configurable hypotheses, not universal consequences with a fixed sign."
+      ],
+      "source_duration_seconds": 44.0,
+      "narration_audio": {
+        "path": "narration-neural/06-chromatin.wav",
+        "sha256": "7144468758cd033e5642e75c5a7b75e1ea898348ace448e4dffffbf4d2592a3e",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 34.03066666666667,
+        "words_per_minute": 150.31016383012565,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2693333333333285
+      }
+    },
+    {
+      "id": "07-regulation",
+      "title": "Follow an enhancer to its target gene",
+      "normal_duration_seconds": 37.233333333333334,
+      "primary_capture": "07-regulation.png",
+      "narration": "Regulation now shows the causal pathway for each gene. A transcription factor binds its configured region, and a coactivator is recruited through an actual protein bond. Enhancer contact can add to the target promoter's activation and initiation rates. The rate breakdown separates the baseline, recruitment, local mark gate and optional body response. Nucleosome occupancy changes transcription factor access; recruited enzymes can alter marks and accessibility. Basal activation can remain possible without recruitment. Losing contact removes its gain, but does not instantly turn an active promoter off or erase its chromatin memory.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 12.411111111111111,
+          "text": "Define an enhancer’s interval, TF, coactivator and target gene in the Regulation builder."
+        },
+        {
+          "start": 12.411111111111111,
+          "end": 24.822222222222223,
+          "text": "Follow the causal map: recruitment × environment × mark gate determine effective activation."
+        },
+        {
+          "start": 24.822222222222223,
+          "end": 37.233333333333334,
+          "text": "Transcription is stochastic. Losing contact removes a rate gain; it does not instantly switch an ON promoter OFF."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "07-regulation.png",
+          "duration": 10.859722222222222,
+          "actions": [
+            "Open the Regulation builder and select an enabled enhancer.",
+            "Show its target, contact radius, TF and coactivator settings."
+          ]
+        },
+        {
+          "capture": "07-regulation-live.png",
+          "duration": 9.308333333333334,
+          "actions": [
+            "Open the live Regulation simulation view and choose the same gene.",
+            "Show the actual contact, recruitment and effective-rate readouts.",
+            "If no contact is present in the chosen frame, demonstrate the absence honestly rather than describing an activation event."
+          ]
+        },
+        {
+          "capture": "07-regulation-activation.png",
+          "duration": 9.308333333333334,
+          "actions": [
+            "Scroll to enhancer contact, stochastic promoter state and nascent RNA in the live dependency map."
+          ]
+        },
+        {
+          "capture": "07-regulation-rates.png",
+          "duration": 7.756944444444445,
+          "actions": [
+            "Show the live baseline, recruitment, environment and mark-gate rate ledger."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "Required/repressive marks at the gene start gate activation, not initiation by an already ON promoter.",
+        "TF region preferences are prescribed affinity multipliers, not sequence-motif scanning.",
+        "TF recruitment is a multiplicative gain above a basal factor of one, not a strict requirement for all transcription."
+      ],
+      "source_duration_seconds": 48.0,
+      "narration_audio": {
+        "path": "narration-neural/07-regulation.wav",
+        "sha256": "72e9adbcac251bd08b38b06d7161fa3f7732edca394e09eb2bcd53ababaf71ee",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 35.972,
+        "words_per_minute": 153.92422192151557,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.261333333333333
+      }
+    },
+    {
+      "id": "08-elongation",
+      "title": "Watch polymerases produce individual RNA",
+      "normal_duration_seconds": 37.03333333333333,
+      "primary_capture": "08-elongation.png",
+      "narration": "Transcription is stochastic. The engine now follows promoter switches within each reaction interval, and draws initiations only during the time actually spent active. Each new polymerase moves for the time remaining after its birth. Inspect its identity, position and growing RNA length in Elongation. Nucleosomes can slow movement; configured pauses have stochastic waiting times. Completed transcripts become diffusing points that can be processed or degraded. Nascent RNA can remain after a promoter switches off, so a nascent-positive gene is not the same as an active promoter.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 12.344444444444443,
+          "text": "Initiations use actual time spent ON. New polymerases elongate only after their birth."
+        },
+        {
+          "start": 12.344444444444443,
+          "end": 24.688888888888886,
+          "text": "Advance real simulation time, pause, then select a molecule to inspect its identity and progress."
+        },
+        {
+          "start": 24.688888888888886,
+          "end": 37.03333333333333,
+          "text": "Promoter ON, nascent-positive, released and processed RNA are distinct observables."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "08-elongation.png",
+          "duration": 15.430555555555554,
+          "actions": [
+            "Confirm individual transcript tracking is enabled in the recording preset.",
+            "Run until genuine nascent RNA is present, then pause.",
+            "Show the live polymerase axis and transcript table for a gene."
+          ]
+        },
+        {
+          "capture": "08-elongation-detail.png",
+          "duration": 21.602777777777774,
+          "actions": [
+            "Select a real transcript from the table and show its identifier, length and polymerase state.",
+            "Advance the same recording run and capture its changed progress, or select a genuinely released molecule.",
+            "If the original molecule has degraded, say so and select a current molecule; do not imply continuous identity across different records."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "Do not manually inject RNA or edit displayed counts for a capture.",
+        "RNA–protein binding, explicit RNA-chain geometry and polymerase traffic exclusion are not implemented.",
+        "Monitor blocked initiations if the tracked-molecule capacity is reached."
+      ],
+      "source_duration_seconds": 48.0,
+      "narration_audio": {
+        "path": "narration-neural/08-elongation.wav",
+        "sha256": "7d3fe8a07db42a2c0709bdaa7d202b52cb75636fac9dc9482b275a1f52869f83",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 35.75866666666667,
+        "words_per_minute": 153.15383451822717,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2746666666666613
+      }
+    },
+    {
+      "id": "09-architecture",
+      "title": "Separate loops, assemblies and nuclear bodies",
+      "normal_duration_seconds": 34.9,
+      "primary_capture": "09-architecture.png",
+      "narration": "Cohesin, protein assemblies and nuclear bodies organize space through different rules. Cohesin changes contacts through moving loop anchors. Protein bonds form higher-order assemblies. Speckles and the nucleolus are currently imposed fields, not self-generated condensates. In Genes, optional body responses can promote or suppress activation and initiation. A multiplier of one is neutral; the effect fades with promoter distance. These prescribed responses do not bypass the mark gate. Keep them separate from mechanical body attraction and from the speckle's effect on released RNA processing.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 11.3425,
+          "text": "Cohesin moves tethered anchors along chromatin; protein assemblies emerge from finite-valence bonds."
+        },
+        {
+          "start": 11.3425,
+          "end": 23.557499999999997,
+          "text": "Speckles and nucleolus are imposed affinity fields. Their size and position are prescribed."
+        },
+        {
+          "start": 23.557499999999997,
+          "end": 34.9,
+          "text": "Body responses, mechanical affinity and RNA processing are separate hypotheses; multiplier 1 is neutral."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "09-architecture.png",
+          "duration": 17.45,
+          "actions": [
+            "Show the Cohesin builder and current 1D loop anchors or 3D tethers.",
+            "Highlight directional barriers and extrusion parameters without claiming a particular causal outcome."
+          ]
+        },
+        {
+          "capture": "09-body-responses.png",
+          "duration": 17.45,
+          "actions": [
+            "Open the Genes builder in expanded mode.",
+            "Show the optional speckle and nucleolus activation/initiation multipliers and their explicit-hypothesis explanation."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "The nucleolus has no explicit rRNA biogenesis or multiphase organization.",
+        "A visual cluster or fixed field does not establish calibrated condensate physics."
+      ],
+      "source_duration_seconds": 40.0,
+      "narration_audio": {
+        "path": "narration-neural/09-architecture.wav",
+        "sha256": "69a5c3195c16aafb22fb4114f988fc12a785744e70869b18c3aad75352e55db0",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 33.62533333333333,
+        "words_per_minute": 153.96071486073097,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2746666666666684
+      }
+    },
+    {
+      "id": "10-calibration",
+      "title": "Give the polymer a defensible physical clock",
+      "normal_duration_seconds": 36.733333333333334,
+      "primary_capture": "10-calibration.png",
+      "narration": "Calibrate can import a condition-specific Hansen reference. Then supply a matched, equilibrated simulation and independent length evidence. Importing data does not complete calibration. Match the observable, dimension, drift treatment and fitting window. Next, load the synthetic example to practice fitting. Inspect its overlay, residuals and slopes; it cannot be applied as experimental evidence. A shared polymer clock converts reduced durations and rates consistently, but does not independently fit protein diffusion, binding residence times, elongation or Kd. Compatible empirical mappings retain their sources and baseline model fingerprint.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 9.183333333333334,
+          "text": "Import a condition-specific Hansen reference. A matched equilibrated simulation and independent length evidence are still required."
+        },
+        {
+          "start": 9.183333333333334,
+          "end": 21.42777777777778,
+          "text": "Practice with the synthetic fit: inspect the overlay, residuals and slopes. Synthetic results remain demonstrations."
+        },
+        {
+          "start": 21.42777777777778,
+          "end": 36.733333333333334,
+          "text": "A shared clock converts units, not every biological parameter. Empirical mappings retain sources and a baseline-model fingerprint."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "10-hansen-reference.png",
+          "duration": 9.183333333333334,
+          "actions": [
+            "Open Calibrate and its Hansen reference library.",
+            "Show a condition-specific reference with its provenance and measurement conventions.",
+            "If importing it, retain the uncalibrated status: a matched equilibrated simulation and independent length evidence are still required."
+          ]
+        },
+        {
+          "capture": "10-calibration.png",
+          "duration": 9.183333333333334,
+          "actions": [
+            "Open Calibrate and show the No physical clock state and shared measurement conventions.",
+            "Load the synthetic example; retain the prominent synthetic label."
+          ]
+        },
+        {
+          "capture": "10-calibration-fit.png",
+          "duration": 18.366666666666667,
+          "actions": [
+            "Click Fit time conversion.",
+            "Show the actual returned overlay, residuals and diagnostics.",
+            "Keep the disabled synthetic Apply control visible; do not attach this demonstration to the draft."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "time_s is seconds per reduced time unit, not seconds per integration step.",
+        "A 2 s/reduced-time result in the synthetic example is generated teaching data, not a measured model clock.",
+        "A fitted source claim does not validate the entire model or establish a statistical confidence interval.",
+        "Importing a Hansen library reference provides measured input data but does not by itself establish a length scale or fitted clock."
+      ],
+      "source_duration_seconds": 48.0,
+      "narration_audio": {
+        "path": "narration-neural/10-calibration.wav",
+        "sha256": "60f1a8682a8d37cbb7983b4eacad96a2876f4d9dc6274e2b84881d675365e977",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 35.48133333333333,
+        "words_per_minute": 149.22244244549475,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2520000000000024
+      }
+    },
+    {
+      "id": "11-benchmarks",
+      "title": "Ask what the model actually reproduces",
+      "normal_duration_seconds": 32.766666666666666,
+      "primary_capture": "11-benchmarks.png",
+      "narration": "The benchmark panel separates implementation checks, an ideal Rouse reference, and published-figure replication. Solid curves show sampled reference trajectories; dashed curves show analytical predictions. The saved suite tests free diffusion, internal-chain motion, center-of-mass diffusion and illustrative static-loop suppression. These fixtures exercise the actual Brownian integrator but bypass the production forces and coupled reaction system. Passing them is evidence about implementation. It is not a reproduction of every figure in the cited paper, and it supplies no experimental clock.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 10.649166666666666,
+          "text": "Compare sampled reference trajectories with analytical curves, then inspect the saved checks and provenance."
+        },
+        {
+          "start": 10.649166666666666,
+          "end": 22.1175,
+          "text": "Gaussian-chain reference fixtures test the Brownian integrator, not every production-model coupling."
+        },
+        {
+          "start": 22.1175,
+          "end": 32.766666666666666,
+          "text": "Implementation agreement, empirical calibration and published-figure replication are separate achievements."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "11-benchmarks.png",
+          "duration": 17.202499999999997,
+          "actions": [
+            "Scroll to What have we reproduced? in Calibrate.",
+            "Show the actual saved pass count, reference curves and published-figure status."
+          ]
+        },
+        {
+          "capture": "11-benchmarks-scope.png",
+          "duration": 15.564166666666665,
+          "actions": [
+            "Open Reference benchmark scope and limitations.",
+            "Show the saved observed/reference metrics and the explanation of what the fixture bypasses."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "Refresh pass counts from the saved report when rebuilding the video; do not hard-code a historical count into narration.",
+        "Internal polymer curves remove center-of-mass translation; separate COM checks test whole-chain motion.",
+        "The current saved reference report does not claim full-paper replication."
+      ],
+      "source_duration_seconds": 40.0,
+      "narration_audio": {
+        "path": "narration-neural/11-benchmarks.wav",
+        "sha256": "9cb611c3a654a7f4bc3f8c9290b2bcd2697a34316621c130c5f51bb0b0410868",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 31.492,
+        "words_per_minute": 151.00671140939596,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2746666666666648
+      }
+    },
+    {
+      "id": "14-studies",
+      "title": "Separate competition and shared environments",
+      "normal_duration_seconds": 39.46666666666667,
+      "primary_capture": "14-studies.png",
+      "narration": "Studies provides a simpler model for the manuscript's cis and trans comparison. Each simulated cell has four promoters: two genes on each of two homologs. All four share cell-wide variation. Genes on the same homolog may compete or experience a common fluctuating environment. The reference has no spatial polymer. Start with independent promoters, then add competition or shared environments separately. The experiment runs in isolation, leaving your current simulation untouched. Its purpose is to test whether a mechanism can produce a pattern, before asking whether the full spatial model or the experimental data support it.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 13.155555555555555,
+          "text": "Four promoters represent two homolog pairs within each cell."
+        },
+        {
+          "start": 13.155555555555555,
+          "end": 26.31111111111111,
+          "text": "Compare competition, homolog-specific environments and cell-wide variation separately."
+        },
+        {
+          "start": 26.31111111111111,
+          "end": 39.46666666666667,
+          "text": "Isolated study runs preserve the live simulation. The reference contains no spatial polymer."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "14-studies.png",
+          "duration": 19.733333333333334,
+          "actions": [
+            "Open Studies and show the four-promoter illustration and model controls."
+          ]
+        },
+        {
+          "capture": "14-study-plan.png",
+          "duration": 19.733333333333334,
+          "actions": [
+            "Preview the selected reference experiment and show its conditions and scope."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "Actual UI captures; all response parameters are illustrative unless independently calibrated.",
+        "The recording uses the saved verification recipe: 2048 cells, duration 24, seed1741, four separate controls. These parameters were defined before the UI recording and are illustrative."
+      ],
+      "source_duration_seconds": 42.0,
+      "narration_audio": {
+        "path": "narration-neural/14-studies.wav",
+        "sha256": "ba6868f5d3d0ba07b081260c054983da6398ca3b047f8d46f9f5d2fdd58b65cf",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 38.212,
+        "words_per_minute": 151.14552397114974,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2546666666666653
+      }
+    },
+    {
+      "id": "15-study-results",
+      "title": "Read correlations without confusing controls",
+      "normal_duration_seconds": 36.86666666666667,
+      "primary_capture": "15-study-results.png",
+      "narration": "After the study finishes, compare cis and trans correlations and their difference. The interval reflects sampling uncertainty, not proof of causality. Switch between latent nascent activity, detected activity and promoter state; these observables answer different questions. The spatial pilot instead measures two genes on one chain across independent replicas. Its independent-replica null is not a trans-allele control. Download the plan and results to retain parameters, seeds and limitations. Reproducing the manuscript quantitatively still requires the underlying data, matched observation models, calibrated units and substantially longer converged experiments.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 12.288888888888888,
+          "text": "Φcis and Φtrans share the same cells. ΔΦ = Φcis − Φtrans."
+        },
+        {
+          "start": 12.288888888888888,
+          "end": 24.577777777777776,
+          "text": "Nascent-positive ≠ promoter ON. Detection assumptions affect observed correlations."
+        },
+        {
+          "start": 24.577777777777776,
+          "end": 36.86666666666667,
+          "text": "The one-chain spatial pilot has no matched trans alleles; its replica null is labeled separately."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "15-study-results.png",
+          "duration": 18.433333333333334,
+          "actions": [
+            "Run the reference experiment and show actual results with intervals."
+          ]
+        },
+        {
+          "capture": "15-spatial-study.png",
+          "duration": 18.433333333333334,
+          "actions": [
+            "Select the single-chain spatial pilot and show its controls and one-chain limitation."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "Actual UI captures; all response parameters are illustrative unless independently calibrated.",
+        "Reference confidence intervals use independent cells. Finite samples can show apparent effects under a true null; the retained initial-study-pilot.json illustrates this sampling limitation."
+      ],
+      "source_duration_seconds": 42.0,
+      "narration_audio": {
+        "path": "narration-neural/15-study-results.wav",
+        "sha256": "c9a2ba3958d07c0a7d6fe9986ee617e1c13a327322b85b69b718a55ce5e2acb0",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 35.60933333333333,
+        "words_per_minute": 148.6784140969163,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2573333333333352
+      }
+    },
+    {
+      "id": "12-cluster",
+      "title": "Export a reproducible cluster experiment",
+      "normal_duration_seconds": 37.766666666666666,
+      "primary_capture": "12-cluster.png",
+      "narration": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU integration is available, while forces, reactions and RNA still run on the CPU; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 12.274166666666666,
+          "text": "Configure independent replicas, platform, sampling intervals and resources. Preview before exporting."
+        },
+        {
+          "start": 12.274166666666666,
+          "end": 25.4925,
+          "text": "A portable bundle starts fresh from the draft. GPU integration is partial; speedup still needs measurement."
+        },
+        {
+          "start": 25.4925,
+          "end": 37.766666666666666,
+          "text": "Build → inspect → calibrate → test. Preserve seeds, model provenance and controlled comparisons."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "12-cluster.png",
+          "duration": 17.939166666666665,
+          "actions": [
+            "Open Cluster job and show platform, replicas, output intervals and scheduler settings.",
+            "Keep the hybrid CPU/GPU limitation and fresh-run notice visible."
+          ]
+        },
+        {
+          "capture": "12-cluster-preview.png",
+          "duration": 19.827499999999997,
+          "actions": [
+            "Preview the actual draft job and show the generated script, seeds and warnings.",
+            "Optionally export a local ZIP as a demonstration; do not imply cluster upload, submission, or successful GPU execution."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "Each GPU replica uses one device; the job does not distribute one polymer across multiple GPUs.",
+        "20 Mb at 200 bp per bead requires 100,000 beads and remains beyond the currently supported scale.",
+        "Do not depict the local export as a completed cluster run."
+      ],
+      "source_duration_seconds": 40.0,
+      "narration_audio": {
+        "path": "narration-neural/12-cluster.wav",
+        "sha256": "3a83022f16ce62587b347f2d98adf5dfacd0a2dafa89b27df2d6d3d76f267e62",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 36.50533333333333,
+        "words_per_minute": 151.64420085913198,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.261333333333333
+      }
+    }
+  ],
+  "maintenance": {
+    "content_file": "storyboard.json",
+    "accessible_text_file": "transcript.txt",
+    "update_workflow": [
+      "Edit the relevant scene title, narration, captions or semantic actions in this JSON file.",
+      "Recapture only affected UI keyframes, preserving the stable filenames or updating their references here.",
+      "Review model claims against the current README and implementation. Refresh numerical benchmark evidence from its saved report.",
+      "Regenerate neural narration from the storyboard; unchanged scene audio is reused. Then render the video at the recorded voice pace.",
+      "Check reference keyframe and caption timings; inspect render-timeline.json for measured final timings.",
+      "Review at the default 1× player speed for comfortable narration, readable key points, accurate transitions and any cropped state labels.",
+      "Retain the storyboard, transcript, captures, renderer and capture provenance alongside the exported video so later changes do not require rerecording everything."
+    ],
+    "checks": [
+      "All screenshots come from the actual application or explicitly labeled learning illustrations.",
+      "No fabricated trajectory samples, molecule identities, calibration evidence or cluster completion states.",
+      "Synthetic calibration is visibly labeled and never applied as empirical evidence.",
+      "The 20 Mb overview and 80 kb nucleosome-unit demonstration are explicitly distinguished.",
+      "Fixed nuclear fields, coarse IDRs, passive RNA points and partial GPU execution remain accurately described.",
+      "Caption text and transcript match the final recording and current feature names.",
+      "The 25.6 kb binding/remodeling example is explicitly distinguished from the 80 kb manuscript example and 20 Mb coarse overview. Event records retain their real identities and interval timing."
+    ]
+  },
+  "rendered_duration_seconds": 610.4,
+  "narration_path_base": "directory containing this metadata file",
+  "publication_note": "Narration paths normalized for source distribution; media, timings and recorded source hashes unchanged."
+}

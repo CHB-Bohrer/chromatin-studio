@@ -1,0 +1,313 @@
+{
+  "version": 3,
+  "application_version": "0.10.0",
+  "updated_date": "2026-11-06",
+  "capture_method": "Actual Codex in-app browser screenshots; scripted keyframe walkthrough, not continuous trajectory recording.",
+  "new_capture_viewport_pixels": [
+    1707,
+    960
+  ],
+  "historical_capture_provenance": {
+    "file": "capture-provenance-v0.9.json",
+    "sha256": "3471413ef99514de53bb7a53df154ca128d716efde8435c4c9a1d7b52eb073f2",
+    "scope": "Unchanged v0.9 captures and original 80 kb run records remain from their recorded session."
+  },
+  "new_binding_demonstration": {
+    "port": 8766,
+    "preset": "nucleosome_access",
+    "model": "recording-nucleosome-model.json",
+    "run": "recording-nucleosome-run.json",
+    "seed": 42,
+    "step": 4900,
+    "time_reduced": 9.799999999999942,
+    "advance_method": "Actual UI Run/Pause; 25 integration steps per display frame. No injected particles, bindings or edited event counts.",
+    "event_counts": {
+      "chromatin_bind": 171,
+      "chromatin_unbind": 146,
+      "nucleosome_reassembly": 7,
+      "nucleosome_slide": 21,
+      "nucleosome_eviction": 15
+    },
+    "event_retention": {
+      "backend": 2048,
+      "browser_cache": 240,
+      "visible_feed": 12
+    },
+    "timing": "Binding and sliding have conditional sampled times; occupancy turnover reports interval endpoints. Operator-split observation IDs are not a globally ordered microscopic reaction clock."
+  },
+  "protein_editor_refresh": {
+    "port": 8767,
+    "model": "recording-model.json",
+    "step": 0,
+    "scope": "Separate 80 kb instance. Chapter 04 opens the HP1-like reader as its generic protein example; its narration applies to all species. The capture-action plan suggests a TF, but this view shows the shared editor fields."
+  },
+  "session_preservation": "Ports 8765 and 8766 were already stopped before this update. Existing saved run files were preserved; 8766 now hosts the new 25.6 kb example. Temporary recording instance 8767 is shut down after capture.",
+  "calibration": "No accepted physical mapping attached. All simulation rates and times are reduced units; no experimental fit claimed.",
+  "narration": "Local Kokoro af_heart; approximately 155 words per minute, 1\u00d7 default, no acceleration or truncation.",
+  "captures": [
+    {
+      "file": "captures/01-overview.png",
+      "sha256": "3b2659f41dffa5c629e11715e7f2c486a151bd3b2c783fb41acc48c7719424de",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/01-overview-inspector.png",
+      "sha256": "a5b2c1a4ba64c58b8355b83d4546ce5af04e438e9560e4a5c29f4dec483cfe4d",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/02-build-and-learn.png",
+      "sha256": "cd27b69cc2f259bef74460f343e6474836f27e401d5fb36a441236e903f1a15f",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/02-motion-lesson.png",
+      "sha256": "564e8d5643c101302f1ee7fb7b9c6c97690bd5e3fd361d071d21def961289aca",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/13-confinement.png",
+      "sha256": "31e043cad678d63222081260b1dba489fdc1ae575f99a32e1822bff0dbac8781",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/13-confinement-detail.png",
+      "sha256": "09a7010de3005402a752fcfb1da99c23673090c6a8c1d7dd55dd26481e6f5a87",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/03-genome.png",
+      "sha256": "960d20950654c15e97f4e048c5626f614eab07a03a60d5a0344db15272ee18b4",
+      "recording_version": "0.10.0",
+      "recording": "recording-nucleosome-run.json"
+    },
+    {
+      "file": "captures/03-genome-detail.png",
+      "sha256": "78b44ed4b684d72fb4bc59e7123e10e53de62e08ec2b665993100bfe7f8f0dba",
+      "recording_version": "0.10.0",
+      "recording": "recording-nucleosome-run.json"
+    },
+    {
+      "file": "captures/03-genome-affinities.png",
+      "sha256": "77b7865c6f7966cfc2c2b49ab1ac15bb21eb311287a94d7dd1ae06d663d369fe",
+      "recording_version": "0.10.0",
+      "recording": "recording-nucleosome-run.json"
+    },
+    {
+      "file": "captures/16-nucleosome-gaps.png",
+      "sha256": "0dcc93c8c844b052e6d8fa64e3839ee46a33b0c234565be6f976e7d5c48373f3",
+      "recording_version": "0.10.0",
+      "recording": "recording-nucleosome-run.json"
+    },
+    {
+      "file": "captures/16-access-rates.png",
+      "sha256": "a9518ffa93e48619c237e902c34ede4098bb2e81184efafbd23bb58e535bb715",
+      "recording_version": "0.10.0",
+      "recording": "recording-nucleosome-run.json"
+    },
+    {
+      "file": "captures/16-remodelers.png",
+      "sha256": "ffc440d017cf915c18f93fd255cd598a98be9758723cee8d05d8e28df97c683e",
+      "recording_version": "0.10.0",
+      "recording": "recording-nucleosome-run.json"
+    },
+    {
+      "file": "captures/16-remodeler-events.png",
+      "sha256": "715d116b2b8a45633f78273057a26389fec8c4d6af9dd3af17d487f47f02a7f8",
+      "recording_version": "0.10.0",
+      "recording": "recording-nucleosome-run.json"
+    },
+    {
+      "file": "captures/04-proteins.png",
+      "sha256": "a13a5f97ef075167bb4c8432ab191eeda97cebab9ae6ffc9af133665f1a03e2d",
+      "recording_version": "0.10.0",
+      "recording": "recording-model.json"
+    },
+    {
+      "file": "captures/04-proteins-idr.png",
+      "sha256": "f4625faf8ebcfd75065f645dfbd0bc2d23cb7efd80fec69df1da693d117435f1",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/05-interactions.png",
+      "sha256": "1e536f8cc7c769c8b62d80e7e3597bd604a4446b7ee1839b5972bcbfc0c60ce2",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/05-binding-estimate.png",
+      "sha256": "d262cc320567d0d4b7983abe4a1136e8ad155dd0ff786066db3ffc4717d8438e",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/06-chromatin.png",
+      "sha256": "69dd779a584c5219fc8fe0e37981863689398b9dd30cd3e5aca677f07804ef3c",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/06-accessibility-lesson.png",
+      "sha256": "1a7b1bf6023c1db38d07b231ab44691f21835d06bf754a6ab147f37f1b878f0d",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/07-regulation.png",
+      "sha256": "d3edeb1c2773c510f6655ca0386094e523508544e8d301617f1a76a14774ff6f",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/07-regulation-live.png",
+      "sha256": "a179e431372770985e776638bcfe97d510893b91dc244ef2d73bddb46ad74f51",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/07-regulation-activation.png",
+      "sha256": "4a6dfdb98aa20639c4be93786f2532d78c23b4831287bda5a5a2c46e5b91f1f0",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/07-regulation-rates.png",
+      "sha256": "0ca1abacef206855ce7cff486c4317f9145b7610a5ebd4a0b6669865a524817e",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/08-elongation.png",
+      "sha256": "abbe1ec7edff6c9a3f72ae759514e5343e4f3d926da98e12df4c2a55a9530baf",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/08-elongation-detail.png",
+      "sha256": "058b17151e7e0dbc62bdda71a067c8b8df430b7e9e19e86293a8ae16a4bfd2b6",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/09-architecture.png",
+      "sha256": "ec23a1344263e5751e010e16556828c283586144bc3f881a65d7d38f64ea25da",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/09-body-responses.png",
+      "sha256": "fd0654b203015cd2a75e9df35c745fd7f162a951078fe6fcef361b90ababd593",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/10-hansen-reference.png",
+      "sha256": "4008c98b588cb9a480ecb42a6e785c4049d0b83122f35c1880d943887099727e",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/10-calibration.png",
+      "sha256": "921bba993a1743619a63ab774e84e1ed1fb58e389c13d760184b322d52a5f359",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/10-calibration-fit.png",
+      "sha256": "6817a4cf76013a97f7df93bfe57e04ddc10bbf0a496ed29a50b992ac3532c81a",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/11-benchmarks.png",
+      "sha256": "c3bf0434fb6d331223bbb9c6b423f837fef83e5112aed0f296e55d9c2ffb9556",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/11-benchmarks-scope.png",
+      "sha256": "98d1a62322c8bce0ee75f8d698f258e1b7ea4af301f278389c56049b893890a4",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/14-studies.png",
+      "sha256": "c7e861ca52f7dcaf986fa38e0b31a90b52d18adbb3816093e07b2d1931bdcef1",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/14-study-plan.png",
+      "sha256": "7146713cfa9f0fef43e9bc72a7a8a71f8689034a9c827b238db5ba1508ab47fc",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/15-study-results.png",
+      "sha256": "7b2047e88e5faed37909734c73454f7f9dde67abc786aa3ab7c86f11c77d3678",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/15-spatial-study.png",
+      "sha256": "dab89665624623eaa6f1f30f44c7d520f92775985fc592d7d610455d74aba188",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/12-cluster.png",
+      "sha256": "8276e19850aa1afaceb317a046483700cd5746a8952da911b63050dc56153f14",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/12-cluster-preview.png",
+      "sha256": "5ab494a8a3b8a690cb291ee2a28865449d173552eedfbf6f666b3cd347f06182",
+      "recording_version": "0.9.0",
+      "recording": "capture-provenance-v0.9.json"
+    }
+  ],
+  "source_records": [
+    {
+      "file": "storyboard.json",
+      "sha256": "0a86a75a826314a1daba0a65161db64ea7d074f2b41f411a50cd5708ef734aa9"
+    },
+    {
+      "file": "recording-model.json",
+      "sha256": "74d697f179b9f57fb01d632fd3f2a79eb420f672e73241304ecbf5c76b617f11"
+    },
+    {
+      "file": "recording-run.json",
+      "sha256": "cf4a33036cb54975c14ec6c2611b0c1c61d6c715028b8c5f27b8a443ac57a2ae"
+    },
+    {
+      "file": "recording-study.json",
+      "sha256": "b6dd5218917d7096df68f2965d3c6793a67dfa27b27d82ef73a019511662980a"
+    },
+    {
+      "file": "initial-study-pilot.json",
+      "sha256": "7184bdf70e097ae05fc6fc49c50e367a7d1d8bb1bcc6ff39e277cd730c0812f6"
+    },
+    {
+      "file": "recording-nucleosome-model.json",
+      "sha256": "8560bb6bb6e596718c343e8cb2b4f833fdce7e538f9b9e48163fe8044d89cfa2"
+    },
+    {
+      "file": "recording-nucleosome-run.json",
+      "sha256": "6d233efe0b239c5f7b3a0da1ae37445ccaa583eb33169cfa9a6ee33c194fcd0d"
+    }
+  ],
+  "focus_crops": "New detail scenes use documented focus rectangles of the original browser captures for readable UI text. No pixels or measurements were edited.",
+  "new_capture_image_pixels": [
+    1687,
+    949
+  ],
+  "capture_size_note": "Native browser viewport was reported as 1707 \u00d7 960; saved browser screenshots are 1687 \u00d7 949. Focus rectangles are validated against the saved PNG dimensions."
+}

@@ -1,0 +1,61 @@
+;FFMETADATA1
+[CHAPTER]
+TIMEBASE=1/1000
+START=0
+END=16000
+title=Start with the workbench
+[CHAPTER]
+TIMEBASE=1/1000
+START=16000
+END=34000
+title=Choose a focused experiment
+[CHAPTER]
+TIMEBASE=1/1000
+START=34000
+END=54000
+title=Read the chromosome in one dimension
+[CHAPTER]
+TIMEBASE=1/1000
+START=54000
+END=74000
+title=Define many proteins and their roles
+[CHAPTER]
+TIMEBASE=1/1000
+START=74000
+END=96000
+title=Inspect binding in its context
+[CHAPTER]
+TIMEBASE=1/1000
+START=96000
+END=118000
+title=Connect accessibility, marks and stiffness
+[CHAPTER]
+TIMEBASE=1/1000
+START=118000
+END=142000
+title=Follow an enhancer to its target gene
+[CHAPTER]
+TIMEBASE=1/1000
+START=142000
+END=166000
+title=Watch polymerases produce individual RNA
+[CHAPTER]
+TIMEBASE=1/1000
+START=166000
+END=186000
+title=Separate loops, assemblies and nuclear bodies
+[CHAPTER]
+TIMEBASE=1/1000
+START=186000
+END=210000
+title=Give the polymer a defensible physical clock
+[CHAPTER]
+TIMEBASE=1/1000
+START=210000
+END=230000
+title=Ask what the model actually reproduces
+[CHAPTER]
+TIMEBASE=1/1000
+START=230000
+END=250000
+title=Export a reproducible cluster experiment

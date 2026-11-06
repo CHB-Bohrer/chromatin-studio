@@ -1,0 +1,739 @@
+{
+  "schema_version": 2,
+  "title": "Chromatin Studio — build, inspect, and test a model",
+  "storyboard_sha256": "0a86a75a826314a1daba0a65161db64ea7d074f2b41f411a50cd5708ef734aa9",
+  "renderer_sha256": "5c4390628b866aaf410bdb7555006b25b405c47df8ecd1e437fdc7de63d50d92",
+  "speed": 1,
+  "normal_seconds": 610.4,
+  "delivered_seconds": 610.4,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 30,
+  "silent": false,
+  "video_sha256": "c7f29a260a67307d79d91ca4774aa33691acd1e33654b4917668ba83e1b88c58",
+  "scenes": [
+    {
+      "id": "01-overview",
+      "fingerprint": "79896a4dbdeb6ac3f91e2bf35697c9e213d81755ce562b356d33dbaed47055e6",
+      "normal_seconds": 28.733333333333334,
+      "delivered_seconds": 28.733333333333334,
+      "captures": [
+        {
+          "capture": "01-overview.png",
+          "sha256": "3b2659f41dffa5c629e11715e7f2c486a151bd3b2c783fb41acc48c7719424de",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "01-overview-inspector.png",
+          "sha256": "a5b2c1a4ba64c58b8355b83d4546ce5af04e438e9560e4a5c29f4dec483cfe4d",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/01-overview.wav",
+        "sha256": "d023b37ab27343fbbfb87731309cf05acc6689f885bee8c5ff6420a8057d718f",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 27.465333333333334,
+        "words_per_minute": 151.30537974683543,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2680000000000007
+      },
+      "clip_sha256": "a5649159599b8b1d9de4ea771ee23d7a09ff8ccc2bbf650a20fd13d28a9cf5f0"
+    },
+    {
+      "id": "02-build-and-learn",
+      "fingerprint": "1234b46f769bc2ecf82ca9fb5885a702a7316ab9cd692f538cc2b488120b00c0",
+      "normal_seconds": 32.3,
+      "delivered_seconds": 32.3,
+      "captures": [
+        {
+          "capture": "02-build-and-learn.png",
+          "sha256": "cd27b69cc2f259bef74460f343e6474836f27e401d5fb36a441236e903f1a15f",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "02-motion-lesson.png",
+          "sha256": "564e8d5643c101302f1ee7fb7b9c6c97690bd5e3fd361d071d21def961289aca",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/02-build-and-learn.wav",
+        "sha256": "37dbb73c50f4db2f5e4ce9ef0a715bcb1cd5073503942b6958d753743e4f3c11",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 31.044,
+        "words_per_minute": 153.2215819800943,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2559999999999967
+      },
+      "clip_sha256": "640db24324e2fd3df17c5f9b827ee359f244a64ad264c260fe870cd4212da198"
+    },
+    {
+      "id": "13-confinement",
+      "fingerprint": "0ead186534a786081a323622eed31af8c08e56aaa7a7e29a3204240c552fc406",
+      "normal_seconds": 38.733333333333334,
+      "delivered_seconds": 38.733333333333334,
+      "captures": [
+        {
+          "capture": "13-confinement.png",
+          "sha256": "31e043cad678d63222081260b1dba489fdc1ae575f99a32e1822bff0dbac8781",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "13-confinement-detail.png",
+          "sha256": "09a7010de3005402a752fcfb1da99c23673090c6a8c1d7dd55dd26481e6f5a87",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/13-confinement.wav",
+        "sha256": "f55ed5d311b622d28c1ca7b6a3245363954144ace2f755e1a7cef61de38a0481",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 37.465333333333334,
+        "words_per_minute": 149.32910113980665,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2680000000000007
+      },
+      "clip_sha256": "763dd00098e9278eeb64001eafb79a9e0569b58c49a19f4b06497a75f7b98d6a"
+    },
+    {
+      "id": "03-genome",
+      "fingerprint": "6b3dd2df0e592b2927c5ccb810706de81924a78c276344d124d33d6eb257ee28",
+      "normal_seconds": 51.7,
+      "delivered_seconds": 51.7,
+      "captures": [
+        {
+          "capture": "03-genome.png",
+          "sha256": "960d20950654c15e97f4e048c5626f614eab07a03a60d5a0344db15272ee18b4",
+          "dimensions": [
+            1687,
+            949
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "03-genome-detail.png",
+          "sha256": "78b44ed4b684d72fb4bc59e7123e10e53de62e08ec2b665993100bfe7f8f0dba",
+          "dimensions": [
+            1687,
+            949
+          ],
+          "focus_rect": [
+            294,
+            340,
+            1368,
+            555
+          ]
+        },
+        {
+          "capture": "03-genome-affinities.png",
+          "sha256": "77b7865c6f7966cfc2c2b49ab1ac15bb21eb311287a94d7dd1ae06d663d369fe",
+          "dimensions": [
+            1687,
+            949
+          ],
+          "focus_rect": [
+            294,
+            240,
+            1368,
+            630
+          ]
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/03-genome.wav",
+        "sha256": "8a44924aece0cadde27ddf374c097bacbf02f5ec84e6f5bd4d77173e6009e133",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 50.43066666666667,
+        "words_per_minute": 151.40995513779106,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2693333333333356
+      },
+      "clip_sha256": "9127c8f2c5f9d752112b423a229bb8b5db12c3bb0872604cd93d3d13e3bf69bf"
+    },
+    {
+      "id": "16-remodelers",
+      "fingerprint": "f7153be5fae7cd1c3e26d92708b456dc28457f1e07069af239cd00eb0f3e1c7d",
+      "normal_seconds": 58.3,
+      "delivered_seconds": 58.3,
+      "captures": [
+        {
+          "capture": "16-nucleosome-gaps.png",
+          "sha256": "0dcc93c8c844b052e6d8fa64e3839ee46a33b0c234565be6f976e7d5c48373f3",
+          "dimensions": [
+            1687,
+            949
+          ],
+          "focus_rect": [
+            274,
+            450,
+            1005,
+            350
+          ]
+        },
+        {
+          "capture": "16-access-rates.png",
+          "sha256": "a9518ffa93e48619c237e902c34ede4098bb2e81184efafbd23bb58e535bb715",
+          "dimensions": [
+            1687,
+            949
+          ],
+          "focus_rect": [
+            290,
+            275,
+            990,
+            495
+          ]
+        },
+        {
+          "capture": "16-remodelers.png",
+          "sha256": "ffc440d017cf915c18f93fd255cd598a98be9758723cee8d05d8e28df97c683e",
+          "dimensions": [
+            1687,
+            949
+          ],
+          "focus_rect": [
+            290,
+            145,
+            990,
+            595
+          ]
+        },
+        {
+          "capture": "16-remodeler-events.png",
+          "sha256": "715d116b2b8a45633f78273057a26389fec8c4d6af9dd3af17d487f47f02a7f8",
+          "dimensions": [
+            1687,
+            949
+          ],
+          "focus_rect": [
+            294,
+            325,
+            1368,
+            300
+          ]
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/16-remodelers.wav",
+        "sha256": "03f546486ad59c772ff5025fe61a89ae4abaef91f7222fe4e0eb95ab1b2a6b54",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 57.022666666666666,
+        "words_per_minute": 150.73598792224948,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2773333333333312
+      },
+      "clip_sha256": "5b66fed0b586e390ccb8834ea6fbe3ce6bf4099eaa5d28845272802eb91954dd"
+    },
+    {
+      "id": "04-proteins",
+      "fingerprint": "9f1340b67438da25c60f52750ba6f702dd5b018940c7ea8848792235d31d3717",
+      "normal_seconds": 39.63333333333333,
+      "delivered_seconds": 39.63333333333333,
+      "captures": [
+        {
+          "capture": "04-proteins.png",
+          "sha256": "a13a5f97ef075167bb4c8432ab191eeda97cebab9ae6ffc9af133665f1a03e2d",
+          "dimensions": [
+            1687,
+            949
+          ],
+          "focus_rect": [
+            280,
+            325,
+            1005,
+            620
+          ]
+        },
+        {
+          "capture": "04-proteins-idr.png",
+          "sha256": "f4625faf8ebcfd75065f645dfbd0bc2d23cb7efd80fec69df1da693d117435f1",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/04-proteins.wav",
+        "sha256": "7a7bea603aafc83f065f043d04e581819ed0b0b0ed60e4d70f62ea13d1009190",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 38.382666666666665,
+        "words_per_minute": 153.6322680557511,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2506666666666675
+      },
+      "clip_sha256": "77ffad93eafb393271b5e3e4109a311a2d6c689092683dd892dfdd4a057b6eca"
+    },
+    {
+      "id": "05-interactions",
+      "fingerprint": "4ae58115ba353341fb99f84f1f79482f186a2767c6727619308aa11accd5bbf2",
+      "normal_seconds": 32.93333333333333,
+      "delivered_seconds": 32.93333333333333,
+      "captures": [
+        {
+          "capture": "05-interactions.png",
+          "sha256": "1e536f8cc7c769c8b62d80e7e3597bd604a4446b7ee1839b5972bcbfc0c60ce2",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "05-binding-estimate.png",
+          "sha256": "d262cc320567d0d4b7983abe4a1136e8ad155dd0ff786066db3ffc4717d8438e",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/05-interactions.wav",
+        "sha256": "17139425f9c271975f581969ed4a710dad7c2c8479592ea05da0e5842b79212c",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 31.662666666666667,
+        "words_per_minute": 157.88122539791203,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2706666666666635
+      },
+      "clip_sha256": "1b9343d11624dd007e3f277dac33909c022d239a29fa626f277d35e7c4eff657"
+    },
+    {
+      "id": "06-chromatin",
+      "fingerprint": "03ab7da76d7d1a2da2e6cd9721a33001c6258168a87a43770f3f05d05fb7448c",
+      "normal_seconds": 35.3,
+      "delivered_seconds": 35.3,
+      "captures": [
+        {
+          "capture": "06-chromatin.png",
+          "sha256": "69dd779a584c5219fc8fe0e37981863689398b9dd30cd3e5aca677f07804ef3c",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "06-accessibility-lesson.png",
+          "sha256": "1a7b1bf6023c1db38d07b231ab44691f21835d06bf754a6ab147f37f1b878f0d",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/06-chromatin.wav",
+        "sha256": "7144468758cd033e5642e75c5a7b75e1ea898348ace448e4dffffbf4d2592a3e",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 34.03066666666667,
+        "words_per_minute": 150.31016383012565,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2693333333333285
+      },
+      "clip_sha256": "409381bdde4bd71f5272ee972d6a44ad6965a6be21467fb0ca03da6cdf3f548d"
+    },
+    {
+      "id": "07-regulation",
+      "fingerprint": "e59a073caf9a3a13adf3f7412d05917eacebb43d02065f418c77ea952c941c0e",
+      "normal_seconds": 37.233333333333334,
+      "delivered_seconds": 37.233333333333334,
+      "captures": [
+        {
+          "capture": "07-regulation.png",
+          "sha256": "d3edeb1c2773c510f6655ca0386094e523508544e8d301617f1a76a14774ff6f",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "07-regulation-live.png",
+          "sha256": "a179e431372770985e776638bcfe97d510893b91dc244ef2d73bddb46ad74f51",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "07-regulation-activation.png",
+          "sha256": "4a6dfdb98aa20639c4be93786f2532d78c23b4831287bda5a5a2c46e5b91f1f0",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "07-regulation-rates.png",
+          "sha256": "0ca1abacef206855ce7cff486c4317f9145b7610a5ebd4a0b6669865a524817e",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/07-regulation.wav",
+        "sha256": "72e9adbcac251bd08b38b06d7161fa3f7732edca394e09eb2bcd53ababaf71ee",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 35.972,
+        "words_per_minute": 153.92422192151557,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.261333333333333
+      },
+      "clip_sha256": "a3ed577d8f47b2a34506d96a9b2b2f933c360946d548bcb956233f3d72e5547a"
+    },
+    {
+      "id": "08-elongation",
+      "fingerprint": "b008344d604e8f87448c484fd8df0be5ece02f5ff0c143ca1e8798e5388786eb",
+      "normal_seconds": 37.03333333333333,
+      "delivered_seconds": 37.03333333333333,
+      "captures": [
+        {
+          "capture": "08-elongation.png",
+          "sha256": "abbe1ec7edff6c9a3f72ae759514e5343e4f3d926da98e12df4c2a55a9530baf",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "08-elongation-detail.png",
+          "sha256": "058b17151e7e0dbc62bdda71a067c8b8df430b7e9e19e86293a8ae16a4bfd2b6",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/08-elongation.wav",
+        "sha256": "7d3fe8a07db42a2c0709bdaa7d202b52cb75636fac9dc9482b275a1f52869f83",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 35.75866666666667,
+        "words_per_minute": 153.15383451822717,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2746666666666613
+      },
+      "clip_sha256": "727319e33c257f5f642102454752ddb46df67cd30250109aeff6a00368e32e9b"
+    },
+    {
+      "id": "09-architecture",
+      "fingerprint": "726750907880c7682bb25d56abbd5dae45ea105f0cea4f5048e550f734aebc2d",
+      "normal_seconds": 34.9,
+      "delivered_seconds": 34.9,
+      "captures": [
+        {
+          "capture": "09-architecture.png",
+          "sha256": "ec23a1344263e5751e010e16556828c283586144bc3f881a65d7d38f64ea25da",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "09-body-responses.png",
+          "sha256": "fd0654b203015cd2a75e9df35c745fd7f162a951078fe6fcef361b90ababd593",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/09-architecture.wav",
+        "sha256": "69a5c3195c16aafb22fb4114f988fc12a785744e70869b18c3aad75352e55db0",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 33.62533333333333,
+        "words_per_minute": 153.96071486073097,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2746666666666684
+      },
+      "clip_sha256": "16c8e4fe63ad956fa99a862a7260828e2632265eb3e69840be68b05bbf6f6ba0"
+    },
+    {
+      "id": "10-calibration",
+      "fingerprint": "6514eef1376a2698e5d2bfe53db4d8252b1c5db9e915eff23a84890b35ab2130",
+      "normal_seconds": 36.733333333333334,
+      "delivered_seconds": 36.733333333333334,
+      "captures": [
+        {
+          "capture": "10-hansen-reference.png",
+          "sha256": "4008c98b588cb9a480ecb42a6e785c4049d0b83122f35c1880d943887099727e",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "10-calibration.png",
+          "sha256": "921bba993a1743619a63ab774e84e1ed1fb58e389c13d760184b322d52a5f359",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "10-calibration-fit.png",
+          "sha256": "6817a4cf76013a97f7df93bfe57e04ddc10bbf0a496ed29a50b992ac3532c81a",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/10-calibration.wav",
+        "sha256": "60f1a8682a8d37cbb7983b4eacad96a2876f4d9dc6274e2b84881d675365e977",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 35.48133333333333,
+        "words_per_minute": 149.22244244549475,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2520000000000024
+      },
+      "clip_sha256": "ca899e11b4428587f5c6834def03d621995643fbfae77ee86335c1cc38e2a7bc"
+    },
+    {
+      "id": "11-benchmarks",
+      "fingerprint": "6c2b63a2b60cd71ecd766d7c6b5e5dd5e16cea0ca259f65bc545f31510e93c28",
+      "normal_seconds": 32.766666666666666,
+      "delivered_seconds": 32.766666666666666,
+      "captures": [
+        {
+          "capture": "11-benchmarks.png",
+          "sha256": "c3bf0434fb6d331223bbb9c6b423f837fef83e5112aed0f296e55d9c2ffb9556",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "11-benchmarks-scope.png",
+          "sha256": "98d1a62322c8bce0ee75f8d698f258e1b7ea4af301f278389c56049b893890a4",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/11-benchmarks.wav",
+        "sha256": "9cb611c3a654a7f4bc3f8c9290b2bcd2697a34316621c130c5f51bb0b0410868",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 31.492,
+        "words_per_minute": 151.00671140939596,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2746666666666648
+      },
+      "clip_sha256": "76ee50ab7281449dd08f43b207e07ef0549c358253714a8529df76430eb8cdd2"
+    },
+    {
+      "id": "14-studies",
+      "fingerprint": "147a9f9f14031a1b95228c0d32fedb6919d5a079b788ba19625abf531dc4bb96",
+      "normal_seconds": 39.46666666666667,
+      "delivered_seconds": 39.46666666666667,
+      "captures": [
+        {
+          "capture": "14-studies.png",
+          "sha256": "c7e861ca52f7dcaf986fa38e0b31a90b52d18adbb3816093e07b2d1931bdcef1",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "14-study-plan.png",
+          "sha256": "7146713cfa9f0fef43e9bc72a7a8a71f8689034a9c827b238db5ba1508ab47fc",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/14-studies.wav",
+        "sha256": "ba6868f5d3d0ba07b081260c054983da6398ca3b047f8d46f9f5d2fdd58b65cf",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 38.212,
+        "words_per_minute": 151.14552397114974,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2546666666666653
+      },
+      "clip_sha256": "a559caf9fc060f72f59aa6fe6603cc21c4699e7dc359b74aac9ea70aa07f6005"
+    },
+    {
+      "id": "15-study-results",
+      "fingerprint": "f0c320b585f5b11af21e76b8760e09b5eceac06792e602c3101efbb232571b65",
+      "normal_seconds": 36.86666666666667,
+      "delivered_seconds": 36.86666666666667,
+      "captures": [
+        {
+          "capture": "15-study-results.png",
+          "sha256": "7b2047e88e5faed37909734c73454f7f9dde67abc786aa3ab7c86f11c77d3678",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "15-spatial-study.png",
+          "sha256": "dab89665624623eaa6f1f30f44c7d520f92775985fc592d7d610455d74aba188",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/15-study-results.wav",
+        "sha256": "c9a2ba3958d07c0a7d6fe9986ee617e1c13a327322b85b69b718a55ce5e2acb0",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 35.60933333333333,
+        "words_per_minute": 148.6784140969163,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2573333333333352
+      },
+      "clip_sha256": "24b8bfbee952faf6b7de62ddf82a40ab2cab202291007fd77df853cad3389cef"
+    },
+    {
+      "id": "12-cluster",
+      "fingerprint": "02463c13d6e3c93c85e7ee0cfac3697195fc251d69433de3fec0b556d89cdf62",
+      "normal_seconds": 37.766666666666666,
+      "delivered_seconds": 37.766666666666666,
+      "captures": [
+        {
+          "capture": "12-cluster.png",
+          "sha256": "8276e19850aa1afaceb317a046483700cd5746a8952da911b63050dc56153f14",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "12-cluster-preview.png",
+          "sha256": "5ab494a8a3b8a690cb291ee2a28865449d173552eedfbf6f666b3cd347f06182",
+          "dimensions": [
+            1265,
+            712
+          ],
+          "focus_rect": null
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/12-cluster.wav",
+        "sha256": "3a83022f16ce62587b347f2d98adf5dfacd0a2dafa89b27df2d6d3d76f267e62",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 36.50533333333333,
+        "words_per_minute": 151.64420085913198,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.261333333333333
+      },
+      "clip_sha256": "8b99b15d96ed6f56c15b57f41c19c96df916c25f1099082e394dd060f95ec99f"
+    }
+  ],
+  "capture_provenance": {
+    "filename": "capture-provenance.json",
+    "sha256": "1952fae0dbc6725e586ec6e25dfed2c4e1d862f7b6bd2b3b96f54d3d7e1df751"
+  },
+  "narration_manifest_sha256": "dacc64667a46d01d3597e5946ba264d33a60064f3d066a9b65d9e1e436cf2e66",
+  "timing": "Visuals follow measured narration plus reading pauses; no speech acceleration.",
+  "narration_path_base": "directory containing this metadata file",
+  "publication_note": "Narration paths normalized for source distribution; media, timings and recorded source hashes unchanged."
+}

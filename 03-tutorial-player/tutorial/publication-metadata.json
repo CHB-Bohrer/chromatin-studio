@@ -1,0 +1,183 @@
+{
+  "date": "2026-11-06",
+  "scope": "Metadata path normalization only. Original absolute-path records retained outside the release tree.",
+  "path_base": "tutorial/",
+  "files": [
+    {
+      "file": "render-manifest.json",
+      "original_sha256": "0c4c0a914f7f74ec0c76118b1c9b229458ff275e557605ab89acde48ff9de2d2",
+      "published_sha256": "7f05efd5429c24f3c9aeae693462d07896da018045c64c30acc8b6c9b233bcf6",
+      "paths_verified": [
+        {
+          "scene": "01-overview",
+          "path": "narration-neural/01-overview.wav",
+          "sha256": "d023b37ab27343fbbfb87731309cf05acc6689f885bee8c5ff6420a8057d718f"
+        },
+        {
+          "scene": "02-build-and-learn",
+          "path": "narration-neural/02-build-and-learn.wav",
+          "sha256": "37dbb73c50f4db2f5e4ce9ef0a715bcb1cd5073503942b6958d753743e4f3c11"
+        },
+        {
+          "scene": "13-confinement",
+          "path": "narration-neural/13-confinement.wav",
+          "sha256": "f55ed5d311b622d28c1ca7b6a3245363954144ace2f755e1a7cef61de38a0481"
+        },
+        {
+          "scene": "03-genome",
+          "path": "narration-neural/03-genome.wav",
+          "sha256": "8a44924aece0cadde27ddf374c097bacbf02f5ec84e6f5bd4d77173e6009e133"
+        },
+        {
+          "scene": "16-remodelers",
+          "path": "narration-neural/16-remodelers.wav",
+          "sha256": "03f546486ad59c772ff5025fe61a89ae4abaef91f7222fe4e0eb95ab1b2a6b54"
+        },
+        {
+          "scene": "04-proteins",
+          "path": "narration-neural/04-proteins.wav",
+          "sha256": "7a7bea603aafc83f065f043d04e581819ed0b0b0ed60e4d70f62ea13d1009190"
+        },
+        {
+          "scene": "05-interactions",
+          "path": "narration-neural/05-interactions.wav",
+          "sha256": "17139425f9c271975f581969ed4a710dad7c2c8479592ea05da0e5842b79212c"
+        },
+        {
+          "scene": "06-chromatin",
+          "path": "narration-neural/06-chromatin.wav",
+          "sha256": "7144468758cd033e5642e75c5a7b75e1ea898348ace448e4dffffbf4d2592a3e"
+        },
+        {
+          "scene": "07-regulation",
+          "path": "narration-neural/07-regulation.wav",
+          "sha256": "72e9adbcac251bd08b38b06d7161fa3f7732edca394e09eb2bcd53ababaf71ee"
+        },
+        {
+          "scene": "08-elongation",
+          "path": "narration-neural/08-elongation.wav",
+          "sha256": "7d3fe8a07db42a2c0709bdaa7d202b52cb75636fac9dc9482b275a1f52869f83"
+        },
+        {
+          "scene": "09-architecture",
+          "path": "narration-neural/09-architecture.wav",
+          "sha256": "69a5c3195c16aafb22fb4114f988fc12a785744e70869b18c3aad75352e55db0"
+        },
+        {
+          "scene": "10-calibration",
+          "path": "narration-neural/10-calibration.wav",
+          "sha256": "60f1a8682a8d37cbb7983b4eacad96a2876f4d9dc6274e2b84881d675365e977"
+        },
+        {
+          "scene": "11-benchmarks",
+          "path": "narration-neural/11-benchmarks.wav",
+          "sha256": "9cb611c3a654a7f4bc3f8c9290b2bcd2697a34316621c130c5f51bb0b0410868"
+        },
+        {
+          "scene": "14-studies",
+          "path": "narration-neural/14-studies.wav",
+          "sha256": "ba6868f5d3d0ba07b081260c054983da6398ca3b047f8d46f9f5d2fdd58b65cf"
+        },
+        {
+          "scene": "15-study-results",
+          "path": "narration-neural/15-study-results.wav",
+          "sha256": "c9a2ba3958d07c0a7d6fe9986ee617e1c13a327322b85b69b718a55ce5e2acb0"
+        },
+        {
+          "scene": "12-cluster",
+          "path": "narration-neural/12-cluster.wav",
+          "sha256": "3a83022f16ce62587b347f2d98adf5dfacd0a2dafa89b27df2d6d3d76f267e62"
+        }
+      ]
+    },
+    {
+      "file": "render-timeline.json",
+      "original_sha256": "dacf6a54fcc3c2277adc726357cd6d7488066a2b8223973fc69090d6141cea86",
+      "published_sha256": "d2544509ec75dfb6e4a3d74dcc84580804a34ff97f9b9b435d1d9eca55252542",
+      "paths_verified": [
+        {
+          "scene": "01-overview",
+          "path": "narration-neural/01-overview.wav",
+          "sha256": "d023b37ab27343fbbfb87731309cf05acc6689f885bee8c5ff6420a8057d718f"
+        },
+        {
+          "scene": "02-build-and-learn",
+          "path": "narration-neural/02-build-and-learn.wav",
+          "sha256": "37dbb73c50f4db2f5e4ce9ef0a715bcb1cd5073503942b6958d753743e4f3c11"
+        },
+        {
+          "scene": "13-confinement",
+          "path": "narration-neural/13-confinement.wav",
+          "sha256": "f55ed5d311b622d28c1ca7b6a3245363954144ace2f755e1a7cef61de38a0481"
+        },
+        {
+          "scene": "03-genome",
+          "path": "narration-neural/03-genome.wav",
+          "sha256": "8a44924aece0cadde27ddf374c097bacbf02f5ec84e6f5bd4d77173e6009e133"
+        },
+        {
+          "scene": "16-remodelers",
+          "path": "narration-neural/16-remodelers.wav",
+          "sha256": "03f546486ad59c772ff5025fe61a89ae4abaef91f7222fe4e0eb95ab1b2a6b54"
+        },
+        {
+          "scene": "04-proteins",
+          "path": "narration-neural/04-proteins.wav",
+          "sha256": "7a7bea603aafc83f065f043d04e581819ed0b0b0ed60e4d70f62ea13d1009190"
+        },
+        {
+          "scene": "05-interactions",
+          "path": "narration-neural/05-interactions.wav",
+          "sha256": "17139425f9c271975f581969ed4a710dad7c2c8479592ea05da0e5842b79212c"
+        },
+        {
+          "scene": "06-chromatin",
+          "path": "narration-neural/06-chromatin.wav",
+          "sha256": "7144468758cd033e5642e75c5a7b75e1ea898348ace448e4dffffbf4d2592a3e"
+        },
+        {
+          "scene": "07-regulation",
+          "path": "narration-neural/07-regulation.wav",
+          "sha256": "72e9adbcac251bd08b38b06d7161fa3f7732edca394e09eb2bcd53ababaf71ee"
+        },
+        {
+          "scene": "08-elongation",
+          "path": "narration-neural/08-elongation.wav",
+          "sha256": "7d3fe8a07db42a2c0709bdaa7d202b52cb75636fac9dc9482b275a1f52869f83"
+        },
+        {
+          "scene": "09-architecture",
+          "path": "narration-neural/09-architecture.wav",
+          "sha256": "69a5c3195c16aafb22fb4114f988fc12a785744e70869b18c3aad75352e55db0"
+        },
+        {
+          "scene": "10-calibration",
+          "path": "narration-neural/10-calibration.wav",
+          "sha256": "60f1a8682a8d37cbb7983b4eacad96a2876f4d9dc6274e2b84881d675365e977"
+        },
+        {
+          "scene": "11-benchmarks",
+          "path": "narration-neural/11-benchmarks.wav",
+          "sha256": "9cb611c3a654a7f4bc3f8c9290b2bcd2697a34316621c130c5f51bb0b0410868"
+        },
+        {
+          "scene": "14-studies",
+          "path": "narration-neural/14-studies.wav",
+          "sha256": "ba6868f5d3d0ba07b081260c054983da6398ca3b047f8d46f9f5d2fdd58b65cf"
+        },
+        {
+          "scene": "15-study-results",
+          "path": "narration-neural/15-study-results.wav",
+          "sha256": "c9a2ba3958d07c0a7d6fe9986ee617e1c13a327322b85b69b718a55ce5e2acb0"
+        },
+        {
+          "scene": "12-cluster",
+          "path": "narration-neural/12-cluster.wav",
+          "sha256": "3a83022f16ce62587b347f2d98adf5dfacd0a2dafa89b27df2d6d3d76f267e62"
+        }
+      ]
+    }
+  ],
+  "video_sha256": "c7f29a260a67307d79d91ca4774aa33691acd1e33654b4917668ba83e1b88c58",
+  "media_changed": false
+}

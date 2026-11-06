@@ -1,0 +1,55 @@
+{
+  "checked_at": "2026-11-06T18:11:57.059823+00:00",
+  "application_version": "0.10.0",
+  "status": "passed",
+  "render_storyboard_and_renderer_hashes_match": true,
+  "capture_provenance_manifest_hash_matches": true,
+  "capture_provenance_reference_refreshed_after_render": false,
+  "verified_capture_files": 38,
+  "verified_source_records": 7,
+  "verified_audio_files": 16,
+  "all_audio_source_text_matches_current_storyboard": true,
+  "narration_generator_hash_matches": true,
+  "resolved_timeline_exactly_reproduced": true,
+  "scene_keyframe_and_chapter_duration_sums_match": true,
+  "overlay_layout_states_checked": 66,
+  "overlay_text_bounds_checked": 269,
+  "overlay_text_overlap_count": 0,
+  "overlay_text_clipping_count": 0,
+  "layout_scope": "Renderer overlay text geometry only; source UI screenshots were visually reviewed separately in work/tutorial-nucleosome-capture-qa.json. No claim of human listening review.",
+  "narration_manifest_storyboard_sha256": "0a86a75a826314a1daba0a65161db64ea7d074f2b41f411a50cd5708ef734aa9",
+  "current_storyboard_sha256": "0a86a75a826314a1daba0a65161db64ea7d074f2b41f411a50cd5708ef734aa9",
+  "whole_storyboard_hash_matches_narration_generation": true,
+  "video_sha256": "c7f29a260a67307d79d91ca4774aa33691acd1e33654b4917668ba83e1b88c58",
+  "media_validation_file": "render-validation.json",
+  "focus_rectangles_within_capture_bounds": true,
+  "verified_focus_rectangles": 7,
+  "final_video_frames_visually_reviewed": [
+    {
+      "scene": "03-genome",
+      "time_seconds": 142.85,
+      "focus": "Site-level association/release table, actual event feed and reduced-time caption"
+    },
+    {
+      "scene": "16-remodelers",
+      "time_seconds": 173.329,
+      "focus": "Species-specific capture/release controls and explanatory equation"
+    },
+    {
+      "scene": "16-remodelers",
+      "time_seconds": 187.904,
+      "focus": "Eviction, reassembly and sliding controls, mark-carrying statement and coarse-mechanism limitation"
+    },
+    {
+      "scene": "16-remodelers",
+      "time_seconds": 202.479,
+      "focus": "Actual recorded event identities/timestamps and bounded cache explanation"
+    },
+    {
+      "scene": "04-proteins",
+      "time_seconds": 219.675,
+      "focus": "Readable protein editor, abundance/mobility/valence and chromatin preferences"
+    }
+  ],
+  "final_frame_visual_result": "Readable labels and captions; no clipped explanatory footer, fabricated simulation record or material scientific mismatch observed in these five extracted frames. Broader source-capture review is recorded separately."
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "01-overview",
+    "title": "Start with the workbench",
+    "start": 0.0,
+    "end": 16.0,
+    "narration": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. The starting example spans twenty megabases using two thousand beads, so each bead represents ten kilobases. That is a coarse genomic mapping, not nucleosome resolution. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the scale, the run status, and the physical-clock label."
+  },
+  {
+    "id": "02-build-and-learn",
+    "title": "Choose a focused experiment",
+    "start": 16.0,
+    "end": 34.0,
+    "narration": "For the detailed walkthrough, choose Nucleosome access and RNA at eighty kilobases: four hundred coarse units at two hundred base pairs each. Occupancy changes and individual transcripts are enabled. Use Expand builder to inspect settings at full width. A preset starts a new model; ordinary edits remain a draft until Apply and restart. How it works is a separate learning sandbox. Its sliders explain equations without changing the model or advancing the run."
+  },
+  {
+    "id": "03-genome",
+    "title": "Read the chromosome in one dimension",
+    "start": 34.0,
+    "end": 54.0,
+    "narration": "Return to the simulation and open the one-dimensional genome. The tracks place genes, regulatory elements, loop anchors, histone marks, nucleosome occupancy and protein preferences on the same coordinate axis. Choose a gene or a genomic interval, then zoom to inspect the underlying beads. Affinity describes the current multiplier of a protein's local capture hazard. The protein-occupancy track counts molecules actually bound in this frame. A high preference does not guarantee binding, and a bound molecule may remain after its site's current preference changes."
+  },
+  {
+    "id": "04-proteins",
+    "title": "Define many proteins and their roles",
+    "start": 54.0,
+    "end": 74.0,
+    "narration": "The Proteins editor defines each species independently. Expand builder gives these settings room. Set its abundance, free diffusion, binding valence, mark preferences, and occupied-versus-vacant affinity factors. A species can also write or erase a mark, or contribute to nucleosome remodeling. An IDR representation expands a molecule into a flexible chain of domain beads with binding stickers. This supports higher-order assemblies, but it is not an amino-acid-resolved protein model. Choose roles and interactions as explicit hypotheses, rather than treating a biological name as a calibrated parameter set."
+  },
+  {
+    "id": "05-interactions",
+    "title": "Inspect binding in its context",
+    "start": 74.0,
+    "end": 96.0,
+    "narration": "The interaction view shows the current molecular network. Distinguish molecules with their own chromatin bond from those tethered indirectly through another protein. Protein pairs can bind while both are free, while one is directly chromatin-bound, or while both are bound. The affinity calculator explores an ideal diffusion-limited association estimate after physical scales are supplied. Its nominal dissociation rate follows the requested Kd under independent, well-mixed assumptions. It does not turn the simulator's local encounter hazard into a measured molar association rate."
+  },
+  {
+    "id": "06-chromatin",
+    "title": "Connect accessibility, marks and stiffness",
+    "start": 96.0,
+    "end": 118.0,
+    "narration": "Nucleosome occupancy is an explicit local state when this option is enabled. Eviction can expose a TF site, clears marks at that site, and changes the configured local persistence multiplier. Bound writers and recruited coactivators can alter marks; spreading follows three-dimensional chromatin contacts. Mark-dependent chromatin attraction is a separate interaction from a protein's mark preference. The learning example lets you compare occupied and vacant capture hazards and persistence values. Those numerical relationships explain a hypothesis; the illustration is not an equilibrium polymer calculation."
+  },
+  {
+    "id": "07-regulation",
+    "title": "Follow an enhancer to its target gene",
+    "start": 118.0,
+    "end": 142.0,
+    "narration": "In Regulation, an enhancer or promoter has a genomic interval, a target gene, a TF species and an optional coactivator. Recruitment requires an actual protein bond to a TF anchor. An enhancer contributes to its target's rates when its closest bead contacts the target promoter interval. The display separates bound molecules, contact state, mark gates and effective rates. Promoter switching is stochastic. When the mark gate allows it, basal transcription remains possible; recruitment supplies a rate gain rather than an obligatory TF gate. Losing enhancer contact removes its gain, but does not instantly turn an already active promoter off or erase its chromatin marks."
+  },
+  {
+    "id": "08-elongation",
+    "title": "Watch polymerases produce individual RNA",
+    "start": 142.0,
+    "end": 166.0,
+    "narration": "With individual transcripts enabled, each initiated polymerase has an identity, a genomic position and a growing RNA length. Run the recording simulation, pause, and inspect a molecule in the elongation panel. The engine handles configured pauses and occupancy-dependent speeds as the polymerase crosses bead intervals. A completed transcript is released as a diffusing point that can be processed or degraded. The released RNA itself must enter a speckle to receive its processing gain. Earlier presets may use RNA counts without individual molecule tracking."
+  },
+  {
+    "id": "09-architecture",
+    "title": "Separate loops, assemblies and nuclear bodies",
+    "start": 166.0,
+    "end": 186.0,
+    "narration": "Cohesin, protein assemblies and nuclear bodies organize space through different rules. Cohesin anchors move along the polymer and are connected by a spring. Finite-valence protein bonds can form higher-order assemblies. Speckles and the nucleolus are currently imposed affinity fields with chosen centers and radii. They are not self-generated condensates. Compare these mechanisms by changing one input at a time, while observing contacts, binding, polymer conformation and RNA under matched conditions."
+  },
+  {
+    "id": "10-calibration",
+    "title": "Give the polymer a defensible physical clock",
+    "start": 186.0,
+    "end": 210.0,
+    "narration": "Calibrate can import a condition-specific Hansen reference. Then supply a matched, equilibrated simulation and independent length evidence. Importing data does not complete calibration. Match the observable, dimension, drift treatment and fitting window. Next, load the synthetic example to practice fitting. Inspect its overlay, residuals and slopes; it cannot be applied as experimental evidence. A shared polymer clock converts reduced durations and rates consistently, but does not independently fit protein diffusion, binding residence times, elongation or Kd. Compatible empirical mappings retain their sources and baseline model fingerprint."
+  },
+  {
+    "id": "11-benchmarks",
+    "title": "Ask what the model actually reproduces",
+    "start": 210.0,
+    "end": 230.0,
+    "narration": "The benchmark panel separates implementation checks, an ideal Rouse reference, and published-figure replication. Solid curves show sampled reference trajectories; dashed curves show analytical predictions. The saved suite tests free diffusion, internal-chain motion, center-of-mass diffusion and illustrative static-loop suppression. These fixtures exercise the actual Brownian integrator but bypass the production forces and coupled reaction system. Passing them is evidence about implementation. It is not a reproduction of every figure in the cited paper, and it supplies no experimental clock."
+  },
+  {
+    "id": "12-cluster",
+    "title": "Export a reproducible cluster experiment",
+    "start": 230.0,
+    "end": 250.0,
+    "narration": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU integration is available, while forces, reactions and RNA still run on the CPU; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence."
+  }
+]

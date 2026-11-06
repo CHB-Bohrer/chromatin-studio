@@ -1,0 +1,145 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.000
+Build on the left. Inspect the applied model in the center. Follow measurements and events.
+
+2
+00:00:05.000 --> 00:00:11.000
+20 Mb example = 2,000 beads × 10 kb. Individual nucleosomes are unresolved at this scale.
+
+3
+00:00:11.000 --> 00:00:16.000
+Draft settings and the current run are different. Check the scale and calibration status first.
+
+4
+00:00:16.000 --> 00:00:22.000
+Switch the demonstration to “Nucleosome access & RNA · 80 kb” for explicit occupancy and transcripts.
+
+5
+00:00:22.000 --> 00:00:28.000
+400 beads × 200 bp: coarse nucleosome units, without wrapped-DNA or histone-tail geometry.
+
+6
+00:00:28.000 --> 00:00:34.000
+“How it works” is a separate learning sandbox. Its controls leave the simulation unchanged.
+
+7
+00:00:34.000 --> 00:00:40.500
+Use “1D genome” to align genes, regulatory regions, loop anchors, marks and occupancy.
+
+8
+00:00:40.500 --> 00:00:47.500
+Zoom to a gene or interval, then select a feature to connect its genomic and spatial views.
+
+9
+00:00:47.500 --> 00:00:54.000
+Affinity is a capture-hazard multiplier. Occupancy is the binding state actually observed in this frame.
+
+10
+00:00:54.000 --> 00:01:00.500
+Use “Expand builder” to inspect each species’ abundance, free mobility, valence and chromatin preferences.
+
+11
+00:01:00.500 --> 00:01:07.500
+Writer, eraser and remodeling settings connect protein binding to chromatin-state changes.
+
+12
+00:01:07.500 --> 00:01:14.000
+IDRs are coarse domain-and-sticker chains. Biological names do not imply fitted molecular parameters.
+
+13
+00:01:14.000 --> 00:01:21.000
+Inspect free, directly bound and indirectly tethered molecules in the current binding network.
+
+14
+00:01:21.000 --> 00:01:28.500
+Higher-order assemblies can contain free–free, bound–free and bound–bound protein contacts.
+
+15
+00:01:28.500 --> 00:01:36.000
+The Kd calculator is an ideal physical estimate. It does not calibrate multivalent avidity or microscopic hazards.
+
+16
+00:01:36.000 --> 00:01:43.000
+Nucleosome eviction can alter TF access and local stiffness, while clearing local histone marks.
+
+17
+00:01:43.000 --> 00:01:50.500
+Protein mark preferences and chromatin–chromatin attraction are separate model mechanisms.
+
+18
+00:01:50.500 --> 00:01:58.000
+Compare occupied and vacant states in the guide, then inspect the corresponding applied-model tracks.
+
+19
+00:01:58.000 --> 00:02:06.000
+Define an enhancer’s interval, TF, coactivator and target gene in the Regulation builder.
+
+20
+00:02:06.000 --> 00:02:14.000
+Inspect recruitment, contact, mark gates and effective rates. Basal transcription can remain possible without a TF-dependent gain.
+
+21
+00:02:14.000 --> 00:02:22.000
+Transcription is stochastic. Losing contact removes a rate gain; it does not instantly switch an ON promoter OFF.
+
+22
+00:02:22.000 --> 00:02:30.000
+Individual tracking records each polymerase’s position, pause state and growing transcript length.
+
+23
+00:02:30.000 --> 00:02:38.000
+Advance real simulation time, pause, then select a molecule to inspect its identity and progress.
+
+24
+00:02:38.000 --> 00:02:46.000
+Released RNA is a diffusing point, not a chain. Speckle processing depends on the RNA’s own position.
+
+25
+00:02:46.000 --> 00:02:52.500
+Cohesin moves tethered anchors along chromatin; protein assemblies emerge from finite-valence bonds.
+
+26
+00:02:52.500 --> 00:02:59.500
+Speckles and nucleolus are imposed affinity fields. Their size and position are prescribed.
+
+27
+00:02:59.500 --> 00:03:06.000
+Change one mechanism at a time and compare measured outcomes under matched conditions.
+
+28
+00:03:06.000 --> 00:03:12.000
+Import a condition-specific Hansen reference. A matched equilibrated simulation and independent length evidence are still required.
+
+29
+00:03:12.000 --> 00:03:20.000
+Practice with the synthetic fit: inspect the overlay, residuals and slopes. Synthetic results remain demonstrations.
+
+30
+00:03:20.000 --> 00:03:30.000
+A shared clock converts units, not every biological parameter. Empirical mappings retain sources and a baseline-model fingerprint.
+
+31
+00:03:30.000 --> 00:03:36.500
+Compare sampled reference trajectories with analytical curves, then inspect the saved checks and provenance.
+
+32
+00:03:36.500 --> 00:03:43.500
+Gaussian-chain reference fixtures test the Brownian integrator, not every production-model coupling.
+
+33
+00:03:43.500 --> 00:03:50.000
+Implementation agreement, empirical calibration and published-figure replication are separate achievements.
+
+34
+00:03:50.000 --> 00:03:56.500
+Configure independent replicas, platform, sampling intervals and resources. Preview before exporting.
+
+35
+00:03:56.500 --> 00:04:03.500
+A portable bundle starts fresh from the draft. GPU integration is partial; speedup still needs measurement.
+
+36
+00:04:03.500 --> 00:04:10.000
+Build → inspect → calibrate → test. Preserve seeds, model provenance and controlled comparisons.

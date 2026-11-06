@@ -1,0 +1,81 @@
+;FFMETADATA1
+[CHAPTER]
+TIMEBASE=1/1000
+START=0
+END=28733
+title=Start with the workbench
+[CHAPTER]
+TIMEBASE=1/1000
+START=28733
+END=61033
+title=Choose a focused experiment
+[CHAPTER]
+TIMEBASE=1/1000
+START=61033
+END=99767
+title=Set the confining domain
+[CHAPTER]
+TIMEBASE=1/1000
+START=99767
+END=151467
+title=Watch binding along the chromosome
+[CHAPTER]
+TIMEBASE=1/1000
+START=151467
+END=209767
+title=Create gaps and recruit remodelers
+[CHAPTER]
+TIMEBASE=1/1000
+START=209767
+END=249400
+title=Define many proteins and their roles
+[CHAPTER]
+TIMEBASE=1/1000
+START=249400
+END=282333
+title=Inspect binding in its context
+[CHAPTER]
+TIMEBASE=1/1000
+START=282333
+END=317633
+title=Connect accessibility, marks and stiffness
+[CHAPTER]
+TIMEBASE=1/1000
+START=317633
+END=354867
+title=Follow an enhancer to its target gene
+[CHAPTER]
+TIMEBASE=1/1000
+START=354867
+END=391900
+title=Watch polymerases produce individual RNA
+[CHAPTER]
+TIMEBASE=1/1000
+START=391900
+END=426800
+title=Separate loops, assemblies and nuclear bodies
+[CHAPTER]
+TIMEBASE=1/1000
+START=426800
+END=463533
+title=Give the polymer a defensible physical clock
+[CHAPTER]
+TIMEBASE=1/1000
+START=463533
+END=496300
+title=Ask what the model actually reproduces
+[CHAPTER]
+TIMEBASE=1/1000
+START=496300
+END=535767
+title=Separate competition and shared environments
+[CHAPTER]
+TIMEBASE=1/1000
+START=535767
+END=572633
+title=Read correlations without confusing controls
+[CHAPTER]
+TIMEBASE=1/1000
+START=572633
+END=610400
+title=Export a reproducible cluster experiment
