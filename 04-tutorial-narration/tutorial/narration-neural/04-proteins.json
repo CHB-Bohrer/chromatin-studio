@@ -1,0 +1,44 @@
+{
+  "voice": "af_heart",
+  "source_text": "Return to the eighty-kilobase manuscript example for the rest of the walkthrough. The Proteins editor defines each species independently. Expand builder gives these settings room. Set abundance, free diffusion, binding valence, mark preferences, and occupied-versus-vacant capture and release factors. A species can also write or erase a mark, or remodel nucleosomes. An IDR representation expands a molecule into a flexible chain of domain beads with binding stickers. This supports higher-order assemblies, but it is not an amino-acid-resolved protein model. Choose roles and interactions as explicit hypotheses; a biological name is not a calibrated parameter set.",
+  "spoken_text": "Return to the eighty-kilobase manuscript example for the rest of the walkthrough. The Proteins editor defines each species independently. Expand builder gives these settings room. Set abundance, free diffusion, binding valence, mark preferences, and occupied-versus-vacant capture and release factors. A species can also write or erase a mark, or remodel nucleosomes. An I D R representation expands a molecule into a flexible chain of domain beads with binding stickers. This supports higher-order assemblies, but it is not an amino-acid-resolved protein model. Choose roles and interactions as explicit hypotheses; a biological name is not a calibrated parameter set.",
+  "word_count": 97,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 153.6322680557511,
+  "model_speed": 1.2571036182378572,
+  "duration_seconds": 38.382666666666665,
+  "speech_seconds": 37.882666666666665,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 0.6775609254837036,
+  "gain": 1.0,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 47.248,
+      "words_per_minute": 123.17981713511683,
+      "inference_seconds": 18.2200058340095
+    },
+    {
+      "model_speed": 1.1324907216494844,
+      "seconds": 41.68,
+      "words_per_minute": 139.63531669865642,
+      "inference_seconds": 15.927655874984339
+    },
+    {
+      "model_speed": 1.2571036182378572,
+      "seconds": 37.882666666666665,
+      "words_per_minute": 153.6322680557511,
+      "inference_seconds": 14.554922708077356
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "04-proteins",
+  "file": "04-proteins.wav",
+  "fingerprint": "b76ba56e48aa7820c83aed7b28f770e8331ab3685384596422c6af82725e7a21",
+  "wav_sha256": "7a7bea603aafc83f065f043d04e581819ed0b0b0ed60e4d70f62ea13d1009190",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

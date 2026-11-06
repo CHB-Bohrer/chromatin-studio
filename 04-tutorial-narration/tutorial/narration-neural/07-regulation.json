@@ -1,0 +1,44 @@
+{
+  "voice": "af_heart",
+  "source_text": "Regulation now shows the causal pathway for each gene. A transcription factor binds its configured region, and a coactivator is recruited through an actual protein bond. Enhancer contact can add to the target promoter's activation and initiation rates. The rate breakdown separates the baseline, recruitment, local mark gate and optional body response. Nucleosome occupancy changes transcription factor access; recruited enzymes can alter marks and accessibility. Basal activation can remain possible without recruitment. Losing contact removes its gain, but does not instantly turn an active promoter off or erase its chromatin memory.",
+  "spoken_text": "Regulation now shows the causal pathway for each gene. A transcription factor binds its configured region, and a co-activator is recruited through an actual protein bond. Enhancer contact can add to the target promoter's activation and initiation rates. The rate breakdown separates the baseline, recruitment, local mark gate and optional body response. Nucleosome occupancy changes transcription factor access; recruited enzymes can alter marks and accessibility. Basal activation can remain possible without recruitment. Losing contact removes its gain, but does not instantly turn an active promoter off or erase its chromatin memory.",
+  "word_count": 91,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 153.92422192151557,
+  "model_speed": 1.2811251469682943,
+  "duration_seconds": 35.972,
+  "speech_seconds": 35.472,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 0.7530248165130615,
+  "gain": 1.0,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 45.349333333333334,
+      "words_per_minute": 120.398682817829,
+      "inference_seconds": 10.974365249974653
+    },
+    {
+      "model_speed": 1.1586505494505495,
+      "seconds": 38.949333333333335,
+      "words_per_minute": 140.18211693824455,
+      "inference_seconds": 8.854692833032459
+    },
+    {
+      "model_speed": 1.2811251469682943,
+      "seconds": 35.472,
+      "words_per_minute": 153.92422192151557,
+      "inference_seconds": 7.82868654106278
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "07-regulation",
+  "file": "07-regulation.wav",
+  "fingerprint": "4aa84ead883d1fbc61bed1cc996b6c6777f47558117e99d50ba5e9d2dbe630fc",
+  "wav_sha256": "72e9adbcac251bd08b38b06d7161fa3f7732edca394e09eb2bcd53ababaf71ee",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

@@ -1,0 +1,56 @@
+{
+  "voice": "af_heart",
+  "source_text": "After the study finishes, compare cis and trans correlations and their difference. The interval reflects sampling uncertainty, not proof of causality. Switch between latent nascent activity, detected activity and promoter state; these observables answer different questions. The spatial pilot instead measures two genes on one chain across independent replicas. Its independent-replica null is not a trans-allele control. Download the plan and results to retain parameters, seeds and limitations. Reproducing the manuscript quantitatively still requires the underlying data, matched observation models, calibrated units and substantially longer converged experiments.",
+  "spoken_text": "After the study finishes, compare cis and trans correlations and their difference. The interval reflects sampling uncertainty, not proof of causality. Switch between latent nascent activity, detected activity and promoter state; these observables answer different questions. The spatial pilot instead measures two genes on one chain across independent replicas. Its independent-replica null is not a trans-allele control. Download the plan and results to retain parameters, seeds and limitations. Reproducing the manuscript quantitatively still requires the underlying data, matched observation models, calibrated units and substantially longer converged experiments.",
+  "word_count": 87,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 148.6784140969163,
+  "model_speed": 1.3194712643678161,
+  "duration_seconds": 35.60933333333333,
+  "speech_seconds": 35.10933333333333,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 0.7733524441719055,
+  "gain": 1.0,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 45.946666666666665,
+      "words_per_minute": 113.60998258850842,
+      "inference_seconds": 10.359511084039696
+    },
+    {
+      "model_speed": 1.2278850574712643,
+      "seconds": 37.392,
+      "words_per_minute": 139.60205391527597,
+      "inference_seconds": 8.438766667037271
+    },
+    {
+      "model_speed": 1.35,
+      "seconds": 29.541333333333334,
+      "words_per_minute": 176.70157068062827,
+      "inference_seconds": 6.666633417014964
+    },
+    {
+      "model_speed": 1.2889425287356322,
+      "seconds": 36.176,
+      "words_per_minute": 144.29455992923485,
+      "inference_seconds": 8.606592250056565
+    },
+    {
+      "model_speed": 1.3194712643678161,
+      "seconds": 35.10933333333333,
+      "words_per_minute": 148.6784140969163,
+      "inference_seconds": 8.003338624956086
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "15-study-results",
+  "file": "15-study-results.wav",
+  "fingerprint": "a62f767cec32288b4d9c187d7d0af9160cc199b6ea783943384b26e275d86a2c",
+  "wav_sha256": "c9a2ba3958d07c0a7d6fe9986ee617e1c13a327322b85b69b718a55ce5e2acb0",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

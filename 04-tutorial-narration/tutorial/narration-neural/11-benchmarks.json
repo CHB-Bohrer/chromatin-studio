@@ -1,0 +1,56 @@
+{
+  "voice": "af_heart",
+  "source_text": "The benchmark panel separates implementation checks, an ideal Rouse reference, and published-figure replication. Solid curves show sampled reference trajectories; dashed curves show analytical predictions. The saved suite tests free diffusion, internal-chain motion, center-of-mass diffusion and illustrative static-loop suppression. These fixtures exercise the actual Brownian integrator but bypass the production forces and coupled reaction system. Passing them is evidence about implementation. It is not a reproduction of every figure in the cited paper, and it supplies no experimental clock.",
+  "spoken_text": "The benchmark panel separates implementation checks, an ideal Rouse reference, and published-figure replication. Solid curves show sampled reference trajectories; dashed curves show analytical predictions. The saved suite tests free diffusion, internal-chain motion, center-of-mass diffusion and illustrative static-loop suppression. These fixtures exercise the actual Brownian integrator but bypass the production forces and coupled reaction system. Passing them is evidence about implementation. It is not a reproduction of every figure in the cited paper, and it supplies no experimental clock.",
+  "word_count": 78,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 151.00671140939596,
+  "model_speed": 1.3109861187157572,
+  "duration_seconds": 31.492,
+  "speech_seconds": 30.992,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 0.8721156716346741,
+  "gain": 1.0,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 40.63466666666667,
+      "words_per_minute": 115.17259482871768,
+      "inference_seconds": 9.4536964999279
+    },
+    {
+      "model_speed": 1.211225641025641,
+      "seconds": 33.50933333333333,
+      "words_per_minute": 139.66258156931403,
+      "inference_seconds": 7.846504291985184
+    },
+    {
+      "model_speed": 1.3442396112791293,
+      "seconds": 25.914666666666665,
+      "words_per_minute": 180.59271455031902,
+      "inference_seconds": 6.46585887495894
+    },
+    {
+      "model_speed": 1.2777326261523851,
+      "seconds": 31.930666666666667,
+      "words_per_minute": 146.5675630532821,
+      "inference_seconds": 7.837326125008985
+    },
+    {
+      "model_speed": 1.3109861187157572,
+      "seconds": 30.992,
+      "words_per_minute": 151.00671140939596,
+      "inference_seconds": 7.368266416946426
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "11-benchmarks",
+  "file": "11-benchmarks.wav",
+  "fingerprint": "2921d242722936c2fa5582834c38796853ddeecab63aa06d5fa2dda315b01429",
+  "wav_sha256": "9cb611c3a654a7f4bc3f8c9290b2bcd2697a34316621c130c5f51bb0b0410868",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

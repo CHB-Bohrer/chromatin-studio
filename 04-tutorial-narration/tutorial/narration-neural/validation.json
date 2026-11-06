@@ -1,0 +1,138 @@
+{
+  "status": "passed",
+  "checked_at": "2026-11-02T20:44:12.282544+00:00",
+  "manifest_sha256": "3b1b9a7032de50c1973831d1fa0be9bf9c79e707a97f45e101ce889b02c93103",
+  "scenes": [
+    {
+      "id": "01-overview",
+      "duration_seconds": 27.465333333333334,
+      "words_per_minute": 151.30537974683543,
+      "samples": 659168,
+      "sample_rate": 24000,
+      "peak": 0.622222900390625,
+      "rms": 0.07230065762996674,
+      "wav_sha256": "d023b37ab27343fbbfb87731309cf05acc6689f885bee8c5ff6420a8057d718f"
+    },
+    {
+      "id": "02-build-and-learn",
+      "duration_seconds": 29.998666666666665,
+      "words_per_minute": 152.54926776351473,
+      "samples": 719968,
+      "sample_rate": 24000,
+      "peak": 0.626556396484375,
+      "rms": 0.07581855356693268,
+      "wav_sha256": "4ff94a6c2f89a1f4cdceb8fe536a50c979bcc10525a366136636b6958ae98b79"
+    },
+    {
+      "id": "03-genome",
+      "duration_seconds": 33.028,
+      "words_per_minute": 153.0988686669946,
+      "samples": 792672,
+      "sample_rate": 24000,
+      "peak": 0.753448486328125,
+      "rms": 0.07474757730960846,
+      "wav_sha256": "104d2dc0a42db653361ad800eb3a5176b57470404920843ff762458513678aa7"
+    },
+    {
+      "id": "04-proteins",
+      "duration_seconds": 34.84133333333333,
+      "words_per_minute": 153.75058238856965,
+      "samples": 836192,
+      "sample_rate": 24000,
+      "peak": 0.81103515625,
+      "rms": 0.07361987978219986,
+      "wav_sha256": "92954c1acb648686eb566dd0ec1e07b1e9f13e998493688697bd326bede0367f"
+    },
+    {
+      "id": "05-interactions",
+      "duration_seconds": 31.662666666666667,
+      "words_per_minute": 157.88122539791203,
+      "samples": 759904,
+      "sample_rate": 24000,
+      "peak": 0.71435546875,
+      "rms": 0.07320502400398254,
+      "wav_sha256": "17139425f9c271975f581969ed4a710dad7c2c8479592ea05da0e5842b79212c"
+    },
+    {
+      "id": "06-chromatin",
+      "duration_seconds": 34.03066666666667,
+      "words_per_minute": 150.31016383012565,
+      "samples": 816736,
+      "sample_rate": 24000,
+      "peak": 0.657470703125,
+      "rms": 0.07450301200151443,
+      "wav_sha256": "7144468758cd033e5642e75c5a7b75e1ea898348ace448e4dffffbf4d2592a3e"
+    },
+    {
+      "id": "07-regulation",
+      "duration_seconds": 43.012,
+      "words_per_minute": 151.01618366578847,
+      "samples": 1032288,
+      "sample_rate": 24000,
+      "peak": 0.89581298828125,
+      "rms": 0.07408754527568817,
+      "wav_sha256": "ece904af3b6e053a643b4f67b8cf4a737d1abd7efe1f9706b46b0ef9bc9a08ea"
+    },
+    {
+      "id": "08-elongation",
+      "duration_seconds": 35.78,
+      "words_per_minute": 151.36054421768708,
+      "samples": 858720,
+      "sample_rate": 24000,
+      "peak": 0.92132568359375,
+      "rms": 0.07473475486040115,
+      "wav_sha256": "22a75ee565d42301a63ba8cb2ac3ebc165ec1d6d4af57cb866441cd3b1d5392d"
+    },
+    {
+      "id": "09-architecture",
+      "duration_seconds": 28.612,
+      "words_per_minute": 153.67103016505408,
+      "samples": 686688,
+      "sample_rate": 24000,
+      "peak": 0.623870849609375,
+      "rms": 0.07297166436910629,
+      "wav_sha256": "2819be985757818f0cedb0acddf4db61bf80189ca6e97153b750bc2c94ce40bb"
+    },
+    {
+      "id": "10-calibration",
+      "duration_seconds": 35.48133333333333,
+      "words_per_minute": 149.22244244549475,
+      "samples": 851552,
+      "sample_rate": 24000,
+      "peak": 0.6239013671875,
+      "rms": 0.07358966022729874,
+      "wav_sha256": "60f1a8682a8d37cbb7983b4eacad96a2876f4d9dc6274e2b84881d675365e977"
+    },
+    {
+      "id": "11-benchmarks",
+      "duration_seconds": 31.492,
+      "words_per_minute": 151.00671140939596,
+      "samples": 755808,
+      "sample_rate": 24000,
+      "peak": 0.872100830078125,
+      "rms": 0.07346129417419434,
+      "wav_sha256": "9cb611c3a654a7f4bc3f8c9290b2bcd2697a34316621c130c5f51bb0b0410868"
+    },
+    {
+      "id": "12-cluster",
+      "duration_seconds": 36.50533333333333,
+      "words_per_minute": 151.64420085913198,
+      "samples": 876128,
+      "sample_rate": 24000,
+      "peak": 0.815826416015625,
+      "rms": 0.07625926285982132,
+      "wav_sha256": "3a83022f16ce62587b347f2d98adf5dfacd0a2dafa89b27df2d6d3d76f267e62"
+    }
+  ],
+  "total_seconds": 401.90933333333334,
+  "source_match": true,
+  "wav_decode_and_hash_match": true,
+  "target_pace_range": [
+    145,
+    165
+  ],
+  "waveform_time_stretch": false,
+  "clipping_detected": false,
+  "listening_review_verified": false,
+  "quality_scope": "Automated waveform, source, timing and pronunciation-front-end checks; no claim of independent auditory review."
+}

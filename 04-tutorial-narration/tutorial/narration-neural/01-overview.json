@@ -1,0 +1,38 @@
+{
+  "voice": "af_heart",
+  "source_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. The starting example spans twenty megabases using two thousand beads, so each bead represents ten kilobases. That is a coarse genomic mapping, not nucleosome resolution. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the scale, the run status, and the physical-clock label.",
+  "spoken_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. The starting example spans twenty megabases using two thousand beads, so each bead represents ten kilobases. That is a coarse genomic mapping, not nucleosome resolution. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the scale, the run status, and the physical-clock label.",
+  "word_count": 68,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 151.30537974683543,
+  "model_speed": 0.9475058823529412,
+  "duration_seconds": 27.465333333333334,
+  "speech_seconds": 26.965333333333334,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 0.6222525835037231,
+  "gain": 1.0,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 27.712,
+      "words_per_minute": 147.22863741339492,
+      "inference_seconds": 6.781506833038293
+    },
+    {
+      "model_speed": 0.9475058823529412,
+      "seconds": 26.965333333333334,
+      "words_per_minute": 151.30537974683543,
+      "inference_seconds": 6.208226541988552
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "01-overview",
+  "file": "01-overview.wav",
+  "fingerprint": "e6921487b6f81b7769b6d5cd228867e9296b085b71add5675674500241062235",
+  "wav_sha256": "d023b37ab27343fbbfb87731309cf05acc6689f885bee8c5ff6420a8057d718f",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

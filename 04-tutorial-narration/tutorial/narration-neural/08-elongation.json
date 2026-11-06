@@ -1,0 +1,44 @@
+{
+  "voice": "af_heart",
+  "source_text": "Transcription is stochastic. The engine now follows promoter switches within each reaction interval, and draws initiations only during the time actually spent active. Each new polymerase moves for the time remaining after its birth. Inspect its identity, position and growing RNA length in Elongation. Nucleosomes can slow movement; configured pauses have stochastic waiting times. Completed transcripts become diffusing points that can be processed or degraded. Nascent RNA can remain after a promoter switches off, so a nascent-positive gene is not the same as an active promoter.",
+  "spoken_text": "Transcription is stochastic. The engine now follows promoter switches within each reaction interval, and draws initiations only during the time actually spent active. Each new polymerase moves for the time remaining after its birth. Inspect its identity, position and growing R N A length in Elongation. Nucleosomes can slow movement; configured pauses have stochastic waiting times. Completed transcripts become diffusing points that can be processed or degraded. Nascent R N A can remain after a promoter switches off, so a nascent-positive gene is not the same as an active promoter.",
+  "word_count": 90,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 153.15383451822717,
+  "model_speed": 1.1987648671824418,
+  "duration_seconds": 35.75866666666667,
+  "speech_seconds": 35.25866666666667,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 0.8531532883644104,
+  "gain": 1.0,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 42.34133333333333,
+      "words_per_minute": 127.53495402443633,
+      "inference_seconds": 9.460845959023573
+    },
+    {
+      "model_speed": 1.0938177777777778,
+      "seconds": 38.181333333333335,
+      "words_per_minute": 141.43036736974437,
+      "inference_seconds": 8.7218390830094
+    },
+    {
+      "model_speed": 1.1987648671824418,
+      "seconds": 35.25866666666667,
+      "words_per_minute": 153.15383451822717,
+      "inference_seconds": 8.258562332950532
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "08-elongation",
+  "file": "08-elongation.wav",
+  "fingerprint": "9ab243e5e86e9e4e4f768c98e8c06f6ac804ec22352c75e948837cff2c1470b3",
+  "wav_sha256": "7d3fe8a07db42a2c0709bdaa7d202b52cb75636fac9dc9482b275a1f52869f83",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

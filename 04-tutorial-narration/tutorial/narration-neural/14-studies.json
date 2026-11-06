@@ -1,0 +1,44 @@
+{
+  "voice": "af_heart",
+  "source_text": "Studies provides a simpler model for the manuscript's cis and trans comparison. Each simulated cell has four promoters: two genes on each of two homologs. All four share cell-wide variation. Genes on the same homolog may compete or experience a common fluctuating environment. The reference has no spatial polymer. Start with independent promoters, then add competition or shared environments separately. The experiment runs in isolation, leaving your current simulation untouched. Its purpose is to test whether a mechanism can produce a pattern, before asking whether the full spatial model or the experimental data support it.",
+  "spoken_text": "Studies provides a simpler model for the manuscript's cis and trans comparison. Each simulated cell has four promoters: two genes on each of two homologs. All four share cell-wide variation. Genes on the same homolog may compete or experience a common fluctuating environment. The reference has no spatial polymer. Start with independent promoters, then add competition or shared environments separately. The experiment runs in isolation, leaving your current simulation untouched. Its purpose is to test whether a mechanism can produce a pattern, before asking whether the full spatial model or the experimental data support it.",
+  "word_count": 95,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 151.14552397114974,
+  "model_speed": 1.1620379298196366,
+  "duration_seconds": 38.212,
+  "speech_seconds": 37.712,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 1.127229928970337,
+  "gain": 0.8693878460938103,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 43.962666666666664,
+      "words_per_minute": 129.6554652432367,
+      "inference_seconds": 9.731071166926995
+    },
+    {
+      "model_speed": 1.0759284210526314,
+      "seconds": 39.717333333333336,
+      "words_per_minute": 143.51416677856855,
+      "inference_seconds": 8.715451166965067
+    },
+    {
+      "model_speed": 1.1620379298196366,
+      "seconds": 37.712,
+      "words_per_minute": 151.14552397114974,
+      "inference_seconds": 9.290640124934725
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "14-studies",
+  "file": "14-studies.wav",
+  "fingerprint": "e6cbfabb536507f189ce03e3713c249e6fbf9482d08ccb19d35968e6501e5b65",
+  "wav_sha256": "ba6868f5d3d0ba07b081260c054983da6398ca3b047f8d46f9f5d2fdd58b65cf",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

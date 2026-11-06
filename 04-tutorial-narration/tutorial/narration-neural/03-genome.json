@@ -1,0 +1,44 @@
+{
+  "voice": "af_heart",
+  "source_text": "For a clear binding example, choose the twenty-five point six kilobase nucleosome-access preset. Open the one-dimensional genome and choose Live binding. Genes, nucleosome occupancy and directly bound proteins share one genomic axis. Navigate to a gene, then use Binding detail to see individual sites. Here, two hundred base pairs per bead represents a coarse nucleosome unit. In the twenty-megabase example, each symbol instead represents a much larger bin. Each molecule marker comes from a real chromatin bond; proximity alone is not binding. Run to watch bindings change, then pause and select a site. The table separates association and release hazards for each species. Times remain reduced until an empirical physical mapping is attached. All tracks restores the wider view of marks, loops, polymerases and protein preferences.",
+  "spoken_text": "For a clear binding example, choose the twenty-five point six kilobase nucleosome-access preset. Open the one-dimensional genome and choose Live binding. Genes, nucleosome occupancy and directly bound proteins share one genomic axis. Navigate to a gene, then use Binding detail to see individual sites. Here, two hundred base pairs per bead represents a coarse nucleosome unit. In the twenty-megabase example, each symbol instead represents a much larger bin. Each molecule marker comes from a real chromatin bond; proximity alone is not binding. Run to watch bindings change, then pause and select a site. The table separates association and release hazards for each species. Times remain reduced until an empirical physical mapping is attached. All tracks restores the wider view of marks, loops, polymerases and protein preferences.",
+  "word_count": 126,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 151.40995513779106,
+  "model_speed": 1.2152705113966575,
+  "duration_seconds": 50.43066666666667,
+  "speech_seconds": 49.93066666666667,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 0.7299994230270386,
+  "gain": 1.0,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 60.36266666666667,
+      "words_per_minute": 125.24297579077574,
+      "inference_seconds": 23.48872637504246
+    },
+    {
+      "model_speed": 1.1138349206349207,
+      "seconds": 53.216,
+      "words_per_minute": 142.0625375826819,
+      "inference_seconds": 21.1868143749889
+    },
+    {
+      "model_speed": 1.2152705113966575,
+      "seconds": 49.93066666666667,
+      "words_per_minute": 151.40995513779106,
+      "inference_seconds": 20.75808220799081
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "03-genome",
+  "file": "03-genome.wav",
+  "fingerprint": "775fcf1e1c0728f82a9faca2333245c16fce2a78e915e6953dfeed1dad03b4a1",
+  "wav_sha256": "8a44924aece0cadde27ddf374c097bacbf02f5ec84e6f5bd4d77173e6009e133",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

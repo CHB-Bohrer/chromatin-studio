@@ -1,0 +1,44 @@
+{
+  "voice": "af_heart",
+  "source_text": "The interaction view shows the current molecular network. Distinguish molecules with their own chromatin bond from those tethered indirectly through another protein. Protein pairs can bind while both are free, while one is directly chromatin-bound, or while both are bound. The affinity calculator explores an ideal diffusion-limited association estimate after physical scales are supplied. Its nominal dissociation rate follows the requested Kd under independent, well-mixed assumptions. It does not turn the simulator's local encounter hazard into a measured molar association rate.",
+  "spoken_text": "The interaction view shows the current molecular network. Distinguish molecules with their own chromatin bond from those tethered indirectly through another protein. Protein pairs can bind while both are free, while one is directly chromatin-bound, or while both are bound. The affinity calculator explores an ideal diffusion-limited association estimate after physical scales are supplied. Its nominal dissociation rate follows the requested K D under independent, well-mixed assumptions. It does not turn the simulator's local encounter hazard into a measured molar association rate.",
+  "word_count": 82,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 157.88122539791203,
+  "model_speed": 1.27555574721396,
+  "duration_seconds": 31.662666666666667,
+  "speech_seconds": 31.162666666666667,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 0.7143639326095581,
+  "gain": 1.0,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 40.54933333333334,
+      "words_per_minute": 121.3336840720768,
+      "inference_seconds": 8.82240983308293
+    },
+    {
+      "model_speed": 1.1497219512195123,
+      "seconds": 35.216,
+      "words_per_minute": 139.70922308041798,
+      "inference_seconds": 7.763212834019214
+    },
+    {
+      "model_speed": 1.27555574721396,
+      "seconds": 31.162666666666667,
+      "words_per_minute": 157.88122539791203,
+      "inference_seconds": 7.113753832993098
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "05-interactions",
+  "file": "05-interactions.wav",
+  "fingerprint": "5661e098a9b1fa88f0159d56e3a99d6e96fff73a22a0b83c2781b558aa56c3a3",
+  "wav_sha256": "17139425f9c271975f581969ed4a710dad7c2c8479592ea05da0e5842b79212c",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

@@ -1,0 +1,56 @@
+{
+  "voice": "af_heart",
+  "source_text": "Nucleosome occupancy is an explicit local state when this option is enabled. Eviction can expose a TF site, clears marks at that site, and changes the configured local persistence multiplier. Bound writers and recruited coactivators can alter marks; spreading follows three-dimensional chromatin contacts. Mark-dependent chromatin attraction is a separate interaction from a protein's mark preference. The learning example lets you compare occupied and vacant capture hazards and persistence values. Those numerical relationships explain a hypothesis; the illustration is not an equilibrium polymer calculation.",
+  "spoken_text": "Nucleosome occupancy is an explicit local state when this option is enabled. Eviction can expose a transcription factor site, clears marks at that site, and changes the configured local persistence multiplier. Bound writers and recruited co-activators can alter marks; spreading follows three-dimensional chromatin contacts. Mark-dependent chromatin attraction is a separate interaction from a protein's mark preference. The learning example lets you compare occupied and vacant capture hazards and persistence values. Those numerical relationships explain a hypothesis; the illustration is not an equilibrium polymer calculation.",
+  "word_count": 84,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 150.31016383012565,
+  "model_speed": 1.318292821485261,
+  "duration_seconds": 34.03066666666667,
+  "speech_seconds": 33.53066666666667,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 0.6574721932411194,
+  "gain": 1.0,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 44.282666666666664,
+      "words_per_minute": 113.8142839937372,
+      "inference_seconds": 10.088102540932596
+    },
+    {
+      "model_speed": 1.2256809523809524,
+      "seconds": 35.792,
+      "words_per_minute": 140.81358962896735,
+      "inference_seconds": 8.144205749966204
+    },
+    {
+      "model_speed": 1.3491634445200305,
+      "seconds": 28.645333333333333,
+      "words_per_minute": 175.94488921988457,
+      "inference_seconds": 6.876328749931417
+    },
+    {
+      "model_speed": 1.2874221984504914,
+      "seconds": 34.27733333333333,
+      "words_per_minute": 147.0359421191847,
+      "inference_seconds": 7.746143499971367
+    },
+    {
+      "model_speed": 1.318292821485261,
+      "seconds": 33.53066666666667,
+      "words_per_minute": 150.31016383012565,
+      "inference_seconds": 7.5682376669719815
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "06-chromatin",
+  "file": "06-chromatin.wav",
+  "fingerprint": "a4b6bb99831218313b3431e0b9412ce0b01252a9ef9d3aa6751c765b5682b648",
+  "wav_sha256": "7144468758cd033e5642e75c5a7b75e1ea898348ace448e4dffffbf4d2592a3e",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

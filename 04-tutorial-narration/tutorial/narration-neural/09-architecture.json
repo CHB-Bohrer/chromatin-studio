@@ -1,0 +1,50 @@
+{
+  "voice": "af_heart",
+  "source_text": "Cohesin, protein assemblies and nuclear bodies organize space through different rules. Cohesin changes contacts through moving loop anchors. Protein bonds form higher-order assemblies. Speckles and the nucleolus are currently imposed fields, not self-generated condensates. In Genes, optional body responses can promote or suppress activation and initiation. A multiplier of one is neutral; the effect fades with promoter distance. These prescribed responses do not bypass the mark gate. Keep them separate from mechanical body attraction and from the speckle's effect on released RNA processing.",
+  "spoken_text": "Cohesin, protein assemblies and nuclear bodies organize space through different rules. Cohesin changes contacts through moving loop anchors. Protein bonds form higher-order assemblies. Speckles and the nucleolus are currently imposed fields, not self-generated condensates. In Genes, optional body responses can promote or suppress activation and initiation. A multiplier of one is neutral; the effect fades with promoter distance. These prescribed responses do not bypass the mark gate. Keep them separate from mechanical body attraction and from the speckle's effect on released R N A processing.",
+  "word_count": 85,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 153.96071486073097,
+  "model_speed": 1.257643368747405,
+  "duration_seconds": 33.62533333333333,
+  "speech_seconds": 33.12533333333333,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 0.8799331784248352,
+  "gain": 1.0,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 42.192,
+      "words_per_minute": 120.87599544937429,
+      "inference_seconds": 9.651011875015683
+    },
+    {
+      "model_speed": 1.154075294117647,
+      "seconds": 35.856,
+      "words_per_minute": 142.23560910307899,
+      "inference_seconds": 8.559120125020854
+    },
+    {
+      "model_speed": 1.257643368747405,
+      "seconds": 33.12533333333333,
+      "words_per_minute": 153.96071486073097,
+      "inference_seconds": 7.550403916975483
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [
+    {
+      "word": "cohesin",
+      "phonemes": "ko\u028ah\u02c8i\u02d0s\u026an",
+      "occurrences": 2
+    }
+  ],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "09-architecture",
+  "file": "09-architecture.wav",
+  "fingerprint": "6f56d5dae67644a3111cf919b7d1ebf4729db91d9d91ef09b2852331669ba86d",
+  "wav_sha256": "69a5c3195c16aafb22fb4114f988fc12a785744e70869b18c3aad75352e55db0",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

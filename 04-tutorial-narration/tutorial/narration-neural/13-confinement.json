@@ -1,0 +1,44 @@
+{
+  "voice": "af_heart",
+  "source_text": "The polymer already has confinement. System now makes the wall explicit: outside the chosen radius, a harmonic force pushes particles inward. Increasing wall stiffness reduces penetration; zero switches the force off. This is a soft wall, so particles are not clipped back to the boundary. The diagnostics report excursions for mechanical particles and released RNA. For a small locus, this sphere is a modeled domain, not automatically an entire nucleus. Compare radius and wall strength, because packing can change contacts and transcription even when every biochemical parameter stays the same.",
+  "spoken_text": "The polymer already has confinement. System now makes the wall explicit: outside the chosen radius, a harmonic force pushes particles inward. Increasing wall stiffness reduces penetration; zero switches the force off. This is a soft wall, so particles are not clipped back to the boundary. The diagnostics report excursions for mechanical particles and released R N A. For a small locus, this sphere is a modeled domain, not automatically an entire nucleus. Compare radius and wall strength, because packing can change contacts and transcription even when every biochemical parameter stays the same.",
+  "word_count": 92,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 149.32910113980665,
+  "model_speed": 1.1422770370300357,
+  "duration_seconds": 37.465333333333334,
+  "speech_seconds": 36.965333333333334,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 0.8521261215209961,
+  "gain": 1.0,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 42.27733333333333,
+      "words_per_minute": 130.5664185694462,
+      "inference_seconds": 9.962128041894175
+    },
+    {
+      "model_speed": 1.0684217391304347,
+      "seconds": 38.074666666666666,
+      "words_per_minute": 144.97828827566886,
+      "inference_seconds": 8.428010542062111
+    },
+    {
+      "model_speed": 1.1422770370300357,
+      "seconds": 36.965333333333334,
+      "words_per_minute": 149.32910113980665,
+      "inference_seconds": 8.138178374967538
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "13-confinement",
+  "file": "13-confinement.wav",
+  "fingerprint": "b3badec474a978bfb9e720a6ce5c870c12b47a9f3e9f411b957ee48477ca1122",
+  "wav_sha256": "f55ed5d311b622d28c1ca7b6a3245363954144ace2f755e1a7cef61de38a0481",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

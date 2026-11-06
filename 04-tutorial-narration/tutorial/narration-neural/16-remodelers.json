@@ -1,0 +1,44 @@
+{
+  "voice": "af_heart",
+  "source_text": "Stay in the nucleosome-access example. In Chromatin, define an initially vacant interval to create a nucleosome-free region. This sets the starting state; reassembly can fill the gap later. In Proteins, each species has separate occupied and vacant capture and release multipliers. Opening a site can favor one species and disfavor another, especially when eviction also removes a mark. Add chromatin remodeler creates an editable species and enables occupancy in the draft. Its eviction, reassembly and sliding rates act when it is attached to chromatin or recruited through a configured transcription factor. Eviction clears marks. Reassembly starts unmarked. Sliding moves occupancy and its marks into an adjacent vacant bead, conserving nucleosome number. Inspect Recorded binding and remodeling events to follow what actually occurred. These are recent recorded events, not a complete microscopic history. Apply changes only when ready to start a new run.",
+  "spoken_text": "Stay in the nucleosome-access example. In Chromatin, define an initially vacant interval to create a nucleosome-free region. This sets the starting state; reassembly can fill the gap later. In Proteins, each species has separate occupied and vacant capture and release multipliers. Opening a site can favor one species and disfavor another, especially when eviction also removes a mark. Add chromatin remodeler creates an editable species and enables occupancy in the draft. Its eviction, reassembly and sliding rates act when it is attached to chromatin or recruited through a configured transcription factor. Eviction clears marks. Reassembly starts unmarked. Sliding moves occupancy and its marks into an adjacent vacant bead, conserving nucleosome number. Inspect Recorded binding and remodeling events to follow what actually occurred. These are recent recorded events, not a complete microscopic history. Apply changes only when ready to start a new run.",
+  "word_count": 142,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 150.73598792224948,
+  "model_speed": 1.2098782968458641,
+  "duration_seconds": 57.022666666666666,
+  "speech_seconds": 56.522666666666666,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 0.777323842048645,
+  "gain": 1.0,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 67.552,
+      "words_per_minute": 126.12505921364281,
+      "inference_seconds": 27.084892999962904
+    },
+    {
+      "model_speed": 1.1060450704225353,
+      "seconds": 60.128,
+      "words_per_minute": 141.6977115486961,
+      "inference_seconds": 23.489474833011627
+    },
+    {
+      "model_speed": 1.2098782968458641,
+      "seconds": 56.522666666666666,
+      "words_per_minute": 150.73598792224948,
+      "inference_seconds": 22.08577674999833
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "16-remodelers",
+  "file": "16-remodelers.wav",
+  "fingerprint": "766c1edbb409993e780f447b8dec3beec73469138b5f75cbf8f978dadff7dbf6",
+  "wav_sha256": "03f546486ad59c772ff5025fe61a89ae4abaef91f7222fe4e0eb95ab1b2a6b54",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

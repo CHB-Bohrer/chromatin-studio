@@ -1,0 +1,56 @@
+{
+  "voice": "af_heart",
+  "source_text": "Calibrate can import a condition-specific Hansen reference. Then supply a matched, equilibrated simulation and independent length evidence. Importing data does not complete calibration. Match the observable, dimension, drift treatment and fitting window. Next, load the synthetic example to practice fitting. Inspect its overlay, residuals and slopes; it cannot be applied as experimental evidence. A shared polymer clock converts reduced durations and rates consistently, but does not independently fit protein diffusion, binding residence times, elongation or Kd. Compatible empirical mappings retain their sources and baseline model fingerprint.",
+  "spoken_text": "Calibrate can import a condition-specific Hansen reference. Then supply a matched, equilibrated simulation and independent length evidence. Importing data does not complete calibration. Match the observable, dimension, drift treatment and fitting window. Next, load the synthetic example to practice fitting. Inspect its overlay, residuals and slopes; it cannot be applied as experimental evidence. A shared polymer clock converts reduced durations and rates consistently, but does not independently fit protein diffusion, binding residence times, elongation or K D. Compatible empirical mappings retain their sources and baseline model fingerprint.",
+  "word_count": 87,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 149.22244244549475,
+  "model_speed": 1.3127107674461618,
+  "duration_seconds": 35.48133333333333,
+  "speech_seconds": 34.98133333333333,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 0.6239257454872131,
+  "gain": 1.0,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 45.328,
+      "words_per_minute": 115.16060713025061,
+      "inference_seconds": 10.95453629095573
+    },
+    {
+      "model_speed": 1.211351724137931,
+      "seconds": 37.434666666666665,
+      "words_per_minute": 139.44294058982763,
+      "inference_seconds": 8.962000125087798
+    },
+    {
+      "model_speed": 1.3464971152155722,
+      "seconds": 29.285333333333334,
+      "words_per_minute": 178.2462210890548,
+      "inference_seconds": 6.893970708013512
+    },
+    {
+      "model_speed": 1.2789244196767515,
+      "seconds": 35.728,
+      "words_per_minute": 146.1038961038961,
+      "inference_seconds": 8.708333875052631
+    },
+    {
+      "model_speed": 1.3127107674461618,
+      "seconds": 34.98133333333333,
+      "words_per_minute": 149.22244244549475,
+      "inference_seconds": 8.14467466599308
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "10-calibration",
+  "file": "10-calibration.wav",
+  "fingerprint": "9f43a80d6049f2e45fbfac6247af3d8ebc2c815279495813cb6d5baf2b36782b",
+  "wav_sha256": "60f1a8682a8d37cbb7983b4eacad96a2876f4d9dc6274e2b84881d675365e977",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}
