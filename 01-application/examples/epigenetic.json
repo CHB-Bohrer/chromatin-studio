@@ -1,0 +1,123 @@
+{
+  "version": "0.1",
+  "name": "Reader\u2013writer chromatin",
+  "seed": 42,
+  "simulation": {
+    "dt": 0.002,
+    "steps_per_frame": 10,
+    "confinement_radius": 11.0
+  },
+  "chromatin": {
+    "beads": 96,
+    "bp_per_bead": 1000,
+    "bond_length": 0.85,
+    "bond_k": 45.0,
+    "diffusion": 0.08,
+    "persistence_length": 2.0,
+    "repulsion": 8.0,
+    "initial_marks": [
+      {
+        "start": 8,
+        "end": 25,
+        "mark": "H3K9me3"
+      },
+      {
+        "start": 40,
+        "end": 58,
+        "mark": "H3K27ac"
+      }
+    ],
+    "barriers": [
+      {
+        "bead": 30,
+        "direction": "right"
+      },
+      {
+        "bead": 69,
+        "direction": "left"
+      }
+    ]
+  },
+  "marks": [
+    {
+      "id": "H3K9me3",
+      "name": "H3K9me3",
+      "color": "#8064b0",
+      "decay_rate": 0.015,
+      "spread_rate": 0.04,
+      "contact_radius": 1.25
+    },
+    {
+      "id": "H3K27ac",
+      "name": "H3K27ac",
+      "color": "#dfaa49",
+      "decay_rate": 0.02,
+      "spread_rate": 0.01,
+      "contact_radius": 1.25
+    }
+  ],
+  "proteins": [
+    {
+      "id": "hp1",
+      "name": "HP1-like reader",
+      "color": "#8d71bc",
+      "count": 12,
+      "diffusion": 0.5,
+      "radius": 0.28,
+      "valence": 3,
+      "representation": "bead",
+      "idr_beads": 4,
+      "sticker_fraction": 0.75,
+      "chromatin_affinity": {
+        "unmodified": 0.04,
+        "H3K9me3": 4.0,
+        "H3K27ac": 0.04
+      },
+      "on_rate": 1.2,
+      "off_rate": 0.4,
+      "writer_mark": null,
+      "eraser_mark": null,
+      "catalytic_rate": 0.8
+    },
+    {
+      "id": "writer",
+      "name": "H3K9 writer",
+      "color": "#b196cf",
+      "count": 6,
+      "diffusion": 0.5,
+      "radius": 0.28,
+      "valence": 3,
+      "representation": "bead",
+      "idr_beads": 4,
+      "sticker_fraction": 0.75,
+      "chromatin_affinity": {
+        "unmodified": 0.1,
+        "H3K9me3": 3.0
+      },
+      "on_rate": 1.2,
+      "off_rate": 0.4,
+      "writer_mark": "H3K9me3",
+      "eraser_mark": null,
+      "catalytic_rate": 0.8
+    }
+  ],
+  "interactions": [
+    {
+      "a": "hp1",
+      "b": "hp1",
+      "strength": 4.0,
+      "on_rate": 1.2,
+      "off_rate": 0.35,
+      "radius": 1.1
+    }
+  ],
+  "bodies": [],
+  "cohesin": {
+    "enabled": false,
+    "count": 3,
+    "step_rate": 1.5,
+    "off_rate": 0.08,
+    "spring_k": 2.5
+  },
+  "genes": []
+}

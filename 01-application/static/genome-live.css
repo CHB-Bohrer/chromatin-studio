@@ -1,0 +1,56 @@
+/* Live one-dimensional observations share the workbench's dark, quiet palette. */
+.genome-live-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:0 15px 12px}
+.genome-live-toolbar button{border:1px solid #456179;background:#213449;border-radius:5px;color:#d4e4f0;padding:7px 10px;font-size:11px;min-height:31px}
+.genome-live-toolbar button:hover:not(:disabled){background:#304d65}
+.genome-mode-switch{display:flex;gap:2px;padding:3px;border:1px solid #344b61;border-radius:7px;background:#121f2c}
+.genome-mode-switch button{border-color:transparent;background:transparent;font-size:11px;padding:5px 10px;min-height:27px}
+.genome-mode-switch button[aria-pressed=true]{border-color:#557c87;background:#264851;color:#b7e9df}
+.genome-live-run{display:flex;gap:5px;margin-left:auto}
+.genome-live-run button:last-child{background:#295c51;border-color:#4a897a;color:#d8f5e9;min-width:56px}
+.genome-live-status{display:flex;align-items:flex-end;flex-direction:column;gap:6px;font-size:10px;color:#b6c6d6}
+.genome-live-status .running{color:#99dfc5}
+.genome-live-status .running:before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:#99dfc5;margin-right:5px}
+.genome-coordinate-details{padding:0 15px 11px;font-size:10px;color:#9fb6ca}
+.genome-coordinate-details>summary{cursor:pointer;line-height:1.5}
+.genome-coordinate-details .genome-coordinates{padding:12px 0 0}
+.genome-live-resolution{background:#162632;border-bottom:1px solid #34495b;padding:10px 15px;color:#b3c7d8;font-size:10px;line-height:1.6}
+.genome-live-resolution strong{color:#d4e4f0;font-weight:550}
+.genome-live-mode .genome-scale-legend>span:nth-child(-n+2){display:none}
+.genome-live-mode .genome-options-actions>label{display:none}
+.genome-live-mode .genome-canvas-scroll{max-height:500px}
+.genome-scale-legend .nucleosome-swatch{height:10px;width:10px;background:#aa91d3;border:1px solid #d6c5ee;border-radius:50%;display:inline-block}
+.genome-event-panel{border-top:1px solid #3a4e63;background:#15212e;padding:14px 15px}
+.genome-event-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.genome-event-heading .eyebrow{font-size:9px;line-height:1.7;color:#b2c8db}
+.genome-event-heading p{font-size:10px;line-height:1.6;color:#97b0c7;margin:7px 0 10px}
+.genome-event-heading>label{display:flex;align-items:center;gap:5px;white-space:nowrap;font-size:10px;color:#c1d6e6;margin-top:1px}
+.genome-event-heading input{accent-color:#8bc8b6}
+.genome-event-list{list-style:none;margin:0;padding:0;max-height:205px;overflow:auto;scrollbar-width:thin;scrollbar-color:#4b6177 transparent}
+.genome-event-list li{border-bottom:1px solid #2b3e50}
+.genome-event-list li:last-child{border-bottom:0}
+.genome-event-list button{display:grid;grid-template-columns:23px minmax(0,1fr) auto;align-items:start;gap:7px;width:100%;border:0;padding:8px 2px;text-align:left;color:#bdd0e3;background:transparent;font-size:10px;line-height:1.5;border-radius:4px}
+.genome-event-list button:hover{background:#20364a}
+.genome-event-list strong{font-size:10px;font-weight:550;color:#d4e4f0}
+.genome-event-list small{display:block;color:#8fa9c0;font-size:9px;margin-top:3px}
+.genome-event-list time{font-size:9px;font-variant-numeric:tabular-nums;color:#9cb8cf;padding-top:2px}
+.genome-event-symbol{background:#253b4c;color:#a8d5e2;border-radius:4px;height:20px;width:20px;display:grid;place-items:center;font-size:15px;line-height:1}
+.genome-event-chromatin_bind .genome-event-symbol{color:#87e1c7;background:#233f3c}
+.genome-event-chromatin_unbind .genome-event-symbol{color:#efb17b;background:#423527}
+.genome-empty-events{font-size:10px;color:#a8bfd2;line-height:1.7;padding:8px 0}
+.genome-selection .genome-inspector-table th,.genome-selection .genome-inspector-table td{padding:9px 6px}
+.genome-selection .genome-inspector-table th:first-child{min-width:110px}
+@media(min-width:1050px){
+  body:not(.learn-workspace):not(.cluster-workspace):not(.study-workspace):not(.calibration-workspace):not(.builder-workspace) .workspace:has(.genome-container:not([hidden])){grid-template-columns:270px minmax(0,1fr)}
+  body:not(.learn-workspace):not(.cluster-workspace):not(.study-workspace):not(.calibration-workspace):not(.builder-workspace) .workspace:has(.genome-container:not([hidden]))>.insight-panel{display:none}
+}
+@media(max-width:700px){
+  .genome-live-toolbar{padding-left:11px;padding-right:11px;gap:6px}
+  .genome-live-toolbar button{font-size:10px;padding:7px 8px}
+  .genome-live-resolution{padding:10px 11px}
+  .genome-live-mode .genome-canvas-scroll{max-height:490px}
+  .genome-event-panel{padding:13px 11px}
+  .genome-event-heading{gap:8px}
+  .genome-event-heading .eyebrow{font-size:8px}
+  .genome-event-list button{grid-template-columns:20px minmax(0,1fr) auto;font-size:9px}
+}
+.genome-container:not(.genome-live-mode) .genome-molecule-key{display:none}

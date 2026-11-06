@@ -1,0 +1,109 @@
+{
+  "version": "0.1",
+  "name": "Multivalent IDR assembly",
+  "seed": 42,
+  "simulation": {
+    "dt": 0.002,
+    "steps_per_frame": 10,
+    "confinement_radius": 7.0
+  },
+  "chromatin": {
+    "beads": 64,
+    "bp_per_bead": 1000,
+    "bond_length": 0.85,
+    "bond_k": 45.0,
+    "diffusion": 0.08,
+    "persistence_length": 2.0,
+    "repulsion": 8.0,
+    "initial_marks": [],
+    "barriers": []
+  },
+  "marks": [
+    {
+      "id": "H3K9me3",
+      "name": "H3K9me3",
+      "color": "#8064b0",
+      "decay_rate": 0.015,
+      "spread_rate": 0.04,
+      "contact_radius": 1.25
+    },
+    {
+      "id": "H3K27ac",
+      "name": "H3K27ac",
+      "color": "#dfaa49",
+      "decay_rate": 0.02,
+      "spread_rate": 0.01,
+      "contact_radius": 1.25
+    }
+  ],
+  "proteins": [
+    {
+      "id": "srrm2",
+      "name": "SRRM2-like scaffold",
+      "color": "#399c97",
+      "count": 16,
+      "diffusion": 0.35,
+      "radius": 0.28,
+      "valence": 6,
+      "representation": "idr",
+      "idr_beads": 5,
+      "sticker_fraction": 0.75,
+      "chromatin_affinity": {
+        "unmodified": 0.08,
+        "H3K27ac": 0.5
+      },
+      "on_rate": 1.2,
+      "off_rate": 0.4,
+      "writer_mark": null,
+      "eraser_mark": null,
+      "catalytic_rate": 0.8
+    },
+    {
+      "id": "npm1",
+      "name": "NPM1-like scaffold",
+      "color": "#c67c68",
+      "count": 16,
+      "diffusion": 0.35,
+      "radius": 0.28,
+      "valence": 6,
+      "representation": "idr",
+      "idr_beads": 5,
+      "sticker_fraction": 0.75,
+      "chromatin_affinity": {
+        "unmodified": 0.05
+      },
+      "on_rate": 1.2,
+      "off_rate": 0.4,
+      "writer_mark": null,
+      "eraser_mark": null,
+      "catalytic_rate": 0.8
+    }
+  ],
+  "interactions": [
+    {
+      "a": "srrm2",
+      "b": "srrm2",
+      "strength": 4.0,
+      "on_rate": 1.8,
+      "off_rate": 0.3,
+      "radius": 1.1
+    },
+    {
+      "a": "npm1",
+      "b": "npm1",
+      "strength": 4.0,
+      "on_rate": 1.8,
+      "off_rate": 0.3,
+      "radius": 1.1
+    }
+  ],
+  "bodies": [],
+  "cohesin": {
+    "enabled": false,
+    "count": 3,
+    "step_rate": 1.5,
+    "off_rate": 0.08,
+    "spring_k": 2.5
+  },
+  "genes": []
+}

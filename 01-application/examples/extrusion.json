@@ -1,0 +1,88 @@
+{
+  "version": "0.1",
+  "name": "Cohesin and gene mechanics",
+  "seed": 42,
+  "simulation": {
+    "dt": 0.002,
+    "steps_per_frame": 10,
+    "confinement_radius": 11.0
+  },
+  "chromatin": {
+    "beads": 96,
+    "bp_per_bead": 1000,
+    "bond_length": 0.85,
+    "bond_k": 45.0,
+    "diffusion": 0.08,
+    "persistence_length": 2.0,
+    "repulsion": 8.0,
+    "initial_marks": [
+      {
+        "start": 8,
+        "end": 25,
+        "mark": "H3K9me3"
+      },
+      {
+        "start": 40,
+        "end": 58,
+        "mark": "H3K27ac"
+      }
+    ],
+    "barriers": [
+      {
+        "bead": 30,
+        "direction": "right"
+      },
+      {
+        "bead": 69,
+        "direction": "left"
+      }
+    ]
+  },
+  "marks": [
+    {
+      "id": "H3K9me3",
+      "name": "H3K9me3",
+      "color": "#8064b0",
+      "decay_rate": 0.015,
+      "spread_rate": 0.04,
+      "contact_radius": 1.25
+    },
+    {
+      "id": "H3K27ac",
+      "name": "H3K27ac",
+      "color": "#dfaa49",
+      "decay_rate": 0.02,
+      "spread_rate": 0.01,
+      "contact_radius": 1.25
+    }
+  ],
+  "proteins": [],
+  "interactions": [],
+  "bodies": [],
+  "cohesin": {
+    "enabled": true,
+    "count": 5,
+    "step_rate": 1.5,
+    "off_rate": 0.08,
+    "spring_k": 2.5
+  },
+  "genes": [
+    {
+      "id": "gene_a",
+      "name": "Gene A",
+      "start": 40,
+      "end": 58,
+      "on_rate": 0.3,
+      "off_rate": 0.2,
+      "initiation_rate": 1.0,
+      "elongation_rate": 3.0,
+      "processing_rate": 0.5,
+      "rna_decay_rate": 0.03,
+      "activator_species": null,
+      "required_mark": "H3K27ac",
+      "repressive_mark": "H3K9me3",
+      "speckle_gain": 2.0,
+      "persistence_multiplier": 0.65
+    }
+  ]
+}

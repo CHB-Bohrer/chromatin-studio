@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080b0f">
+  <title>Chromatin Studio · Research workbench</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/theme.css">
+  <link rel="stylesheet" href="/static/learn-view.css">
+  <link rel="stylesheet" href="/static/workbench.css">
+  <link rel="stylesheet" href="/static/calibration-view.css">
+  <link rel="stylesheet" href="/static/study-view.css">
+  <link rel="stylesheet" href="/static/mechanism-view.css">
+  <link rel="stylesheet" href="/static/genome-live.css">
+</head>
+<body data-mobile-view="scene">
+  <div id="app">
+    <header class="app-header">
+      <div class="brand"><div class="brand-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 5c20 4-4 18 16 22M24 5C4 9 28 23 8 27M11 8h10M12 15h8M11 23h10"/></svg></div><div><h1>Chromatin <span>Studio</span></h1><p>Spatial gene regulation workbench</p></div><span class="prototype-tag">RESEARCH PROTOTYPE</span></div>
+      <div class="header-actions"><button id="learn-btn" class="quiet-button learn-entry" title="Explore illustrated explanations of the model">How it works <span aria-hidden="true">↗</span></button><a class="quiet-button tutorial-entry" href="/tutorial/index.html" target="_blank" rel="noopener" title="Watch the narrated tutorial with chapters and adjustable playback speed">Tutorial</a><button id="import-btn" class="quiet-button" title="Import a configuration JSON file"><span aria-hidden="true">↥</span> Import</button><button id="export-btn" class="quiet-button" title="Export the draft configuration as JSON"><span aria-hidden="true">↧</span> Export</button><button id="export-run-btn" class="quiet-button" title="Download applied configuration and simulation history">Save run</button><button id="studies-btn" class="quiet-button" title="Compare manuscript hypotheses with independent controls">Studies</button><button id="cluster-btn" class="quiet-button" title="Prepare a cluster job from the draft model">Cluster job</button><input id="import-file" type="file" accept=".json,application/json" hidden><span class="local-badge"><i></i> LOCAL SESSION</span></div>
+    </header>
+    <section class="workspace-intro" aria-label="Workbench introduction">
+      <div class="intro-copy"><span class="intro-kicker">A SPATIAL MODEL OF GENE REGULATION</span><h2 class="intro-title">From molecular motion to <em>gene expression.</em></h2><p class="intro-caption">Build a hypothesis. Follow the molecules. Test what changes.</p></div>
+      <nav class="intro-steps" aria-label="Experiment workflow"><button data-workflow="build"><span>01</span><strong>Build a model</strong><small>Components & interactions</small></button><button data-workflow="observe"><span>02</span><strong>Observe</strong><small>Space, genome & RNA</small></button><button data-workflow="test"><span>03</span><strong>Test hypotheses</strong><small>Controls & correlation</small></button></nav>
+    </section>
+    <div class="run-toolbar">
+      <div class="scenario-group"><label for="preset-select">EXPERIMENT</label><select id="preset-select" aria-label="Load experiment preset"><option value="">Loading presets…</option></select></div>
+      <span class="toolbar-divider"></span>
+      <div class="engine-group"><label for="engine-select">ENGINE</label><select id="engine-select" aria-label="Simulation engine"><option value="numpy">Brownian reference</option></select></div>
+      <div class="toolbar-spacer"></div>
+      <span id="draft-status" class="draft-status">Connecting…</span>
+      <button id="apply-btn" class="apply-button" disabled>Apply & restart</button>
+      <button id="reset-btn" class="icon-button" title="Restart the applied configuration" aria-label="Reset simulation">↺</button>
+      <button id="step-btn" class="secondary-button" title="Advance one frame">Step</button>
+      <button id="run-btn" class="run-button" disabled><span aria-hidden="true">▶</span> Run simulation</button>
+    </div>
+    <div id="error-banner" class="error-banner" role="alert" hidden><span id="error-message"></span><button id="dismiss-error" aria-label="Dismiss error">×</button></div>
+    <nav id="mobile-workspace-nav" class="mobile-workspace-nav" aria-label="Workbench views"><button data-mobile-tab="scene" class="active" aria-pressed="true">Simulation</button><button data-mobile-tab="editor" aria-pressed="false">Configure</button><button data-mobile-tab="insights" aria-pressed="false">Activity</button></nav>
+    <main class="workspace">
+      <aside class="editor-panel" aria-label="Model configuration">
+        <div class="editor-heading"><span class="eyebrow">MODEL BUILDER</span><span id="particle-budget" class="small-muted">— particles</span><button id="expand-builder-btn" class="text-button" aria-expanded="false" aria-controls="editor-content">Expand builder ↗</button></div>
+        <div id="draft-genomic-scale" class="draft-genomic-scale" aria-live="polite">Loading genomic scale…</div>
+        <nav id="editor-nav" class="editor-nav" aria-label="Configuration sections">
+          <button data-tab="system" class="active"><span>◫</span>System</button><button data-tab="proteins"><span>●</span>Proteins</button><button data-tab="interactions"><span>⌘</span>Interactions</button><button data-tab="chromatin"><span>⌁</span>Chromatin</button><button data-tab="genes"><span>≋</span>Genes</button><button data-tab="regulation"><span>⇢</span>Regulation</button><button data-tab="bodies"><span>◉</span>Bodies</button><button data-tab="cohesin"><span>⋈</span>Cohesin</button><button data-tab="studies"><span>⇄</span>Studies</button><button data-tab="calibration"><span>◷</span>Calibrate</button><button data-tab="cluster"><span>▦</span>Cluster</button><button data-tab="model"><span>ⓘ</span>Model</button><button data-tab="learn"><span>◈</span>Learn</button>
+        </nav>
+        <div id="editor-content" class="editor-content"><div class="loading-note">Loading your model…</div></div>
+        <div class="editor-footer"><span class="status-dot"></span><span>Reduced units · kBT = 1<br><button id="calibration-status" class="text-button" title="Set and inspect the physical length and time mapping">No physical clock · Calibrate ↗</button></span></div>
+      </aside>
+      <section class="simulation-panel" aria-label="Simulation and measurements">
+        <div class="scene-heading"><div><span class="eyebrow">LIVE NUCLEAR VIEW</span><h2 id="experiment-title">Your spatial experiment</h2><p id="applied-genomic-scale" class="applied-genomic-scale">Genomic scale will appear with the current model.</p></div><div class="scene-heading-right"><span id="engine-badge" class="engine-badge">REFERENCE ENGINE</span><span id="run-status" class="run-status"><i></i> Paused</span></div></div>
+        <div class="scene-viewbar"><div class="scene-view-switch" role="group" aria-label="Simulation views"><button id="view-3d" class="active" aria-pressed="true">3D nucleus</button><button id="view-1d" aria-pressed="false">1D genome</button><button id="view-interactions" aria-pressed="false">Interactions</button><button id="view-regulation" aria-pressed="false">Regulation</button></div><span>Applied model</span></div>
+        <div class="view-explanation"><p id="view-explanation">Follow the actual chromatin and proteins in 3D. Select a molecule or locus to inspect it.</p><button id="view-explain-btn" class="text-button">Explain the physics ↗</button></div>
+        <div class="metric-strip" aria-label="Current simulation measurements">
+          <div class="metric"><span>Reduced time</span><strong id="metric-time">—</strong><small id="metric-step">0 integration steps</small><small id="metric-physical-time">No physical clock</small></div>
+          <div class="metric"><span>Chromatin-bound</span><strong id="metric-bound">—</strong><small>protein molecules</small></div>
+          <div class="metric"><span>Largest assembly</span><strong id="metric-cluster">—</strong><small>protein molecules</small></div>
+          <div class="metric"><span>Marked chromatin</span><strong id="metric-marked">—</strong><small>at least one mark</small></div>
+          <div class="metric"><span>Polymer size · Rg</span><strong id="metric-rg">—</strong><small>reduced length</small></div>
+        </div>
+        <div class="scene-container" id="scene-container">
+          <canvas id="scene" aria-label="Interactive 3D view of chromatin, proteins, and imposed nuclear bodies" tabindex="0"></canvas>
+          <div class="scene-top-left"><span class="scene-chip"><span class="small-dot"></span>3D · ORBIT VIEW</span><span id="selection-chip" class="scene-chip selection-chip" hidden></span></div>
+          <div class="scene-tools"><button id="home-camera" title="Reset camera" aria-label="Reset camera view">⌂</button><button id="zoom-in" title="Zoom in" aria-label="Zoom in">+</button><button id="zoom-out" title="Zoom out" aria-label="Zoom out">−</button><button id="full-scene" title="Expand scene" aria-label="Expand scene">⤢</button></div>
+          <div id="scene-empty" class="scene-empty"><div class="empty-glyph">⌁</div><strong>Preparing your experiment</strong><span>A live view will appear when the local engine connects.</span></div>
+          <div id="legend" class="scene-legend" aria-label="Scene legend"></div>
+          <div class="scene-bottom"><span class="camera-hint">Drag to orbit <span>·</span> Scroll to zoom <span>·</span> Click to inspect</span><div class="view-toggles"><label><input id="show-bonds" type="checkbox" checked> Links</label><label><input id="show-proteins" type="checkbox" checked> Proteins</label><label><input id="show-labels" type="checkbox" checked> Labels</label><label><input id="show-rna" type="checkbox" checked> Transcripts</label></div></div>
+        </div>
+        <section id="genome-container" class="genome-container" aria-label="One-dimensional genome browser" hidden></section>
+        <section id="interactions-container" class="interactions-container" aria-label="Protein interaction browser" hidden></section>
+        <section id="regulation-container" class="regulation-container" aria-label="Transcription regulation browser" hidden></section>
+        <div class="measurement-heading"><div><span class="eyebrow">OBSERVABLES</span><span class="measurement-subtitle">This run · actual simulation samples</span></div><span id="sample-count" class="small-muted">0 samples</span></div>
+        <div class="chart-grid">
+          <article class="chart-card"><div class="chart-title"><h3>Binding & marking</h3><span id="fraction-chart-value">—</span></div><canvas id="chart-fractions" aria-label="Bound protein and marked chromatin fractions over time"></canvas><div class="chart-key"><span><i style="background:#79c9bd"></i>Bound fraction</span><span><i style="background:#b19cda"></i>Marked fraction</span></div></article>
+          <article class="chart-card"><div class="chart-title"><h3>Assembly & polymer</h3><span id="structure-chart-value">—</span></div><canvas id="chart-structure" aria-label="Largest protein cluster and chromatin radius of gyration over time"></canvas><div class="chart-key"><span><i style="background:#c78b44"></i>Largest cluster</span><span><i style="background:#88b4dc"></i>Rg · right axis</span></div></article>
+          <article class="chart-card"><div class="chart-title"><h3>RNA output</h3><span id="rna-chart-value">—</span></div><canvas id="chart-rna" aria-label="Nascent, unprocessed and processed RNA counts over time"></canvas><div class="chart-key"><span><i style="background:#a890c0"></i>Nascent</span><span><i style="background:#d3a45e"></i>Unprocessed</span><span><i style="background:#79c9bd"></i>Processed</span></div></article>
+        </div>
+        <div id="runtime-warnings" class="runtime-warnings" hidden></div>
+      </section>
+      <aside class="insight-panel" aria-label="Inspector and event history">
+        <section class="inspector-section"><div class="section-heading"><span class="eyebrow">INSPECTOR</span><button id="clear-selection" class="text-button" hidden>Clear</button></div><div id="inspector-content" class="inspector-content"><div class="inspector-icon">⌖</div><h3>Explore the scene</h3><p>Select a chromatin bead, protein, or landmark to inspect its state.</p><div class="inspector-note">Motion and binding are explicit. Colored nuclear bodies are imposed affinity fields.</div></div></section>
+        <section class="gene-section"><div class="section-heading"><span class="eyebrow">GENE ACTIVITY</span><span id="gene-count" class="count-tag">0 loci</span></div><div id="gene-activity" class="gene-activity"><p class="small-muted">Waiting for simulation state.</p></div></section>
+        <section class="events-section"><div class="section-heading"><span class="eyebrow">REACTION LOG</span><span id="event-count" class="count-tag">0</span></div><div id="events" class="event-list"><p class="empty-events">Binding, catalysis, and transcription events will appear as the simulation runs.</p></div></section>
+        <div class="insight-footer"><span id="connection-status"><i></i> Connecting to local engine</span></div>
+      </aside>
+    </main>
+    <div id="toast" class="toast" role="status" hidden></div>
+  </div>
+  <script src="/static/genome-view.js"></script>
+  <script src="/static/interaction-view.js"></script>
+  <script src="/static/transcription-view.js"></script>
+  <script src="/static/regulation-view.js"></script>
+  <script src="/static/cluster-view.js"></script>
+  <script src="/static/learn-view.js"></script>
+  <script src="/static/calibration-view.js"></script>
+  <script src="/static/model-explain.js"></script>
+  <script src="/static/study-view.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

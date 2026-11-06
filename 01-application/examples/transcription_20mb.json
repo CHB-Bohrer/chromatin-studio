@@ -1,0 +1,814 @@
+{
+  "version": "0.1",
+  "name": "20 Mb transcription landscape",
+  "seed": 42,
+  "simulation": {
+    "dt": 0.002,
+    "steps_per_frame": 10,
+    "confinement_radius": 20.0
+  },
+  "chromatin": {
+    "beads": 2000,
+    "bp_per_bead": 10000,
+    "bond_length": 0.85,
+    "bond_k": 45.0,
+    "diffusion": 0.08,
+    "persistence_length": 2.0,
+    "repulsion": 8.0,
+    "initial_marks": [
+      {
+        "start": 80,
+        "end": 249,
+        "mark": "H3K9me3"
+      },
+      {
+        "start": 720,
+        "end": 899,
+        "mark": "H3K9me3"
+      },
+      {
+        "start": 1450,
+        "end": 1619,
+        "mark": "H3K9me3"
+      },
+      {
+        "start": 320,
+        "end": 359,
+        "mark": "H3K27ac"
+      },
+      {
+        "start": 500,
+        "end": 539,
+        "mark": "H3K27ac"
+      },
+      {
+        "start": 1050,
+        "end": 1099,
+        "mark": "H3K27ac"
+      },
+      {
+        "start": 1250,
+        "end": 1289,
+        "mark": "H3K27ac"
+      },
+      {
+        "start": 1750,
+        "end": 1789,
+        "mark": "H3K27ac"
+      }
+    ],
+    "barriers": [
+      {
+        "bead": 300,
+        "direction": "right"
+      },
+      {
+        "bead": 650,
+        "direction": "left"
+      },
+      {
+        "bead": 1000,
+        "direction": "right"
+      },
+      {
+        "bead": 1350,
+        "direction": "left"
+      },
+      {
+        "bead": 1700,
+        "direction": "right"
+      },
+      {
+        "bead": 1900,
+        "direction": "left"
+      }
+    ],
+    "representation": "coarse",
+    "state_interactions": [
+      {
+        "a": "H3K9me3",
+        "b": "H3K9me3",
+        "strength": 0.5,
+        "radius": 1.5,
+        "min_separation": 3
+      }
+    ],
+    "nucleosomes": {
+      "enabled": true,
+      "initial_occupancy": 1.0,
+      "initial_regions": [
+        {
+          "start": 310,
+          "end": 312,
+          "occupied": false
+        },
+        {
+          "start": 330,
+          "end": 330,
+          "occupied": false
+        },
+        {
+          "start": 488,
+          "end": 490,
+          "occupied": false
+        },
+        {
+          "start": 508,
+          "end": 508,
+          "occupied": false
+        },
+        {
+          "start": 1040,
+          "end": 1042,
+          "occupied": false
+        },
+        {
+          "start": 1060,
+          "end": 1060,
+          "occupied": false
+        },
+        {
+          "start": 1240,
+          "end": 1242,
+          "occupied": false
+        },
+        {
+          "start": 1260,
+          "end": 1260,
+          "occupied": false
+        },
+        {
+          "start": 1740,
+          "end": 1742,
+          "occupied": false
+        },
+        {
+          "start": 1760,
+          "end": 1760,
+          "occupied": false
+        },
+        {
+          "start": 740,
+          "end": 742,
+          "occupied": false
+        },
+        {
+          "start": 760,
+          "end": 760,
+          "occupied": false
+        }
+      ],
+      "eviction_rate": 0.01,
+      "reassembly_rate": 0.05,
+      "occupied_persistence_multiplier": 1.0,
+      "vacant_persistence_multiplier": 0.5
+    }
+  },
+  "marks": [
+    {
+      "id": "H3K9me3",
+      "name": "H3K9me3",
+      "color": "#8064b0",
+      "decay_rate": 0.015,
+      "spread_rate": 0.04,
+      "contact_radius": 1.25
+    },
+    {
+      "id": "H3K27ac",
+      "name": "H3K27ac",
+      "color": "#dfaa49",
+      "decay_rate": 0.02,
+      "spread_rate": 0.01,
+      "contact_radius": 1.25
+    }
+  ],
+  "proteins": [
+    {
+      "id": "hp1",
+      "name": "HP1-like reader",
+      "color": "#8d71bc",
+      "count": 60,
+      "diffusion": 0.5,
+      "radius": 0.28,
+      "valence": 3,
+      "representation": "bead",
+      "idr_beads": 4,
+      "sticker_fraction": 0.75,
+      "chromatin_affinity": {
+        "unmodified": 0.04,
+        "H3K9me3": 4.0,
+        "H3K27ac": 0.04
+      },
+      "on_rate": 1.2,
+      "off_rate": 0.4,
+      "writer_mark": null,
+      "eraser_mark": null,
+      "catalytic_rate": 0.8,
+      "nucleosome_affinity": {
+        "occupied": 1.0,
+        "vacant": 0.0
+      },
+      "nucleosome_eviction_rate": 0.0,
+      "nucleosome_reassembly_rate": 0.0
+    },
+    {
+      "id": "writer",
+      "name": "H3K9 writer",
+      "color": "#b196cf",
+      "count": 24,
+      "diffusion": 0.5,
+      "radius": 0.28,
+      "valence": 3,
+      "representation": "bead",
+      "idr_beads": 4,
+      "sticker_fraction": 0.75,
+      "chromatin_affinity": {
+        "unmodified": 0.1,
+        "H3K9me3": 3.0
+      },
+      "on_rate": 1.2,
+      "off_rate": 0.4,
+      "writer_mark": "H3K9me3",
+      "eraser_mark": null,
+      "catalytic_rate": 0.8,
+      "nucleosome_affinity": {
+        "occupied": 1.0,
+        "vacant": 0.0
+      },
+      "nucleosome_eviction_rate": 0.0,
+      "nucleosome_reassembly_rate": 0.0
+    },
+    {
+      "id": "srrm2",
+      "name": "SRRM2-like scaffold",
+      "color": "#399c97",
+      "count": 20,
+      "diffusion": 0.35,
+      "radius": 0.28,
+      "valence": 5,
+      "representation": "idr",
+      "idr_beads": 4,
+      "sticker_fraction": 0.75,
+      "chromatin_affinity": {
+        "unmodified": 0.08,
+        "H3K27ac": 0.5
+      },
+      "on_rate": 1.2,
+      "off_rate": 0.4,
+      "writer_mark": null,
+      "eraser_mark": null,
+      "catalytic_rate": 0.8,
+      "nucleosome_affinity": {
+        "occupied": 1.0,
+        "vacant": 1.0
+      },
+      "nucleosome_eviction_rate": 0.0,
+      "nucleosome_reassembly_rate": 0.0
+    },
+    {
+      "id": "npm1",
+      "name": "NPM1-like scaffold",
+      "color": "#c67c68",
+      "count": 20,
+      "diffusion": 0.35,
+      "radius": 0.28,
+      "valence": 5,
+      "representation": "idr",
+      "idr_beads": 4,
+      "sticker_fraction": 0.75,
+      "chromatin_affinity": {
+        "unmodified": 0.05
+      },
+      "on_rate": 1.2,
+      "off_rate": 0.4,
+      "writer_mark": null,
+      "eraser_mark": null,
+      "catalytic_rate": 0.8,
+      "nucleosome_affinity": {
+        "occupied": 1.0,
+        "vacant": 1.0
+      },
+      "nucleosome_eviction_rate": 0.0,
+      "nucleosome_reassembly_rate": 0.0
+    },
+    {
+      "id": "activator",
+      "name": "Activator",
+      "color": "#d6a34a",
+      "count": 50,
+      "diffusion": 0.8,
+      "radius": 0.28,
+      "valence": 2,
+      "representation": "bead",
+      "idr_beads": 4,
+      "sticker_fraction": 0.75,
+      "chromatin_affinity": {
+        "unmodified": 0.3,
+        "H3K27ac": 3.0,
+        "H3K9me3": 0.02
+      },
+      "on_rate": 1.2,
+      "off_rate": 0.4,
+      "writer_mark": null,
+      "eraser_mark": null,
+      "catalytic_rate": 0.8,
+      "nucleosome_affinity": {
+        "occupied": 0.1,
+        "vacant": 1.0
+      },
+      "nucleosome_eviction_rate": 0.0,
+      "nucleosome_reassembly_rate": 0.0
+    },
+    {
+      "id": "p300",
+      "name": "Acetylation writer",
+      "color": "#bfa357",
+      "count": 20,
+      "diffusion": 0.5,
+      "radius": 0.28,
+      "valence": 3,
+      "representation": "bead",
+      "idr_beads": 4,
+      "sticker_fraction": 0.75,
+      "chromatin_affinity": {
+        "unmodified": 0.25,
+        "H3K27ac": 2.0
+      },
+      "on_rate": 1.2,
+      "off_rate": 0.4,
+      "writer_mark": "H3K27ac",
+      "eraser_mark": null,
+      "catalytic_rate": 0.8,
+      "nucleosome_affinity": {
+        "occupied": 1.0,
+        "vacant": 1.0
+      },
+      "nucleosome_eviction_rate": 0.0,
+      "nucleosome_reassembly_rate": 0.0
+    },
+    {
+      "id": "remodeler",
+      "name": "TF-recruited remodeler",
+      "color": "#5e9dbe",
+      "count": 8,
+      "diffusion": 0.5,
+      "radius": 0.28,
+      "valence": 2,
+      "representation": "bead",
+      "idr_beads": 4,
+      "sticker_fraction": 0.75,
+      "chromatin_affinity": {
+        "unmodified": 0.05
+      },
+      "on_rate": 1.2,
+      "off_rate": 0.4,
+      "writer_mark": null,
+      "eraser_mark": null,
+      "catalytic_rate": 0.8,
+      "nucleosome_affinity": {
+        "occupied": 1.0,
+        "vacant": 0.2
+      },
+      "nucleosome_eviction_rate": 1.0,
+      "nucleosome_reassembly_rate": 0.0
+    }
+  ],
+  "interactions": [
+    {
+      "a": "hp1",
+      "b": "hp1",
+      "strength": 4.0,
+      "on_rate": 1.2,
+      "off_rate": 0.35,
+      "radius": 1.1
+    },
+    {
+      "a": "srrm2",
+      "b": "srrm2",
+      "strength": 4.0,
+      "on_rate": 1.8,
+      "off_rate": 0.3,
+      "radius": 1.1
+    },
+    {
+      "a": "npm1",
+      "b": "npm1",
+      "strength": 4.0,
+      "on_rate": 1.8,
+      "off_rate": 0.3,
+      "radius": 1.1
+    },
+    {
+      "a": "srrm2",
+      "b": "activator",
+      "strength": 2.0,
+      "on_rate": 1.0,
+      "off_rate": 0.5,
+      "radius": 1.1
+    },
+    {
+      "a": "activator",
+      "b": "p300",
+      "strength": 2.0,
+      "on_rate": 1.2,
+      "off_rate": 0.4,
+      "radius": 1.1
+    },
+    {
+      "a": "activator",
+      "b": "remodeler",
+      "strength": 2,
+      "on_rate": 1.2,
+      "off_rate": 0.4,
+      "radius": 1.1
+    }
+  ],
+  "bodies": [
+    {
+      "id": "speckle",
+      "name": "Nuclear speckle",
+      "kind": "speckle",
+      "color": "#4caaa3",
+      "center": [
+        -6.0,
+        3.0,
+        0.0
+      ],
+      "radius": 4.0,
+      "strength": 1.0,
+      "chromatin_affinity": 0.3,
+      "protein_affinity": {
+        "srrm2": 4.0,
+        "activator": 2.0,
+        "p300": 1.0
+      },
+      "enabled": true
+    },
+    {
+      "id": "nucleolus",
+      "name": "Nucleolus",
+      "kind": "nucleolus",
+      "color": "#c17b67",
+      "center": [
+        6.0,
+        -3.0,
+        0.0
+      ],
+      "radius": 4.0,
+      "strength": 1.0,
+      "chromatin_affinity": -0.4,
+      "protein_affinity": {
+        "npm1": 4.0,
+        "hp1": 0.5
+      },
+      "enabled": true
+    }
+  ],
+  "cohesin": {
+    "enabled": true,
+    "count": 24,
+    "step_rate": 1.5,
+    "off_rate": 0.08,
+    "spring_k": 2.5
+  },
+  "genes": [
+    {
+      "id": "gene_a",
+      "name": "Gene A",
+      "start": 330,
+      "end": 341,
+      "on_rate": 1.5,
+      "off_rate": 0.2,
+      "initiation_rate": 1.5,
+      "elongation_rate": 20.0,
+      "processing_rate": 0.5,
+      "rna_decay_rate": 0.03,
+      "activator_species": "activator",
+      "required_mark": null,
+      "repressive_mark": "H3K9me3",
+      "speckle_gain": 2.0,
+      "persistence_multiplier": 0.65,
+      "pause_rate": 0.1,
+      "resume_rate": 1.0,
+      "occupied_elongation_multiplier": 0.5,
+      "nucleosome_eviction_rate": 0.3
+    },
+    {
+      "id": "gene_b",
+      "name": "Gene B",
+      "start": 508,
+      "end": 515,
+      "on_rate": 1.5,
+      "off_rate": 0.2,
+      "initiation_rate": 1.5,
+      "elongation_rate": 20.0,
+      "processing_rate": 0.5,
+      "rna_decay_rate": 0.03,
+      "activator_species": "activator",
+      "required_mark": null,
+      "repressive_mark": "H3K9me3",
+      "speckle_gain": 2.0,
+      "persistence_multiplier": 0.65,
+      "pause_rate": 0.1,
+      "resume_rate": 1.0,
+      "occupied_elongation_multiplier": 0.5,
+      "nucleosome_eviction_rate": 0.3
+    },
+    {
+      "id": "gene_c",
+      "name": "Gene C",
+      "start": 1060,
+      "end": 1074,
+      "on_rate": 1.5,
+      "off_rate": 0.2,
+      "initiation_rate": 1.5,
+      "elongation_rate": 20.0,
+      "processing_rate": 0.5,
+      "rna_decay_rate": 0.03,
+      "activator_species": "activator",
+      "required_mark": null,
+      "repressive_mark": "H3K9me3",
+      "speckle_gain": 2.0,
+      "persistence_multiplier": 0.65,
+      "pause_rate": 0.1,
+      "resume_rate": 1.0,
+      "occupied_elongation_multiplier": 0.5,
+      "nucleosome_eviction_rate": 0.3
+    },
+    {
+      "id": "gene_d",
+      "name": "Gene D",
+      "start": 1260,
+      "end": 1269,
+      "on_rate": 1.5,
+      "off_rate": 0.2,
+      "initiation_rate": 1.5,
+      "elongation_rate": 20.0,
+      "processing_rate": 0.5,
+      "rna_decay_rate": 0.03,
+      "activator_species": "activator",
+      "required_mark": null,
+      "repressive_mark": "H3K9me3",
+      "speckle_gain": 2.0,
+      "persistence_multiplier": 0.65,
+      "pause_rate": 0.1,
+      "resume_rate": 1.0,
+      "occupied_elongation_multiplier": 0.5,
+      "nucleosome_eviction_rate": 0.3
+    },
+    {
+      "id": "gene_e",
+      "name": "Gene E",
+      "start": 1760,
+      "end": 1779,
+      "on_rate": 1.5,
+      "off_rate": 0.2,
+      "initiation_rate": 1.5,
+      "elongation_rate": 20.0,
+      "processing_rate": 0.5,
+      "rna_decay_rate": 0.03,
+      "activator_species": "activator",
+      "required_mark": null,
+      "repressive_mark": "H3K9me3",
+      "speckle_gain": 2.0,
+      "persistence_multiplier": 0.65,
+      "pause_rate": 0.1,
+      "resume_rate": 1.0,
+      "occupied_elongation_multiplier": 0.5,
+      "nucleosome_eviction_rate": 0.3
+    },
+    {
+      "id": "gene_f",
+      "name": "Gene F \u00b7 repressed region",
+      "start": 760,
+      "end": 774,
+      "on_rate": 1.5,
+      "off_rate": 0.2,
+      "initiation_rate": 1.5,
+      "elongation_rate": 20.0,
+      "processing_rate": 0.5,
+      "rna_decay_rate": 0.03,
+      "activator_species": "activator",
+      "required_mark": null,
+      "repressive_mark": "H3K9me3",
+      "speckle_gain": 2.0,
+      "persistence_multiplier": 0.65,
+      "pause_rate": 0.1,
+      "resume_rate": 1.0,
+      "occupied_elongation_multiplier": 0.5,
+      "nucleosome_eviction_rate": 0.3
+    }
+  ],
+  "regulatory_regions": [
+    {
+      "id": "gene_a_enhancer",
+      "name": "Gene A enhancer",
+      "color": "#648dc2",
+      "kind": "enhancer",
+      "start": 310,
+      "end": 312,
+      "target_gene": "gene_a",
+      "tf_species": "activator",
+      "coactivator_species": "remodeler",
+      "tf_affinity_multiplier": 3.0,
+      "activation_gain": 0.5,
+      "initiation_gain": 0.25,
+      "coactivator_gain": 1.0,
+      "contact_radius": 1.5,
+      "enabled": true
+    },
+    {
+      "id": "gene_a_promoter",
+      "name": "Gene A promoter",
+      "color": "#d6a34a",
+      "kind": "promoter",
+      "start": 330,
+      "end": 330,
+      "target_gene": "gene_a",
+      "tf_species": "activator",
+      "coactivator_species": "p300",
+      "tf_affinity_multiplier": 3.0,
+      "activation_gain": 0.5,
+      "initiation_gain": 0.25,
+      "coactivator_gain": 1.0,
+      "contact_radius": 1.5,
+      "enabled": true
+    },
+    {
+      "id": "gene_b_enhancer",
+      "name": "Gene B enhancer",
+      "color": "#648dc2",
+      "kind": "enhancer",
+      "start": 488,
+      "end": 490,
+      "target_gene": "gene_b",
+      "tf_species": "activator",
+      "coactivator_species": "remodeler",
+      "tf_affinity_multiplier": 3.0,
+      "activation_gain": 0.5,
+      "initiation_gain": 0.25,
+      "coactivator_gain": 1.0,
+      "contact_radius": 1.5,
+      "enabled": true
+    },
+    {
+      "id": "gene_b_promoter",
+      "name": "Gene B promoter",
+      "color": "#d6a34a",
+      "kind": "promoter",
+      "start": 508,
+      "end": 508,
+      "target_gene": "gene_b",
+      "tf_species": "activator",
+      "coactivator_species": "p300",
+      "tf_affinity_multiplier": 3.0,
+      "activation_gain": 0.5,
+      "initiation_gain": 0.25,
+      "coactivator_gain": 1.0,
+      "contact_radius": 1.5,
+      "enabled": true
+    },
+    {
+      "id": "gene_c_enhancer",
+      "name": "Gene C enhancer",
+      "color": "#648dc2",
+      "kind": "enhancer",
+      "start": 1040,
+      "end": 1042,
+      "target_gene": "gene_c",
+      "tf_species": "activator",
+      "coactivator_species": "remodeler",
+      "tf_affinity_multiplier": 3.0,
+      "activation_gain": 0.5,
+      "initiation_gain": 0.25,
+      "coactivator_gain": 1.0,
+      "contact_radius": 1.5,
+      "enabled": true
+    },
+    {
+      "id": "gene_c_promoter",
+      "name": "Gene C promoter",
+      "color": "#d6a34a",
+      "kind": "promoter",
+      "start": 1060,
+      "end": 1060,
+      "target_gene": "gene_c",
+      "tf_species": "activator",
+      "coactivator_species": "p300",
+      "tf_affinity_multiplier": 3.0,
+      "activation_gain": 0.5,
+      "initiation_gain": 0.25,
+      "coactivator_gain": 1.0,
+      "contact_radius": 1.5,
+      "enabled": true
+    },
+    {
+      "id": "gene_d_enhancer",
+      "name": "Gene D enhancer",
+      "color": "#648dc2",
+      "kind": "enhancer",
+      "start": 1240,
+      "end": 1242,
+      "target_gene": "gene_d",
+      "tf_species": "activator",
+      "coactivator_species": "remodeler",
+      "tf_affinity_multiplier": 3.0,
+      "activation_gain": 0.5,
+      "initiation_gain": 0.25,
+      "coactivator_gain": 1.0,
+      "contact_radius": 1.5,
+      "enabled": true
+    },
+    {
+      "id": "gene_d_promoter",
+      "name": "Gene D promoter",
+      "color": "#d6a34a",
+      "kind": "promoter",
+      "start": 1260,
+      "end": 1260,
+      "target_gene": "gene_d",
+      "tf_species": "activator",
+      "coactivator_species": "p300",
+      "tf_affinity_multiplier": 3.0,
+      "activation_gain": 0.5,
+      "initiation_gain": 0.25,
+      "coactivator_gain": 1.0,
+      "contact_radius": 1.5,
+      "enabled": true
+    },
+    {
+      "id": "gene_e_enhancer",
+      "name": "Gene E enhancer",
+      "color": "#648dc2",
+      "kind": "enhancer",
+      "start": 1740,
+      "end": 1742,
+      "target_gene": "gene_e",
+      "tf_species": "activator",
+      "coactivator_species": "remodeler",
+      "tf_affinity_multiplier": 3.0,
+      "activation_gain": 0.5,
+      "initiation_gain": 0.25,
+      "coactivator_gain": 1.0,
+      "contact_radius": 1.5,
+      "enabled": true
+    },
+    {
+      "id": "gene_e_promoter",
+      "name": "Gene E promoter",
+      "color": "#d6a34a",
+      "kind": "promoter",
+      "start": 1760,
+      "end": 1760,
+      "target_gene": "gene_e",
+      "tf_species": "activator",
+      "coactivator_species": "p300",
+      "tf_affinity_multiplier": 3.0,
+      "activation_gain": 0.5,
+      "initiation_gain": 0.25,
+      "coactivator_gain": 1.0,
+      "contact_radius": 1.5,
+      "enabled": true
+    },
+    {
+      "id": "gene_f_enhancer",
+      "name": "Gene F \u00b7 repressed region enhancer",
+      "color": "#648dc2",
+      "kind": "enhancer",
+      "start": 740,
+      "end": 742,
+      "target_gene": "gene_f",
+      "tf_species": "activator",
+      "coactivator_species": "remodeler",
+      "tf_affinity_multiplier": 3.0,
+      "activation_gain": 0.5,
+      "initiation_gain": 0.25,
+      "coactivator_gain": 1.0,
+      "contact_radius": 1.5,
+      "enabled": true
+    },
+    {
+      "id": "gene_f_promoter",
+      "name": "Gene F \u00b7 repressed region promoter",
+      "color": "#d6a34a",
+      "kind": "promoter",
+      "start": 760,
+      "end": 760,
+      "target_gene": "gene_f",
+      "tf_species": "activator",
+      "coactivator_species": "p300",
+      "tf_affinity_multiplier": 3.0,
+      "activation_gain": 0.5,
+      "initiation_gain": 0.25,
+      "coactivator_gain": 1.0,
+      "contact_radius": 1.5,
+      "enabled": true
+    }
+  ],
+  "transcription": {
+    "enabled": true,
+    "max_transcripts": 2000,
+    "rna_diffusion": 0.3,
+    "mature_rna_diffusion": 0.15
+  }
+}

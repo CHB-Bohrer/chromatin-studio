@@ -1,0 +1,506 @@
+/* Chromatin Studio — a dark, editorial research workbench.
+   Presentation only: species, histone-mark and quantitative data colors remain data. */
+:root {
+  color-scheme: dark;
+  --paper: #090d12;
+  --surface: #192029;
+  --surface-raised: #202933;
+  --surface-inset: #10171f;
+  --ink: #e8edf3;
+  --muted: #a5b2c1;
+  --line: #2c3845;
+  --teal: #84bbee;
+  --teal-dark: #afcfee;
+  --purple: #c0a7e0;
+  --pale-purple: #272436;
+  --pale-teal: #1b2a37;
+  --amber: #d9b47e;
+  --coral: #ed8d82;
+  --shadow: 0 8px 24px #00000012;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+}
+body { background: #080c11; color: var(--ink); }
+#app { position: relative; }
+::selection { background: #35526d; color: #fff; }
+a { color: #a9cef2; text-underline-offset: 3px; }
+button, input, select { -webkit-tap-highlight-color: transparent; }
+button, input, select, summary { touch-action: manipulation; }
+button:focus-visible, input:focus-visible, select:focus-visible,
+canvas:focus-visible, summary:focus-visible, a:focus-visible {
+  outline: 2px solid #a5d0f6; outline-offset: 4px;
+}
+input, select, textarea { accent-color: #84bbee; }
+input::placeholder, textarea::placeholder { color: #8392a5; opacity: 1; }
+button:disabled { opacity: .42; }
+button { color: var(--ink); }
+
+/* Identity and the introduction sit quietly above the scientific workspace. */
+.app-header {
+  min-height: 84px; height: auto; padding: 19px 28px;
+  background: #0d131beF; border-color: #2b3642; gap: 20px;
+}
+.brand { gap: 13px; min-width: 0; }
+.brand-icon { background: #172332; border-color: #35485b; border-radius: 12px; }
+.brand-icon svg { stroke: #97bfe3; }
+.brand h1 { font-family: Georgia, "Times New Roman", serif; font-size: 27px; letter-spacing: -.8px; font-weight: 400; color: #f3f0ec; }
+.brand h1 span { color: #ced7e3; font-weight: 400; }
+.brand p { font-size: 11px; color: #a4b2c3; letter-spacing: .12px; }
+.prototype-tag { color: #c0b4a1; background: #242321; border-color: #484238; font-size: 8px; letter-spacing: .7px; white-space: nowrap; }
+.header-actions { gap: 6px; }
+.quiet-button { font-size: 11px; border-radius: 6px; color: #b8c6d5; padding: 9px 10px; }
+.quiet-button:hover { color: #f5f7fa; background: #26313e; }
+#learn-btn { background: #1b2b3d; color: #bbd9f4; border: 1px solid #38536d; }
+#learn-btn:hover { background: #273c51; }
+.local-badge { color: #98aaba; font-size: 8px; letter-spacing: .8px; padding-left: 12px; }
+.local-badge i, .status-dot { background: #88b99f; }
+.workspace-intro { padding: 30px 28px 27px; border-bottom: 1px solid #2b3642; display: flex; align-items: center; justify-content: space-between; gap: 35px; background: #0e151de8; }
+.intro-copy { min-width: 0; max-width: 750px; }
+.intro-kicker { color: #9eb8cf; letter-spacing: 1.7px; font-size: 9px; text-transform: uppercase; font-weight: 600; margin: 0 0 9px; }
+.intro-title { color: #f1eee8; font: 400 31px/1.15 Georgia, "Times New Roman", serif; letter-spacing: -.6px; margin: 0 0 12px; }
+.intro-caption { color: #b0bdcc; font-size: 12px; line-height: 1.75; margin: 0; max-width: 710px; }
+.intro-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; flex-shrink: 0; }
+.intro-actions button { font-size: 12px; padding: 11px 15px; }
+.intro-steps { display: flex; flex-wrap: wrap; gap: 8px 17px; color: #a1b1c3; font-size: 10px; line-height: 1.6; margin-top: 17px; }
+.intro-steps span { display: flex; align-items: center; gap: 7px; }
+.intro-steps b { font-size: 9px; border: 1px solid #3b4d60; color: #b5cde2; border-radius: 50%; width: 20px; height: 20px; display: inline-grid; place-items: center; font-weight: 500; }
+
+/* Global experiment controls and keyboard-accessible navigation. */
+.run-toolbar { min-height: 74px; height: auto; padding: 14px 28px; background: #17202aeF; border-color: #354252; }
+.scenario-group, .engine-group { gap: 7px; }
+.scenario-group label, .engine-group label { color: #a2b2c3; font-size: 9px; letter-spacing: 1.3px; }
+.scenario-group select, .engine-group select { color: #e0e8f1; font-size: 12px; background: transparent; }
+option { background: #18222e; color: #e8edf3; }
+.toolbar-divider { background: #384658; }
+.draft-status { color: #a8b9c8; font-size: 11px; }
+.draft-status.dirty { color: #e0ba7e; }
+.apply-button { background: #30293c; color: #d6bdeb; border-color: #584666; font-size: 11px; padding: 10px 12px; }
+.apply-button:hover:not(:disabled) { background: #41324e; }
+.icon-button { color: #b8c7d7; background: #1f2b38; border-color: #3b4d60; width: 34px; height: 34px; }
+.secondary-button { background: #233140; color: #cbd9e7; border-color: #41556a; padding: 10px 13px; font-size: 11px; }
+.secondary-button:hover:not(:disabled), .icon-button:hover:not(:disabled) { background: #304357; border-color: #66829e; }
+.run-button { color: #201718; background: #ed8d82; border-color: #f1a096; font-weight: 650; box-shadow: none; padding: 11px 16px; font-size: 11px; }
+.run-button:hover:not(:disabled) { background: #f5a398; border-color: #fac0b7; }
+.run-button.running { background: #2d363c; border-color: #667e8d; color: #e2edf3; }
+.error-banner, .cluster-error, .interaction-calculation-error { color: #f3b3a9; background: #342225; border-color: #75413d; }
+.mobile-workspace-nav { background: #141d27; border-color: #344254; }
+.mobile-workspace-nav button { color: #b4c5d5; background: transparent; border-color: transparent; }
+.mobile-workspace-nav button.active { color: #dceaf5; background: #263c51; border-color: #4a6a88; }
+
+/* Panels retain a visible hierarchy without washing out the nucleus. */
+.workspace { background: #10161dcc; }
+.editor-panel { background: #17202aeF; border-color: var(--line); }
+.insight-panel { background: #151e28ef; border-color: var(--line); }
+.editor-heading, .section-heading { padding-top: 22px; }
+.eyebrow { color: #a8b9ca; font-size: 9px; letter-spacing: 1.5px; }
+.small-muted { color: #a3b3c4; font-size: 10px; }
+.editor-heading .small-muted { font-size: 10px; }
+.editor-nav { gap: 5px; padding-bottom: 17px; border-color: #33404f; }
+.editor-nav button { color: #b2c0d0; font-size: 10px; padding: 10px 2px; border-radius: 7px; }
+.editor-nav button span { color: #98abc0; font-size: 18px; }
+.editor-nav button:hover { background: #253241; color: #e5edf5; }
+.editor-nav button.active { color: #d6e9f9; background: #263b4e; border-color: #4a6c8b; box-shadow: none; }
+.editor-nav button.active span { color: #a7cff3; }
+.editor-content { scrollbar-color: #506071 transparent; padding-top: 22px; }
+.editor-content h2 { color: #e8edf3; font-size: 20px; font-weight: 500; letter-spacing: -.4px; }
+.editor-description { color: #aab8c8; font-size: 11px; line-height: 1.8; }
+.editor-description strong { color: #d1dce8; font-weight: 550; }
+.editor-subheading h3, .cluster-subheading { color: #cfdae6; font-size: 12px; }
+.editor-subheading span { color: #a3b2c3; font-size: 10px; }
+.editor-footer, .insight-footer { background: #131c25; border-color: #303e4d; color: #a1b2c4; font-size: 10px; }
+.editor-footer strong { color: #9baec2; font-size: 9px; }
+.editor-footer .status-dot { background: #84af9a; }
+.insight-footer i { background: #8bb69f; }
+
+/* Form fields: consistent contrast and a generous, recognizable input surface. */
+.form-grid { gap: 14px 11px; }
+.form-field > span { color: #b9c6d5; font-size: 11px; line-height: 1.5; }
+.form-field input, .form-field select, .affinity-grid input,
+.genome-gene-jump select, .genome-coordinates input,
+.interaction-controls select, .interaction-pair-picker select,
+.interaction-assembly-picker select, .interaction-kinetics-form input,
+.interaction-kinetics-form select, .interaction-species-key input,
+.regulation-toolbar select, .regulation-preferences select,
+.transcript-controls input, .transcript-controls select {
+  background: #0f1822; color: #e0e9f2; border-color: #405064;
+  font-size: 12px; border-radius: 5px;
+}
+.form-field input, .form-field select { min-height: 36px; height: 36px; padding: 8px 9px; }
+.form-field input:hover, .form-field select:hover,
+.affinity-grid input:hover { border-color: #7591af; }
+.form-field small { font-size: 10px; color: #9cacbd; line-height: 1.65; }
+.form-field input[type=checkbox] { width: 16px; height: 16px; min-height: 0; accent-color: #8abded; }
+.form-field input[type=color] { padding: 4px; }
+.field-checkbox { background: #202e3b; padding: 12px; border-radius: 6px; }
+.field-checkbox > span { color: #c2cfdd; }
+.entity-card, .backend-card { background: #1c2733; border-color: #39485a; border-radius: 8px; }
+.entity-card > summary { padding: 13px 11px; font-size: 12px; }
+.entity-card > summary:before { color: #9eafc2; }
+.entity-name { color: #dfE8f1; font-weight: 500; }
+.entity-meta { color: #9eb1c4; font-size: 9px; }
+.entity-body { border-color: #354456; }
+.remove-button { color: #a9b8c9; }
+.remove-button:hover { color: #ffb2a9; }
+.add-button { color: #bad1e6; border-color: #526e87; font-size: 11px; }
+.add-button:hover { background: #263a4d; border-color: #8eb3d3; }
+.affinity-grid, .affinity-label, .interaction-matrix th { color: #b3c2d2; font-size: 10px; }
+.interaction-matrix input { background: #142431; border-color: #3b5266; color: #c5d9e9; }
+.interaction-matrix input.has-interaction { background: #29485a; border-color: #648ca8; color: #e2eff9; }
+.interaction-matrix input.mirrored { opacity: .65; }
+.info-note, .cluster-limitation { color: #b8ccdf; background: #1b2c3b; border-color: #3d5368; font-size: 11px; line-height: 1.75; }
+.info-note.purple { color: #d2bce7; background: #292638; border-color: #4c425f; }
+.preset-description, .model-list, .backend-card p, .range-title, .mini-body-title { color: #aebdcd; font-size: 11px; line-height: 1.75; }
+.preset-description { background: #1e2b38; border-color: #354b5e; }
+.backend-card strong { color: #d9e5f0; font-size: 12px; }
+.backend-status { background: #233a33; color: #b4dac8; font-size: 9px; }
+.backend-status.unavailable { background: #3b3226; color: #e5c68e; }
+.draft-genomic-scale { background: #1f2c3a; border-color: #3b4f63; color: #cde0f1; padding: 12px; }
+.draft-genomic-scale > span, .draft-genomic-scale > small { color: #adc0d2; font-size: 9px; line-height: 1.6; }
+.draft-genomic-scale > strong { color: #deEbf6; font-size: 17px; }
+.draft-genomic-scale.dirty { background: #302b23; border-color: #5c4e38; }
+.draft-genomic-scale.dirty > span, .draft-genomic-scale.dirty > strong { color: #e4c395; }
+.genome-resolution-summary, .gene-genomic-summary, .cohesin-speed-summary { background: #1c2c39; color: #c0d7ea; border-color: #3a5266; }
+.genome-resolution-summary small { color: #a5bed2; }
+.over-limit { color: #f2afa1 !important; }
+
+/* The live view and observations. Scientific colors are kept on the marks. */
+.simulation-panel { padding: 25px 24px 28px; background: #10161dd9; }
+.scene-heading { margin-bottom: 22px; }
+.scene-heading h2 { font: 400 27px/1.22 Georgia, "Times New Roman", serif; letter-spacing: -.5px; color: #eeeae4; }
+.applied-genomic-scale { font-size: 11px; color: #a9bacb; }
+.engine-badge { color: #9bb0c5; font-size: 8px; letter-spacing: .8px; }
+.run-status { color: #b1bece; font-size: 11px; }
+.run-status i { background: #8a9aaf; }
+.run-status.running { color: #a9d9c7; }
+.run-status.running i { background: #95ccb8; box-shadow: 0 0 0 3px #95ccb815; }
+.scene-view-switch { background: #131e2a; border-color: #394b5e; padding: 4px; gap: 4px; border-radius: 7px; }
+.scene-view-switch button { color: #aabbcf; font-size: 11px; padding: 9px 11px; border-radius: 5px; }
+.scene-view-switch button:hover { color: #e8f0f8; background: #263546; }
+.scene-view-switch button.active { color: #def0ff; background: #2b4359; border-color: #567a9b; box-shadow: none; }
+.scene-viewbar > span { color: #a5b7ca; font-size: 9px; }
+.metric-strip { background: #1a242fee; border-color: #344354; box-shadow: none; padding: 16px 0; }
+.metric { border-color: #344253; padding: 0 13px; }
+.metric > span { color: #b7c3d2; font-size: 10px; margin-bottom: 10px; }
+.metric strong { color: #eef3f8; font-size: 25px; font-weight: 450; }
+.metric small { color: #a0b0c2; font-size: 9px; }
+.scene-container { background: #080e16; border-color: #3b4b5e; box-shadow: none; }
+.scene-chip { background: #111c2bed; border-color: #3b4e64; color: #bdcfdf; font-size: 8px; }
+.selection-chip { color: #c5e2fa; background: #1d354aeF; }
+.small-dot { background: #8caccc; }
+.scene-tools button { background: #162535ef; border-color: #4a6077; color: #c2d6e8; width: 31px; height: 31px; }
+.scene-tools button:hover { color: #fff; background: #324b64; }
+.scene-bottom { background: linear-gradient(transparent, #101a28f0); padding-bottom: 13px; }
+.camera-hint, .view-toggles { color: #b1c3d6; font-size: 9px; }
+.camera-hint span { color: #7d94ad; }
+.view-toggles input { width: 12px; height: 12px; accent-color: #84bbee; }
+.legend-item { color: #c0cedc; background: #111d2bdd; font-size: 9px; padding: 4px 5px; }
+.scene-empty { color: #a7bbcf; }
+.empty-glyph { color: #4a6784; }
+.measurement-subtitle, .chart-title > span { color: #a8b8cb; font-size: 10px; }
+.chart-card { background: #19232e; border-color: #354456; padding: 14px 12px 12px; box-shadow: none; }
+.chart-title h3 { color: #ccdae7; font-size: 11px; }
+.chart-key { color: #a8b9cb; font-size: 9px; line-height: 1.5; }
+.runtime-warnings { color: #d6b780; font-size: 11px; }
+
+/* Inspector, activity, and event history. */
+.inspector-icon { background: #233243; border-color: #41556b; color: #a5c3df; }
+.inspector-content h3, .gene-name-row, .event-topline strong { color: #cfdeec; font-size: 12px; }
+.inspector-content p, .inspector-note, .empty-events { color: #adbdce; font-size: 11px; line-height: 1.8; }
+.inspector-note { border-color: #354353; font-size: 10px !important; }
+.inspector-property { border-color: #2d3c4c; font-size: 11px; padding: 8px 0; }
+.inspector-property span { color: #acbdcf; }
+.inspector-property strong { color: #dbe7f2; font-size: 11px; }
+.inspector-coords { color: #b6cce0; background: #1e2e3f; font-size: 10px; }
+.mark-tag { color: #d2baec; background: #322b43; font-size: 9px; }
+.text-button { color: #a7c6e3; font-size: 10px; }
+.count-tag { color: #b9cbde; background: #253647; font-size: 9px; }
+.gene-name-row button { font-size: 11px; }
+.gene-state { color: #b6c3d1; border-color: #4b5d70; font-size: 8px; }
+.gene-state.on { color: #bce9d6; background: #254137; border-color: #557d69; }
+.gene-numbers { color: #9fb3c8; font-size: 9px; }
+.gene-numbers strong { color: #d2e1ed; font-size: 12px; }
+.event-list { scrollbar-color: #516276 transparent; }
+.event-item { border-color: #2e3d4e; }
+.event-symbol { color: #d0bce9; background: #302a40; }
+.event-symbol.binding { color: #a7cfeb; background: #263e52; }
+.event-symbol.transcription { color: #a9d8c8; background: #243f37; }
+.event-symbol.cohesin { color: #dfc194; background: #3b3326; }
+.event-topline strong { font-size: 10px; }
+.event-topline time { color: #9bacbf; font-size: 9px; }
+.event-content p { color: #a6b7ca; font-size: 10px; line-height: 1.65; }
+.toast { background: #263e52; border: 1px solid #6e8dab; color: #eff6fc; box-shadow: 0 12px 32px #0007; line-height: 1.6; }
+.loading-note { color: #a7b9ca; }
+
+/* One-dimensional chromatin browser. */
+.genome-container, .interactions-container, .regulation-container { background: #18222d; border-color: #3a4a5c; }
+.genome-heading p, .genome-gene-jump, .genome-coordinates label,
+.genome-track-options summary span, .genome-options-actions label,
+.genome-species-list label, .genome-scale-legend, .genome-pan,
+.genome-help, .genome-selection > p, .genome-inspector-caption { color: #acbed0; font-size: 10px; }
+.genome-navigation button, .genome-coordinates button, .genome-options-actions button { color: #c2d9eb; background: #26394a; border-color: #47617b; }
+.genome-navigation button:hover, .genome-coordinates button:hover, .genome-options-actions button:hover { background: #36516b; }
+.genome-applied-note, .interaction-applied-note, .regulation-applied-note { color: #b4ccdf; background: #1b2d3c; border-color: #385064; font-size: 10px; line-height: 1.7; }
+.genome-applied-note.has-draft { background: #352e23; color: #ddc18e; border-color: #5b4f36; }
+.genome-track-options { background: #16212c; border-color: #354659; }
+.genome-track-options summary { color: #c5d7e8; font-size: 11px; }
+.genome-scale-legend { border-color: #344658; }
+.genome-scale-legend b { background: #2a3b4c; color: #c7dbeb; }
+.genome-canvas-scroll { background: #101b26; scrollbar-color: #4b6177 transparent; }
+.genome-pan, .genome-help { background: #152330; border-color: #344a5f; }
+.genome-pan input { accent-color: #93bfe5; }
+.genome-selection { background: #1a2734; border-color: #3a4e63; }
+.genome-selection > .eyebrow, .genome-inspector-caption span { color: #a5bbd0; }
+.genome-inspector-table { color: #c1d4e5; }
+.genome-inspector-table th, .genome-inspector-table td { border-color: #364a5e; font-size: 10px; }
+.genome-inspector-table thead th { color: #a8bfd4; font-size: 9px; }
+.genome-inspector-note { color: #a4bad0 !important; font-size: 10px !important; }
+.genome-missing { color: #dfbd88 !important; }
+.genome-mechanics-summary { background: #1d2c3a; border-color: #3d5368; }
+.genome-mechanics-summary > span { color: #aabed1; font-size: 10px; }
+.genome-mechanics-summary strong { color: #d0e0ed; font-size: 12px; }
+
+/* Interactions: affinities, bound contexts and the kinetics calculator. */
+.interaction-heading h3, .regulation-heading h3 { color: #e9edf2; font-size: 23px; font-weight: 450; }
+.interaction-heading p, .regulation-heading p { color: #afbed0; font-size: 12px; line-height: 1.75; }
+.interaction-summary span, .interaction-controls label, .interaction-pair-picker label,
+.interaction-assembly-picker, .interaction-kinetics-form label, .interaction-legend,
+.interaction-context-card small, .interaction-context-card > span, .interaction-definition,
+.interaction-rule-values span, .interaction-empty, .interaction-section-title span,
+.interaction-assembly-stats, .interaction-physical > p, .interaction-physical-results span,
+.interaction-physical-results small, .interaction-limitations, .interaction-species-key > label,
+.interaction-species-key > p, .interaction-key-empty { color: #acbfd1; font-size: 11px; }
+.interaction-summary strong { color: #b6d7f2; font-size: 24px; }
+.interaction-pair-picker, .interaction-pair-title, .interaction-context-grid,
+.interaction-physical, .interaction-species-key { background: #151f2a; }
+.interaction-pair-title, .interaction-context-card h4, .interaction-definition strong,
+.interaction-rule-values strong, .interaction-section-title h4,
+.interaction-species-key-list button > strong { color: #d2e0ed; }
+.interaction-context-card, .interaction-physical-results > div { background: #202e3c; border-color: #3d5368; }
+.interaction-context-card h4 { font-size: 11px; }
+.interaction-context-card > strong { color: #b6d8f2; }
+.interaction-legend i { border-top-color: #94bfe7; }
+.interaction-legend .rule-line { border-top-color: #738da5; }
+.interaction-assembly-stats strong, .interaction-physical-results strong { color: #a8cfee; }
+.interaction-physical > p.interaction-physical-note, .interaction-physical-note { color: #c6afdf; font-size: 11px; }
+.interaction-kinetics-form button { background: #2a4054; border-color: #5a7994; color: #d4e8f8; }
+.interaction-limitations summary { color: #bed1e2; }
+.interaction-species-key { border-color: #3b5064; }
+.interaction-species-key-list button { background: #22303e; border-color: #41556b; }
+.interaction-species-key-list button:hover, .interaction-species-key-list button[aria-pressed=true] { background: #2e4b62; border-color: #7da9cc; }
+.interaction-species-key-list button > strong { font-size: 11px; }
+.interaction-network-node:hover circle { stroke: #efc28e; }
+.interaction-network-edge:focus-visible path:last-of-type,
+.interaction-network-node:focus-visible circle { stroke: #e9f5ff; }
+
+/* Regulatory circuits and explicit RNA, including their inactive states. */
+.regulation-toolbar label, .regulation-circuit-title > span, .regulation-node h4,
+.regulation-node-unit, .regulation-node p, .regulation-caption,
+.regulation-rate-grid span, .regulation-rate-grid small, .regulation-section-heading span,
+.regulation-element-list small, .regulation-element-detail > div > span,
+.regulation-element-detail dt, .regulation-element-detail p,
+.regulation-preferences > p, .regulation-preferences > label, .regulation-empty,
+.transcript-disabled, .transcript-summary span, .transcript-controls label,
+.transcript-pagination > span, .transcript-capacity { color: #aebfd1; font-size: 11px; }
+.regulation-circuit-title h4, .regulation-section-heading h4, .regulation-element-list strong,
+.regulation-element-detail h4, .regulation-element-detail dd,
+.regulation-preferences > summary { color: #d6e4f0; }
+.regulation-node { background: #202c39; border-color: #415166; }
+.regulation-node.active { background: #233c46; border-color: #5b8190; }
+.regulation-node-symbol { color: #adc4d7; background: #324458; }
+.regulation-node.active .regulation-node-symbol { color: #cae8f9; background: #365b6c; }
+.regulation-node > strong { color: #b2d6ef; }
+.regulation-node h4 { font-size: 11px; }
+.regulation-node p, .regulation-node-unit { font-size: 10px; }
+.regulation-arrow { color: #88a5be; }
+.regulation-rate-grid > div, .regulation-mark-chips > span { background: #202e3d; border-color: #40566e; }
+.regulation-rate-grid strong, .regulation-mark-chips strong { color: #d3e3ef; }
+.regulation-element-list > button { background: #1c2b39; border-color: #3e5369; }
+.regulation-element-list > button:hover { border-color: #7494af; }
+.regulation-element-list > button[aria-pressed=true] { background: #2c455b; border-color: #78a0c1; }
+.regulation-element-list em { color: #b4c2d1; background: #314153; }
+.regulation-element-list em.active { color: #bfe1d7; background: #28493f; }
+.regulation-element-detail { background: #1b2937; border-color: #415870; }
+.regulation-mark-chips { border-color: #40536b; }
+.regulation-mark-chips > span { color: #b5c7d8; }
+.regulation-table { color: #becfdf; font-size: 11px; }
+.regulation-table th, .regulation-table td { border-color: #334a61; }
+.regulation-table thead th { color: #acbfd2; background: #213346; font-size: 10px; }
+.regulation-table .preference-positive { color: #b2dcee; background: #263e4e; }
+.regulation-inherited { color: #a2b5c8; font-size: 10px; }
+.regulation-resolution { background: #282538; border-color: #4d4362; }
+.regulation-resolution strong { color: #d3bee8; font-size: 11px; }
+.regulation-resolution span { color: #bcafd0; font-size: 10px; }
+.regulation-transcripts { background: #18212e; }
+.regulation-transcripts > .regulation-section-heading > span { color: #c4a8df; font-size: 9px; }
+.transcript-summary strong { color: #c8ace9; }
+.transcript-axis > p { color: #c1afd5; font-size: 10px; }
+.transcript-axis [data-transcript-id]:focus-visible path { stroke: #edf5ff; }
+.transcript-table-wrap { background: #182636; border-color: #3c5168; }
+.transcript-table th, .transcript-table td { font-size: 11px; }
+.transcript-table tbody th button { color: #d2b9ec; text-decoration-color: #83709e; }
+.transcript-table tbody th small { color: #9eB2c9; font-size: 9px; }
+.transcript-table .selected { background: #34304a; }
+.transcript-table thead th { background: #263449; }
+.transcript-detail { background: #272536; border-color: #5b4b70; }
+.transcript-detail-heading h4, .transcript-length > strong { color: #d5bceb; }
+.transcript-detail-heading h4 > span, .transcript-length > span,
+.transcript-length small, .transcript-detail dt { color: #c0adcf; }
+.transcript-detail-heading .count-tag { color: #d1b6e8; background: #41314f; }
+.transcript-detail dd { color: #d2c0e2; }
+.transcript-length-track { background: #453651; }
+.transcript-length-track > i { background: #b898d6; }
+.transcript-capacity strong { color: #c8d7e5; }
+.transcript-capacity.capacity-limited { background: #352d21; border-color: #78613c; }
+.capacity-impact { color: #efd09c; }
+
+/* Export a reproducible experiment, with a clear boundary to cluster execution. */
+.cluster-page-heading h2 { color: #eeeae4; font: 400 30px/1.2 Georgia, "Times New Roman", serif; }
+.cluster-limitation strong { color: #d1e5f4; }
+.cluster-draft-note { background: #302b24; border-color: #5c4e3b; color: #d8c29e; }
+.cluster-draft-note strong { color: #edd3a9; }
+.cluster-small, .cluster-status, .cluster-output-intro { color: #acbfd1; font-size: 11px; line-height: 1.75; }
+.cluster-replica-diagram { color: #b4c8da; font-size: 11px; }
+.cluster-replica-diagram > span { background: #23384b; border-color: #506c86; }
+.cluster-replica-diagram > div > span { background: #1e3141; border-color: #749cbd; }
+.cluster-scheduler { border-color: #3e5064; }
+.cluster-scheduler summary, .cluster-preview summary { color: #c2d6e8; font-size: 12px; }
+.cluster-preview { border-color: #3c5065; color: #bfd0df; }
+.cluster-preview h3 { color: #dae8f2; }
+.cluster-preview dt { color: #a9bed2; }
+.cluster-preview details { border-color: #3c4f63; }
+.cluster-preview pre { background: #0e1824; color: #bfd6e9; border-color: #3a5067; font-size: 11px; line-height: 1.8; }
+.cluster-warnings ul { color: #dac092; }
+.cluster-configuration, .cluster-output { background: #1b2734; border-color: #3c5166; }
+.cluster-output { background: #172330; }
+.cluster-column-heading { border-color: #3c5064; }
+.cluster-column-heading > span { background: #2c4357; color: #c0e1f9; }
+.cluster-column-heading h3 { color: #d6e7f4; }
+.cluster-preview-placeholder { color: #a9bfd3; border-color: #4e6881; background: #182738; }
+.cluster-preview-placeholder > span { color: #93b6d3; }
+.cluster-preview-placeholder h4 { color: #c9dfef; }
+.cluster-workspace-grid .form-field > span { font-size: 12px; }
+.cluster-workspace-grid .form-field input, .cluster-workspace-grid .form-field select { min-height: 39px; }
+body.cluster-workspace .editor-content { background: #101a25; border-color: #34485c; }
+body.learn-workspace .editor-content { background: #101a25; border-color: #34485c; }
+
+/* Non-data SVG presentation colors. Do not recolor molecular identities. */
+.interaction-network text, .interaction-assembly-network text { fill: #c2d3e3; }
+.interaction-network text[fill="#fff"], .interaction-network text[fill="white"],
+.interaction-assembly-network text[fill="#fff"], .interaction-assembly-network text[fill="white"] { fill: #fff; }
+.interaction-context-card svg text { fill: #bdcede; }
+.interaction-context-card svg [fill="#fff"], .interaction-context-card svg [fill="white"] { fill: #243a4d; }
+.interaction-network rect[fill="#fff"], .interaction-assembly-network rect[fill="#fff"],
+.interaction-network rect[fill="white"], .interaction-assembly-network rect[fill="white"] { fill: #233648; }
+.transcript-axis text { fill: #afc2d5; }
+
+/* Fit the workbench to the available space without shrinking scientific labels. */
+@media (min-width: 1600px) {
+  .app-header, .run-toolbar { padding-left: 34px; padding-right: 34px; }
+  .workspace-intro { padding-left: 34px; padding-right: 34px; }
+}
+@media (max-width: 1220px) and (min-width: 701px) {
+  .app-header { padding: 17px 22px; }
+  .brand h1 { font-size: 25px; }
+  .header-actions { gap: 3px; }
+  .quiet-button { padding: 9px 7px; }
+  .local-badge { display: none; }
+  .run-toolbar { padding-left: 22px; padding-right: 22px; gap: 9px; }
+  .workspace-intro { padding: 26px 22px; gap: 24px; }
+  .intro-title { font-size: 28px; }
+  .metric > span { font-size: 9px; }
+}
+@media (max-width: 930px) and (min-width: 701px) {
+  .prototype-tag { display: none; }
+  .brand h1 { font-size: 23px; }
+  .brand p { font-size: 10px; }
+  .brand-icon { width: 33px; height: 39px; }
+  .app-header { gap: 12px; }
+  .quiet-button { font-size: 10px; padding: 8px 6px; }
+  .workspace-intro { align-items: flex-start; }
+  .intro-actions { max-width: 165px; flex-shrink: 1; }
+  .intro-title { font-size: 27px; }
+  .intro-caption { font-size: 11px; }
+}
+@media (max-width: 700px) {
+  .app-header { padding: 18px 15px 12px; gap: 15px; }
+  .brand h1 { font-size: 25px; }
+  .brand p { font-size: 10px; }
+  .brand-icon { width: 36px; height: 39px; }
+  .header-actions { gap: 7px; }
+  .quiet-button { font-size: 10px; padding: 8px 7px; }
+  #learn-btn { padding: 8px; }
+  .workspace-intro { padding: 23px 16px; display: block; }
+  .intro-title { font-size: 29px; }
+  .intro-caption { font-size: 12px; line-height: 1.75; }
+  .intro-kicker { font-size: 9px; }
+  .intro-actions { align-items: flex-start; margin-top: 18px; }
+  .intro-steps { gap: 7px 12px; font-size: 10px; }
+  .run-toolbar { padding: 14px 14px; gap: 10px; }
+  .scenario-group label, .engine-group label { font-size: 9px; }
+  .scenario-group select, .engine-group select { font-size: 12px; }
+  .run-button, .secondary-button, .apply-button { font-size: 11px; }
+  .mobile-workspace-nav { padding: 7px 12px; }
+  .mobile-workspace-nav button { font-size: 11px; }
+  .simulation-panel { padding: 23px 13px; }
+  .scene-heading h2 { font-size: 26px; }
+  .applied-genomic-scale { font-size: 10px; }
+  .scene-view-switch button { font-size: 10px; padding: 10px 3px; }
+  .metric > span { font-size: 9px; }
+  .metric strong { font-size: 24px; }
+  .metric small { font-size: 9px; }
+  .scene-chip { font-size: 7px; }
+  .view-toggles, .legend-item { font-size: 9px; }
+  .camera-hint { font-size: 8px; }
+  .editor-nav button { font-size: 11px; }
+  .editor-content { padding: 22px 16px; }
+  .editor-content h2 { font-size: 22px; }
+  .editor-description { font-size: 12px; }
+  .form-field > span { font-size: 12px; }
+  .form-field input, .form-field select { font-size: 12px; min-height: 39px; }
+  .form-field small { font-size: 11px; }
+  .entity-card > summary { font-size: 12px; }
+  .cluster-page-heading h2 { font-size: 28px !important; }
+  .cluster-workspace-grid .form-field > span { font-size: 12px; }
+  .cluster-context-grid .cluster-limitation, .cluster-context-grid .cluster-draft-note { font-size: 11px; }
+  .regulation-node h4 { font-size: 11px; }
+  .regulation-node p, .regulation-node-unit { font-size: 10px; }
+  .regulation-element-detail dl { font-size: 10px; }
+  .transcript-table th, .transcript-table td { font-size: 10px; }
+  .chart-title h3 { font-size: 12px; }
+  .chart-key { font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+}
+/* The welcome strip is a compact orientation aid, not a second landing page. */
+.workspace-intro { padding-top: 18px; padding-bottom: 18px; gap: 25px; }
+.intro-copy { max-width: 660px; }
+.intro-kicker { margin-bottom: 6px; font-size: 8px; }
+.intro-title { font-size: 27px; margin-bottom: 7px; }
+.intro-caption { font-size: 11px; line-height: 1.6; }
+.intro-steps { margin: 0; gap: 8px; flex-wrap: nowrap; }
+.intro-steps button { display: flex; align-items: center; gap: 7px; text-align: left; color: #d4e4f1; border: 1px solid #40576e; background: #1b2a39; border-radius: 6px; padding: 9px 10px; font-size: 10px; white-space: nowrap; }
+.intro-steps button:hover { color: #f4f8fc; background: #2a4054; border-color: #7092b0; }
+.intro-actions { gap: 8px; }
+body.learn-workspace .workspace-intro, body.cluster-workspace .workspace-intro { display: none; }
+.cluster-page-heading h2 { font-size: 30px !important; }
+@media (max-width: 1100px) and (min-width: 701px) {
+  .intro-title { font-size: 25px; }
+  .intro-caption { max-width: 530px; }
+  .intro-steps { flex-wrap: wrap; justify-content: flex-end; }
+  .intro-steps button { font-size: 9px; padding: 8px; }
+}
+@media (max-width: 700px) {
+  .workspace-intro { padding: 19px 16px; }
+  .intro-title { font-size: 26px; }
+  .intro-caption { font-size: 11px; }
+  .intro-actions { margin-top: 14px; }
+  .intro-steps { flex-wrap: wrap; gap: 7px; }
+  .intro-steps button { font-size: 10px; padding: 8px; }
+  .cluster-page-heading h2 { font-size: 28px !important; }
+}
+.resolution-planner { background: #282538; border-color: #514465; color: #c9b6de; }
+.resolution-planner summary, .resolution-planner > div { font-size: 11px; line-height: 1.75; }
+.resolution-planner strong { color: #ddc7f0; }
+.resolution-planner small { color: #b9aacc; font-size: 10px; }

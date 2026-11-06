@@ -1,0 +1,74 @@
+# Implementation contract (application v0.10; configuration v0.1)
+
+The model extensions for regulatory regions, chromatin attraction, nucleosome occupancy and individual transcription are documented in README.md and enforced by schema.py. Existing configurations remain valid with these optional mechanisms disabled.
+
+## Cluster job API (v0.7)
+
+POST `/api/cluster/plan` accepts `{config, job}` and returns normalized job settings, model size/duration, replica indices/seeds, warnings, output counts and Slurm/shell script previews. POST `/api/cluster/export` accepts the same body and downloads an application/zip bundle. Both validate the supplied draft without touching the live Workspace or requiring local GPU support. This is fresh-start export only, with no remote connection or job submission.
+
+Job fields: `platform` (`CUDA`, `OpenCL`, `CPU`, `Reference`, `numpy`), `precision`, optional `device_index`, `replicas`, `steps`, `sample_every`, `snapshot_every` (zero disables), `cpus`, `memory_gb`, `walltime`, `job_name`, optional `partition` and `account`. Defaults and strict ranges live in cluster.py. Unknown fields fail. Slurm requests one GPU for CUDA/OpenCL per independent replica; source model limits are unchanged.
+
+`python -m chromatin_studio.batch --model model.json --job job.json --replica N --output DIR [--preflight]` verifies an exported bundle's hashes and starts the requested backend without fallback. Outputs stream to disk and include actual backend metadata. `python -m chromatin_studio.validation --platform PLATFORM --precision mixed --output FILE [--device-index N]` writes quantitative analytical acceptance results and exits nonzero on failure, including unavailable requested devices. OpenCL registration/initialization alone is not proof of GPU device type. CUDA/OpenCL integration retains CPU force, reaction and RNA calculations.
+
+Local research prototype. Python standard-library HTTP server, NumPy reference Brownian engine, optional OpenMM/polychrom engine, framework-free browser UI. All preview units reduced: kBT=1, nominal length = chromatin bond length; no physical time calibration or sequence-level IDR force field claimed.
+
+## Config
+
+`version`, `name`, `seed`; `simulation`: `dt`, `steps_per_frame`, `confinement_radius`, optional `confinement_stiffness` (default 30, range 0–200; zero disables soft-wall forces).
+
+`chromatin`: `beads`, `bp_per_bead`, `bond_length`, `bond_k`, `diffusion`, `persistence_length`, `repulsion`, `initial_marks` (list of `{start,end,mark}` inclusive indices), `barriers` (list of `{bead,direction}` where direction is `left`, `right`, or `both`). Optional `nucleosomes` supplies `enabled`, `initial_occupancy`, `initial_regions:[{start,end,occupied}]` (inclusive, later intervals override earlier ones), `eviction_rate`, `reassembly_rate`, `occupied_persistence_multiplier` and `vacant_persistence_multiplier`. These are states on fixed genomic beads; eviction does not remove DNA. Vacant intervals are initial conditions and can refill during the run.
+
+`marks`: list of `{id,name,color,decay_rate,spread_rate,contact_radius}`. Marks are independent binary flags; mutual exclusivity is not implicit. Contact spread is an explicitly phenomenological optional rule; writers require protein occupancy.
+
+`proteins`: list of `{id,name,color,count,diffusion,radius,valence,representation,idr_beads,sticker_fraction,chromatin_affinity,on_rate,off_rate,writer_mark,eraser_mark,catalytic_rate}`. `representation` is `bead` or `idr`; IDR is an explicit coarse domain-bead chain (not residue-level CALVADOS). `chromatin_affinity` maps `unmodified` and mark IDs to dimensionless encounter-rate multipliers. For multi-mark beads take max applicable affinity (documented rule). `valence` limits total intermolecular + chromatin links per molecule; IDR `sticker_fraction` defines accessible association sites.
+
+Optional protein `nucleosome_affinity:{occupied:1,vacant:1}` multiplies association hazards, and `nucleosome_off_rate_multiplier:{occupied:1,vacant:1}` independently multiplies chromatin bond dissociation using the anchor's current occupancy. Factors lie in 0–20; omitted entries default to 1. Disabling occupancy neutralizes both. Release factors affect protein–chromatin bonds only, not protein–protein off-rates. Association remains conditional on distance, free valence and sticker eligibility; the reported per-encounter hazard is not a molar association constant.
+
+Optional protein `nucleosome_eviction_rate`, `nucleosome_reassembly_rate` and `nucleosome_sliding_rate` default to 0 and lie in 0–20 per reduced time. Activities are anchored by direct chromatin binding or actual configured TF recruitment, deduplicated per molecule and anchor. A sliding hazard is shared uniformly across valid moves of an occupied anchor or neighboring site into an adjacent vacant site. Sliding carries mark flags, clears the source and conserves occupancy count; it does not move DNA, genes or existing protein bonds. Eviction clears marks and reassembly starts unmarked. No ATP, histone identities, wrapped DNA or resolved remodeling motor are implied.
+
+`interactions`: list of `{a,b,strength,on_rate,off_rate,radius}` for protein species IDs. Reversible finite-valence intermolecular links, with attractive spring/well controlled by `strength`; no promise of calibrated coexistence.
+
+`bodies`: list of `{id,name,kind,color,center:[x,y,z],radius,strength,chromatin_affinity,protein_affinity:{speciesId:number},enabled}`. `kind` = `speckle` or `nucleolus`. These are FIXED spatial affinity fields, not emergent condensates or nucleolar rRNA processing. Explicit proteins assemble independently; UI must clearly label fields as imposed landmarks. Nucleolus and speckle separately configurable.
+
+`cohesin`: `{enabled,count,step_rate,off_rate,spring_k}`; pairs load adjacent, move outward along chain, stall at directional barriers and one another, unload/reload; rates per reduced time.
+
+`genes`: list of `{id,name,start,end,on_rate,off_rate,initiation_rate,elongation_rate,processing_rate,rna_decay_rate,activator_species,required_mark,repressive_mark,speckle_gain,persistence_multiplier}`. Gene endpoints inclusive. Two-state promoter, independent polymerases moving along contour in beads/time; processed/unprocessed counts; locus-bound activator gates enhance ON rate; marks modulate ON rate. `speckle_gain` enhances processing only. Optional `body_responses:{bodyId:{activation_multiplier,initiation_multiplier}}` supplies independent prescribed rate responses; positive multipliers 0.01–20, 1 neutral, unknown bodies/keys rejected. At the gene-start bead, weight=exp(−0.5(distance/body_radius)²), factor=exp(weight×log(multiplier)); factors multiply across enabled bodies and do not bypass the mark gate. `persistence_multiplier` modifies local polymer bending stiffness while polymerase occupies gene. Set 1 to disable; hypotheses, not fitted biology.
+
+## Python engine API
+
+`from chromatin_studio.engine import Simulation`
+`sim = Simulation(config)`
+`sim.step(steps:int)` advances steps; `sim.snapshot()` returns JSON serializable dict.
+Snapshot fields: `time`, `step`, `chromatin` (Nx3), `proteins` list `{id,species,molecule,position:[x,y,z],sticker:bool}`, `protein_chains` list of particle-index lists, `bonds` list `{a:[x,y,z],b:[x,y,z],kind}`, `marks` dict markID -> binary list, `cohesin` list `[left,right]`, `genes` list `{id,name,on,nascent,unprocessed,mature,initiated,completed}`, `metrics` object `{bound_fraction,largest_cluster,marked_fraction,rg,mean_persistence,protein_count}`, `events` recent list `{time,type,detail}`, `engine` string, `warnings` list.
+
+Expose optional backend by `Simulation(config, backend='numpy')` or subclass adapter after coordination. Do not silently fall back from requested polychrom.
+
+Snapshots additionally include `genome_tracks` (full-coverage half-open RLE affinity and occupancy arrays) and `interaction_state` (species populations, molecules, components, unique molecule links, and per-species-pair link/molecule-pair counts). Interaction context keys `free_free`, `bound_free`, `bound_bound` mean zero/one/two partners with **direct** chromatin bonds. The first category can include indirectly tethered molecules; component-level `free` means no chromatin attachment path through proteins. Component IDs are frame-local minimum molecule IDs, not persistent assembly identities. Shared DNA sites do not create protein–protein edges. These summaries must not consume RNG or mutate dynamics.
+
+## HTTP API
+
+GET `/api/config` returns default config. GET `/api/presets` returns list `{id,name,description}`. GET `/api/presets/<id>` returns config. GET `/api/capabilities` returns `{backends:[{id,available,detail}],limitations:[str]}`. POST `/api/reset` body `{config,backend:'numpy'|'polychrom'}` returns snapshot or 400 `{error,details}`. POST `/api/step` body `{steps:10}` returns snapshot. GET `/api/state` returns snapshot. POST `/api/validate` body config returns `{valid,errors,warnings,particle_count}`. All state edits require apply/reset. GET `/api/export` returns `{config,state,history,metadata}`. GET `/api/download-config` attachment config JSON. POST `/api/config` not needed. Browser calls step sequentially and can pause locally.
+
+POST `/api/kinetics/estimate` accepts `{a,b,length_nm,time_s,target_kd_um,efficiency}` and reads the applied configuration without initializing or advancing a simulation. `a,b` identify an existing species pair rule; `b:'chromatin'` selects an isolated chromatin-bead approximation. Positive physical scales and Kd are required; efficiency defaults to 1 and lies in (0,1]. Responses explicitly distinguish the Smoluchowski pair kernel (`kon_M_inv_s`) from the complex-formation coefficient (`macroscopic_kon_M_inv_s`, half the kernel for identical partners), and return nominal dissociation rates for the requested Kd. Invalid inputs return 400. The estimator never replaces current microscopic association/dissociation hazards or claims that target Kd is realized by the simulation.
+
+Contributor ownership is assigned per active task, not permanently by earlier agent names. Coordinate concurrent edits and API changes explicitly. Start with [AGENTS.md](AGENTS.md) and the [current project status](docs/PROJECT_STATUS.md) when continuing work.
+
+## Manuscript studies and rate diagnostics (v0.9)
+
+GET `/api/studies/catalog` returns engines, conditions, defaults, limits and scope. POST `/api/studies/plan` and `/api/studies/run` accept `{config,options}`. Plans contain copied condition configs and normalized settings. Local runs create isolated fresh simulations; they never replace/advance the live Workspace. Only one local study runs at a time (409 when busy); locks release on failure. GET `/api/studies/benchmarks` returns the saved verification report. Reference and spatial metrics have different meanings, explicitly declared in each result. Invalid or oversized local workloads fail without silent downsampling.
+
+`regulation.genes[].causal_terms` decomposes rates into baseline, regulatory multiplier, environment multiplier, mark gate, elongation, processing and nucleosome state. `body_responses` includes per-body distance, weight and factors. `confinement` reports kind, enabled, radius, stiffness, total energy, and separate mechanical-particle/released-RNA excursion summaries. These are read-only and consume no RNG.
+
+Promoter switching and initiation now use full within-interval stochastic paths, with rates frozen for each reaction interval. Conditional initiations are Poisson over actual ON durations, with explicit within-interval births and partial-step elongation. Coupled mechanics and chemistry remain operator split. This corrects old trajectories and changes seed replay across code versions; older exports are not exact restart checkpoints.
+
+## Live binding, accessibility and remodeling (v0.10)
+
+The `nucleosome_access` preset represents 128 beads × 200 bp = 25.6 kb with illustrative species, initial gaps, capture/release contrasts and remodelers. It is a reduced-unit demonstration, not calibrated biology. The 1D viewer's Live binding mode shows actual direct molecule–chromatin attachments and occupancy states, with aggregation at wide genomic scales. Binding detail uses a narrow bead window; a glyph is an individual coarse nucleosome unit only at an appropriate mapping, never one nucleosome per 10 kb bin. Protein IDs persist within a run; nucleosome occupancy has no persistent histone identity.
+
+The site rate table exposes per-eligible-encounter association and per-existing-bond release hazards. All summaries are read-only and must not consume RNG or mutate dynamics. UI events come from engine records, not invented interpolation or differences between display frames. Turnover records identify interval endpoint changes or mark-reset intervals, not every underlying turnover. The bounded recent-event buffer must disclose dropped records and its timing resolution.
+
+The Studies `no_nucleosome_access` condition neutralizes both capture and release occupancy factors. `no_nucleosome_turnover` disables background, anchored and polymerase eviction/reassembly plus sliding, leaving initial occupancy fixed. These changes apply to independent study copies only.
+
+`genome_tracks.on_rate_runs` and `off_rate_runs` map species IDs to full-coverage `[start_bead,end_bead_exclusive,hazard]` arrays. `genome_tracks.binding_sites` lists direct domain bonds as `{bead,particle,molecule,species,off_rate}`; occupancy/glyph counts deduplicate molecule+bead, while domain-level bond records remain available.
+
+`genomic_events` is `{run_id,capacity:2048,total_emitted,last_id,first_retained_id,dropped,events}`. Each retained record contains `{id,type,time,step,bead,timing,interval_start,interval_end,reason}` plus type-specific fields. Types are `chromatin_bind`, `chromatin_unbind`, `nucleosome_eviction`, `nucleosome_reassembly`, `nucleosome_reset` and `nucleosome_slide`. Binding/release include `particle`, `molecule`, `species` and effective rate fields. Sliding includes `molecule`, `species`, `anchor_bead`, `to_bead` and the molecule-anchor `rate`. Times for association, dissociation and sliding are sampled conditional clocks, labeled respectively `sampled_encounter`, `sampled_dissociation` and `sampled_slide`; turnover records use `interval_endpoint`. A `nucleosome_reset` records an initially occupied site that was evicted and reassembled within the interval. The observer does not draw randomness. IDs order emitted records, not one exact chronological process across operator-split reaction families. `nucleosomes.slides` counts accepted sliding moves separately from turnover endpoint/reset counters.

@@ -1,0 +1,5 @@
+# Test the source checkout; optional simulation backends and narration use
+# their own requirements files.
+-r requirements.txt
+Pillow>=10.0
+imageio-ffmpeg>=0.4.9

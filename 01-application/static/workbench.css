@@ -1,0 +1,84 @@
+/* Guidance and illustrated learning are local UI state, separate from the model. */
+.workspace-intro{background-image:url('/static/nucleus-watermark.svg');background-repeat:no-repeat;background-size:620px auto;background-position:48% 44%;}
+.context-lesson{display:flex;align-items:center;gap:9px;width:100%;padding:11px 10px;margin:0 0 22px;border:1px solid #33465b;border-radius:7px;background:#182635;color:#a9ceec;text-align:left;font-size:11px;line-height:1.5;}
+.context-lesson>span:nth-child(2){flex:1}.context-lesson:hover{background:#203247;border-color:#7497b4}
+.view-explanation{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 18px;color:#a4b4c6;}
+.view-explanation p{font-size:11px;line-height:1.6;margin:0;max-width:600px}.view-explanation button{flex-shrink:0;font-size:10px;color:#acd0eb}
+.learn-entry{border:1px solid #4c6078!important;border-radius:6px;color:#cde2f5!important;padding:9px 12px!important;}
+.learn-entry span{font-size:13px;margin:0 0 0 7px!important}
+body:is(.learn-workspace,.calibration-workspace,.study-workspace) .workspace-intro,body.cluster-workspace .workspace-intro{display:none}
+body.learn-workspace .editor-nav button[data-tab='learn']{background:#22374b;color:#c1dff5;border-color:#476887}
+body.learn-workspace .editor-nav button[data-tab='learn'] span{color:#a9d4f2}
+body:is(.learn-workspace,.calibration-workspace,.study-workspace) .simulation-panel,body:is(.learn-workspace,.calibration-workspace,.study-workspace) .insight-panel{display:none!important}
+body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-content{background:#0b1017 url('/static/nucleus-watermark.svg') no-repeat right -125px;background-size:720px auto;}
+@media(min-width:701px){
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace) .workspace{display:block;min-height:calc(100vh - 149px)}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-panel{display:grid;grid-template-columns:204px minmax(0,1fr);grid-template-rows:auto auto 1fr auto;position:static;width:100%;max-height:none;min-height:calc(100vh - 149px);border-right:0;align-items:start}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-heading{grid-column:1;grid-row:1;padding:24px 16px 17px;flex-wrap:wrap;gap:7px}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace) .draft-genomic-scale{grid-column:1;grid-row:2;margin:0 13px 17px}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-nav{grid-column:1;grid-row:3;align-self:start;padding:0 11px 20px;grid-template-columns:repeat(2,minmax(0,1fr))}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-nav button{font-size:11px;padding:12px 3px;min-height:64px}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-footer{grid-column:1;grid-row:4;align-self:end;padding:17px 13px;font-size:10px}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-content{grid-column:2;grid-row:1/5;min-width:0;min-height:calc(100vh - 149px);max-height:none;overflow:visible;padding:30px 32px 52px;border-left:1px solid #283342}
+}
+@media(max-width:1050px){.view-explanation{align-items:flex-start;flex-direction:column;gap:5px}}
+@media(max-width:700px){
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-panel{display:flex!important;max-height:none;position:static}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-heading,body:is(.learn-workspace,.calibration-workspace,.study-workspace) .draft-genomic-scale,body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-nav,body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-footer{display:none}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-content{padding:20px 15px 35px;overflow:visible}
+ .view-explanation p{font-size:12px}.view-explanation button{font-size:11px;min-height:32px}
+ .context-lesson{font-size:12px}
+}
+
+.intro-steps button{display:grid;grid-template-columns:21px 1fr;gap:4px 8px;min-width:132px;padding:12px 13px;white-space:normal}
+.intro-steps button>span{grid-column:1;grid-row:1/3;align-self:center;color:#87b2d3;font-family:ui-monospace,monospace;font-size:10px}
+.intro-steps strong{grid-column:2;font-size:11px;font-weight:550}.intro-steps small{grid-column:2;font-size:9px;color:#a5b8cb;white-space:nowrap}
+.intro-kicker{display:block}.intro-title em{font-weight:400;color:#d6e5f2}
+@media(max-width:700px){.intro-steps{margin-top:15px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.intro-steps button{min-width:0;padding:9px 6px;display:flex;flex-direction:column;align-items:flex-start;gap:5px}.intro-steps strong{font-size:10px}.intro-steps small{display:none}}
+/* Keep the equations close to the topic navigation once a lesson is selected. */
+.learn-atlas[data-topic]:not([data-topic='overview']) .learn-hero{grid-template-columns:1fr auto;gap:20px;margin-bottom:18px}
+.learn-atlas[data-topic]:not([data-topic='overview']) .learn-hero h2{font-size:26px;margin:8px 0 0}
+.learn-atlas[data-topic]:not([data-topic='overview']) .learn-hero h2 br{display:none}
+.learn-atlas[data-topic]:not([data-topic='overview']) .learn-hero>div>p,.learn-atlas[data-topic]:not([data-topic='overview']) .learn-model-context>small{display:none}
+.learn-atlas[data-topic]:not([data-topic='overview']) .learn-model-context{padding:6px 0 6px 18px}
+.learn-atlas[data-topic]:not([data-topic='overview']) .learn-model-context>span{margin-bottom:6px;font-size:8px}
+.learn-atlas[data-topic]:not([data-topic='overview']) .learn-model-context>strong{font-size:12px;margin:0}
+.learn-atlas[data-topic]:not([data-topic='overview']) .learn-topic-nav{margin-top:18px;margin-bottom:22px}
+.learn-topic-heading{scroll-margin-top:20px}
+@media(max-width:1100px) and (min-width:761px){.learn-atlas{padding:12px 0 25px}.learn-overview-map{gap:12px}}
+@media(max-width:760px){.learn-atlas{padding:12px 0 25px}.learn-atlas[data-topic]:not([data-topic='overview']) .learn-model-context{display:none}.learn-atlas[data-topic]:not([data-topic='overview']) .learn-hero{display:block}}
+
+body.calibration-workspace .editor-nav button[data-tab="calibration"]{background:#22374b;color:#c1dff5;border-color:#476887}
+#calibration-status{text-align:left;line-height:1.6;white-space:normal}
+#metric-physical-time{color:#a9ceec;font-size:9px;line-height:1.4}
+
+/* A reversible reading and editing view; it never applies the model draft. */
+.editor-heading{flex-wrap:wrap;gap:7px}
+#expand-builder-btn{flex-basis:100%;text-align:left;color:#acd0eb;padding:4px 0;line-height:1.5}
+@media(min-width:701px){
+ body.builder-workspace .workspace-intro,body.builder-workspace .simulation-panel,body.builder-workspace .insight-panel{display:none!important}
+ body.builder-workspace .workspace{display:block;min-height:calc(100vh - 149px)}
+ body.builder-workspace .editor-panel{display:grid;grid-template-columns:204px minmax(0,1fr);grid-template-rows:auto auto 1fr auto;position:static;width:100%;max-height:none;min-height:calc(100vh - 149px);border-right:0;align-items:start}
+ body.builder-workspace .editor-heading{grid-column:1;grid-row:1;padding:24px 16px 17px;gap:9px}
+ body.builder-workspace .draft-genomic-scale{grid-column:1;grid-row:2;margin:0 13px 17px}
+ body.builder-workspace .editor-nav{grid-column:1;grid-row:3;align-self:start;padding:0 11px 20px;grid-template-columns:repeat(2,minmax(0,1fr))}
+ body.builder-workspace .editor-nav button{font-size:11px;padding:12px 3px;min-height:64px}
+ body.builder-workspace .editor-footer{grid-column:1;grid-row:4;align-self:end;padding:17px 13px;font-size:10px}
+ body.builder-workspace .editor-content{grid-column:2;grid-row:1/5;min-width:0;min-height:calc(100vh - 149px);max-height:none;overflow:visible;padding:30px clamp(24px,5vw,80px) 52px;border-left:1px solid #283342;background:#0b1017}
+ body.builder-workspace .editor-content>h2{font-size:30px}
+ body.builder-workspace .editor-content>.editor-description{font-size:13px;max-width:850px}
+ body.builder-workspace .editor-content>.form-grid{max-width:1000px}
+ body.builder-workspace .entity-card{max-width:1000px}
+ body.builder-workspace .entity-name{max-width:none;font-size:13px}
+ body.builder-workspace .form-grid{column-gap:24px;row-gap:16px}
+ body.builder-workspace .form-field>span{font-size:12px}
+ body.builder-workspace .form-field input,body.builder-workspace .form-field select{font-size:13px;min-height:38px}
+ body.builder-workspace .form-field input[type=checkbox]{min-height:16px;height:16px;width:16px}
+ body.builder-workspace .info-note{font-size:12px;line-height:1.7}
+ body.builder-workspace .context-lesson{max-width:1000px;font-size:12px}
+}
+@media(max-width:700px){#expand-builder-btn{display:none}}
+
+.tutorial-entry{color:#a9ceec;text-decoration:none;white-space:nowrap}.tutorial-entry:focus-visible{outline:2px solid #79b7de;outline-offset:3px}
+
+body.study-workspace .editor-nav button[data-tab="studies"]{background:#22374b;color:#c1dff5;border-color:#476887}

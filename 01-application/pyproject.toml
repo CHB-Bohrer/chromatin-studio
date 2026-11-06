@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chromatin-studio"
+version = "0.10.0"
+description = "Local visual builder for exploratory chromatin, protein and reaction dynamics"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "scipy>=1.10"]
+
+[project.scripts]
+chromatin-studio = "chromatin_studio.server:main"
+chromatin-batch = "chromatin_studio.batch:main"
+chromatin-validate = "chromatin_studio.validation:main"
+
+[tool.setuptools]
+packages = ["chromatin_studio"]

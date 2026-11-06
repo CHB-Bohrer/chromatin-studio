@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use Chromatin Studio, please cite the software version and repository, and cite the original sources of any experimental reference data you use."
+title: "Chromatin Studio"
+type: software
+authors:
+  - family-names: Bohrer
+    given-names: Christopher H.
+version: 0.10.0
+date-released: 2026-11-06
+repository-code: "https://github.com/CHB-Bohrer/chromatin-studio"
+url: "https://github.com/CHB-Bohrer/chromatin-studio"
+abstract: "A local visual research prototype for coupled chromatin polymers, reacting proteins, nucleosome occupancy, chromatin remodeling and stochastic transcription. Supplied presets use reduced units and are not empirically calibrated."
+keywords:
+  - chromatin
+  - polymer simulation
+  - reaction diffusion
+  - transcription
+  - nucleosomes

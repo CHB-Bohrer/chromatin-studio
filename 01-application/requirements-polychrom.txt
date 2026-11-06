@@ -1,0 +1,3 @@
+-r requirements.txt
+openmm==8.6.1
+polychrom @ git+https://github.com/open2c/polychrom.git@11a870cac8a3b168a2e0e11995d2e899c3ceb657

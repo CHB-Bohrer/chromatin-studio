@@ -1,0 +1,782 @@
+{
+  "schema_version": 1,
+  "application_version": "0.7.0",
+  "requested": {
+    "platform": "Reference",
+    "precision": "double",
+    "device_index": null
+  },
+  "host": {
+    "python": "3.12.14",
+    "system": "Darwin"
+  },
+  "checks": [
+    {
+      "name": "zero diffusion stays immobile",
+      "passed": true,
+      "observed": 0.0,
+      "expected": 0.0,
+      "absolute_tolerance": 1e-07,
+      "absolute_error": 0.0,
+      "execution": "numpy"
+    },
+    {
+      "name": "free diffusion D=0.05: MSD=6Dt",
+      "passed": true,
+      "observed": 0.059853694534218245,
+      "expected": 0.06000000000000001,
+      "absolute_tolerance": 0.006495190528383292,
+      "absolute_error": 0.00014630546578176667,
+      "samples": 2048,
+      "execution": "numpy"
+    },
+    {
+      "name": "free diffusion D=0.5: MSD=6Dt",
+      "passed": true,
+      "observed": 0.6091486599840312,
+      "expected": 0.6000000000000001,
+      "absolute_tolerance": 0.0649519052838329,
+      "absolute_error": 0.009148659984031138,
+      "samples": 2048,
+      "execution": "numpy"
+    },
+    {
+      "name": "changed mobility applies next step",
+      "passed": true,
+      "observed": 0.0,
+      "expected": 0.0,
+      "absolute_tolerance": 1e-07,
+      "absolute_error": 0.0,
+      "execution": "numpy"
+    },
+    {
+      "name": "force response +1: mean dx=D F dt",
+      "passed": true,
+      "observed": 0.20428067667356264,
+      "expected": 0.2,
+      "absolute_tolerance": 0.04192627457812106,
+      "absolute_error": 0.004280676673562633,
+      "samples": 4096,
+      "execution": "numpy"
+    },
+    {
+      "name": "force response +1: thermal variance",
+      "passed": true,
+      "observed": 0.18900732108408325,
+      "expected": 0.2,
+      "absolute_tolerance": 0.02651974176527184,
+      "absolute_error": 0.010992678915916765,
+      "samples": 4096,
+      "execution": "numpy"
+    },
+    {
+      "name": "force response -1: mean dx=D F dt",
+      "passed": true,
+      "observed": -0.2043640319644932,
+      "expected": -0.2,
+      "absolute_tolerance": 0.04192627457812106,
+      "absolute_error": 0.004364031964493198,
+      "samples": 4096,
+      "execution": "numpy"
+    },
+    {
+      "name": "force response -1: thermal variance",
+      "passed": true,
+      "observed": 0.1904311797787407,
+      "expected": 0.2,
+      "absolute_tolerance": 0.02651974176527184,
+      "absolute_error": 0.009568820221259322,
+      "samples": 4096,
+      "execution": "numpy"
+    },
+    {
+      "name": "harmonic relaxation dt=0.04: mean",
+      "passed": true,
+      "observed": 0.7229472730168579,
+      "expected": 0.7223598066548775,
+      "absolute_tolerance": 0.026680945280048725,
+      "absolute_error": 0.0005874663619803711,
+      "samples": 12288,
+      "continuous_time_target": 0.7261490370736908,
+      "execution": "numpy"
+    },
+    {
+      "name": "harmonic relaxation dt=0.04: variance",
+      "passed": true,
+      "observed": 0.24620233619045992,
+      "expected": 0.2429859297406137,
+      "absolute_tolerance": 0.01860049257576271,
+      "absolute_error": 0.003216406449846221,
+      "samples": 12288,
+      "continuous_time_target": 0.23635378797847573,
+      "execution": "numpy"
+    },
+    {
+      "name": "harmonic relaxation dt=0.02: mean",
+      "passed": true,
+      "observed": 0.7276708316170741,
+      "expected": 0.7242724548031665,
+      "absolute_tolerance": 0.026496153889757654,
+      "absolute_error": 0.0033983768139076442,
+      "samples": 12288,
+      "continuous_time_target": 0.7261490370736908,
+      "execution": "numpy"
+    },
+    {
+      "name": "harmonic relaxation dt=0.02: variance",
+      "passed": true,
+      "observed": 0.24034320496558506,
+      "expected": 0.23963175968417097,
+      "absolute_tolerance": 0.018343731967034014,
+      "absolute_error": 0.0007114452814140915,
+      "samples": 12288,
+      "continuous_time_target": 0.23635378797847573,
+      "execution": "numpy"
+    },
+    {
+      "name": "zero diffusion stays immobile",
+      "passed": true,
+      "observed": 0.0,
+      "expected": 0.0,
+      "absolute_tolerance": 1e-07,
+      "absolute_error": 0.0,
+      "execution": "Reference"
+    },
+    {
+      "name": "free diffusion D=0.05: MSD=6Dt",
+      "passed": true,
+      "observed": 0.05878766523893027,
+      "expected": 0.06000000000000001,
+      "absolute_tolerance": 0.006495190528383292,
+      "absolute_error": 0.0012123347610697444,
+      "samples": 2048,
+      "execution": "Reference"
+    },
+    {
+      "name": "free diffusion D=0.5: MSD=6Dt",
+      "passed": true,
+      "observed": 0.610747716159916,
+      "expected": 0.6000000000000001,
+      "absolute_tolerance": 0.0649519052838329,
+      "absolute_error": 0.010747716159915877,
+      "samples": 2048,
+      "execution": "Reference"
+    },
+    {
+      "name": "changed mobility applies next step",
+      "passed": true,
+      "observed": 0.0,
+      "expected": 0.0,
+      "absolute_tolerance": 1e-07,
+      "absolute_error": 0.0,
+      "execution": "Reference"
+    },
+    {
+      "name": "force response +1: mean dx=D F dt",
+      "passed": true,
+      "observed": 0.20430960501525902,
+      "expected": 0.2,
+      "absolute_tolerance": 0.04192627457812106,
+      "absolute_error": 0.00430960501525901,
+      "samples": 4096,
+      "execution": "Reference"
+    },
+    {
+      "name": "force response +1: thermal variance",
+      "passed": true,
+      "observed": 0.1947597742170743,
+      "expected": 0.2,
+      "absolute_tolerance": 0.02651974176527184,
+      "absolute_error": 0.0052402257829257115,
+      "samples": 4096,
+      "execution": "Reference"
+    },
+    {
+      "name": "force response -1: mean dx=D F dt",
+      "passed": true,
+      "observed": -0.1999741411431852,
+      "expected": -0.2,
+      "absolute_tolerance": 0.04192627457812106,
+      "absolute_error": 2.5858856814803266e-05,
+      "samples": 4096,
+      "execution": "Reference"
+    },
+    {
+      "name": "force response -1: thermal variance",
+      "passed": true,
+      "observed": 0.20117080506630422,
+      "expected": 0.2,
+      "absolute_tolerance": 0.02651974176527184,
+      "absolute_error": 0.001170805066304209,
+      "samples": 4096,
+      "execution": "Reference"
+    },
+    {
+      "name": "harmonic relaxation dt=0.04: mean",
+      "passed": true,
+      "observed": 0.7258817114198192,
+      "expected": 0.7223598066548775,
+      "absolute_tolerance": 0.026680945280048725,
+      "absolute_error": 0.00352190476494163,
+      "samples": 12288,
+      "continuous_time_target": 0.7261490370736908,
+      "execution": "Reference"
+    },
+    {
+      "name": "harmonic relaxation dt=0.04: variance",
+      "passed": true,
+      "observed": 0.2440982614661439,
+      "expected": 0.2429859297406137,
+      "absolute_tolerance": 0.01860049257576271,
+      "absolute_error": 0.0011123317255302134,
+      "samples": 12288,
+      "continuous_time_target": 0.23635378797847573,
+      "execution": "Reference"
+    },
+    {
+      "name": "harmonic relaxation dt=0.02: mean",
+      "passed": true,
+      "observed": 0.7310346392461408,
+      "expected": 0.7242724548031665,
+      "absolute_tolerance": 0.026496153889757654,
+      "absolute_error": 0.006762184442974273,
+      "samples": 12288,
+      "continuous_time_target": 0.7261490370736908,
+      "execution": "Reference"
+    },
+    {
+      "name": "harmonic relaxation dt=0.02: variance",
+      "passed": true,
+      "observed": 0.2379891559289208,
+      "expected": 0.23963175968417097,
+      "absolute_tolerance": 0.018343731967034014,
+      "absolute_error": 0.0016426037552501604,
+      "samples": 12288,
+      "continuous_time_target": 0.23635378797847573,
+      "execution": "Reference"
+    },
+    {
+      "name": "CPU/device ensemble agreement: diffusion_0.05",
+      "passed": true,
+      "observed": 0.05878766523893027,
+      "expected": 0.059853694534218245,
+      "absolute_tolerance": 0.00918558653543692,
+      "absolute_error": 0.0010660292952879777,
+      "execution": "cross-platform",
+      "criterion": "six combined standard errors; independent RNG streams"
+    },
+    {
+      "name": "CPU/device ensemble agreement: diffusion_0.5",
+      "passed": true,
+      "observed": 0.610747716159916,
+      "expected": 0.6091486599840312,
+      "absolute_tolerance": 0.0918558653543692,
+      "absolute_error": 0.0015990561758847388,
+      "execution": "cross-platform",
+      "criterion": "six combined standard errors; independent RNG streams"
+    },
+    {
+      "name": "CPU/device ensemble agreement: harmonic_variance_0.04",
+      "passed": true,
+      "observed": 0.2440982614661439,
+      "expected": 0.24620233619045992,
+      "absolute_tolerance": 0.02630506886746369,
+      "absolute_error": 0.0021040747243160074,
+      "execution": "cross-platform",
+      "criterion": "six combined standard errors; independent RNG streams"
+    },
+    {
+      "name": "CPU/device ensemble agreement: harmonic_variance_0.02",
+      "passed": true,
+      "observed": 0.2379891559289208,
+      "expected": 0.24034320496558506,
+      "absolute_tolerance": 0.025941954532316396,
+      "absolute_error": 0.002354049036664252,
+      "execution": "cross-platform",
+      "criterion": "six combined standard errors; independent RNG streams"
+    },
+    {
+      "name": "shared chromatin force equals negative energy gradient",
+      "passed": true,
+      "observed": 1.7255663919968356e-07,
+      "expected": 0.0,
+      "absolute_tolerance": 2e-05,
+      "absolute_error": 1.7255663919968356e-07,
+      "active_repulsion_pairs": 2,
+      "execution": "shared CPU model"
+    },
+    {
+      "name": "internal forces sum to zero",
+      "passed": true,
+      "observed": 2.842170943040401e-14,
+      "expected": 0.0,
+      "absolute_tolerance": 1e-09,
+      "absolute_error": 2.842170943040401e-14,
+      "execution": "shared CPU model"
+    },
+    {
+      "name": "occupancy two-state eviction endpoint",
+      "passed": true,
+      "observed": 0.23114013671875,
+      "expected": 0.23077596777505247,
+      "absolute_tolerance": 0.013965226870849777,
+      "absolute_error": 0.00036416894369753483,
+      "samples": 32768,
+      "criterion": "six binomial standard errors (minimum two counts)",
+      "execution": "shared CPU model"
+    },
+    {
+      "name": "occupancy retains memory of any mark-erasing eviction",
+      "passed": true,
+      "observed": 0.2451171875,
+      "expected": 0.24421625854427453,
+      "absolute_tolerance": 0.014240077147809312,
+      "absolute_error": 0.0009009289557254663,
+      "samples": 32768,
+      "criterion": "six binomial standard errors (minimum two counts)",
+      "execution": "shared CPU model"
+    },
+    {
+      "name": "occupancy two-state reassembly endpoint",
+      "passed": true,
+      "observed": 0.10089111328125,
+      "expected": 0.0989039861893082,
+      "absolute_tolerance": 0.00989506644788831,
+      "absolute_error": 0.0019871270919418066,
+      "samples": 32768,
+      "criterion": "six binomial standard errors (minimum two counts)",
+      "execution": "shared CPU model"
+    },
+    {
+      "name": "isolated TF encounter, occupied=True",
+      "passed": true,
+      "observed": 0.0150146484375,
+      "expected": 0.015872679944714863,
+      "absolute_tolerance": 0.008285277375198631,
+      "absolute_error": 0.0008580315072148625,
+      "samples": 8192,
+      "criterion": "six binomial standard errors (minimum two counts)",
+      "execution": "shared CPU model"
+    },
+    {
+      "name": "isolated TF encounter, occupied=False",
+      "passed": true,
+      "observed": 0.14697265625,
+      "expected": 0.14785621103378865,
+      "absolute_tolerance": 0.02353057318740191,
+      "absolute_error": 0.0008835547837886537,
+      "samples": 8192,
+      "criterion": "six binomial standard errors (minimum two counts)",
+      "execution": "shared CPU model"
+    },
+    {
+      "name": "bound-state survival exp(-koff*t), rebinding disabled",
+      "passed": true,
+      "observed": 0.7034912109375,
+      "expected": 0.7046880897187134,
+      "absolute_tolerance": 0.030240935765442137,
+      "absolute_error": 0.0011968787812134396,
+      "samples": 8192,
+      "criterion": "six binomial standard errors (minimum two counts)",
+      "execution": "shared CPU model"
+    },
+    {
+      "name": "nascent RNA length = elongation speed * elapsed time",
+      "passed": true,
+      "observed": 300.0,
+      "expected": 300.0,
+      "absolute_tolerance": 1e-09,
+      "absolute_error": 0.0,
+      "execution": "shared CPU model"
+    },
+    {
+      "name": "release time = gene length / speed",
+      "passed": true,
+      "observed": 2.0,
+      "expected": 2.0,
+      "absolute_tolerance": 1e-09,
+      "absolute_error": 0.0,
+      "execution": "shared CPU model"
+    },
+    {
+      "name": "completed RNA includes last genomic bin",
+      "passed": true,
+      "observed": 800.0,
+      "expected": 800.0,
+      "absolute_tolerance": 1e-09,
+      "absolute_error": 0.0,
+      "execution": "shared CPU model"
+    },
+    {
+      "name": "RNA competing processing/decay: unprocessed",
+      "passed": true,
+      "observed": 0.22725,
+      "expected": 0.21871188695221475,
+      "absolute_tolerance": 0.03921597859447278,
+      "absolute_error": 0.008538113047785262,
+      "samples": 4000,
+      "criterion": "six binomial standard errors (minimum two counts)",
+      "execution": "shared CPU model"
+    },
+    {
+      "name": "RNA competing processing/decay: processed",
+      "passed": true,
+      "observed": 0.34625,
+      "expected": 0.3524971768966001,
+      "absolute_tolerance": 0.045323131562026296,
+      "absolute_error": 0.006247176896600093,
+      "samples": 4000,
+      "criterion": "six binomial standard errors (minimum two counts)",
+      "execution": "shared CPU model"
+    },
+    {
+      "name": "RNA molecule accounting",
+      "passed": true,
+      "observed": 4000.0,
+      "expected": 4000.0,
+      "absolute_tolerance": 0.0,
+      "absolute_error": 0.0,
+      "execution": "shared CPU model"
+    },
+    {
+      "name": "coupled 80 kb model: finite state, valence and RNA accounting",
+      "passed": true,
+      "execution": "Reference",
+      "steps": 50,
+      "rna_totals": {
+        "nascent": 1,
+        "unprocessed": 1,
+        "mature": 0,
+        "initiated": 2,
+        "completed": 1,
+        "degraded": 0,
+        "blocked_initiations": 0,
+        "live": 2
+      },
+      "initial_seeded_rna": {
+        "nascent": 1,
+        "unprocessed": 1
+      },
+      "note": "Controlled seeded RNA; short integration smoke test, not equilibration or biological accuracy."
+    }
+  ],
+  "mechanics": [
+    {
+      "platform": "numpy",
+      "metadata": {
+        "actual_platform": "numpy",
+        "integration": "CPU"
+      },
+      "checks": [
+        {
+          "name": "zero diffusion stays immobile",
+          "passed": true,
+          "observed": 0.0,
+          "expected": 0.0,
+          "absolute_tolerance": 1e-07,
+          "absolute_error": 0.0
+        },
+        {
+          "name": "free diffusion D=0.05: MSD=6Dt",
+          "passed": true,
+          "observed": 0.059853694534218245,
+          "expected": 0.06000000000000001,
+          "absolute_tolerance": 0.006495190528383292,
+          "absolute_error": 0.00014630546578176667,
+          "samples": 2048
+        },
+        {
+          "name": "free diffusion D=0.5: MSD=6Dt",
+          "passed": true,
+          "observed": 0.6091486599840312,
+          "expected": 0.6000000000000001,
+          "absolute_tolerance": 0.0649519052838329,
+          "absolute_error": 0.009148659984031138,
+          "samples": 2048
+        },
+        {
+          "name": "changed mobility applies next step",
+          "passed": true,
+          "observed": 0.0,
+          "expected": 0.0,
+          "absolute_tolerance": 1e-07,
+          "absolute_error": 0.0
+        },
+        {
+          "name": "force response +1: mean dx=D F dt",
+          "passed": true,
+          "observed": 0.20428067667356264,
+          "expected": 0.2,
+          "absolute_tolerance": 0.04192627457812106,
+          "absolute_error": 0.004280676673562633,
+          "samples": 4096
+        },
+        {
+          "name": "force response +1: thermal variance",
+          "passed": true,
+          "observed": 0.18900732108408325,
+          "expected": 0.2,
+          "absolute_tolerance": 0.02651974176527184,
+          "absolute_error": 0.010992678915916765,
+          "samples": 4096
+        },
+        {
+          "name": "force response -1: mean dx=D F dt",
+          "passed": true,
+          "observed": -0.2043640319644932,
+          "expected": -0.2,
+          "absolute_tolerance": 0.04192627457812106,
+          "absolute_error": 0.004364031964493198,
+          "samples": 4096
+        },
+        {
+          "name": "force response -1: thermal variance",
+          "passed": true,
+          "observed": 0.1904311797787407,
+          "expected": 0.2,
+          "absolute_tolerance": 0.02651974176527184,
+          "absolute_error": 0.009568820221259322,
+          "samples": 4096
+        },
+        {
+          "name": "harmonic relaxation dt=0.04: mean",
+          "passed": true,
+          "observed": 0.7229472730168579,
+          "expected": 0.7223598066548775,
+          "absolute_tolerance": 0.026680945280048725,
+          "absolute_error": 0.0005874663619803711,
+          "samples": 12288,
+          "continuous_time_target": 0.7261490370736908
+        },
+        {
+          "name": "harmonic relaxation dt=0.04: variance",
+          "passed": true,
+          "observed": 0.24620233619045992,
+          "expected": 0.2429859297406137,
+          "absolute_tolerance": 0.01860049257576271,
+          "absolute_error": 0.003216406449846221,
+          "samples": 12288,
+          "continuous_time_target": 0.23635378797847573
+        },
+        {
+          "name": "harmonic relaxation dt=0.02: mean",
+          "passed": true,
+          "observed": 0.7276708316170741,
+          "expected": 0.7242724548031665,
+          "absolute_tolerance": 0.026496153889757654,
+          "absolute_error": 0.0033983768139076442,
+          "samples": 12288,
+          "continuous_time_target": 0.7261490370736908
+        },
+        {
+          "name": "harmonic relaxation dt=0.02: variance",
+          "passed": true,
+          "observed": 0.24034320496558506,
+          "expected": 0.23963175968417097,
+          "absolute_tolerance": 0.018343731967034014,
+          "absolute_error": 0.0007114452814140915,
+          "samples": 12288,
+          "continuous_time_target": 0.23635378797847573
+        }
+      ],
+      "measurements": {
+        "diffusion_0.05": {
+          "value": 0.059853694534218245,
+          "standard_error": 0.0010825317547305485
+        },
+        "diffusion_0.5": {
+          "value": 0.6091486599840312,
+          "standard_error": 0.010825317547305485
+        },
+        "harmonic_variance_0.04": {
+          "value": 0.24620233619045992,
+          "standard_error": 0.003100082095960452
+        },
+        "harmonic_variance_0.02": {
+          "value": 0.24034320496558506,
+          "standard_error": 0.0030572886611723357
+        }
+      }
+    },
+    {
+      "platform": "Reference",
+      "metadata": {
+        "requested_platform": "Reference",
+        "platform": "Reference",
+        "requested_device_index": null,
+        "device_index": null,
+        "requested_precision": "double",
+        "precision": null,
+        "precision_configurable": false,
+        "context_properties": {},
+        "initialization_succeeded": true,
+        "gpu_initialization_succeeded": null,
+        "device_type": "CPU",
+        "capabilities": {
+          "integration": "OpenMM Brownian integration",
+          "mechanical_forces": "CPU",
+          "reactions": "CPU",
+          "rna_diffusion": "CPU",
+          "host_device_transfer": "positions, forces, and mobilities every substep",
+          "native_gpu_forces": false,
+          "multi_gpu_per_run": false,
+          "physical_time_calibrated": false
+        }
+      },
+      "checks": [
+        {
+          "name": "zero diffusion stays immobile",
+          "passed": true,
+          "observed": 0.0,
+          "expected": 0.0,
+          "absolute_tolerance": 1e-07,
+          "absolute_error": 0.0
+        },
+        {
+          "name": "free diffusion D=0.05: MSD=6Dt",
+          "passed": true,
+          "observed": 0.05878766523893027,
+          "expected": 0.06000000000000001,
+          "absolute_tolerance": 0.006495190528383292,
+          "absolute_error": 0.0012123347610697444,
+          "samples": 2048
+        },
+        {
+          "name": "free diffusion D=0.5: MSD=6Dt",
+          "passed": true,
+          "observed": 0.610747716159916,
+          "expected": 0.6000000000000001,
+          "absolute_tolerance": 0.0649519052838329,
+          "absolute_error": 0.010747716159915877,
+          "samples": 2048
+        },
+        {
+          "name": "changed mobility applies next step",
+          "passed": true,
+          "observed": 0.0,
+          "expected": 0.0,
+          "absolute_tolerance": 1e-07,
+          "absolute_error": 0.0
+        },
+        {
+          "name": "force response +1: mean dx=D F dt",
+          "passed": true,
+          "observed": 0.20430960501525902,
+          "expected": 0.2,
+          "absolute_tolerance": 0.04192627457812106,
+          "absolute_error": 0.00430960501525901,
+          "samples": 4096
+        },
+        {
+          "name": "force response +1: thermal variance",
+          "passed": true,
+          "observed": 0.1947597742170743,
+          "expected": 0.2,
+          "absolute_tolerance": 0.02651974176527184,
+          "absolute_error": 0.0052402257829257115,
+          "samples": 4096
+        },
+        {
+          "name": "force response -1: mean dx=D F dt",
+          "passed": true,
+          "observed": -0.1999741411431852,
+          "expected": -0.2,
+          "absolute_tolerance": 0.04192627457812106,
+          "absolute_error": 2.5858856814803266e-05,
+          "samples": 4096
+        },
+        {
+          "name": "force response -1: thermal variance",
+          "passed": true,
+          "observed": 0.20117080506630422,
+          "expected": 0.2,
+          "absolute_tolerance": 0.02651974176527184,
+          "absolute_error": 0.001170805066304209,
+          "samples": 4096
+        },
+        {
+          "name": "harmonic relaxation dt=0.04: mean",
+          "passed": true,
+          "observed": 0.7258817114198192,
+          "expected": 0.7223598066548775,
+          "absolute_tolerance": 0.026680945280048725,
+          "absolute_error": 0.00352190476494163,
+          "samples": 12288,
+          "continuous_time_target": 0.7261490370736908
+        },
+        {
+          "name": "harmonic relaxation dt=0.04: variance",
+          "passed": true,
+          "observed": 0.2440982614661439,
+          "expected": 0.2429859297406137,
+          "absolute_tolerance": 0.01860049257576271,
+          "absolute_error": 0.0011123317255302134,
+          "samples": 12288,
+          "continuous_time_target": 0.23635378797847573
+        },
+        {
+          "name": "harmonic relaxation dt=0.02: mean",
+          "passed": true,
+          "observed": 0.7310346392461408,
+          "expected": 0.7242724548031665,
+          "absolute_tolerance": 0.026496153889757654,
+          "absolute_error": 0.006762184442974273,
+          "samples": 12288,
+          "continuous_time_target": 0.7261490370736908
+        },
+        {
+          "name": "harmonic relaxation dt=0.02: variance",
+          "passed": true,
+          "observed": 0.2379891559289208,
+          "expected": 0.23963175968417097,
+          "absolute_tolerance": 0.018343731967034014,
+          "absolute_error": 0.0016426037552501604,
+          "samples": 12288,
+          "continuous_time_target": 0.23635378797847573
+        }
+      ],
+      "measurements": {
+        "diffusion_0.05": {
+          "value": 0.05878766523893027,
+          "standard_error": 0.0010825317547305485
+        },
+        "diffusion_0.5": {
+          "value": 0.610747716159916,
+          "standard_error": 0.010825317547305485
+        },
+        "harmonic_variance_0.04": {
+          "value": 0.2440982614661439,
+          "standard_error": 0.003100082095960452
+        },
+        "harmonic_variance_0.02": {
+          "value": 0.2379891559289208,
+          "standard_error": 0.0030572886611723357
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "scope": "Analytical component acceptance; not biological validation, GPU performance certification, or full-model timestep convergence.",
+  "versions": {
+    "numpy": "2.3.5",
+    "scipy": "1.18.1",
+    "openmm": "8.6.1",
+    "polychrom": "0.1.1"
+  },
+  "source_sha256": {
+    "__init__.py": "98b96550e1b6f52493af125d86a56fbab3a894f4301bc58c9a2e95bbcfbbbee7",
+    "batch.py": "d2d0aa0636236ff287323b26af1cbd439a9518faaf5043653cdd30ea4967a7ab",
+    "chromatin_contacts.py": "af8098b80bb0796980cff4d73609c90f47006eab1d8411bd751f0a736aaa17a2",
+    "cluster.py": "da4acbb4a82bdbe54e73ee3a722bb691d53cb0aa5a9cb81733d4d5def11fbcfa",
+    "engine.py": "81e69c37a485eac5925bf44f8180a20bafd3a7b913d0f06fda76af5ffcebe0e1",
+    "kinetics.py": "5eed4ee6e39ac01d49e471aec565c5e1e7da9f20cda87a66d4dd15be27f22609",
+    "neighbors.py": "c3191453ca9ffb33c37f354cb292a060d1ba6ff9f2f1013a6b9c00cb29a106b8",
+    "openmm_backend.py": "221bb101f953a9a9d23bc26c0b6cdb1b4f957af623b7f4112b8d9e10d26529dc",
+    "schema.py": "958db623af0ccfed5acafe0ce7b2dc930f6120596499c68b0b671fe4b61515f8",
+    "server.py": "87db4cc1a20beb63927bbaf8ee218638c1c7d858304882d5391ed630bc9e5936",
+    "transcription.py": "d2e1b7fb48faa3fb444f2bfa942648362e3fc6bd9ca71d007b70bac4d2633243",
+    "validation.py": "c0fa1c0d5053e6903bd2a71e41adc9bfce0bc4e4a4acbfd9eb281022e5b491f4"
+  },
+  "passed": true,
+  "elapsed_seconds": 0.5823768329573795
+}

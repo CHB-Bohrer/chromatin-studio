@@ -1,0 +1,30 @@
+{
+  "model": "20 Mb chromatin",
+  "genomic_span_bp": 20000000,
+  "bp_per_bead": 10000,
+  "chromatin_beads": 2000,
+  "total_particles": 2314,
+  "engine": "polychrom",
+  "platform": "CPU",
+  "architecture": "arm64",
+  "initialization_seconds": 0.44234366703312844,
+  "warmup_steps": 10,
+  "timed_steps": 500,
+  "elapsed_seconds": 2.9324734580004588,
+  "milliseconds_per_step": 5.8649469160009176,
+  "reduced_time_advanced": 1.0,
+  "finite_positions_and_forces": true,
+  "final_metrics": {
+    "bound_fraction": 0.1134020618556701,
+    "largest_cluster": 3,
+    "marked_fraction": 0.368,
+    "rg": 11.743642826742075,
+    "mean_persistence": 2.0,
+    "protein_count": 194,
+    "particle_count": 2314,
+    "cohesin_bound": 24,
+    "cohesin_free": 0,
+    "integration_substeps": 2
+  },
+  "note": "Local wall-clock benchmark; reduced simulation time is not physical seconds. Concurrent workload can affect timings."
+}
