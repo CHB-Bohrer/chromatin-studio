@@ -1,0 +1,111 @@
+[
+  {
+    "file": "C36.tagged_set.tsv",
+    "bytes": 5192863,
+    "md5_verified": true,
+    "sha256": "17bfabbfdd6f072fbe78334d041187d0ad0270d9b50462ef1f2fbd968dff47ee",
+    "url": "https://zenodo.org/api/records/5770531/files/C36.tagged_set.tsv/content"
+  },
+  {
+    "file": "C65.tagged_set.tsv",
+    "bytes": 1519038,
+    "md5_verified": true,
+    "sha256": "1a0633c629d2a108a46ae2c511dc3792715093af14e1e5dc7d8143a6545d307e",
+    "url": "https://zenodo.org/api/records/5770531/files/C65.tagged_set.tsv/content"
+  },
+  {
+    "file": "C27.tagged_set.tsv",
+    "bytes": 3615980,
+    "md5_verified": true,
+    "sha256": "c6694983fcfe20b08bd76282a78aab4ff28d542b6009572356174adf04cc1934",
+    "url": "https://zenodo.org/api/records/5770531/files/C27.tagged_set.tsv/content"
+  },
+  {
+    "file": "CTCF_4_hr.tagged_set.tsv",
+    "bytes": 1426624,
+    "md5_verified": true,
+    "sha256": "56605c4aac4d0bfb309ee1b165e6c7df8f722dbf19accd8b98eca3cb04ef6926",
+    "url": "https://zenodo.org/api/records/5770531/files/CTCF_4_hr.tagged_set.tsv/content"
+  },
+  {
+    "file": "CTCF_0_hr.tagged_set.tsv",
+    "bytes": 1301164,
+    "md5_verified": true,
+    "sha256": "ffb3057a400190c15208dc51a1daa2ca3a78aa053b270839c10db45b7c1dfe89",
+    "url": "https://zenodo.org/api/records/5770531/files/CTCF_0_hr.tagged_set.tsv/content"
+  },
+  {
+    "file": "CTCF_2_hr.tagged_set.tsv",
+    "bytes": 1170484,
+    "md5_verified": true,
+    "sha256": "82748a4eb58814cf8bddadd66cdecfa4dc2dca88bccff596b3d62ab6b5afb95e",
+    "url": "https://zenodo.org/api/records/5770531/files/CTCF_2_hr.tagged_set.tsv/content"
+  },
+  {
+    "file": "Rad21_0_hr.tagged_set.tsv",
+    "bytes": 2003600,
+    "md5_verified": true,
+    "sha256": "7728e7ae178085cee27aea45c2247d673dff2f2749d256b537291e5dd4d0ca9b",
+    "url": "https://zenodo.org/api/records/5770531/files/Rad21_0_hr.tagged_set.tsv/content"
+  },
+  {
+    "file": "Rad21_2_hr.tagged_set.tsv",
+    "bytes": 5230226,
+    "md5_verified": true,
+    "sha256": "8e5f976814396ce5fb184ec8a3c7c70eac4135aeb594b8bc722d7316633bf946",
+    "url": "https://zenodo.org/api/records/5770531/files/Rad21_2_hr.tagged_set.tsv/content"
+  },
+  {
+    "file": "Rad21_4_hr.tagged_set.tsv",
+    "bytes": 245357,
+    "md5_verified": true,
+    "sha256": "c3a1918f1af00f8fb50e145597cc389b9ba346a168084a0cf3aa54131deab50c",
+    "url": "https://zenodo.org/api/records/5770531/files/Rad21_4_hr.tagged_set.tsv/content"
+  },
+  {
+    "file": "WAPL_0_hr.tagged_set.tsv",
+    "bytes": 2359669,
+    "md5_verified": true,
+    "sha256": "9285da6a46545d04bec20f779f119eb97d9710911316abae9fa0f52cdb10ad36",
+    "url": "https://zenodo.org/api/records/5770531/files/WAPL_0_hr.tagged_set.tsv/content"
+  },
+  {
+    "file": "WAPL_4_hr.tagged_set.tsv",
+    "bytes": 2037430,
+    "md5_verified": true,
+    "sha256": "32b6212776db594274ceccd78a79af7d9759c819a88dc032f1d0eda25514e563",
+    "url": "https://zenodo.org/api/records/5770531/files/WAPL_4_hr.tagged_set.tsv/content"
+  },
+  {
+    "file": "polysim_calibration_curve.csv",
+    "bytes": 1927,
+    "source_url": "https://zenodo.org/api/records/14600051/files/polysim_calibration_curve.csv/content",
+    "source_record": "https://zenodo.org/records/14600051",
+    "md5_verified": true,
+    "sha256": "b4e62de9b65c9e832718112fe508ebf44df744478397262224365a57d025c6d9"
+  },
+  {
+    "file": "polysim_calibration_curves_diff_parameters.csv",
+    "bytes": 4352,
+    "source_url": "https://zenodo.org/api/records/14600051/files/polysim_calibration_curves_diff_parameters.csv/content",
+    "source_record": "https://zenodo.org/records/14600051",
+    "md5_verified": true,
+    "sha256": "e76551a35e17e2a5d2cefb868731fa3ad264959b39e002f576aad32eaa8a2070"
+  },
+  {
+    "file": "polysim_contact_map_P_s_curve_up_to_2000_monomers.txt",
+    "bytes": 50000,
+    "source_url": "https://zenodo.org/api/records/14600051/files/polysim_contact_map_P_s_curve_up_to_2000_monomers.txt/content",
+    "source_record": "https://zenodo.org/records/14600051",
+    "md5_verified": true,
+    "sha256": "0f13e605a4d2a79f255e0daabbcaa870be78a36d22d236ca609f8ba3b3c192bb"
+  },
+  {
+    "file": "2022_Fbn2_full_data.h5",
+    "bytes": 27542382,
+    "source_url": "https://zenodo.org/api/records/14600051/files/2022_Fbn2_full_data.h5/content",
+    "source_record": "https://zenodo.org/records/14600051",
+    "md5_verified": true,
+    "sha256": "b7b3c566df5ef38feca5ba1b5f697827d7b31b5ac58289b9c58532540a00d4b1"
+  }
+]

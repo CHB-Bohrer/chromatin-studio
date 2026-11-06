@@ -1,0 +1,44 @@
+{
+  "bootcamp": {
+    "repository": "https://github.com/ahansenlab/polysim_bootcamp",
+    "commit": "7f273ab648e7c606c7212702bb5caa1604810006",
+    "notebook": "tutorial/calibration.ipynb",
+    "experimental_selection": [
+      "Rad21",
+      "2hr"
+    ],
+    "experimental_file": "2022_Fbn2_full_data.h5",
+    "observable": "3D full relative-vector MSD",
+    "frame_interval_s": 20,
+    "noise_parameter_um": 0.203,
+    "msd_subtraction_um2": 0.082418,
+    "spatial_reference": "2 * mean(|R|^2), computed from the raw experimental pair vectors in the notebook",
+    "spatial_reference_caveat": "The notebook subtracts localization noise from the MSD but does not subtract it from its spatial second-moment proxy. Both raw and noise-corrected moments are retained in our derived references; the matched-model analysis must declare which convention it uses.",
+    "simulation": {
+      "monomers": 70000,
+      "bp_per_monomer": 1000,
+      "selected_pair": [
+        35000,
+        35515
+      ],
+      "pair_separation_bp": 515000,
+      "loop_extrusion": false,
+      "specific_EP_attraction": false,
+      "saved_frame_polymer_steps": 20000,
+      "discard_saved_frames": 10000
+    },
+    "manual_source_mapping_seconds_per_polymer_timestep": 0.0006,
+    "mapping_status": "Source-model-specific notebook value only, not applicable to Chromatin Studio time units without a matched fit."
+  },
+  "our_processing": {
+    "source": "reproduce_fbn2.py",
+    "sha256": "f19ed7a74c4ace17bffbf21655758f4eaf17fd93c471a6ba26a2d605e195318a",
+    "units": "s and um2",
+    "estimator": "All valid measured exact-frame-lag displacement pairs, pooled by count. Full relative-vector squared displacement, not distance-change MSD or half-relative MSD.",
+    "missing_frames": "Missing source frames remain missing; no interpolation.",
+    "duplicates": "Last row for an identical trajectory/frame, verified numerically against author H5; one RAD21 untreated, one RAD21 2h, five WAPL untreated rows.",
+    "uncertainty": "1000 available-acquisition-cluster bootstrap resamples; WAPL6h trajectory bootstrap only because movie metadata is absent; not claimed independent biological replication.",
+    "random_prefix_for_baseline_holdout": "Fbn2-v1:",
+    "baseline_selection": "424 trajectories in74movie-index groups for fitting;113trajectories in18groups held out; all other conditions remain validation only."
+  }
+}

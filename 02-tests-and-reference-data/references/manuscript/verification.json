@@ -1,0 +1,622 @@
+{
+  "status": "passed",
+  "created_utc": "2026-11-06T18:01:59.079183+00:00",
+  "checks": [
+    {
+      "name": "uncoupled_phi_cis",
+      "observed": -0.01690095163558776,
+      "expected": 0.0,
+      "tolerance": 0.07,
+      "passed": true,
+      "explanation": "Independent promoters have zero population correlation; finite-cell estimates fluctuate."
+    },
+    {
+      "name": "uncoupled_phi_trans",
+      "observed": -0.0029862088507164983,
+      "expected": 0.0,
+      "tolerance": 0.07,
+      "passed": true,
+      "explanation": "Independent promoters have zero population correlation; finite-cell estimates fluctuate."
+    },
+    {
+      "name": "uncoupled_delta_phi",
+      "observed": -0.013914742784871263,
+      "expected": 0.0,
+      "tolerance": 0.07,
+      "passed": true,
+      "explanation": "Independent promoters have zero population correlation; finite-cell estimates fluctuate."
+    },
+    {
+      "name": "uncoupled_telegraph_mean",
+      "observed": 0.668701171875,
+      "expected": 0.6666666666666666,
+      "tolerance": 0.06702378309227255,
+      "passed": true,
+      "explanation": "Stationary birth/clearance telegraph mean; six analytical standard errors. A duration sweep remains necessary for other parameters."
+    },
+    {
+      "name": "competition_stationary_promoter_phi",
+      "observed": -0.3295734220501443,
+      "expected": -0.3100775193798449,
+      "tolerance": 0.06,
+      "passed": true,
+      "explanation": "Exact four-state stationary promoter distribution with weights 1,r,r,r\u00b2/(1+c). This target is promoter ON, not nascent RNA."
+    },
+    {
+      "name": "competition_nascent_sign",
+      "observed": -0.22846050907969712,
+      "expected": "negative",
+      "tolerance": "upper 95% cell-bootstrap bound < 0",
+      "passed": true,
+      "explanation": "Mutual inhibition is sufficient for cis-reduced nascent coupling under these toy parameters."
+    },
+    {
+      "name": "shared_environment_nascent_sign",
+      "observed": 0.1712818744250138,
+      "expected": "positive",
+      "tolerance": "lower 95% cell-bootstrap bound > 0",
+      "passed": true,
+      "explanation": "Independent homolog environments positively coordinate two cis promoters without direct competition."
+    },
+    {
+      "name": "cell_wide_noise_preserves_cis_trans_symmetry",
+      "observed": 0.022813196923757106,
+      "expected": 0.0,
+      "tolerance": 0.07,
+      "passed": true,
+      "explanation": "Exchangeable alleles share a cell factor; both correlations rise while their population difference remains zero."
+    },
+    {
+      "name": "false_negative_detection_forward_model",
+      "observed": 0.02620449838667364,
+      "expected": 0.0241110852781284,
+      "tolerance": 0.08,
+      "passed": true,
+      "explanation": "Independent allele-level detection attenuates covariance by q\u00b2; correlation attenuation also depends on both latent marginal probabilities."
+    }
+  ],
+  "passed_checks": 9,
+  "total_checks": 9,
+  "reproduce": "python -m chromatin_studio.studies --verify --output references/manuscript/new-verification.json",
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "platform": "macOS-26.7.1-arm64-arm-64bit"
+  },
+  "reference_result": {
+    "engine": "reference",
+    "options": {
+      "engine": "reference",
+      "conditions": [
+        "uncoupled",
+        "competition_only",
+        "environment_only",
+        "extrinsic_only"
+      ],
+      "cells": 2048,
+      "duration": 24.0,
+      "seed": 1741,
+      "detection_efficiency": 0.3,
+      "on_rate": 0.5,
+      "off_rate": 1.0,
+      "initiation_rate": 2.0,
+      "clearance_rate": 1.0,
+      "extrinsic_cv": 1.0,
+      "competition_strength": 20.0,
+      "environment_gain": 12.0,
+      "environment_on_rate": 0.06,
+      "environment_off_rate": 0.06,
+      "bootstrap_samples": 300
+    },
+    "conditions": [
+      {
+        "id": "uncoupled",
+        "name": "Independent promoters",
+        "metrics": {
+          "latent": {
+            "phi_cis": -0.01690095163558776,
+            "phi_trans": -0.0029862088507164983,
+            "delta_phi": -0.013914742784871263,
+            "pair_correlations": [
+              0.0006946924446329548,
+              -0.03449659571580847,
+              -0.009684201920056193,
+              0.003711784218623196
+            ],
+            "reason": null,
+            "bootstrap_fraction": 0.30333333333333334,
+            "ci95": [
+              -0.06209529299304584,
+              0.02867211377425167
+            ],
+            "valid_bootstraps": 300,
+            "bootstrap_unit": "independent cell",
+            "bootstrap_target": "delta_phi",
+            "n_cells": 2048
+          },
+          "observed": {
+            "phi_cis": -0.018960479427954407,
+            "phi_trans": -0.008592115522509158,
+            "delta_phi": -0.010368363905445249,
+            "pair_correlations": [
+              0.002496878029402853,
+              -0.04041783688531167,
+              -0.015223696975843618,
+              -0.001960534069174699
+            ],
+            "reason": null,
+            "bootstrap_fraction": 0.30666666666666664,
+            "ci95": [
+              -0.053412287570090755,
+              0.032807837508657296
+            ],
+            "valid_bootstraps": 300,
+            "bootstrap_unit": "independent cell",
+            "bootstrap_target": "delta_phi",
+            "n_cells": 2048
+          },
+          "promoter": {
+            "phi_cis": 0.01013108981841852,
+            "phi_trans": 0.01453282840767748,
+            "delta_phi": -0.00440173858925896,
+            "pair_correlations": [
+              0.016889597182872678,
+              0.003372582453964361,
+              0.02481033944172588,
+              0.004255317373629081
+            ],
+            "reason": null,
+            "bootstrap_fraction": 0.44,
+            "ci95": [
+              -0.0562017972556683,
+              0.04414501195641015
+            ],
+            "valid_bootstraps": 300,
+            "bootstrap_unit": "independent cell",
+            "bootstrap_target": "delta_phi",
+            "n_cells": 2048
+          },
+          "mean_nascent_probability": [
+            0.40625,
+            0.41064453125,
+            0.419921875,
+            0.40478515625
+          ],
+          "observed_nascent_probability": [
+            0.1123046875,
+            0.13671875,
+            0.123046875,
+            0.1181640625
+          ],
+          "mean_nascent_counts": [
+            0.6796875,
+            0.66357421875,
+            0.685546875,
+            0.64599609375
+          ],
+          "mean_promoter_on": [
+            0.3212890625,
+            0.33642578125,
+            0.32666015625,
+            0.3310546875
+          ]
+        },
+        "options": {
+          "engine": "reference",
+          "conditions": [
+            "uncoupled",
+            "competition_only",
+            "environment_only",
+            "extrinsic_only"
+          ],
+          "cells": 2048,
+          "duration": 24.0,
+          "seed": 1741,
+          "detection_efficiency": 0.3,
+          "on_rate": 0.5,
+          "off_rate": 1.0,
+          "initiation_rate": 2.0,
+          "clearance_rate": 1.0,
+          "extrinsic_cv": 0.0,
+          "competition_strength": 0.0,
+          "environment_gain": 0.0,
+          "environment_on_rate": 0.06,
+          "environment_off_rate": 0.06,
+          "bootstrap_samples": 300
+        },
+        "seed": 2322651108,
+        "events": 386401,
+        "warnings": [],
+        "samples_sha256": "7ce268f58a710e6a3c2c942487efde6e620ce2e806c318e1a79f008d5132f6c4"
+      },
+      {
+        "id": "competition_only",
+        "name": "Cis competition only",
+        "metrics": {
+          "latent": {
+            "phi_cis": -0.22819227075961188,
+            "phi_trans": 0.000268238320085247,
+            "delta_phi": -0.22846050907969712,
+            "pair_correlations": [
+              -0.23221703316529593,
+              -0.22416750835392782,
+              -0.0202672687577726,
+              0.020803745397943094
+            ],
+            "reason": null,
+            "bootstrap_fraction": 0.0,
+            "ci95": [
+              -0.272233122822495,
+              -0.1809344508012211
+            ],
+            "valid_bootstraps": 300,
+            "bootstrap_unit": "independent cell",
+            "bootstrap_target": "delta_phi",
+            "n_cells": 2048
+          },
+          "observed": {
+            "phi_cis": -0.042367462365034664,
+            "phi_trans": -0.004612483708402309,
+            "delta_phi": -0.037754978656632354,
+            "pair_correlations": [
+              -0.05310086076168038,
+              -0.03163406396838895,
+              -0.005323233618183338,
+              -0.00390173379862128
+            ],
+            "reason": null,
+            "bootstrap_fraction": 0.04,
+            "ci95": [
+              -0.0771378468274038,
+              0.003526867353131012
+            ],
+            "valid_bootstraps": 300,
+            "bootstrap_unit": "independent cell",
+            "bootstrap_target": "delta_phi",
+            "n_cells": 2048
+          },
+          "promoter": {
+            "phi_cis": -0.3295734220501443,
+            "phi_trans": -0.008115267307157855,
+            "delta_phi": -0.32145815474298645,
+            "pair_correlations": [
+              -0.3334049811879418,
+              -0.3257418629123467,
+              -0.0032283437645727864,
+              -0.013002190849742926
+            ],
+            "reason": null,
+            "bootstrap_fraction": 0.0,
+            "ci95": [
+              -0.3548937345797557,
+              -0.2859522081586357
+            ],
+            "valid_bootstraps": 300,
+            "bootstrap_unit": "independent cell",
+            "bootstrap_target": "delta_phi",
+            "n_cells": 2048
+          },
+          "mean_nascent_probability": [
+            0.3154296875,
+            0.30810546875,
+            0.30419921875,
+            0.31103515625
+          ],
+          "observed_nascent_probability": [
+            0.09716796875,
+            0.08544921875,
+            0.08935546875,
+            0.09521484375
+          ],
+          "mean_nascent_counts": [
+            0.49560546875,
+            0.5234375,
+            0.50244140625,
+            0.51611328125
+          ],
+          "mean_promoter_on": [
+            0.25634765625,
+            0.2607421875,
+            0.27001953125,
+            0.25
+          ]
+        },
+        "options": {
+          "engine": "reference",
+          "conditions": [
+            "uncoupled",
+            "competition_only",
+            "environment_only",
+            "extrinsic_only"
+          ],
+          "cells": 2048,
+          "duration": 24.0,
+          "seed": 1741,
+          "detection_efficiency": 0.3,
+          "on_rate": 0.5,
+          "off_rate": 1.0,
+          "initiation_rate": 2.0,
+          "clearance_rate": 1.0,
+          "extrinsic_cv": 0.0,
+          "competition_strength": 20.0,
+          "environment_gain": 0.0,
+          "environment_on_rate": 0.06,
+          "environment_off_rate": 0.06,
+          "bootstrap_samples": 300
+        },
+        "seed": 4064810119,
+        "events": 297569,
+        "warnings": [],
+        "samples_sha256": "91f418b855e23310268e27d00392fe07d366d737017ca38cf8dd19139fb1dfb9"
+      },
+      {
+        "id": "environment_only",
+        "name": "Shared cis environment only",
+        "metrics": {
+          "latent": {
+            "phi_cis": 0.17219290755071692,
+            "phi_trans": 0.0009110331257031097,
+            "delta_phi": 0.1712818744250138,
+            "pair_correlations": [
+              0.184415124551172,
+              0.15997069055026186,
+              -0.02318721227039856,
+              0.02500927852180478
+            ],
+            "reason": null,
+            "bootstrap_fraction": 1.0,
+            "ci95": [
+              0.12623395431295542,
+              0.2090445323816173
+            ],
+            "valid_bootstraps": 300,
+            "bootstrap_unit": "independent cell",
+            "bootstrap_target": "delta_phi",
+            "n_cells": 2048
+          },
+          "observed": {
+            "phi_cis": 0.02680653791391717,
+            "phi_trans": 0.0006020395272435296,
+            "delta_phi": 0.02620449838667364,
+            "pair_correlations": [
+              0.02165330654998974,
+              0.0319597692778446,
+              -0.010936429801043871,
+              0.01214050885553093
+            ],
+            "reason": null,
+            "bootstrap_fraction": 0.8366666666666667,
+            "ci95": [
+              -0.02068374711204611,
+              0.06775769079431519
+            ],
+            "valid_bootstraps": 300,
+            "bootstrap_unit": "independent cell",
+            "bootstrap_target": "delta_phi",
+            "n_cells": 2048
+          },
+          "promoter": {
+            "phi_cis": 0.31182941121092445,
+            "phi_trans": -0.013855863356193269,
+            "delta_phi": 0.3256852745671177,
+            "pair_correlations": [
+              0.3048757306200914,
+              0.31878309180175757,
+              -0.03270165540489774,
+              0.004989928692511206
+            ],
+            "reason": null,
+            "bootstrap_fraction": 1.0,
+            "ci95": [
+              0.28757057636987043,
+              0.36703487860580486
+            ],
+            "valid_bootstraps": 300,
+            "bootstrap_unit": "independent cell",
+            "bootstrap_target": "delta_phi",
+            "n_cells": 2048
+          },
+          "mean_nascent_probability": [
+            0.60498046875,
+            0.60595703125,
+            0.6357421875,
+            0.62890625
+          ],
+          "observed_nascent_probability": [
+            0.17578125,
+            0.18994140625,
+            0.18310546875,
+            0.18701171875
+          ],
+          "mean_nascent_counts": [
+            1.21630859375,
+            1.19775390625,
+            1.265625,
+            1.23583984375
+          ],
+          "mean_promoter_on": [
+            0.60791015625,
+            0.6201171875,
+            0.6162109375,
+            0.61279296875
+          ]
+        },
+        "options": {
+          "engine": "reference",
+          "conditions": [
+            "uncoupled",
+            "competition_only",
+            "environment_only",
+            "extrinsic_only"
+          ],
+          "cells": 2048,
+          "duration": 24.0,
+          "seed": 1741,
+          "detection_efficiency": 0.3,
+          "on_rate": 0.5,
+          "off_rate": 1.0,
+          "initiation_rate": 2.0,
+          "clearance_rate": 1.0,
+          "extrinsic_cv": 0.0,
+          "competition_strength": 0.0,
+          "environment_gain": 12.0,
+          "environment_on_rate": 0.06,
+          "environment_off_rate": 0.06,
+          "bootstrap_samples": 300
+        },
+        "seed": 1392522080,
+        "events": 714215,
+        "warnings": [],
+        "samples_sha256": "2bcc08d7664972562ea6394784bbb3672c92348be601cbd99b4d180c6d8ed9c0"
+      },
+      {
+        "id": "extrinsic_only",
+        "name": "Cell-wide variation only",
+        "metrics": {
+          "latent": {
+            "phi_cis": 0.13611899810154027,
+            "phi_trans": 0.11330580117778316,
+            "delta_phi": 0.022813196923757106,
+            "pair_correlations": [
+              0.12706789242229818,
+              0.14517010378078235,
+              0.11276995895335112,
+              0.11384164340221518
+            ],
+            "reason": null,
+            "bootstrap_fraction": 0.9,
+            "ci95": [
+              -0.01742415357697196,
+              0.06353632220729191
+            ],
+            "valid_bootstraps": 300,
+            "bootstrap_unit": "independent cell",
+            "bootstrap_target": "delta_phi",
+            "n_cells": 2048
+          },
+          "observed": {
+            "phi_cis": 0.029853996554336994,
+            "phi_trans": 0.010739844576727598,
+            "delta_phi": 0.019114151977609396,
+            "pair_correlations": [
+              0.02569851449203163,
+              0.03400947861664236,
+              0.004321358651381436,
+              0.01715833050207376
+            ],
+            "reason": null,
+            "bootstrap_fraction": 0.7966666666666666,
+            "ci95": [
+              -0.03754316231456699,
+              0.0661563421636329
+            ],
+            "valid_bootstraps": 300,
+            "bootstrap_unit": "independent cell",
+            "bootstrap_target": "delta_phi",
+            "n_cells": 2048
+          },
+          "promoter": {
+            "phi_cis": 0.1264922950929421,
+            "phi_trans": 0.0894538555397547,
+            "delta_phi": 0.037038439553187405,
+            "pair_correlations": [
+              0.11265523060909548,
+              0.14032935957678871,
+              0.1021381932627055,
+              0.0767695178168039
+            ],
+            "reason": null,
+            "bootstrap_fraction": 0.96,
+            "ci95": [
+              -0.00183271013093928,
+              0.0731758761065386
+            ],
+            "valid_bootstraps": 300,
+            "bootstrap_unit": "independent cell",
+            "bootstrap_target": "delta_phi",
+            "n_cells": 2048
+          },
+          "mean_nascent_probability": [
+            0.3583984375,
+            0.333984375,
+            0.34326171875,
+            0.33349609375
+          ],
+          "observed_nascent_probability": [
+            0.10595703125,
+            0.09765625,
+            0.0947265625,
+            0.09765625
+          ],
+          "mean_nascent_counts": [
+            0.6064453125,
+            0.57177734375,
+            0.58251953125,
+            0.5673828125
+          ],
+          "mean_promoter_on": [
+            0.28662109375,
+            0.28125,
+            0.29638671875,
+            0.3056640625
+          ]
+        },
+        "options": {
+          "engine": "reference",
+          "conditions": [
+            "uncoupled",
+            "competition_only",
+            "environment_only",
+            "extrinsic_only"
+          ],
+          "cells": 2048,
+          "duration": 24.0,
+          "seed": 1741,
+          "detection_efficiency": 0.3,
+          "on_rate": 0.5,
+          "off_rate": 1.0,
+          "initiation_rate": 2.0,
+          "clearance_rate": 1.0,
+          "extrinsic_cv": 1.0,
+          "competition_strength": 0.0,
+          "environment_gain": 0.0,
+          "environment_on_rate": 0.06,
+          "environment_off_rate": 0.06,
+          "bootstrap_samples": 300
+        },
+        "seed": 2735162960,
+        "events": 336177,
+        "warnings": [],
+        "samples_sha256": "2ffc17ff9096b251ce5bef4dda5860e9018053a30454de9633bf171039ca4ea5"
+      }
+    ],
+    "scope": [
+      "These are mechanistic sufficiency and ablation experiments, not a reproduction or fit of the manuscript's figures or 97% parameter scan.",
+      "No live simulation is used or modified. A study starts independent seeded simulations from copied configurations.",
+      "Reference nascent activity means RNA count > 0, separately from promoter ON. Exponential RNA residence is a reduced observation model, not explicit elongation or an intron-FISH forward model.",
+      "Reference cis and trans compare two homolog pairs within the same simulated cell, sharing its extrinsic factor; there is no spatial polymer in that reference.",
+      "The polymer engine has one chain. Its independent-replica null removes shared-cell effects and must not be called trans or subtracted as the manuscript's cis\u2013trans contrast.",
+      "A sampled minimum distance does not establish that a pair never contacted. Physical nanometer thresholds require independent length calibration and an imaging model.",
+      "Bootstrap fractions are support measures, not p-values. Short pilot runs do not establish stationarity, converged correlations, or biological causality."
+    ],
+    "warnings": [
+      "Pilot duration and sample count are numerical choices, not established equilibration or power requirements.",
+      "Detection independently misses a fraction of nascent-positive alleles. No universal multiplicative correlation correction is applied.",
+      "The default toy coupling strengths deliberately make contrasting mechanisms visible; they were not fitted to the manuscript.",
+      "Cells start with promoters OFF and no RNA. Duration is a transient observation time; check longer durations before assuming stationarity."
+    ],
+    "elapsed_seconds": 0.9667207919992507,
+    "version": 1,
+    "source_sha256": "0f6fd087fd451b56532f1579eb2dfc0d3cec5d74ad40ff0a2076d869b1365574"
+  },
+  "sources": [
+    "https://doi.org/10.1073/pnas.0803850105",
+    "https://doi.org/10.1073/pnas.162041399"
+  ],
+  "limitations": [
+    "These are reduced-model controls, not a manuscript figure or parameter-scan reproduction.",
+    "The main manuscript's supporting kinetic methods and original analysis data were not supplied.",
+    "The lognormal cell factor is a positive illustrative alternative to the manuscript's stated normal modulation.",
+    "Bootstrap intervals use independent simulated cells; they do not incorporate biological model or parameter uncertainty."
+  ]
+}

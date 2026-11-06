@@ -1,0 +1,38 @@
+{
+  "application_version": "0.8.0",
+  "python_regression": {
+    "total": 179,
+    "skipped": 2,
+    "result": "passed; GPU hardware unavailable for the two skipped platform checks"
+  },
+  "ui_helper_tests": {
+    "passed": 47,
+    "failed": 0
+  },
+  "reference_benchmarks": {
+    "passed": 14,
+    "total": 14,
+    "rouse_slope_observed": 0.48943354979426057,
+    "rouse_slope_exact": 0.5026228889133729,
+    "loop_suppression_observed": 0.7161153391828682,
+    "loop_suppression_exact": 0.7196874280987718
+  },
+  "preservation": {
+    "config_preserved": true,
+    "state_preserved_except_updated_explanatory_warnings": true,
+    "history_preserved": true,
+    "step": 20,
+    "samples": 3,
+    "physical_mapping": "uncalibrated",
+    "reference_current_source_matches": true
+  },
+  "experimental_calibration_completed": false,
+  "browser_checks": [
+    "Synthetic example recovers 2 s per reduced time; application disabled",
+    "Slope mismatch .5 versus 1 is flagged",
+    "Reference curves and14/14status render",
+    "Mobile navigation returns to simulation without reset",
+    "Normal viewport has no horizontal overflow; no browser console errors"
+  ],
+  "scope": "Implementation and reference-model checks; no experimental fit or full published figure replication claimed."
+}

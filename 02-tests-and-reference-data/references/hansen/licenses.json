@@ -1,0 +1,221 @@
+[
+  {
+    "record": "https://zenodo.org/records/5770531",
+    "title": "Dynamics of CTCF and cohesin mediated chromatin looping revealed by live-cell imaging",
+    "creators": [
+      {
+        "name": "Gabriele, Michele",
+        "affiliation": "Department of Biological Engineering, Massachusetts Institute of Technology;, Cambridge, 02139",
+        "orcid": "0000-0002-5393-9084"
+      },
+      {
+        "name": "Brand\u00e3o, Hugo B.",
+        "affiliation": "Department of Biological Engineering, Massachusetts Institute of Technology;, Cambridge, 02139",
+        "orcid": "0000-0001-5496-0638"
+      },
+      {
+        "name": "Grosse-Holz, Simon",
+        "affiliation": "Department of Physics, Massachusetts Institute of Technology; Cambridge, MA 02139, USA",
+        "orcid": "0000-0002-0717-5757"
+      },
+      {
+        "name": "Jha, Asmita",
+        "affiliation": "Department of Biological Engineering, Massachusetts Institute of Technology;, Cambridge, 02139",
+        "orcid": "0000-0002-2612-551X"
+      },
+      {
+        "name": "Dailey, Gina M.",
+        "affiliation": "Department of Molecular and Cell Biology, University of California, Berkeley; Berkeley, CA 94720, USA",
+        "orcid": "0000-0002-8988-963X"
+      },
+      {
+        "name": "Cattoglio, Claudia",
+        "affiliation": "Department of Molecular and Cell Biology, University of California, Berkeley; Berkeley, CA 94720, USA",
+        "orcid": "0000-0001-6100-0491"
+      },
+      {
+        "name": "Hsieh, Tsung-Han S.",
+        "affiliation": "Department of Molecular and Cell Biology, University of California, Berkeley; Berkeley, CA 94720, USA",
+        "orcid": "0000-0003-2094-0772"
+      },
+      {
+        "name": "Mirny, Leonid",
+        "affiliation": "Department of Physics and Institute for Medical Engineering and Sciences, Massachusetts Institute of Technology; Cambridge, MA 02139, USA",
+        "orcid": "0000-0002-0785-5410"
+      },
+      {
+        "name": "Zechner, Christoph",
+        "affiliation": "Max Planck Institute of Molecular Cell Biology & Genetics; Dresden, Germany",
+        "orcid": "0000-0003-1300-6076"
+      },
+      {
+        "name": "Hansen, Anders S.",
+        "affiliation": "Department of Biological Engineering, Massachusetts Institute of Technology;, Cambridge, 02139",
+        "orcid": "0000-0001-7540-7858"
+      }
+    ],
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "derived_files_note": "Derived Fbn2 curves preserve attribution and the source CC-BY-4.0 license. Small source tables are unmodified and retain source attribution."
+  },
+  {
+    "record": "https://zenodo.org/records/14600051",
+    "title": "Analysis data for genome-wide absolute quantification of chromatin looping",
+    "creators": [
+      {
+        "name": "Jusuf, James",
+        "affiliation": "Massachusetts Institute of Technology",
+        "orcid": "0000-0002-2786-5982"
+      },
+      {
+        "name": "Yang, Jin Harvey",
+        "affiliation": "Massachusetts Institute of Technology",
+        "orcid": "0000-0001-6489-3926"
+      },
+      {
+        "name": "Toppen, Jack",
+        "affiliation": "Massachusetts Institute of Technology"
+      },
+      {
+        "name": "Grosse-Holz, Simon",
+        "affiliation": "Max Planck Institute for the Physics of Complex Systems",
+        "orcid": "0000-0002-0717-5757"
+      },
+      {
+        "name": "Gabriele, Michele",
+        "affiliation": "Massachusetts Institute of Technology",
+        "orcid": "0000-0002-5393-9084"
+      },
+      {
+        "name": "Mach, Pia",
+        "affiliation": "Friedrich Miescher Institute",
+        "orcid": "0000-0003-1741-7104"
+      },
+      {
+        "name": "Flyamer, Ilya",
+        "affiliation": "Friedrich Miescher Institute",
+        "orcid": "0000-0002-4892-4208"
+      },
+      {
+        "name": "Zechner, Christoph",
+        "affiliation": "Max Planck Institute of Molecular Cell Biology and Genetics",
+        "orcid": "0000-0003-1300-6076"
+      },
+      {
+        "name": "Giorgetti, Luca",
+        "affiliation": "Friedrich Miescher Institute",
+        "orcid": "0000-0002-9664-9087"
+      },
+      {
+        "name": "Mirny, Leonid",
+        "affiliation": "Massachusetts Institute of Technology",
+        "orcid": "0000-0002-0785-5410"
+      },
+      {
+        "name": "Hansen, Anders",
+        "affiliation": "Massachusetts Institute of Technology",
+        "orcid": "0000-0001-7540-7858"
+      }
+    ],
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "derived_files_note": "Derived Fbn2 curves preserve attribution and the source CC-BY-4.0 license. Small source tables are unmodified and retain source attribution."
+  },
+  {
+    "record": "https://zenodo.org/records/18293054",
+    "title": "Data for \"Chromatin Dynamics are Highly Subdiffusive Across Seven Orders of Magnitude\"",
+    "creators": [
+      {
+        "name": "Mazzocca, Matteo",
+        "affiliation": "Massachusetts Institute of Technology",
+        "orcid": "0000-0003-2079-1535"
+      },
+      {
+        "name": "Narducci, Domenic",
+        "affiliation": null,
+        "orcid": "0000-0002-3453-7514"
+      },
+      {
+        "name": "Grosse-Holz, Simon",
+        "affiliation": "Max Planck Institute for the Physics of Complex Systems",
+        "orcid": "0000-0002-0717-5757"
+      },
+      {
+        "name": "Matthias, Jessica",
+        "affiliation": null,
+        "orcid": "0000-0001-6560-2174"
+      },
+      {
+        "name": "Hansen, Anders S",
+        "affiliation": "Massachusetts Institute of Technology",
+        "orcid": "0000-0001-7540-7858"
+      }
+    ],
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "derived_files_note": "Derived Fbn2 curves preserve attribution and the source CC-BY-4.0 license. Small source tables are unmodified and retain source attribution."
+  },
+  {
+    "record": "https://zenodo.org/records/20293143",
+    "title": "Live-cell imaging of enhancer-promoter dynamics reveals transient contact-driven gene activation",
+    "creators": [
+      {
+        "name": "Yang, Jin",
+        "affiliation": "Massachusetts Institute of Technology",
+        "orcid": "0000-0001-6489-3926"
+      },
+      {
+        "name": "Pinholt, Henrik Dahl",
+        "affiliation": "Massachusetts Institute of Technology",
+        "orcid": "0000-0002-4345-5334"
+      },
+      {
+        "name": "Toppen, Jack",
+        "affiliation": "Massachusetts Institute of Technology",
+        "orcid": "0009-0007-7327-2604"
+      },
+      {
+        "name": "Huseyin, Miles",
+        "affiliation": "Massachusetts Institute of Technology",
+        "orcid": "0000-0002-0258-2994"
+      },
+      {
+        "name": "Jusuf, James",
+        "affiliation": "Massachusetts Institute of Technology",
+        "orcid": "0000-0002-2786-5982"
+      },
+      {
+        "name": "Katsifis, Christos C",
+        "affiliation": "Columbia University",
+        "orcid": "0000-0001-5289-8914"
+      },
+      {
+        "name": "K\u00e6stel-Hansen, Jacob",
+        "affiliation": null,
+        "orcid": "0000-0001-7365-9664"
+      },
+      {
+        "name": "Mirny, Leonid",
+        "affiliation": "Massachusetts Institute of Technology",
+        "orcid": "0000-0002-0785-5410"
+      },
+      {
+        "name": "Zechner, Christoph",
+        "affiliation": "Scuola Internazionale Superiore di Studi Avanzati",
+        "orcid": "0000-0003-1300-6076"
+      },
+      {
+        "name": "Hansen, Anders",
+        "affiliation": "Massachusetts Institute of Technology",
+        "orcid": "0000-0001-7540-7858"
+      }
+    ],
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "derived_files_note": "Derived Fbn2 curves preserve attribution and the source CC-BY-4.0 license. Small source tables are unmodified and retain source attribution."
+  }
+]

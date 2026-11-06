@@ -1,0 +1,230 @@
+{
+  "version": 1,
+  "audit_date": "2026-11-02",
+  "laboratory_assumption": "Anders S. Hansen laboratory",
+  "scope": "Relevant public polymer dynamics, looping, microcompartment and coupled transcription primary studies; not an assertion that every laboratory publication or raw file was downloaded.",
+  "datasets": [
+    {
+      "id": "gabriele2022-fbn2",
+      "title": "Dynamics of CTCF- and cohesin-mediated chromatin looping revealed by live-cell imaging",
+      "year": 2022,
+      "publication_status": "peer reviewed",
+      "publication_url": "https://doi.org/10.1126/science.abn6583",
+      "dataset_urls": [
+        "https://zenodo.org/records/5770531",
+        "https://zenodo.org/records/14600051"
+      ],
+      "code_urls": [
+        "https://github.com/ahansenlab/connect_the_dots",
+        "https://github.com/ahansenlab/polysim_bootcamp"
+      ],
+      "cell_type": "mouse embryonic stem cells",
+      "cell_state": "G1/early S-phase selected",
+      "species": "Mus musculus",
+      "observable": "3D two-locus relative-vector MSD, pair distance distribution, inferred looping statistics",
+      "genomic_separation_bp": [
+        515000,
+        10000
+      ],
+      "frame_interval_s": 20,
+      "nominal_frames": 365,
+      "units": {
+        "coordinates": "um",
+        "lag": "s",
+        "MSD": "um2"
+      },
+      "conditions": [
+        "C27",
+        "C36",
+        "C65",
+        "CTCF_0_hr",
+        "CTCF_2_hr",
+        "CTCF_4_hr",
+        "Rad21_0_hr",
+        "Rad21_2_hr",
+        "Rad21_4_hr",
+        "WAPL_0_hr",
+        "WAPL_4_hr",
+        "WAPL_6_hr"
+      ],
+      "access": "Downloaded all11 filtered original TSVs; downloaded exact author H5 with all12conditions. No unfiltered/raw microscopy data downloaded.",
+      "license": "CC-BY-4.0",
+      "download_status": "complete_small_processed_trajectory_files",
+      "analysis_status": "All12conditions derived separately;17curve variants; RAD212h movie-held-out split; localization correction only baseline.",
+      "baseline_role": "RAD212h training subset; mechanistic baseline assumption of no loop extrusion. Other conditions retained for validation.",
+      "limitations": [
+        "WAPL6h only in H5 re-deposit; no movie IDs available for that condition.",
+        "Seven duplicate frame rows across three TSVs resolved by last row, verified against the author H5.",
+        "Full relative MSD, not half relative MSD or individual-locus MSD.",
+        "The same reused Fbn2 data appearing in newer archives are not independent replication."
+      ]
+    },
+    {
+      "id": "jusuf2026-absolute-loops",
+      "title": "Genome-wide absolute quantification of chromatin looping",
+      "year": 2026,
+      "publication_status": "peer reviewed",
+      "publication_url": "https://www.nature.com/articles/s41594-026-01819-2",
+      "dataset_urls": [
+        "https://zenodo.org/records/14600051",
+        "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE286495"
+      ],
+      "code_urls": [
+        "https://github.com/ahansenlab/AbsQuant_analysis_code"
+      ],
+      "cell_type": "mouse embryonic stem cells",
+      "species": "Mus musculus",
+      "observable": "Micro-C dot strength versus absolute looping probability; structural contact-decay curve; re-deposited Fbn2 trajectories",
+      "units": {
+        "Micro-C": "normalized score",
+        "looping": "probability",
+        "simulation_contact_decay": "monomer index; published model1kb/monomer"
+      },
+      "access": "Downloaded polysim_calibration_curve.csv, polysim_calibration_curves_diff_parameters.csv, polysim_contact_map_P_s_curve_up_to_2000_monomers.txt and2022_Fbn2_full_data.h5.",
+      "license": "CC-BY-4.0 data; MIT analysis code",
+      "download_status": "selected_small_components_complete",
+      "analysis_status": "H5 used to verify and supplement Fbn2. Structural CSVs inventoried, not fitted.",
+      "baseline_role": "Structural validation and source model reproduction; its70,000monomer calibration clock cannot be transferred to this engine.",
+      "limitations": [
+        "Files named polysim_calibration_curve calibrate contact/loop probabilities, not MSD/time.",
+        "No matched raw simulated calibration trajectory was located in this public deposit.",
+        "Fbn2 H5 is reused Gabriele2022 experimental data, not a new independent dataset."
+      ]
+    },
+    {
+      "id": "mazzocca2026-chromatin-dynamics",
+      "title": "Integrated MINFLUX tracking reveals two distinct chromatin dynamics classes across cell types",
+      "year": 2026,
+      "publication_status": "peer reviewed",
+      "publication_url": "https://www.nature.com/articles/s41594-026-01807-6",
+      "dataset_urls": [
+        "https://zenodo.org/records/18293054"
+      ],
+      "code_urls": [
+        "https://github.com/ahansenlab/chromatin_dynamics"
+      ],
+      "species": [
+        "Homo sapiens",
+        "Mus musculus"
+      ],
+      "cell_types": [
+        "U2OS",
+        "mESC",
+        "MEF",
+        "RH30",
+        "RPE1"
+      ],
+      "observable": "MINFLUX short-time chromatin tracks; camera SPT pair-relative MSD; long-time Fbn2 SRLCI; model-inferred MSDs",
+      "timescale_windows_s": {
+        "MINFLUX": [
+          0.0002,
+          10
+        ],
+        "SPT": [
+          0.1,
+          200
+        ],
+        "SRLCI": [
+          20,
+          7200
+        ]
+      },
+      "access": "Public archive metadata inspected. Processed data.zip823593800bytes and data_revision.zip1083825604bytes were not downloaded; raw microscopy archives also excluded from this small-component audit.",
+      "license": "CC-BY-4.0",
+      "download_status": "metadata_only_large_components_not_downloaded",
+      "analysis_status": "Not reanalyzed; future independent cell-type and short-time validation.",
+      "baseline_role": "Tests whether a Rouse-like/coarse Markovian polymer can reproduce slopes across time and cell states; not pooled withFbn2.",
+      "limitations": [
+        "Paper SPT processing may report half the two-point MSD as an individual-motion proxy; match the precise observable rather than applying a silent factor2.",
+        "Cell types, labeling and perturbations have distinct dynamics.",
+        "Fbn2 reuse is not independent ofGabriele2022.",
+        "Finite exposure and localization noise dominate some fast lags; use published observation model."
+      ]
+    },
+    {
+      "id": "goel2025-microcompartments",
+      "title": "Dynamics of microcompartment formation at the mitosis-to-G1 transition",
+      "year": 2025,
+      "publication_status": "peer reviewed",
+      "publication_url": "https://www.nature.com/articles/s41594-025-01687-2",
+      "dataset_urls": [
+        "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE276657"
+      ],
+      "code_urls": [
+        "https://github.com/ahansenlab/RCMC_mitosis_analysis_code",
+        "https://github.com/mirnylab/microcompartments"
+      ],
+      "species": "Mus musculus",
+      "cell_type": "G1E-ER4 erythroid cells",
+      "cell_states": [
+        "prometaphase",
+        "anaphase/telophase",
+        "earlyG1",
+        "midG1",
+        "lateG1",
+        "asynchronous"
+      ],
+      "observable": "Region-capture Micro-C contact maps through cell-cycle stages and condensin depletion; matching polymer simulations",
+      "units": {
+        "experimental": "genomic bins and contact counts",
+        "simulation": "0.5kb per modeled site in source study"
+      },
+      "access": "Open-access primary data statement and code README verified; no contact matrix downloaded in this pass.",
+      "license": "Check GEO file terms; simulation repo has its own license",
+      "download_status": "accessions_and_code_verified",
+      "analysis_status": "Not reanalyzed; structural and temporal holdout after cell-type-specific parameterization.",
+      "baseline_role": "Constrains compartment attractions, loop-extrusion competition and contact formation; not an independent free-polymer diffusion clock.",
+      "limitations": [
+        "Mouse erythroid cell state differs from Fbn2 mESC baseline.",
+        "M-to-G1 progression is nonstationary; cannot pool into an equilibrium MSD fit."
+      ]
+    },
+    {
+      "id": "yang2026-enhancer-promoter",
+      "title": "Live-cell imaging of enhancer-promoter dynamics reveals transient contact-driven gene activation",
+      "year": 2026,
+      "publication_status": "preprint",
+      "publication_url": "https://www.biorxiv.org/content/10.64898/2026.06.21.733446v1",
+      "dataset_urls": [
+        "https://zenodo.org/records/20293143"
+      ],
+      "code_urls": [
+        "https://github.com/ahansenlab/synEP"
+      ],
+      "species": "Mus musculus",
+      "cell_type": "engineered mouse embryonic stem cells",
+      "observable": "Paired enhancer-promoter distance and MS2 nascent transcription, multiple designed spacings andCTCF/cohesin perturbations",
+      "genomic_separation_bp": [
+        339000,
+        253000,
+        170000,
+        87000,
+        1500
+      ],
+      "frame_intervals_s": [
+        30,
+        5,
+        0.5
+      ],
+      "access": "Archive64file metadata inspected; individual processedNPZ/CSV files are small enough for selective retrieval. No trajectory file downloaded in this pass.",
+      "license": "CC-BY-4.0",
+      "download_status": "metadata_only",
+      "analysis_status": "Future coupled transcription/geometry validation; protocol audited by parallel protein/transcription review.",
+      "baseline_role": "Coupled E-P/transcription holdout distinct from Fbn2 clock fitting.",
+      "limitations": [
+        "Preprint; engineered locus and labeled spacings need exact design matching.",
+        "Filename nominal distances340/255/170/85kb differ from actualdesigned339/253/170/87kb.",
+        "Contact, nascent-RNA reporter and kinetic model observation conventions must match."
+      ]
+    }
+  ],
+  "fit_policy": "Separate conditions, cell states and observables; designate training and held-out observations before parameter fitting; never infer protein rate constants from a polymer clock alone.",
+  "retrieved_bytes": 53701096,
+  "unperformed": [
+    "Long production baseline simulations",
+    "Production polymer length/time fitting",
+    "MINFLUX/SPT large-archive reanalysis",
+    "Protein kinetic fitting",
+    "Joint multistudy parameter inference"
+  ]
+}

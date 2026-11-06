@@ -1,0 +1,33 @@
+{
+  "preservation": {
+    "config": true,
+    "state": true,
+    "history": true
+  },
+  "live_step": 20,
+  "python_full_suite": {
+    "total": 185,
+    "passed": 183,
+    "gpu_only_skipped": 2,
+    "log": "work/hansen-tutorial-tests.log"
+  },
+  "javascript_suite_before_final_chart_test": {
+    "passed": 49,
+    "log": "work/hansen-tutorial-ui-tests.log"
+  },
+  "final_calibration_javascript_checks": 14,
+  "tutorial_streaming_checks": 4,
+  "reference_route_checks": 3,
+  "browser_reference_import": {
+    "points": 180,
+    "dimension": 3,
+    "observable": "relative_pair",
+    "units": [
+      "s",
+      "um2"
+    ],
+    "clock_assigned": false,
+    "console_errors": 0
+  },
+  "physical_calibration_status": "Public experimental references processed; production model time/length fit pending matched equilibrated simulations"
+}

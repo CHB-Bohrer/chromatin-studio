@@ -1,0 +1,77 @@
+{
+  "source": {
+    "title": "Widespread long-range cis coordination and promoter competition shape nascent transcription",
+    "authors": [
+      "Christopher H. Bohrer",
+      "Nadezda A. Fursova",
+      "Daniel R. Larson"
+    ],
+    "kind": "user-supplied manuscript",
+    "pages": 17,
+    "sha256": "ea4a864d0b940b054f029e033ff14981eded52e3b46b9b3dc7145bdb8203ddab",
+    "supporting_material_supplied": false,
+    "raw_cell_level_data_supplied": false
+  },
+  "targets": [
+    {
+      "figures": [
+        1
+      ],
+      "question": "When does cis nascent coordination exceed matched trans coordination, and how does it depend on distance and expression?",
+      "observables": [
+        "binary nascent detection",
+        "Phi_cis",
+        "Phi_trans",
+        "DeltaPhi",
+        "mean expression",
+        "genomic separation",
+        "minimum sampled physical distance"
+      ],
+      "requirements": [
+        "Two matched alleles in each simulated cell for cis/trans",
+        "Independent-cell sampling",
+        "Calibrated length before nm claims",
+        "Matched localization/detection model and sample counts"
+      ]
+    },
+    {
+      "figures": [
+        2
+      ],
+      "question": "Can active-promoter competition reduce cis correlation relative to a matched trans control?",
+      "implementation": "Four-promoter stochastic reference with shared cell-level variability, mutual cis inhibition, RNA production/removal and imperfect detection. Qualitative sufficiency test; not the unpublished supporting-parameter scan."
+    },
+    {
+      "figures": [
+        3
+      ],
+      "question": "Which mechanisms alter nascent coordination and local molecular co-fluctuations under distance and expression controls?",
+      "implementation": "Spatial-model ablations of TF/recruitment, nucleosomes, marks, cohesin, body responses and chromatin mechanics. A single chain does not supply matched trans alleles."
+    },
+    {
+      "figures": [
+        4,
+        5
+      ],
+      "question": "Do expression, genome organization and molecular-state modules discriminate cis-enhanced and cis-reduced pairs?",
+      "status": "Not reproduced. Requires the cell-level dataset, observation model, analysis choices and independent validation. SIF associations are not imposed as causal facts."
+    }
+  ],
+  "important_distinctions": [
+    "Nascent-positive is not identical to promoter ON or mature RNA count.",
+    "A finite minimum sampled distance does not prove that historical contacts never occurred.",
+    "Detection efficiency attenuates correlations depending on marginal probabilities; no universal correction factor is assumed.",
+    "Prescribed body response multipliers are model hypotheses, not conversions of SIF fluorescence to kinetic rates.",
+    "20 Mb at 200 bp requires 100000 beads, beyond the current supported implementation."
+  ],
+  "primary_sources": [
+    {
+      "title": "Takei et al., 2025, Nature",
+      "url": "https://www.nature.com/articles/s41586-025-08838-x"
+    },
+    {
+      "title": "Dong et al., 2024, Nature Genetics",
+      "url": "https://www.nature.com/articles/s41588-024-01852-1"
+    }
+  ]
+}

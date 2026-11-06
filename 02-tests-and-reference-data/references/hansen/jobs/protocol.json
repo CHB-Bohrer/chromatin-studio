@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "status": "prepared_not_run_not_calibrated",
+  "purpose": "Fit the bare polymer of the saved 20 Mb model to RAD21 2h-depleted mESC Fbn2 tracking, then test held-out conditions after explicit mechanistic changes.",
+  "source_config": "previous-run-before-cluster.json/config",
+  "source_config_fingerprint": "8333cdcb87ae6deaa580527e19635f3fd3ac0c4435640758033a14b84fd5fb3a",
+  "baseline_config": "baseline-20mb-10kb-model.json",
+  "baseline_fingerprint": "a2d9b04036e2e22ce9525052c8b72c0a578b31b891d6cef24d4e85f7f7c43045",
+  "polymer_parameters_preserved": [
+    "beads",
+    "bp_per_bead",
+    "bond_length",
+    "bond_k",
+    "diffusion",
+    "persistence_length",
+    "repulsion",
+    "simulation timestep",
+    "soft confinement radius"
+  ],
+  "biology_disabled": [
+    "protein particles and binding",
+    "specific chromatin attraction",
+    "histone states and spreading",
+    "cohesin and barriers",
+    "nuclear bodies",
+    "genes and transcription",
+    "nucleosome occupancy changes"
+  ],
+  "model_scope": "A coarse baseline candidate with the existing finite-rest bond, bending and soft-repulsion forces. It is not the published 70,000-monomer polychrom model and it does not reproduce all biology of RAD21 depletion.",
+  "fit_reference_id": "fbn2-rad21-2h-fit-corrected",
+  "holdout_reference_id": "fbn2-rad21-2h-holdout-corrected",
+  "pair_observables": [
+    {
+      "beads": [
+        974,
+        1025
+      ],
+      "separation_beads": 51,
+      "represented_bp": 510000,
+      "target_bp": 515000,
+      "relative_error": -0.009708737864077669
+    },
+    {
+      "beads": [
+        974,
+        1026
+      ],
+      "separation_beads": 52,
+      "represented_bp": 520000,
+      "target_bp": 515000,
+      "relative_error": 0.009708737864077669
+    }
+  ],
+  "resolution_rule": "Compute each pair separately and report the 510/520 kb bracket; neither is exactly 515 kb. Do not silently average or relabel either curve as 515 kb.",
+  "alternative": {
+    "config": "baseline-20mb-5kb-model.json",
+    "fingerprint": "d85a12f0be4607a66835019515563658fb79cc1d6cb7ed4b3a8e383adb0bf14c",
+    "beads": 4000,
+    "bp_per_bead": 5000,
+    "pair": [
+      1948,
+      2051
+    ],
+    "separation_bp": 515000,
+    "status": "resolution_candidate_requiring_its_own_parameters_and_calibration",
+    "warning": "Changing beads per kb changes density, stiffness and friction per genomic length. The copied reduced mechanics are a starting candidate, not physically equivalent coarse-graining; never transfer the 10 kb clock."
+  },
+  "workload": {
+    "replicas": 4,
+    "steps_per_replica": 8000000,
+    "dt": 0.002,
+    "reduced_duration": 16000,
+    "snapshot_every_steps": 2000,
+    "snapshot_interval_reduced": 4,
+    "candidate_burn_in_steps": 4000000,
+    "candidate_burn_in_reduced": 8000,
+    "burn_in_is_validated": false,
+    "purpose": "Provisional first long sampling workload with sufficient observations to assess local stationarity. Extend or redesign if convergence or the experimental lag window is not resolved.",
+    "clock_unknown": "Snapshot spacing of 4 reduced units has no known duration in seconds until fitting; re-sample finer if the trial clock fails to cover 60\u20131200 s.",
+    "equilibration_caveat": "Local 51/52-bead relaxation does not establish whole-chain equilibration. Global modes, confinement and initial-condition dependence can be much slower.",
+    "disk_warning": "The bundle creates 4001 full JSON snapshots per replica; inspect a pilot snapshot byte size before running four replicas."
+  },
+  "acceptance_sequence": [
+    "Run numerical acceptance checks on the selected compute node and verify actual platform metadata. Measure throughput before committing the full array.",
+    "Plot pair squared distance, radius of gyration, bond lengths and energy over reduced time for all independent seeds. Compare successive windows and multiple initial conformations; increase equilibration if means or distributions still drift.",
+    "Estimate autocorrelation and effective independent blocks from equilibrated pair-distance records. Use replica/block uncertainty, not overlapping MSD pair counts as independent observations.",
+    "Compute 3D full relative-vector MSD for both pair separations. Match exact lag window and noise convention; coordinates remain reduced. Keep nuclear-rotation treatment consistent.",
+    "Constrain length using the fit-subset mean squared pair distance after a declared observation-noise model. For a noise-free model compare E|R_sim|\u00b2 with the corrected physical moment; length_nm=1000*sqrt(moment_um2/moment_sim). Retain uncorrected tutorial proxy only as a sensitivity comparison.",
+    "With length fixed, fit time_s against the fit subset over the stated window. Vary window and noise correction; reject incompatible curve shape. Quantify replica and acquisition uncertainty; do not claim a confidence interval from fit residuals alone.",
+    "Test the unused baseline acquisition holdout without refitting. Confirm distance distribution and MSD agree within declared tolerances; compare 510 versus520 kb brackets.",
+    "Repeat at smaller integration timestep and longer trajectories before accepting a biological clock. Explicitly test the alternative resolution if adopting5kb bins.",
+    "Keep accepted baseline length/time fixed for mechanistic perturbations. Fit cohesin or other mechanistic parameters against a designated training subset of perturbations and reserve the remaining conditions as new holdouts. Different experimental conditions never become interchangeable.",
+    "Calibrate protein diffusion, residence/binding and transcription parameters separately using their own observations. A shared clock only converts units."
+  ],
+  "commands": {
+    "submit": "After site-specific GPU/partition/account setup, extract baseline-20mb-10kb-cuda.zip, then submit its submit.slurm from the extracted directory.",
+    "msd_510kb": "python -m chromatin_studio.calibration msd --snapshots results/replica-0/snapshots.jsonl --beads 974,1025 --dimension 3 --observable relative_pair --drift-correction none --discard-before 8000 --output fbn2-510kb-msd.json",
+    "msd_520kb": "python -m chromatin_studio.calibration msd --snapshots results/replica-0/snapshots.jsonl --beads 974,1026 --dimension 3 --observable relative_pair --drift-correction none --discard-before 8000 --output fbn2-520kb-msd.json",
+    "command_caveat": "Discard8000 is a provisional analysis setting that must be supported by stationarity diagnostics, not an established equilibration time."
+  },
+  "simulation_submitted": false,
+  "physical_mapping_assigned": false
+}

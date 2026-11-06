@@ -1,0 +1,41 @@
+{
+  "version": "0.1",
+  "name": "Fbn2 \u0394RAD21 resolution candidate \u00b7 20 Mb at 5 kb",
+  "seed": 20261102,
+  "simulation": {
+    "dt": 0.002,
+    "steps_per_frame": 10,
+    "confinement_radius": 20
+  },
+  "chromatin": {
+    "beads": 4000,
+    "bp_per_bead": 5000,
+    "bond_length": 0.85,
+    "bond_k": 45,
+    "diffusion": 0.08,
+    "persistence_length": 2,
+    "repulsion": 8,
+    "initial_marks": [],
+    "barriers": [],
+    "state_interactions": [],
+    "nucleosomes": {
+      "enabled": false
+    }
+  },
+  "marks": [],
+  "proteins": [],
+  "interactions": [],
+  "bodies": [],
+  "cohesin": {
+    "enabled": false,
+    "count": 0,
+    "step_rate": 1.5,
+    "off_rate": 0.08,
+    "spring_k": 2.5
+  },
+  "genes": [],
+  "regulatory_regions": [],
+  "transcription": {
+    "enabled": false
+  }
+}

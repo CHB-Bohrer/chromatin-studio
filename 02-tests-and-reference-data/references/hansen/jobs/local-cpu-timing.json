@@ -1,0 +1,14 @@
+{
+  "status": "timing_only_not_equilibrated",
+  "platform": "numpy",
+  "computer": "macOS-26.7.1-arm64-arm-64bit",
+  "initialization_seconds": 0.06720270798541605,
+  "timed_steps": 200,
+  "timed_wall_seconds": 0.28155558300204575,
+  "seconds_per_step": 0.0014077779150102289,
+  "reduced_time_per_step": 0.002,
+  "integration_substeps": 1,
+  "baseline_fingerprint": "a2d9b04036e2e22ce9525052c8b72c0a578b31b891d6cef24d4e85f7f7c43045",
+  "extrapolated_8million_steps_wall_hours": 3.1283953666893973,
+  "extrapolation_caveat": "Short initial-state measurement; late-run density, hardware and snapshot cost can change throughput. GPU performance unmeasured."
+}

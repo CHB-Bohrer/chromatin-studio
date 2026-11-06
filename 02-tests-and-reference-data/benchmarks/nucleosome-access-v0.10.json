@@ -1,0 +1,163 @@
+{
+  "application_version": "0.10.0",
+  "created_utc": "2026-11-06T18:02:36.412858+00:00",
+  "status": "passed",
+  "source_sha256": {
+    "engine.py": "aeb0f82b7a2166b32bc44a58efd8957d41580a887cb3b1a7446eedc537f049d2",
+    "schema.py": "99e5743dc190eaccf01b2bc863d10b2d0eea65cff3d9b664f95c75b8bbd4487e",
+    "openmm_backend.py": "2f95c31d28e9fa098441b72cb913c7f10379751637a9e92b8d5ef9de7de50c66",
+    "studies.py": "0f6fd087fd451b56532f1579eb2dfc0d3cec5d74ad40ff0a2076d869b1365574"
+  },
+  "openmm_reference_smoke": {
+    "preset": "nucleosome_access",
+    "steps": 200,
+    "reduced_time": 0.4000000000000003,
+    "particles": 204,
+    "elapsed_seconds": 0.5225422920193523,
+    "backend": {
+      "requested_platform": "Reference",
+      "platform": "Reference",
+      "requested_device_index": null,
+      "device_index": null,
+      "requested_precision": "double",
+      "precision": null,
+      "precision_configurable": false,
+      "context_properties": {},
+      "initialization_succeeded": true,
+      "gpu_initialization_succeeded": null,
+      "device_type": "CPU",
+      "capabilities": {
+        "integration": "OpenMM Brownian integration",
+        "mechanical_forces": "CPU",
+        "reactions": "CPU",
+        "rna_diffusion": "CPU",
+        "host_device_transfer": "positions, forces, and mobilities every substep",
+        "native_gpu_forces": false,
+        "multi_gpu_per_run": false,
+        "physical_time_calibrated": false
+      }
+    },
+    "event_counts": {
+      "chromatin_bind": 8,
+      "chromatin_unbind": 2
+    },
+    "initial_occupied": 117,
+    "final_occupied": 117,
+    "nucleosomes": {
+      "enabled": true,
+      "occupied_fraction": 0.9140625,
+      "endpoint_evictions": 0,
+      "endpoint_reassemblies": 0,
+      "mark_reset_intervals": 0,
+      "slides": 0
+    },
+    "checks": [
+      {
+        "name": "finite_coordinates",
+        "passed": true
+      },
+      {
+        "name": "requested_reference_platform",
+        "passed": true
+      },
+      {
+        "name": "200_completed_steps",
+        "passed": true
+      },
+      {
+        "name": "occupancy_count_matches_turnover_sliding_conserves",
+        "passed": true
+      },
+      {
+        "name": "vacant_sites_have_no_histone_marks",
+        "passed": true
+      },
+      {
+        "name": "on_rate_runs_finite_nonnegative_full_coverage",
+        "passed": true
+      },
+      {
+        "name": "off_rate_runs_finite_nonnegative_full_coverage",
+        "passed": true
+      },
+      {
+        "name": "bound_sites_have_finite_current_off_rates",
+        "passed": true
+      },
+      {
+        "name": "actual_chromatin_binding_events_observed",
+        "passed": true
+      },
+      {
+        "name": "event_ids_monotonic_and_retention_consistent",
+        "passed": true
+      },
+      {
+        "name": "valid_event_intervals",
+        "passed": true
+      }
+    ],
+    "notes": [
+      "No nucleosome sliding or turnover event occurred during this 200-step Reference smoke run; occupancy conservation here checks unchanged mass only.",
+      "Sliding mark transport and count conservation are tested by tests/test_live_nucleosomes.py; the saved independent NumPy UI run includes actual slides and turnover."
+    ]
+  },
+  "scope": [
+    "OpenMM Reference is CPU execution, not a GPU benchmark.",
+    "This short finite-state check is not a physical-unit calibration or a timestep-convergence study.",
+    "Reaction and mechanical force evaluation remain on the host CPU."
+  ],
+  "python_suite": {
+    "run": 237,
+    "passed": 235,
+    "skipped": 2,
+    "skip_reasons": [
+      "CUDA unavailable",
+      "OpenCL has no compatible platform"
+    ],
+    "log": "../../work/live-genome-python-tests.log"
+  },
+  "javascript_suite": {
+    "run": 75,
+    "passed": 75,
+    "failed": 0,
+    "log": "../../work/live-genome-ui-tests.log"
+  },
+  "reference_controls": {
+    "passed": 9,
+    "total": 9,
+    "file": "references/manuscript/verification.json",
+    "prior_file": "references/manuscript/verification-v0.9.json",
+    "source_sha256": "0f6fd087fd451b56532f1579eb2dfc0d3cec5d74ad40ff0a2076d869b1365574"
+  },
+  "recorded_ui_run": {
+    "file": "tutorial/recording-nucleosome-run.json",
+    "model_file": "tutorial/recording-nucleosome-model.json",
+    "sha256": "6d233efe0b239c5f7b3a0da1ae37445ccaa583eb33169cfa9a6ee33c194fcd0d",
+    "engine": "numpy",
+    "step": 4900,
+    "reduced_time": 9.799999999999942,
+    "event_counts": {
+      "chromatin_bind": 171,
+      "chromatin_unbind": 146,
+      "nucleosome_reassembly": 7,
+      "nucleosome_slide": 21,
+      "nucleosome_eviction": 15
+    },
+    "event_total": 360,
+    "dropped_events": 0,
+    "nucleosomes": {
+      "enabled": true,
+      "occupied_fraction": 0.8515625,
+      "endpoint_evictions": 15,
+      "endpoint_reassemblies": 7,
+      "mark_reset_intervals": 15,
+      "slides": 21
+    },
+    "finite_coordinates": true,
+    "initial_occupied": 117,
+    "final_occupied": 109,
+    "occupancy_count_matches_turnover_and_sliding_conserves": true,
+    "vacant_sites_have_no_histone_marks": true
+  }
+}

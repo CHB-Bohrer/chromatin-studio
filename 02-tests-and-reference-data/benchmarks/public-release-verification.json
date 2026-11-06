@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-06",
+  "application_version": "0.10.0",
+  "status": "passed_local_release_checks",
+  "tested_source_commit": "d7827fed7093002c82143a5473c5a597d8ebb271",
+  "checkout": "Independent copy of exactly the 275 staged source files; no surrounding workspace files copied.",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Darwin",
+    "numpy": "2.3.5",
+    "scipy": "1.18.1"
+  },
+  "python_suite": {
+    "run": 237,
+    "passed": 235,
+    "skipped": 2,
+    "skip_reasons": [
+      "CUDA unavailable",
+      "OpenCL has no compatible platform"
+    ],
+    "scope": "Fresh source copy using the existing development environment, including optional OpenMM/Reference dependencies."
+  },
+  "javascript_suite": {
+    "passed": 75,
+    "failed": 0,
+    "runtime": "Node 24.19.0"
+  },
+  "launch_check": {
+    "status": "passed",
+    "checks": {
+      "/": true,
+      "/tutorial/index.html": true,
+      "fresh_demo_at_step_zero": true,
+      "nucleosome_sites": true
+    },
+    "temporary_server_stopped": true
+  },
+  "source_sha256": {
+    "engine.py": "aeb0f82b7a2166b32bc44a58efd8957d41580a887cb3b1a7446eedc537f049d2",
+    "schema.py": "99e5743dc190eaccf01b2bc863d10b2d0eea65cff3d9b664f95c75b8bbd4487e",
+    "openmm_backend.py": "2f95c31d28e9fa098441b72cb913c7f10379751637a9e92b8d5ef9de7de50c66",
+    "studies.py": "0f6fd087fd451b56532f1579eb2dfc0d3cec5d74ad40ff0a2076d869b1365574"
+  },
+  "publication_scan": {
+    "files_scanned": 275,
+    "total_bytes": 74581270,
+    "full_manuscript_files": 0,
+    "personal_absolute_path_matches": 0,
+    "credential_marker_matches": 0,
+    "archive_contents_reviewed": true,
+    "scope": "Filename/header/hash and common credential-marker checks plus archive inspection; not a guarantee against every possible secret encoding."
+  },
+  "github_actions": {
+    "configured": true,
+    "executed": false,
+    "python_versions": [
+      "3.10",
+      "3.12"
+    ],
+    "node_version": "22",
+    "scope": "CPU/NumPy and interface helper checks; GitHub runner execution pending publication."
+  },
+  "gpu_execution_verified": false,
+  "physical_calibration_completed": false,
+  "media_unchanged": true
+}

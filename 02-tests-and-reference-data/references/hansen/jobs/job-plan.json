@@ -1,0 +1,92 @@
+{
+  "job": {
+    "platform": "CUDA",
+    "precision": "mixed",
+    "replicas": 4,
+    "steps": 8000000,
+    "sample_every": 20000,
+    "snapshot_every": 2000,
+    "cpus": 4,
+    "memory_gb": 16,
+    "walltime": "3-00:00:00",
+    "job_name": "fbn2-baseline"
+  },
+  "model": {
+    "name": "Fbn2 \u0394RAD21 baseline candidate \u00b7 20 Mb at 10 kb",
+    "particle_count": 2000,
+    "chromatin_beads": 2000,
+    "genomic_span_bp": 20000000,
+    "dt": 0.002,
+    "steps": 8000000,
+    "reduced_duration": 16000.0,
+    "physical_mapping": {
+      "status": "uncalibrated",
+      "baseline_matches": false,
+      "length_nm": null,
+      "time_s": null,
+      "warnings": [
+        "No physical unit mapping is attached; model values remain in reduced units."
+      ]
+    }
+  },
+  "replicas": [
+    {
+      "index": 0,
+      "seed": 20261102
+    },
+    {
+      "index": 1,
+      "seed": 20261103
+    },
+    {
+      "index": 2,
+      "seed": 20261104
+    },
+    {
+      "index": 3,
+      "seed": 20261105
+    }
+  ],
+  "output": {
+    "metric_records_per_replica": 401,
+    "full_snapshots_per_replica": 4001,
+    "final_states_per_replica": 1,
+    "replicas": 4
+  },
+  "warnings": [
+    "Dynamics are stored in reduced units. Physical interpretation requires a documented length scale and an MSD-derived clock; attaching a mapping does not validate the biological model.",
+    "Speckles and nucleoli are imposed stationary affinity fields. Protein assemblies can form independently; nucleolar subphases and rRNA processing are not modeled.",
+    "IDRs are explicit domain-bead sticker chains, not residue-level or sequence-parametrized CALVADOS proteins.",
+    "Independent particle drag omits hydrodynamic coupling; soft excluded volume can allow chain crossings.",
+    "Histone marks are independent binary flags per bead; a nucleosome-unit bead can carry these flags but does not resolve histone tails, individual residues, or wrapped DNA.",
+    "Regulatory gains and state-selective chromatin attraction are configurable hypotheses; protein preferences are encounter multipliers, not measured dissociation constants.",
+    "Transcription-dependent persistence and processing enhancement are configurable hypotheses, not universal biological laws.",
+    "Assembly and gene parameters are illustrative. Seeing a cluster is not evidence of calibrated liquid-liquid phase separation.",
+    "No physical length/time mapping is attached. Times and diffusion coefficients cannot yet be read as biological seconds or micrometers squared per second.",
+    "Coarse genomic resolution: each bead represents 10,000 bp. Individual nucleosomes, promoters, and other sub-bead features are unresolved. Changing bp per bead does not calibrate or rescale diffusion, mechanics, or reaction rates.",
+    "Each replica starts from the model and its own seed; this export does not resume the current viewer state.",
+    "Forces, reactions and RNA diffusion run on CPU. CUDA or OpenCL runs only the Brownian integrator on the selected device; acceleration is not guaranteed. OpenCL device type may be CPU or GPU.",
+    "Memory, walltime and GPU availability are scheduler requests, not capacity estimates. Pilot the model before a large array.",
+    "Existing model particle and transcript limits still apply. A GPU request does not enable a 100,000-nucleosome model.",
+    "SLURM GPU and queue directives are site-specific; inspect the template before submitting.",
+    "One GPU is requested per independent replica. Default device selection uses the devices visible on the allocated node; requested GPU failures stop the run.",
+    "Large output request: 16,004 full snapshots and 1,604 metric records across all replicas. JSON snapshots include positions, tracks, proteins and RNA; check disk capacity and consider wider sampling intervals."
+  ],
+  "files": [
+    "model.json",
+    "job.json",
+    "physical-units.json",
+    "bundle-manifest.json",
+    "run.sh",
+    "submit.slurm",
+    "RUN.md",
+    "requirements.txt",
+    "requirements-polychrom.txt",
+    "chromatin_studio/"
+  ],
+  "scripts": {
+    "slurm": "#!/bin/sh\n#SBATCH --job-name=fbn2-baseline\n#SBATCH --array=0-3\n#SBATCH --nodes=1\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=4\n#SBATCH --mem=16G\n#SBATCH --time=3-00:00:00\n#SBATCH --output=slurm-%A_%a.out\n#SBATCH --gres=gpu:1\nset -eu\n# Submit from the extracted bundle directory. Adapt GPU/queue directives to your site.\ncd -- \"${SLURM_SUBMIT_DIR:?Submit this script from the extracted bundle directory}\"\n# Do not replace CUDA_VISIBLE_DEVICES: the scheduler owns GPU visibility.\nsh ./run.sh \"${SLURM_ARRAY_TASK_ID:?Missing array task ID}\"\n",
+    "shell": "#!/bin/sh\nset -eu\n# Run from the extracted bundle; activate a prepared Python environment first.\ncd -- \"$(CDPATH= cd -- \"$(dirname -- \"$0\")\" && pwd)\"\nREPLICA=${1:-0}\ncase \"$REPLICA\" in ''|*[!0-9]*) echo \"Replica must be a nonnegative integer.\" >&2; exit 2;; esac\nif [ \"$REPLICA\" -ge 4 ]; then echo \"Replica is outside this job array.\" >&2; exit 2; fi\nexport OMP_NUM_THREADS=4\nexport OPENMM_CPU_THREADS=4\nexport OPENBLAS_NUM_THREADS=4\nexport MKL_NUM_THREADS=4\nmkdir -p results\n# A lock refuses accidental concurrent repeats and also records failed attempts.\nif ! mkdir \"results/replica-$REPLICA.lock\"; then\n  echo \"Replica already attempted. Keep its results; use a fresh results directory for a new attempt.\" >&2\n  exit 2\nfi\n# Verify immutable bundle files before running any scientific tests.\npython -c \"from chromatin_studio.batch import verify_bundle; verify_bundle('.')\"\n# Scientific checks run on the same allocated node and requested platform.\npython -m chromatin_studio.validation --platform CUDA --precision mixed --output \"results/validation-$REPLICA.json\"\npython -m chromatin_studio.batch --model model.json --job job.json --replica \"$REPLICA\" --output \"results/replica-$REPLICA\"\n"
+  },
+  "resume_supported": false
+}

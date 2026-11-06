@@ -1,0 +1,40 @@
+{
+  "independent_scalar_pair_checks": [
+    {
+      "lag_s": 20,
+      "pairs": 23327,
+      "absolute_msd_difference_um2": 4.163336342344337e-17
+    },
+    {
+      "lag_s": 60,
+      "pairs": 22511,
+      "absolute_msd_difference_um2": 5.551115123125783e-17
+    },
+    {
+      "lag_s": 1200,
+      "pairs": 14120,
+      "absolute_msd_difference_um2": 0.0
+    },
+    {
+      "lag_s": 3600,
+      "pairs": 5234,
+      "absolute_msd_difference_um2": 0.0
+    }
+  ],
+  "source_trajectory_cross_checks": "All2689TSV tracks match corresponding author H5 relative coordinates within1e-8um after7 duplicate rows resolved asauthorH5.",
+  "bundle_manifest_verified": "683a300d8ae176bfe3c65e5bc54e7d40281691e80edd31f4fc7f16cf63aa4488",
+  "condition_mean_distance_reproduction": {
+    "c27": {
+      "derived_um": 0.267233815921272,
+      "published_rounded_um": 0.267
+    },
+    "c36": {
+      "derived_um": 0.3614475866519488,
+      "published_rounded_um": 0.361
+    },
+    "c65": {
+      "derived_um": 0.46732282421478105,
+      "published_rounded_um": 0.467
+    }
+  }
+}
