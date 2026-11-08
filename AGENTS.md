@@ -33,6 +33,7 @@ These files can also be supplied explicitly to an AI that does not automatically
 - Run checks that match the change. Record skipped platforms, the actual backend and the scope of any scientific claim. Never turn missing GPU hardware into a passing GPU result.
 - Use existing tutorial sources and capture real UI states. Preserve natural narration at 1×; do not speed speech to fit old timings. See [tutorial instructions](tutorial/README.md).
 - The user authorized public release of the tool, hypothesis examples, tutorial and development handoff on 2026-11-06, excluding the complete manuscript. Keep the full manuscript, full-text extractions, credentials and machine-specific local notes out of the repository. Included simulated examples/reference summaries are intentional public tool content. Do not treat this as permission to publish future experimental data automatically.
+- Run data (trajectories, calibration reports, run scripts) lives outside the repository. Before reading or writing run data, check for a gitignored `LOCAL_DATA.md` at the repository root; it records where this machine keeps the data. If it is missing, ask the user. Never commit run data or `LOCAL_DATA.md`.
 - Task ownership is temporary. Coordinate concurrent edits, but do not infer permanent ownership from names in an earlier chat.
 
 ## At the end of substantive work

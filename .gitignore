@@ -15,6 +15,9 @@ preflight-*/
 replica-*/
 *.lock/
 
+# Machine-specific pointer to where this machine keeps run data (see AGENTS.md)
+LOCAL_DATA.md
+
 # Editors and operating systems
 .DS_Store
 Thumbs.db
