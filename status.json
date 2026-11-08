@@ -1,0 +1,187 @@
+{
+  "schema": 1,
+  "title": "Chromatin Studio",
+  "tagline": "A visual builder and simulator for chromatin, reacting proteins, histone marks, cohesin and transcription.",
+  "kind": "Research software",
+  "stage": "Research prototype",
+  "as_of": "2026-11-06",
+  "repo": "CHB-Bohrer/chromatin-studio",
+  "links": [
+    {
+      "label": "Watch the narrated tutorial",
+      "href": "03-tutorial-player/tutorial/index.html",
+      "primary": true
+    },
+    {
+      "label": "How to run it",
+      "href": "https://github.com/CHB-Bohrer/chromatin-studio/blob/main/01-application/README.md"
+    },
+    {
+      "label": "Code on GitHub",
+      "href": "https://github.com/CHB-Bohrer/chromatin-studio"
+    }
+  ],
+  "tags": [
+    "polymer simulation",
+    "OpenMM",
+    "transcription",
+    "cohesin"
+  ],
+  "about": [
+    "You build a model of a chromatin region, press run, and watch proteins, histone marks, nucleosomes and RNA move in 3D, with live read-outs of binding, occupancy and regulation. It runs on your own computer and opens in a web browser.",
+    "It is a working research prototype in reduced units. The built-in presets are not yet tied to a measured length or time scale, so this page tracks what the tool does today and what still has to be shown."
+  ],
+  "facts": [
+    {
+      "value": "v0.10.0",
+      "label": "current release"
+    },
+    {
+      "value": "235 of 237",
+      "label": "Python tests pass; the other 2 are skipped GPU and OpenCL hardware checks"
+    },
+    {
+      "value": "16",
+      "label": "narrated tutorial chapters, about 10 minutes, built from real captured states of the app"
+    },
+    {
+      "value": "2,894",
+      "label": "public trajectories, across 12 conditions, processed for the first calibration step"
+    }
+  ],
+  "board": {
+    "title": "Where it stands",
+    "intro": "The left column is what the app can do now. The right column is the order of what comes next, with the evidence each step needs before it counts as done.",
+    "phases": [
+      {
+        "title": "Today (v0.10)",
+        "blurb": "What you can build and watch. Each item lists the boundary that matters.",
+        "nodes": [
+          {
+            "name": "Chromatin mechanics",
+            "state": "built",
+            "note": "Bead-spring polymer with bending stiffness, soft repulsion, state-selective attraction and adjustable confinement. Soft potentials do not guarantee that topology is preserved."
+          },
+          {
+            "name": "Proteins and multivalent assemblies",
+            "state": "built",
+            "note": "Many species with finite valence and reversible links to chromatin and to each other. Larger assemblies can form; that does not establish a phase diagram."
+          },
+          {
+            "name": "Histone marks and nucleosome accessibility",
+            "state": "built",
+            "note": "Binary marks, writers and erasers, and occupied or vacant nucleosome sites. No histone-copy identity, wrapped DNA or explicit histone reservoir."
+          },
+          {
+            "name": "Nucleosome remodelers",
+            "state": "built",
+            "note": "Eviction, reassembly and sliding of occupancy. Sliding conserves nucleosome number. There is no ATP cycle."
+          },
+          {
+            "name": "Enhancers, promoters and regulation",
+            "state": "built",
+            "note": "Contact-dependent rate gains and coactivator recruitment. The mechanisms and parameters are hypotheses, not fitted models."
+          },
+          {
+            "name": "Stochastic transcription and RNA",
+            "state": "built",
+            "note": "Promoter switching and initiation, with optional individual polymerases, elongation, pausing, and RNA release, processing and decay. No polymerase traffic or finite polymerase pool."
+          },
+          {
+            "name": "Cohesin loop extrusion",
+            "state": "built",
+            "note": "Directional barriers, collisions, unloading and reloading. The loading rate is not independently parameterized and no published contact map has been reproduced yet."
+          },
+          {
+            "name": "Speckles and nucleolus",
+            "state": "built",
+            "note": "Separately configurable spatial affinity fields with transcription responses. They are imposed fields, not self-assembled organelles."
+          },
+          {
+            "name": "Live inspection",
+            "state": "built",
+            "note": "3D view, live 1D binding with occupied and vacant sites, genomic tracks, regulatory rate breakdowns and individual RNAs. Read-only snapshots."
+          },
+          {
+            "name": "Control and ablation studies",
+            "state": "partial",
+            "note": "Independent control runs and reference calculations work. Quantitative manuscript conclusions and full matched-allele spatial comparisons are unfinished."
+          },
+          {
+            "name": "Cluster and headless runs",
+            "state": "built",
+            "note": "Slurm and job-array scripts, headless execution, streamed results and provenance. Fresh runs only: the app does not submit jobs and cannot continue a run from a checkpoint."
+          },
+          {
+            "name": "Narrated tutorial",
+            "state": "built",
+            "note": "A scripted walkthrough of genuine captured states, not continuous simulation footage."
+          }
+        ]
+      },
+      {
+        "title": "Next, in order",
+        "blurb": "A proposed plan. The current priority, not the list, decides what is worked on.",
+        "nodes": [
+          {
+            "name": "1. Public source release",
+            "state": "partial",
+            "note": "Code, tests and tutorial are on GitHub at v0.10.0. A license has still to be chosen."
+          },
+          {
+            "name": "2. Baseline physical calibration",
+            "state": "partial",
+            "note": "Done: MSD import, analysis and fitting tools, and processing of public Fbn2 reference data. Not done: equilibrated baseline runs, a defensible spatial mapping, an accepted experimental clock and held-out agreement."
+          },
+          {
+            "name": "3. Calibrate the biological mechanisms",
+            "state": "planned",
+            "note": "Fit protein mobility, residence times and transcription separately, then compare controlled limits before combining mechanisms."
+          },
+          {
+            "name": "4. Validate and speed up GPU and cluster runs",
+            "state": "planned",
+            "note": "The OpenMM backend works, but native GPU forces and full-model speedups are not implemented or measured yet."
+          },
+          {
+            "name": "5. Larger, nucleosome-resolution systems",
+            "state": "planned",
+            "note": "The limit today is 4,000 chromatin beads, which covers 20 Mb at 10 kb per bead. 20 Mb at 200 bp per bead would need 100,000 beads."
+          },
+          {
+            "name": "6. Extend the biology where it answers a question",
+            "state": "planned",
+            "note": "Examples: emergent nuclear bodies, RNA chains, polymerase traffic, mechanochemical remodeling and paired spatial alleles."
+          }
+        ]
+      }
+    ]
+  },
+  "works": [
+    "Build a model from a 25.6 kb nucleosome-scale region up to a coarse 20 Mb domain, run it, and inspect it live in the browser.",
+    "Watch binding, release, sliding and eviction events as they happen, with occupied and vacant nucleosome sites drawn.",
+    "Run control and ablation studies, and export runs for a cluster with provenance recorded.",
+    "Follow the narrated tutorial, which uses real captures from the app."
+  ],
+  "limits": [
+    "Everything is in reduced units. Do not read the simulation clock as seconds.",
+    "Mechanisms and parameters are hypotheses. The protein and mark names in the presets are illustrative classes, not fitted molecules.",
+    "The simulation server runs on your own computer, so this page cannot run the app itself.",
+    "No published figure has been fully reproduced yet."
+  ],
+  "gallery": [
+    {
+      "src": "01-application/preview.jpg",
+      "caption": "The workbench: a live 3D nuclear view with binding, assembly and RNA read-outs."
+    },
+    {
+      "src": "01-application/preview-nucleosomes-rna.jpg",
+      "caption": "An 80 kb model with nucleosome access and individual nascent RNAs, following one gene from binding to transcription."
+    },
+    {
+      "src": "01-application/preview-20Mb.jpg",
+      "caption": "A coarse 20 Mb model: 2,000 beads at 10 kb per bead."
+    }
+  ],
+  "source_note": "Summarised from the project's own status document (docs/PROJECT_STATUS.md, last reviewed 6 Nov 2026). When the status changes, edit status.json in this folder."
+}
