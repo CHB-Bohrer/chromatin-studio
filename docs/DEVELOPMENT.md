@@ -11,6 +11,7 @@ Start with [AGENTS.md](../AGENTS.md) and [PROJECT_STATUS.md](PROJECT_STATUS.md).
 | `chromatin_studio/transcription.py` | Promoter paths, initiation, elongation, individual RNA and associated summaries. |
 | `chromatin_studio/neighbors.py`, `chromatin_contacts.py` | Spatial candidates and chromatin contact/attraction calculations. |
 | `chromatin_studio/openmm_backend.py` | Optional polychrom/OpenMM integration and actual platform metadata. The CPU engine still evaluates the model. |
+| `chromatin_studio/openmm_native.py` | Bare-polymer models only: the engine's mechanics as native OpenMM forces, with forces and integration on the device. Refuses models with chemistry. |
 | `chromatin_studio/server.py`, `run.py` | Local HTTP API, applied workspace, static/tutorial serving and launch entry point. |
 | `chromatin_studio/calibration.py`, `kinetics.py` | Physical mapping/MSD tools and separate idealized binding estimates. |
 | `chromatin_studio/studies.py`, `benchmarks.py`, `validation.py` | Independent ablations, analytical reference fixtures and numerical backend checks. |
