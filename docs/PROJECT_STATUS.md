@@ -81,12 +81,32 @@ The step proposed after this attempt was to equilibrate longer and repeat the dt
 - **Timestep is converged for well-resolved observables.** Four replicas each restarted from their 96,000-unit state and ran 8,000 units at dt 0.002, 0.001 and 0.0005, with distinct noise. Bead MSD and interior relative-pair MSD agree within 0.5% at lags of 4–400 units, and within 2% at 2,000 units, inside the noise. Bond variance shifts by −0.4% to −0.6%. The single-pair time fit on these short runs differs by 22–30%, but the dt = 0.002 fit hits its search boundary there, so that comparison is too noisy to test the timestep. The earlier 18–21% dt sensitivity was confounded with relaxation.
 - **The held-out test fails, unchanged: log RMSE 0.357, bias −0.35.** The two experimental acquisitions differ from each other by the same amount.
 
+**Remaining protocol checks (2026-11-08), using the same 96,000-unit data with no new simulation.** Status is still `needs_review`.
+
+- **The time estimate is limited by the noise model.** Length barely changes with the noise correction. In the table, s scales the localization-noise offset, where s = 1 is the reference's correction (relative-vector error 0.203 µm, taken from the polysim bootcamp tutorial and not measured for this dataset):
+
+  | Noise offset scale s | Length (nm/unit) | Time (s/unit) | Fit log RMSE | MSD slope, sim/exp | Status |
+  | --- | --- | --- | --- | --- | --- |
+  | 0 (uncorrected) | 49.6 | 0.12 | 0.158 | 0.55/0.34 | shape incompatible, search boundary |
+  | 0.8 | 48.1 | 0.162 | 0.092 | 0.56/0.44 | fitted |
+  | 1.0 | 47.2 | 0.205 | 0.034 | 0.57/0.54 | fitted |
+  | 1.2 | 46.1 | 0.304 | 0.120 | 0.60/0.74 | fitted |
+
+  Values are for pair 974–1025; pair 974–1026 agrees within 3%.
+
+  A ±20% change in the noise parameter therefore moves the clock by −21% to +48%. The shape agrees best at s = 1. An independent measurement of the noise for this dataset would constrain the clock more than additional simulation.
+- **Distance distribution.** The comparison passes the simulated pair vectors (scaled by the fitted length) through the same isotropic Gaussian noise model and compares them with the observed |R| histograms. The second moment matches by construction. Mean |R| is 0.621 µm in the simulation, against 0.582 µm for the fit set (95% interval 0.532–0.628) and 0.617 µm for the holdout (0.573–0.665). The simulated distribution is narrower than the fit set's (10th/50th/90th percentiles 0.32/0.61/0.94 vs 0.23/0.52/1.02 µm; KS distance 0.15). It is closer to the holdout's (0.28/0.57/1.01 µm; KS 0.06). This is consistent with cell-to-cell heterogeneity that a single homogeneous chain does not represent. The frames are autocorrelated, so no formal test p-value is claimed.
+- **Holdout band.** The fixed-mapping MSD prediction lies inside the fit set's movie-cluster bootstrap band at every lag from 60 to 1,200 s. It lies inside the holdout's band at none of them (prediction/holdout median 0.72). The fit-set experimental curve itself lies inside the holdout band at 0% of those lags. So the two acquisitions differ beyond their own movie-bootstrap uncertainty; this is not just sampling noise.
+- **Autocorrelation.**
+  - The integrated autocorrelation time (Sokal window) of the pair R² is about 3,300 reduced units (median; 1,600–5,100 across replicas), and about 2,900 units for interior R².
+  - The retained 48,000 units give about 8 effective samples per replica and about 70 in total. The 48,000-unit burn-in is about 15 τ.
+  - The replica SE of pair R² (26.8 on a mean of 180) is about twice the block and τ-based SEs (12–13). Replica-level variation slower than the window therefore remains, and the replica bootstrap, not overlapping-lag counts, remains the right uncertainty.
+  - The pair-vs-pooled-interior length difference (R² 180 vs 152) is about 1 replica SE. It is consistent with sampling noise of the single pair. The pooled estimator is about 13× more precise in this homogeneous model.
+
 Remaining for acceptance:
-- a holdout tolerance that accounts for between-acquisition variability, or more acquisitions;
-- the noise-correction sensitivity comparison;
-- comparing the full distance distribution against the holdout;
-- block autocorrelation;
-- a decision between the pair and pooled-interior length estimators, or more replicas to reconcile them;
+- a holdout tolerance or acquisition model that accounts for the demonstrated between-acquisition difference;
+- an independent estimate of localization noise for this dataset;
+- a decision whether to adopt the pooled-interior estimator, valid here because the chain is homogeneous away from its ends, or to add replicas (about 4× for half the pair SE);
 - the 5 kb alternative resolution, if 5 kb bins are adopted.
 
 Even after that fit, protein diffusion, residence times, binding probabilities, catalytic rates and transcription parameters need their own observations. One shared clock provides consistent units; it does not infer all those parameters. The [kinetics estimator](../chromatin_studio/kinetics.py) does not turn the interacting model's encounter hazards into measured macroscopic binding constants.
