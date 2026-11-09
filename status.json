@@ -8,13 +8,13 @@
   "repo": "CHB-Bohrer/chromatin-studio",
   "links": [
     {
-      "label": "Watch the narrated tutorial",
-      "href": "03-tutorial-player/tutorial/index.html",
+      "label": "Take the guided tour",
+      "href": "tutorial/index.html",
       "primary": true
     },
     {
       "label": "How to run it",
-      "href": "https://github.com/CHB-Bohrer/chromatin-studio/blob/main/01-application/README.md"
+      "href": "https://github.com/CHB-Bohrer/chromatin-studio#readme"
     },
     {
       "label": "Code on GitHub",
@@ -171,15 +171,15 @@
   ],
   "gallery": [
     {
-      "src": "01-application/preview.jpg",
+      "src": "preview.jpg",
       "caption": "The workbench: a live 3D nuclear view with binding, assembly and RNA read-outs."
     },
     {
-      "src": "01-application/preview-nucleosomes-rna.jpg",
+      "src": "preview-nucleosomes-rna.jpg",
       "caption": "An 80 kb model with nucleosome access and individual nascent RNAs, following one gene from binding to transcription."
     },
     {
-      "src": "01-application/preview-20Mb.jpg",
+      "src": "preview-20Mb.jpg",
       "caption": "A coarse 20 Mb model: 2,000 beads at 10 kb per bead."
     }
   ],
