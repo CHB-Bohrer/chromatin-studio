@@ -63,11 +63,65 @@ Completed: MSD import/analysis/fitting tools; synthetic conversion tests; public
 
 Not completed: equilibrated baseline trajectories, defensible spatial mapping, an accepted experimental clock, held-out agreement and timestep/replica convergence. The [protocol](../references/hansen/jobs/protocol.json) explicitly records `prepared_not_run_not_calibrated`, `simulation_submitted: false` and `physical_mapping_assigned: false`. Four replicas of eight million steps are a proposed workload; their burn-in is not established.
 
+**First baseline calibration attempt (2026-11-07), status `needs_review`, not accepted.** The protocol's baseline model (fingerprint `a2d9b040…`) was run with the native CUDA backend (mixed precision, RTX 3090): 8 replicas of 24 million steps each (48,000 reduced units, seeds 20261102–20261109), plus 4 replicas at dt = 0.001 (16,000 units) for the timestep check. Two replicas were extended from 16,000 units by Markov continuation with a fresh noise seed. Raw outputs are local and not committed, and no mapping was attached to the model. The analysis used pairs 974–1025/1026 (510/520 kb), the RAD21-2h fit subset and a held-out acquisition, with no refitting:
+
+- **Length is consistent: about 50 nm per reduced unit.** Pair 974–1025 gives 49.7 nm with a replica-bootstrap 95% interval of 44.9–56.8 nm. The value stays within 49–51 nm across the 510/520 kb pairs, burn-ins of 4,000, 8,000, 12,000 and 24,000 units, and the pooled interior-pair estimator.
+- **Time fits the training curve but is not robust.** With an 8,000-unit burn-in and a 60–1,200 s window, the fit gives 0.217 s per unit (bootstrap 0.15–0.36). Fit quality: log RMSE 0.016; MSD slope 0.54 (simulation) vs 0.54 (experiment); the optimum is not at the search boundary. The 40–600 s and 100–2,000 s windows agree. The estimate depends on burn-in, though: 0.24, 0.21 and 0.18 s per unit at burn-ins of 4,000, 12,000 and 24,000. At 24,000 the simulated slope drops to 0.45.
+- **Not stationary.** Interior 51-bead R² falls steadily from 178 to 156 over 48,000 units; the post-burn-in drift has z = −3.1 (−1.6 after a 24,000-unit burn-in). Rg levels off after about 18,000 units. Single-pair R² is dominated by slow fluctuations.
+- **Timestep not converged.** Over matched seeds and window, dt = 0.001 changes interior R² by −5% and the fitted time at fixed length by +18–21%.
+- **The held-out test fails, but the failure reflects the data.** The holdout gives log RMSE 0.355 against a threshold of 0.25, with bias −0.35. The two experimental acquisitions themselves differ by a mean log ratio of +0.353 over 60–1,200 s, with slopes 0.54 vs 0.49. No single mapping can pass this criterion as written. Their noise-corrected second moments agree more closely (predicted 0.402 vs observed 0.423 µm²).
+
+The step proposed after this attempt was to equilibrate longer and repeat the dt check, adding dt = 0.0005. Separately, decide with the data owner whether the holdout criterion should account for between-acquisition variability.
+
+**Extended baseline run (2026-11-07, same day), still `needs_review`.** All 8 replicas were extended by Markov continuation to 96,000 reduced units. The analysis discards the first 48,000 units. No mapping was attached to the model.
+
+- **Stationarity is approximately established after about 48,000 units.** Rg levels off at 13.3–13.5, and bond lengths are flat. Interior 51-bead R² fell about 13% over the first half (177 → 154). In the second half, a small downward trend remains that is not significant (z = −1.4). Results barely move across burn-ins of 24,000, 36,000, 48,000 and 64,000 units: length 46.9–48.0 nm and time 0.19–0.21 s per unit. Block autocorrelation analysis is not done; uncertainties are replica bootstrap.
+- **Length is about 47 nm per unit, but depends on the estimator.** The protocol's pair estimator gives 47.2 nm for 974–1025 (95% interval 40.6–53.9) and 46.7 nm for 974–1026. Pooling all interior pairs at the same separation gives 51.3 nm, about 9% higher. This means 8 replicas do not fully average the slow fluctuations of one specific pair.
+- **Time is about 0.20 s per unit and fits the training curve.** Pair 974–1025 gives 0.205 s (bootstrap 0.13–0.32) and pair 974–1026 gives 0.198 s, both `fitted`. Fit quality: log RMSE 0.034; MSD slope 0.57 (simulation) vs 0.54 (experiment); the optimum is not at the search boundary. The 40–600 s and 100–2,000 s windows agree within 0.193–0.212 s. With the pooled-interior length, the time is 0.278 s per unit.
+- **Timestep is converged for well-resolved observables.** Four replicas each restarted from their 96,000-unit state and ran 8,000 units at dt 0.002, 0.001 and 0.0005, with distinct noise. Bead MSD and interior relative-pair MSD agree within 0.5% at lags of 4–400 units, and within 2% at 2,000 units, inside the noise. Bond variance shifts by −0.4% to −0.6%. The single-pair time fit on these short runs differs by 22–30%, but the dt = 0.002 fit hits its search boundary there, so that comparison is too noisy to test the timestep. The earlier 18–21% dt sensitivity was confounded with relaxation.
+- **The held-out test fails, unchanged: log RMSE 0.357, bias −0.35.** The two experimental acquisitions differ from each other by the same amount.
+
+**Remaining protocol checks (2026-11-08), using the same 96,000-unit data with no new simulation.** Status is still `needs_review`.
+
+- **The time estimate is limited by the noise model.** Length barely changes with the noise correction. In the table, s scales the localization-noise offset, where s = 1 is the reference's correction (relative-vector error 0.203 µm, taken from the polysim bootcamp tutorial and not measured for this dataset):
+
+  | Noise offset scale s | Length (nm/unit) | Time (s/unit) | Fit log RMSE | MSD slope, sim/exp | Status |
+  | --- | --- | --- | --- | --- | --- |
+  | 0 (uncorrected) | 49.6 | 0.12 | 0.158 | 0.55/0.34 | shape incompatible, search boundary |
+  | 0.8 | 48.1 | 0.162 | 0.092 | 0.56/0.44 | fitted |
+  | 1.0 | 47.2 | 0.205 | 0.034 | 0.57/0.54 | fitted |
+  | 1.2 | 46.1 | 0.304 | 0.120 | 0.60/0.74 | fitted |
+
+  Values are for pair 974–1025; pair 974–1026 agrees within 3%.
+
+  A ±20% change in the noise parameter therefore moves the clock by −21% to +48%. The shape agrees best at s = 1. An independent measurement of the noise for this dataset would constrain the clock more than additional simulation.
+- **Distance distribution.** The comparison passes the simulated pair vectors (scaled by the fitted length) through the same isotropic Gaussian noise model and compares them with the observed |R| histograms. The second moment matches by construction. Mean |R| is 0.621 µm in the simulation, against 0.582 µm for the fit set (95% interval 0.532–0.628) and 0.617 µm for the holdout (0.573–0.665). The simulated distribution is narrower than the fit set's (10th/50th/90th percentiles 0.32/0.61/0.94 vs 0.23/0.52/1.02 µm; KS distance 0.15). It is closer to the holdout's (0.28/0.57/1.01 µm; KS 0.06). This is consistent with cell-to-cell heterogeneity that a single homogeneous chain does not represent. The frames are autocorrelated, so no formal test p-value is claimed.
+- **Holdout band.** The fixed-mapping MSD prediction lies inside the fit set's movie-cluster bootstrap band at every lag from 60 to 1,200 s. It lies inside the holdout's band at none of them (prediction/holdout median 0.72). The fit-set experimental curve itself lies inside the holdout band at 0% of those lags. So the two acquisitions differ beyond their own movie-bootstrap uncertainty; this is not just sampling noise.
+- **Autocorrelation.**
+  - The integrated autocorrelation time (Sokal window) of the pair R² is about 3,300 reduced units (median; 1,600–5,100 across replicas), and about 2,900 units for interior R².
+  - The retained 48,000 units give about 8 effective samples per replica and about 70 in total. The 48,000-unit burn-in is about 15 τ.
+  - The replica SE of pair R² (26.8 on a mean of 180) is about twice the block and τ-based SEs (12–13). Replica-level variation slower than the window therefore remains, and the replica bootstrap, not overlapping-lag counts, remains the right uncertainty.
+  - The pair-vs-pooled-interior length difference (R² 180 vs 152) is about 1 replica SE. It is consistent with sampling noise of the single pair. The pooled estimator is about 13× more precise in this homogeneous model.
+
+Remaining for acceptance:
+- a holdout tolerance or acquisition model that accounts for the demonstrated between-acquisition difference;
+- an independent estimate of localization noise for this dataset;
+- a decision whether to adopt the pooled-interior estimator, valid here because the chain is homogeneous away from its ends, or to add replicas (about 4× for half the pair SE);
+- the 5 kb alternative resolution, if 5 kb bins are adopted.
+
 Even after that fit, protein diffusion, residence times, binding probabilities, catalytic rates and transcription parameters need their own observations. One shared clock provides consistent units; it does not infer all those parameters. The [kinetics estimator](../chromatin_studio/kinetics.py) does not turn the interacting model's encounter hazards into measured macroscopic binding constants.
 
 ## GPU and scale status
 
-The [OpenMM adapter](../chromatin_studio/openmm_backend.py) performs stochastic integration while host code calculates mechanical forces, reaction searches and RNA motion. Coordinates, forces and mobilities cross the host/device boundary every integration substep. Native GPU forces and full-model speedups are unimplemented/unmeasured; local Reference/CPU checks do not establish CUDA performance.
+The [OpenMM adapter](../chromatin_studio/openmm_backend.py) performs stochastic integration while host code calculates mechanical forces, reaction searches and RNA motion. Coordinates, forces and mobilities cross the host/device boundary every integration substep. Measured on an RTX 3090 (2026-11-07), this makes CUDA *slower* than the NumPy engine: 2.8–3.6 vs 2.1 ms/step for the 2,000-bead baseline.
+
+**Native bare-polymer backend (2026-11-07).** [`openmm_native.py`](../chromatin_studio/openmm_native.py) expresses the engine's backbone, bending, soft-repulsion and soft-wall terms as OpenMM forces, and integrates them with the same Euler–Maruyama update entirely on the device. It accepts only models whose reaction step is a no-op. Proteins, marks, state interactions, bodies, cohesin, genes, regulatory regions, transcription and nucleosome dynamics are refused with an explicit error. Evidence on the RTX 3090 with the 2,000-bead Fbn2 baseline:
+
+- Forces and energies match the engine to about 1e-15 relative on OpenMM Reference (double precision), and to about 1e-6 on CUDA mixed precision. This holds for relaxed, stretched/wall-penetrating and overlapping conformations ([tests](../tests/test_openmm_native.py)).
+- Comparing 8 seeds per backend (10k burn-in + 40k steps), bond length/variance, bending, Rg, single-bead MSD and the all-pairs 510 kb separation MSD at lags of 200/2,000/10,000 steps all agree within 0.3% (|z| ≤ 1.1).
+- Throughput is 60 µs/step in mixed precision, about 35× the NumPy engine. One replica saturates the GPU, so concurrent replicas do not raise aggregate throughput.
+
+Trajectories are statistically equivalent to the NumPy engine, not identical: OpenMM draws its own noise. Native GPU paths for models with chemistry remain unimplemented.
 
 The [schema](../chromatin_studio/schema.py) permits 4,000 chromatin beads, 6,000 chromatin/protein particles and 5,000 individual RNA records. Therefore:
 
@@ -82,8 +136,8 @@ This order is a proposed continuation plan. Follow the user's current priority r
 
 | Priority | Work remaining | Completion evidence |
 | --- | --- | --- |
-| 1 | Complete the GitHub source release | Public scope is authorized and the clean source release is prepared. Fresh-copy tests and app/tutorial launch checks passed. The public remote is still empty: upload needs a GitHub connection with write access or a signed-in Git client. License selection remains pending. |
-| 2 | Complete baseline physical calibration | Run the matching model, establish stationarity, constrain length, fit MSD shape/time, evaluate held-out data, and record uncertainty plus timestep dependence. Attach a mapping only after the declared acceptance criteria pass. |
+| 1 | Complete the GitHub source release | The source is on the public remote. The first web upload committed the numbered upload folders; the 2026-11-07 layout fix restores the intended flat tree (see below). Remaining: merge the fix, confirm GitHub Actions passes, and select a license. |
+| 2 | Complete baseline physical calibration | First attempt and 96,000-unit extension run 2026-11-07 (`needs_review`, see above; stationarity and dt now largely addressed, holdout fails on between-acquisition variability). Remaining: run the matching model, establish stationarity, constrain length, fit MSD shape/time, evaluate held-out data, and record uncertainty plus timestep dependence. Attach a mapping only after the declared acceptance criteria pass. |
 | 3 | Calibrate and isolate biological mechanisms | Fit protein mobility/residence and transcription independently; compare controlled binding, mark, extrusion and transcription limits before combining all mechanisms. Record which published observables have actually been reproduced. |
 | 4 | Validate and optimize cluster/GPU execution | Run acceptance checks and end-to-end throughput measurements on real hardware. Move bottleneck forces/searches to a suitable backend with parity/convergence checks before claiming acceleration. |
 | 5 | Support larger nucleosome-resolution systems | Demonstrate memory, neighbor-search, reaction, rendering and output scaling on increasing workloads; validate physics before raising bounds toward 100,000 beads. |
@@ -93,7 +147,9 @@ Exact restart checkpoints and portable installed-package assets are also unfinis
 
 ## Publication and private context
 
-On 2026-11-06 the user authorized public release of the complete tool, examples, tutorial and handoff, excluding the full manuscript. The project is now a Git repository linked to the existing public `CHB-Bohrer/chromatin-studio` remote. Citation metadata, ignore rules, source-checkout instructions and Python/Node CI have been added. A fresh source copy passed 235 Python tests (2 GPU hardware skips), 75 interface tests and an independent app/tutorial launch check; see [release verification](../benchmarks/public-release-verification.json). GitHub Actions has not run yet. The initial upload is blocked by authentication: the integration rejected file writes (HTTP 403), and native Git has no authenticated account. No files have been uploaded. A code license awaits the maintainer's selection.
+On 2026-11-06 the user authorized public release of the complete tool, examples, tutorial and handoff, excluding the full manuscript. The project is now a Git repository linked to the existing public `CHB-Bohrer/chromatin-studio` remote. Citation metadata, ignore rules, source-checkout instructions and Python/Node CI have been added. A fresh source copy passed 235 Python tests (2 GPU hardware skips), 75 interface tests and an independent app/tutorial launch check; see [release verification](../benchmarks/public-release-verification.json). GitHub Actions has not run yet. A code license awaits the maintainer's selection.
+
+**Upload and layout fix (2026-11-07).** The release was uploaded through the GitHub website in four batches. Those commits kept the numbered batch folders (`01-application/` … `04-tutorial-narration/`) and the local upload helpers, and omitted the hidden `.gitignore` and `.github/workflows/tests.yml`. That broke relative paths in the code, tests and documentation. The fix moves every file to its release path with history-preserving renames, removes the upload helpers and adds `.gitattributes` to keep LF line endings on Windows. Afterwards 274 of the 276 release files are byte-identical to the v0.10.0 upload manifest at their intended paths. The original ignore and CI files were not available, so they were rewritten (Python 3.10/3.12 unit tests, NumPy acceptance validation and Node interface tests) and are not byte-identical to the release.
 
 Manuscript hypothesis examples, short source attribution/questions and tutorial scenes are intentionally included under that authorization. The source PDF and any full-text extraction are excluded. A file/archive audit found no complete manuscript in the tool tree. Personal absolute narration paths in two generated metadata files were normalized, with original/published hashes recorded in [publication metadata](../tutorial/publication-metadata.json). Public reference datasets keep their own attribution and license records. See [release scope](RELEASE.md).
 

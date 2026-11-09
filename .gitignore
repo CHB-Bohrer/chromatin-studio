@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+
+# Local simulation output, validation reports and batch results
+local-runs/
+results/
+preflight-*/
+replica-*/
+*.lock/
+
+# Machine-specific pointer to where this machine keeps run data (see AGENTS.md)
+LOCAL_DATA.md
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+# Never commit credentials or the full manuscript
+.env
+*.pem
