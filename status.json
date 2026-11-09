@@ -8,13 +8,13 @@
   "repo": "CHB-Bohrer/chromatin-studio",
   "links": [
     {
-      "label": "Watch the narrated tutorial",
+      "label": "Take the guided tour",
       "href": "tutorial/index.html",
       "primary": true
     },
     {
       "label": "How to run it",
-      "href": "https://github.com/CHB-Bohrer/chromatin-studio/blob/main/README.md"
+      "href": "https://github.com/CHB-Bohrer/chromatin-studio#readme"
     },
     {
       "label": "Code on GitHub",
