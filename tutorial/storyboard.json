@@ -4,7 +4,7 @@
   "subtitle": "An editable walkthrough of the actual application",
   "language": "en",
   "playback_speed": 1,
-  "normal_duration_seconds": 704,
+  "normal_duration_seconds": 760,
   "delivery": {
     "preferred_resolution": "1920x1080",
     "frame_rate": 30,
@@ -353,6 +353,74 @@
         "The recent event buffer is bounded; absence from the retained list is not evidence that a transition never occurred.",
         "Initial occupancy intervals and editor changes remain draft settings until Apply and restart.",
         "Binding/release/sliding carry sampled conditional times; turnover records carry interval endpoints. Event IDs order emitted observations, not a globally interleaved exact reaction timeline."
+      ]
+    },
+    {
+      "id": "17-nucleus-tethers",
+      "title": "Add the whole nucleus and tethering elements",
+      "normal_duration_seconds": 56,
+      "primary_capture": "17-nucleus-envelope.png",
+      "narration": "Open Bodies and add Whole nucleus. The modeled territory still sits inside its own confinement sphere, while a larger soft ellipsoidal envelope represents the nuclear periphery. Place the envelope so it meets the territory where the domain should touch the lamina. Then add tethering elements: genomic intervals, such as lamina-associated domains, whose beads can attach to the envelope or to a landmark surface. Each bead within the capture distance attaches with its own hazard and, once attached, feels a spring to a fixed anchor. Attachment can require a mark and an occupied nucleosome, and vacant sites can release faster. In 3D, tick Whole nucleus to frame the envelope, and look for amber tether links. In 1D genome, the Tethers row shows each element and its attached beads, and the Nucleosomes row marks every vacant site. Tethers are phenomenological anchors, not lamina proteins.",
+      "captions": [
+        {
+          "start": 0,
+          "end": 14,
+          "text": "Bodies \u2192 Whole nucleus adds a soft envelope around the confined territory. Place it where the domain meets the periphery."
+        },
+        {
+          "start": 14,
+          "end": 28,
+          "text": "Tethering elements are genomic intervals. Beads within the capture distance attach stochastically and feel a spring to a fixed anchor."
+        },
+        {
+          "start": 28,
+          "end": 42,
+          "text": "Attachment can require a mark and an occupied nucleosome; vacant sites can release faster."
+        },
+        {
+          "start": 42,
+          "end": 56,
+          "text": "1D genome shows attached beads per element and every vacant nucleosome site. Tethers are phenomenological anchors."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "17-nucleus-envelope.png",
+          "duration": 14,
+          "actions": [
+            "Use the isolated UI-check instance with a whole nucleus and three LAD tethers.",
+            "In 3D nucleus, tick Whole nucleus to frame the envelope around the territory."
+          ]
+        },
+        {
+          "capture": "17-tether-editor.png",
+          "duration": 14,
+          "actions": [
+            "Open Bodies \u2192 Whole nucleus & tethering in the expanded builder.",
+            "Show envelope stiffness, semi-axes, centre and the first tether element's interval and kinetics."
+          ]
+        },
+        {
+          "capture": "17-tethers-local.png",
+          "duration": 14,
+          "actions": [
+            "Untick Whole nucleus and zoom in to show amber tether links from attached beads to envelope anchors."
+          ]
+        },
+        {
+          "capture": "17-occupancy-tethers-1d.png",
+          "duration": 14,
+          "actions": [
+            "Open 1D genome \u2192 Live binding; show the Tethers row (attached beads per element) and the Nucleosomes row with vacant-site gaps and the occupancy count."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "The capture model (recording-nucleus-tethers-model.json) uses an accelerated attach rate and a wider capture distance so attachments appear within a short UI run. It is a UI check, not a scientific model.",
+        "The envelope is a soft imposed wall; there is no lamina meshwork, pore complex, membrane mechanics or anchor diffusion.",
+        "Tether hazards are model inputs, not measured lamina-binding kinetics.",
+        "The OpenMM backends refuse models with a nuclear envelope or tethers; only the NumPy Brownian reference integrates them.",
+        "Coarse 10 kb bins in 1D summarize occupancy states; individual nucleosomes are not resolved at that scale."
       ]
     },
     {

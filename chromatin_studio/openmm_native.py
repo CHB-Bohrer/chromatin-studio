@@ -58,6 +58,8 @@ def unsupported_features(config) -> list[str]:
         reasons.append("explicit transcription")
     if chrom.get("nucleosomes", {}).get("enabled"):
         reasons.append("nucleosome occupancy dynamics")
+    if config.get("nucleus", {}).get("enabled"):
+        reasons.append("nuclear envelope and tethers")
     return reasons
 
 

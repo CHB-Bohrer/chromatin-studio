@@ -309,5 +309,19 @@
     1687,
     949
   ],
-  "capture_size_note": "Native browser viewport was reported as 1707 \u00d7 960; saved browser screenshots are 1687 \u00d7 949. Focus rectangles are validated against the saved PNG dimensions."
+  "capture_size_note": "Native browser viewport was reported as 1707 \u00d7 960; saved browser screenshots are 1687 \u00d7 949. Focus rectangles are validated against the saved PNG dimensions.",
+  "nucleus_tethers_capture": {
+    "date": "2026-11-09",
+    "port": 8766,
+    "model": "recording-nucleus-tethers-model.json",
+    "method": "Headless Chrome driven over the DevTools protocol at a 1707x960 viewport (dark scheme); real UI clicks/toggles via page scripts, no injected state.",
+    "advance_method": "Actual UI Run then Pause; captured at reduced time 2.3 (1,150 integration steps).",
+    "captures": {
+      "17-nucleus-envelope.png": "8dac5457b796aea8e4b5c11336a8442db075ff0605c76b46e5dfbe5bbff1b0f4",
+      "17-tether-editor.png": "d7449c71a790f5d883965a533c333899b9fd1d45e54027032c80cf5637aff81a",
+      "17-tethers-local.png": "92dbd64a3319778e60b0ab7709cb55b7c1464d44b2931885bb9c01c961ccdb00",
+      "17-occupancy-tethers-1d.png": "5fa3ee2fa2c7c69d9c91ab83f2825897e0dabfb2afa225b13d86b761bcfa2e37"
+    },
+    "scope": "UI check model with accelerated tether attachment; not a calibrated or scientific configuration."
+  }
 }

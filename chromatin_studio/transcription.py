@@ -187,6 +187,9 @@ class ExplicitTranscription:
         stiffness = float(getattr(self.sim, "confinement_stiffness", 30.0))
         force = (-stiffness * (radial - self.sim.radius) / radial * p
                  if radial > self.sim.radius else np.zeros(3))
+        nucleus = getattr(self.sim, "nucleus", None)
+        if nucleus is not None:
+            force = force + nucleus.force_energy(p[None, :])[0][0]
         record["position"] = (p + diffusion * force * dt
                               + math.sqrt(2 * diffusion * dt) * self.sim.rng.normal(size=3))
         if not np.all(np.isfinite(record["position"])):
@@ -197,6 +200,8 @@ class ExplicitTranscription:
         max_diffusion = max(float(self.config.get("rna_diffusion", 0.3)),
                             float(self.config.get("mature_rna_diffusion", 0.15)))
         stiffness = float(getattr(self.sim, "confinement_stiffness", 30.0))
+        if getattr(self.sim, "nucleus", None) is not None:
+            stiffness += self.sim.nucleus.curvature_bound()
         substeps = max(1, int(math.ceil(dt * max_diffusion * stiffness / 0.35)))
         if substeps > 1000:
             raise ValueError("RNA diffusion requires more than 1000 integration substeps; reduce dt.")

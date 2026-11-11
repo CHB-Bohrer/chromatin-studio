@@ -1,6 +1,6 @@
 # Chromatin Studio project status
 
-Last reviewed: **2026-11-06**. Application: **0.10.0**. Configuration format: **0.1**.
+Last reviewed: **2026-11-09**. Application: **0.10.0**. Configuration format: **0.1**.
 
 The application is a functioning local research prototype with a visual model builder, coupled simulation, live inspection, tests and an editable tutorial. The latest completed feature work is live 1D protein binding, nucleosome accessibility and chromatin remodeling. The current development task is preparing the project for sharing and making its state understandable to future contributors.
 
@@ -20,6 +20,7 @@ The user selected individual nascent transcripts and diffusing released RNA as t
 | Proteins and assemblies | Many species, molecular diffusivities, finite valence, reversible chromatin and protein links, optional IDR domain chains | Larger assemblies can form; this does not establish a phase diagram or sequence-specific protein chemistry. |
 | Marks and accessibility | Binary marks, writers/erasers, optional contact spreading, occupied/vacant nucleosome sites, occupancy-dependent persistence | No histone-copy identity, wrapped DNA, tails or explicit histone reservoir. |
 | Remodelers | Directly anchored or TF-recruited eviction, reassembly and adjacent-site sliding | Sliding moves occupancy and marks, conserves nucleosome number and leaves genomic coordinates/protein anchors fixed. No ATP cycle. |
+| Whole nucleus and tethers | Optional soft ellipsoidal envelope around the confined territory; genomic tethering elements (e.g. LADs) whose beads attach stochastically to an envelope or body-surface anchor and feel a harmonic spring; attach/detach hazards can depend on a mark and on nucleosome occupancy | Phenomenological anchors: no lamina meshwork, pores, membrane mechanics or anchor diffusion. NumPy engine only; the OpenMM backends refuse these models. |
 | Regulatory elements | Enhancer/promoter regions, TF preferences, explicit coactivator recruitment and configured contact-dependent rate gains | Mechanisms and parameters are hypotheses. No DNA sequence search or universally fitted enhancer model. |
 | Transcription | Stochastic promoter switching and initiation; optional individual polymerases, elongation, pausing, RNA release/processing/decay | Rates are frozen within each reaction interval. No polymerase traffic/exclusion, finite polymerase pool or RNA-chain forces. |
 | Chromatin feedback | Occupancy and engaged transcription can alter local persistence; polymerases can affect occupancy | These are configurable phenomenological couplings. |
@@ -32,6 +33,26 @@ The user selected individual nascent transcripts and diffusing released RNA as t
 Detailed definitions and coordinate conventions are in [CONTRACT.md](../CONTRACT.md) and [README.md](../README.md).
 
 ## Latest completed increment
+
+**Whole nucleus, tethering elements and occupancy views (2026-11-09, uncommitted on `feat/nucleus-tethering`).**
+
+- [`nucleus.py`](../chromatin_studio/nucleus.py): soft ellipsoidal envelope `U = k/2 |u|²(1 − 1/ρ)²` outside the envelope, with an exact gradient. For a sphere it reduces to the confinement-wall law. RNA points also feel the envelope.
+- Tethering elements (`nucleus.tethers`, up to 128): genomic intervals whose beads attach one at a time, with these rules:
+  - **Anchor:** the radially projected point on the envelope, or on an enabled body surface.
+  - **Attach:** a bead attaches when it is within `capture_distance`. The hazard is `attach_rate × occupancy_attach_multiplier[state]`, gated by an optional `required_mark`.
+  - **Detach:** the hazard is `detach_rate × occupancy_detach_multiplier[state]`.
+  - **Events:** each transition emits `tether_attach` or `tether_detach`.
+  - **Replay:** a model without a nucleus draws no extra random numbers, so legacy seeds replay unchanged.
+- Release multipliers may now reach 1000. Occupied-site release can therefore follow measured nucleosome-induced dissociation ([Luo et al. 2014](https://doi.org/10.1093/nar/gkt1319); [Donovan et al. 2019](https://doi.org/10.15252/embj.2018100809)).
+- Study conditions `no_tethering` and `no_nucleus` were added.
+- Interface changes:
+  - **3D view:** envelope rings, a **Whole nucleus** framing toggle, amber tether links with anchor markers, and hollow vacant-nucleosome beads (**Occupancy** toggle).
+  - **1D Live binding:** Cohesin, mark and **Tethers** rows (element intervals, attached beads, attach/detach glyphs). The Nucleosomes row now keeps every vacant site visible at any zoom, with an occupied-fraction count.
+  - **Bodies editor:** a **Whole nucleus & tethering** section for these settings.
+- The tutorial gained chapter 17, "Add the whole nucleus and tethering elements". It uses four captures of real states from an isolated UI-check instance with accelerated tethers. The storyboard validates in captions-only mode (17 scenes, 760 s). Narration and the rendered video were not regenerated, because the Kokoro voice model is not installed on this machine.
+- Evidence: 11 new tests in [`tests/test_nucleus.py`](../tests/test_nucleus.py) cover the sphere law, the ellipsoid gradient, force/energy consistency, events, the read-only snapshot, the capture range, occupancy/mark hazards, legacy replay, ablations, native refusal and the schema. Full suite: 250 passed. The 5 `test_tutorial_server.py` tests were deselected because they need the Windows symlink privilege (WinError 1314), which is unrelated to this change.
+
+**Should the polymer have constraint forces?** Not as rigid bonds. In the equilibrated Fbn2 baseline the bond length is 0.90 ± 0.15 units (16%). Only 0.5% of bonds exceed 1.5× rest length, and no bead pair overlaps deeply. Holonomic constraints would therefore change little, and they would alter the dynamics the clock was fitted to. At 10 kb per bead, the bead is a fluctuating blob, so a fixed length is not physically motivated. The soft repulsion (barrier about 4 kT) does allow occasional chain crossing. Stronger excluded volume is the option to consider only if topology or entanglement matters to a question.
 
 The v0.10 increment is complete:
 
@@ -110,6 +131,91 @@ Remaining for acceptance:
 - the 5 kb alternative resolution, if 5 kb bins are adopted.
 
 Even after that fit, protein diffusion, residence times, binding probabilities, catalytic rates and transcription parameters need their own observations. One shared clock provides consistent units; it does not infer all those parameters. The [kinetics estimator](../chromatin_studio/kinetics.py) does not turn the interacting model's encounter hazards into measured macroscopic binding constants.
+
+## Literature-timescale model and first ablation set (2026-11-08/09, exploratory)
+
+This is a provisional exploration, not a calibration. It converts literature timescales to reduced hazards with the `needs_review` clock (0.205 s/unit, range 0.13–0.32), so every converted rate scales with that unaccepted clock. Mechanics match `manuscript_20mb` and the Fbn2 baseline (2,000 × 10 kb), so the clock's fingerprint scope applies. Models, source tables, scripts and outputs are local run data (see `LOCAL_DATA.md`), not committed.
+
+- **v1, binding and cohesin.**
+  - Residences: activator 13.3 s (Sox2/Oct4 single-molecule tracking), p300 26 s, PRC2 257 s. HP1 and the remaining species are unchanged; each has a recorded reason.
+  - Cohesin: 129 bound extruders per 20 Mb, 22 min residence, 0.5 kb/s loop growth.
+  - First version scaled on_rate with off_rate. A 41 s pilot showed association became far too slow.
+- **v2, all feasible processes.**
+  - Association: activator and PRC2 on_rates set from measured effective association, targeting 23.5% and 20% bound.
+  - Genes: ON 5 min, base OFF 30 min, one initiation per 10 s while ON, processing 5 min, mRNA half-life 7.1 h.
+  - Elongation: clamped at the schema floor of 29 kb/min, about 10× faster than in vivo.
+  - Marks: H3K27ac half-life 1.5 h; methyl marks 1 day as a lower bound for "days"; H2AK119ub1 1.5 h (assumption, no source).
+  - Nucleosomes: turnover about 1 h at active genes.
+  - Rates with no literature value (spreading, catalysis, background nucleosome hazards) were scaled by the same factor as their process. This preserves hypothesis balances, which remain hypotheses.
+- **Ablation set.** Baseline plus 11 study ablations (all polymer conditions except `no_confinement`). Each ran 731,350 NumPy steps, about 5 min biological time, as 1 replica with a shared seed, 16–25 ms/step with 8 concurrent. Findings, using the mean over the last 60 s compared with baseline:
+  - **Cohesin.** Loops are still growing at 5 min (mean 86 kb, max 215 kb, +10 kb/min).
+  - **Removing cohesin** gave the clearest effect: Rg +0.63 units (baseline drift −0.11/min); 10-bead contact probability 0.040 → 0.015.
+  - **Removing body affinity** halved protein–protein bonds and expanded the chain by about 0.24 units.
+  - **Removing protein binding or chromatin attraction** expanded the chain by about 0.2–0.3 units.
+  - **Bound fractions overshot the targets.** The activator settled near 0.55 bound against a 0.235 target; the linear on_rate assumption fails. HP1 is about 0.98 bound and p300 about 0.57. PRC2 (4 molecules) bound 0–1 molecule. Bound fractions therefore still need iterative tuning.
+  - **Slow processes barely moved.** Marks and nucleosome occupancy changed by a few beads.
+  - **Transcription was not exercised.** Two genes turned ON, giving 26 initiations; no transcript completed, because transit takes about 4 min.
+  - **No measurable effect.** `no_regulatory_gain`, `no_body_response` and `no_speckle_processing` produced no measurable change. The last two gave identical trajectories.
+  - **Noise.** All other differences in gene, mark and bound-fraction values are within single-replica trajectory divergence. With 1 replica there is no noise estimate, and polymer observables are still relaxing (τ ≈ 11 min biological time).
+
+- **v3 model: nucleus, LAD tethers and occupancy-dependent kinetics (2026-11-09).**
+  - **Nucleus and LADs:** a 5 µm nucleus (105.9 units) whose envelope cuts the 20-unit territory at x = 15. The three H3K9me3 domains (beads 80–249, 720–899, 1450–1619) serve as LAD tethers. Each tether attaches at 1/min within 71 nm of the envelope and detaches at 1/h. Attachment needs H3K9me3 and an occupied nucleosome; vacant sites detach 10× faster. These hazards are assumptions.
+  - **Activator:** occupied-site release ×300. Basis: Gal4 dwell is reduced "by orders of magnitude" on nucleosomes (Donovan et al. 2019 EMBO J), and nucleosomes accelerate dissociation up to ~1000× (Luo et al. 2014).
+  - **Nucleosome readers and enzymes:** need an occupied site (vacant capture 0) and release 10× faster from vacant sites; this is an assumption.
+  - **Pioneer kinetics not used:** Reb1/Cbf1 dissociation-rate compensation (Donovan et al. 2019 eLife) is recorded but not applied, because the model has no pioneer species.
+- **Retuning bound fractions.** Two pilot rounds were run, 60 biological seconds each, warm-started from equilibrated Fbn2 conformations.
+  - **Round 1:** 5 on_rate brackets. The occupancy kinetics collapsed the activator's bound fraction to 0.01–0.06, because the ×300 release makes most encounters transient.
+  - **Fitting:** HP1 and PRC2 were fitted on logit(f) against log on_rate. PRC2 used the equilibrium prediction k_on,eff/(k_on,eff + k_off), because it relaxes over about 190 s. The activator fit was noise-limited, so its on_rate came from the linear scaling of effective association.
+  - **Round 2 (tuned model):**
+
+    | Species | Bound fraction | Target | Note |
+    |---|---|---|---|
+    | Activator | 0.19 / 0.24 | 0.235 | on_rate 1.4; mean completed dwell 0.7–0.8 s, not the 13.3 s SMT residence |
+    | HP1 | 0.48 / 0.61 | 0.5 | target is an assumption |
+    | p300 | 0.43 at 2.5× on_rate | ~0.54 | final on_rate 3.9×, chosen by log-odds slope |
+
+  - **Activator dwell mismatch:** with occupied sites dominating, matching both the bound fraction and the SMT residence would need far more accessible sites, or a pioneer-like occupied-site release. This is an open modeling question, not a tuning failure.
+  - **Outputs:** the tuned model and tuning report are in `literature-kinetics/` (`model-literature-v3-tuned.json`).
+- **The 60 s pilots underestimated the 5-minute state.** Bound fractions kept rising through the run. Two full 5 bio-min baselines at the round-2 rates ended (240–300 s window, 2 replicas) at:
+
+  | Species | Bound fraction | Target |
+  |---|---|---|
+  | Activator | 0.52 / 0.66 | 0.235 |
+  | HP1 | 0.86 / 0.78 | 0.5 |
+  | p300 | 0.95 / 0.97 | ~0.54 |
+  | Writer | 0.97–1.0 | no target |
+  | PRC2 | 0 | 0.2 |
+
+  They are in `ablation-v3-5min/baseline-r*`. The first paired ablation launch was stopped after 1.3 h to avoid 11 h of runs at mis-tuned rates.
+- **Tuning round 3** (6 variants × 5 bio-min, `literature-kinetics/tuning-r3`). Each fit used the 240–300 s means:
+  - **HP1:** well determined (logit slope 2.2, residual 0.23); fitted on_rate 0.26.
+  - **p300:** 0.59 at on_rate 0.028, so it was set to 0.025.
+  - **PRC2:** with 4 molecules the fraction ranges 0–0.75 per run, mean about 0.16 over 8 runs; left unchanged.
+  - **Activator:** stayed at 0.5–0.8 for every on_rate from 0.7 to 1.4. It appears to saturate the ~28 vacant sites, where release is not accelerated; 0.6 × 50 molecules ≈ 30. That is the expected consequence of Donovan-style occupied-site release: long dwells happen only at nucleosome-free sites, so site supply rather than association sets the bound fraction. Remodeler eviction may also add vacant sites over time; nucleosome occupancy fell from 0.988 to 0.986.
+- **Tuning round 4.** 8 × 5 bio-min runs (`literature-kinetics/tuning-r4`), with HP1 at 0.26 and p300 at 0.025, scanning the activator on_rate.
+  - **Activator response is switch-like:** 4–5 min bound fraction 0.50 at on_rate 0.7, 0.28 at 0.35, 0.02–0.05 at 0.175, and below 0.01 at 0.044 or less. This is consistent with positive feedback: TF-recruited remodeler eviction, plus long dwells only at vacant sites.
+  - **Other species across the scan:** HP1 0.47–0.59 (target 0.5); p300 0.56–0.69 (target ~0.54); PRC2 averages about 0.14 (target 0.2; 4 molecules).
+  - **Final rates:** `model-literature-v3-tuned2.json` uses activator 0.32 (log-odds interpolation toward 0.235), HP1 0.26, p300 0.025 and PRC2 0.00286 (with the tuning report).
+  - **Caveats:** the targets are matched at 4–5 bio-min after a cold protein start, not at a proven steady state. Because the activator's response is steep, expect replica spread.
+- **Ablation set v3b (complete 2026-11-10; 16/16 runs, 31 ms/step with 8 concurrent).** It uses the tuned-2 model; output is in `ablation-v3b-5min/` (`summary.json`, `summary.csv`). All values are means over 240–300 s and 2 paired replicas.
+  - **Baseline bound fractions:** activator 0.19 (target 0.235), HP1 0.55 (0.5), p300 0.74 (0.54; still high), writer 0.97, PRC2 0 (4 molecules).
+  - **Cohesin.** Removing cohesin gave the clearest effect again: 10-bead contact probability fell from 0.040 to 0.013, and Rg rose from 12.7 to 13.1.
+  - **Occupancy-dependent access.** Removing it raised the activator from 0.19 to 0.97 bound. In this model, occupied-site release is what limits activator binding.
+  - **Tethering is conformation-dependent.**
+    - Replica 0 held about 13 LAD1 beads at the envelope (LAD1 within 1 unit of the envelope: 3.5%; about 0 without tethers). Replica 1 had no LAD near the envelope, so it had no attachments.
+    - LAD2 and LAD3 never reached the periphery in 5 minutes: the territory touches the envelope only in a small cap.
+  - **Not established with 2 replicas:**
+    - **Activator under `no_tethering` and `no_nucleus`:** it reached 0.34 and 0.28. Replica 1 had no attachments in either arm, yet differed by 0.06. That difference is stochastic divergence, which shows the noise scale of this switch-like species.
+    - **H3K27ac:** +8 to +12 marked beads in nearly every condition. This points to a low baseline rather than many separate effects.
+    - **PRC2:** 0–0.375 with 4 molecules.
+    - **Transcription:** 0–25 initiations.
+  - **What would make the tethering and periphery questions answerable:**
+    - Place the territory so it overlaps the envelope more.
+    - Start LAD domains near the periphery, as LADs are positioned in vivo.
+    - Run several more replicas and tens of minutes.
+    - Use a larger p300 molecule pool, or lower its on_rate, if its bound fraction matters. Conditions: baseline, `no_tethering`, `no_nucleus`, `no_nucleosome_access`, `no_nucleosome_turnover`, `no_cohesin`, `no_protein_binding` and `no_body_affinity`. Each condition has 2 replicas of 731,350 steps (about 5 biological minutes), in a paired design: replica k uses seed 1000+k and Fbn2 warm start r{k} in every condition. `ablation-v3-5min/` keeps only the two round-2-rate baselines. `analyze_ablation_v3.py` reports replica half-ranges and flags deltas that exceed them.
+
+Next concrete step: analyze `ablation-v3b-5min` once it completes (`analyze_ablation_v3.py`). For transcription and mark questions, start runs from a pre-equilibrated polymer and cohesin state, and use replicas and longer windows (tens of minutes to hours), or GPU-native chemistry.
 
 ## GPU and scale status
 

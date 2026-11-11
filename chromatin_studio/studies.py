@@ -39,6 +39,8 @@ _CONDITIONS = [
     ("no_confinement", "No nuclear wall", "Set soft-wall stiffness to zero while keeping the same initialization volume.", ("polymer",)),
     ("no_nucleosome_access", "No occupancy-dependent TF access", "Set occupied/vacant capture and release factors to one; retain occupancy, mark loss and mechanical effects.", ("polymer",)),
     ("no_nucleosome_turnover", "Frozen nucleosome occupancy", "Remove spontaneous, protein-driven and transcription-driven turnover and sliding; retain the initial occupancy pattern.", ("polymer",)),
+    ("no_tethering", "No tethering elements", "Disable every genomic tethering element; retain the nuclear envelope wall.", ("polymer",)),
+    ("no_nucleus", "No nuclear envelope", "Disable the whole-nucleus envelope and its tethers; retain the reference territory wall.", ("polymer",)),
 ]
 _BY_ID = {item[0]: item for item in _CONDITIONS}
 DEFAULTS = {
@@ -173,6 +175,12 @@ def _ablate(config, condition):
             protein["nucleosome_sliding_rate"] = 0.0
         for gene in c["genes"]:
             gene["nucleosome_eviction_rate"] = 0.0
+    elif condition == "no_tethering":
+        for tether in c.get("nucleus", {}).get("tethers", []):
+            tether["enabled"] = False
+    elif condition == "no_nucleus":
+        if "nucleus" in c:
+            c["nucleus"]["enabled"] = False
     return c
 
 

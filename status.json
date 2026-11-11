@@ -4,7 +4,7 @@
   "tagline": "A visual builder and simulator for chromatin, reacting proteins, histone marks, cohesin and transcription.",
   "kind": "Research software",
   "stage": "Research prototype",
-  "as_of": "2026-11-06",
+  "as_of": "2026-11-09",
   "repo": "CHB-Bohrer/chromatin-studio",
   "links": [
     {
@@ -98,6 +98,11 @@
             "note": "Separately configurable spatial affinity fields with transcription responses. They are imposed fields, not self-assembled organelles."
           },
           {
+            "name": "Whole nucleus and tethering",
+            "state": "partial",
+            "note": "In development, not yet released: a soft nuclear envelope around the modeled region, and genomic elements such as lamina-associated domains that attach to it with mark- and nucleosome-dependent rates. These are phenomenological anchors, not lamina proteins, and they run only on the CPU engine."
+          },
+          {
             "name": "Live inspection",
             "state": "built",
             "note": "3D view, live 1D binding with occupied and vacant sites, genomic tracks, regulatory rate breakdowns and individual RNAs. Read-only snapshots."
@@ -183,5 +188,5 @@
       "caption": "A coarse 20 Mb model: 2,000 beads at 10 kb per bead."
     }
   ],
-  "source_note": "Summarised from the project's own status document (docs/PROJECT_STATUS.md, last reviewed 6 Nov 2026). When the status changes, edit status.json in this folder."
+  "source_note": "Summarised from the project's own status document (docs/PROJECT_STATUS.md, last reviewed 9 Nov 2026). When the status changes, edit status.json in this folder."
 }

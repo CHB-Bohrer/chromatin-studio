@@ -78,6 +78,26 @@ class Simulation:
         for region in self.chrom.get("initial_marks", []):
             self.marks[region["mark"]][int(region["start"]):int(region["end"]) + 1] = True
         self.bodies = [b for b in config.get("bodies", []) if b.get("enabled", True)]
+        # Optional whole-nucleus envelope and tethering elements. Disabled
+        # (absent) by default, so legacy models keep identical forces and RNG use.
+        nucleus_config = config.get("nucleus", {})
+        self.nucleus = None
+        self.tether_specs = []
+        if nucleus_config.get("enabled"):
+            from .nucleus import NucleusEnvelope
+            self.nucleus = NucleusEnvelope(nucleus_config)
+            bodies_by_id = {b["id"]: b for b in self.bodies}
+            for spec in nucleus_config.get("tethers", []):
+                if not spec.get("enabled", True):
+                    continue
+                if spec.get("anchor", "envelope") == "body" and spec.get("body_id") not in bodies_by_id:
+                    continue        # anchor field disabled: element inactive, never silently retargeted
+                self.tether_specs.append(spec)
+        self.tethers = []           # attached: {"bead", "tether", "anchor"}
+        self._tether_owner = {}
+        for index, spec in enumerate(self.tether_specs):
+            for bead in range(int(spec["start"]), int(spec["end"]) + 1):
+                self._tether_owner.setdefault(bead, index)
         self._initialize_particles()
         self.bindings = []
         self.interactions = {tuple(sorted((r["a"], r["b"]))): r for r in config.get("interactions", [])}
@@ -164,7 +184,8 @@ class Simulation:
                 direction = keep * tangent + (1 - keep + 0.2) * self._random_direction()
                 direction /= np.linalg.norm(direction)
                 point = positions[-1] + self.bond_length * direction
-                if np.linalg.norm(point) > self.radius * 0.78:
+                if np.linalg.norm(point) > self.radius * 0.78 or (
+                        self.nucleus is not None and self.nucleus.rho(point)[0] > 0.97):
                     direction = -positions[-1] / max(np.linalg.norm(positions[-1]), 1e-12)
                     direction += 0.5 * self._random_direction()
                     direction /= np.linalg.norm(direction)
@@ -206,6 +227,8 @@ class Simulation:
                     for _attempt in range(150):
                         proposal = self._random_position() if last is None else last + 2 * radius * self._random_direction()
                         if np.linalg.norm(proposal) > self.radius * 0.92:
+                            continue
+                        if self.nucleus is not None and self.nucleus.rho(proposal)[0] > 0.97:
                             continue
                         if growing.is_clear(proposal, radius):
                             point = proposal
@@ -344,6 +367,23 @@ class Simulation:
             penetration = radial[outside] - self.radius
             f[outside] -= (self.confinement_stiffness * penetration / radial[outside])[:, None] * x[outside]
             energy += float(0.5 * self.confinement_stiffness * np.sum(penetration ** 2))
+        if self.nucleus is not None:
+            wall, wall_energy = self.nucleus.force_energy(x)
+            f += wall
+            energy += wall_energy
+            if self.tethers:
+                beads = np.array([t["bead"] for t in self.tethers], dtype=int)
+                anchors = np.array([t["anchor"] for t in self.tethers], dtype=float)
+                k = np.array([float(self.tether_specs[t["tether"]].get("spring_k", 2.0)) for t in self.tethers])
+                rest = np.array([float(self.tether_specs[t["tether"]].get("rest_length", 0.5)) for t in self.tethers])
+                delta = x[beads] - anchors
+                distance = np.linalg.norm(delta, axis=1)
+                extension = distance - rest
+                safe = np.maximum(distance, 1e-12)
+                force = -(k * extension / safe)[:, None] * delta
+                force[distance < 1e-12] = 0.0
+                np.add.at(f, beads, force)
+                energy += float(np.sum(0.5 * k * extension ** 2))
         # Fixed Gaussian affinity wells; signed amplitudes also support exclusion.
         for body, affinity in zip(self.bodies, self._body_affinities):
             delta = x - np.asarray(body["center"], dtype=float)
@@ -399,6 +439,10 @@ class Simulation:
             stiffness += np.abs(amplitude) / float(body["radius"]) ** 2
         # The radial wall's maximum curvature is its spring constant.
         stiffness += self.confinement_stiffness
+        if self.nucleus is not None:
+            stiffness += self.nucleus.curvature_bound()
+            for tether in self.tethers:
+                stiffness[tether["bead"]] += float(self.tether_specs[tether["tether"]].get("spring_k", 2.0))
         limit = float(np.max(self.diffusion * stiffness))
         subdivisions = max(1, int(math.ceil(self.dt * limit / 0.35)))
         if subdivisions > 1000:
@@ -418,9 +462,11 @@ class Simulation:
 
     def validate_positions(self, positions=None):
         positions = self.positions if positions is None else positions
+        nucleus = getattr(self, "nucleus", None)
         if (not np.all(np.isfinite(positions)) or
                 (getattr(self, "confinement_stiffness", 30.0) > 0
-                 and np.max(np.linalg.norm(positions, axis=1)) > self.radius * 50)):
+                 and np.max(np.linalg.norm(positions, axis=1)) > self.radius * 50) or
+                (nucleus is not None and nucleus.stiffness > 0 and np.max(nucleus.rho(positions)) > 50)):
             raise FloatingPointError("Integration became unstable; coordinates were not clipped. Reduce dt, stiffness, or diffusion.")
 
     def _event(self, kind, detail, time=None):
@@ -845,6 +891,88 @@ class Simulation:
                         break
                     pair[side] = target
 
+    def _tether_hazard(self, spec, bead, kind):
+        """Current attach or detach hazard for one bead (reduced time).
+
+        Attachment = attach_rate x occupancy factor x mark gate; detachment =
+        detach_rate x occupancy factor. Occupancy factors use the current
+        occupied/vacant state when nucleosomes are enabled, else 1.
+        """
+        rate = float(spec.get("attach_rate" if kind == "attach" else "detach_rate", 0))
+        if self.nucleosomes_enabled:
+            factors = spec.get("occupancy_attach_multiplier" if kind == "attach" else "occupancy_detach_multiplier", {})
+            rate *= float(factors.get("occupied" if self.nucleosome_occupied[bead] else "vacant", 1))
+        if kind == "attach" and spec.get("required_mark") and not self.marks[spec["required_mark"]][bead]:
+            return 0.0
+        return rate
+
+    def _tether_geometry(self, spec, points):
+        """(|distance to anchor surface|, surface points) for candidate beads."""
+        from .nucleus import body_surface_distance, body_surface_point
+        if spec.get("anchor", "envelope") == "body":
+            body = next(b for b in self.bodies if b["id"] == spec["body_id"])
+            return (np.abs(body_surface_distance(body, points)),
+                    np.array([body_surface_point(body, p) for p in points]))
+        return np.abs(self.nucleus.signed_distance(points)), self.nucleus.surface_point(points)
+
+    def _advance_tethers(self, dt):
+        if self.nucleus is None or not self.tether_specs:
+            return
+        kept = []
+        for tether in self.tethers:
+            spec = self.tether_specs[tether["tether"]]
+            if self.rng.random() < _probability(self._tether_hazard(spec, tether["bead"], "detach"), dt):
+                self._genomic_event("tether_detach", tether["bead"], dt, tether=spec["id"],
+                                    anchor_kind=spec.get("anchor", "envelope"))
+            else:
+                kept.append(tether)
+        self.tethers = kept
+        attached = {t["bead"] for t in kept}
+        candidates = [bead for bead in sorted(self._tether_owner) if bead not in attached]
+        if not candidates:
+            return
+        # One uniform per candidate keeps the draw count independent of geometry.
+        draws = self.rng.random(len(candidates))
+        by_spec = {}
+        for bead, u in zip(candidates, draws):
+            by_spec.setdefault(self._tether_owner[bead], []).append((bead, u))
+        for index, items in sorted(by_spec.items()):
+            spec = self.tether_specs[index]
+            beads = [bead for bead, _ in items]
+            distance, surface = self._tether_geometry(spec, self.positions[beads])
+            capture = float(spec.get("capture_distance", 1.5))
+            for (bead, u), d, anchor in zip(items, distance, surface):
+                if d > capture:
+                    continue
+                if u < _probability(self._tether_hazard(spec, bead, "attach"), dt):
+                    self.tethers.append({"bead": int(bead), "tether": index, "anchor": [float(v) for v in anchor]})
+                    self._genomic_event("tether_attach", bead, dt, tether=spec["id"],
+                                        anchor_kind=spec.get("anchor", "envelope"))
+
+    def nucleus_state(self):
+        """Read the envelope and tether state without RNG or mutation."""
+        if self.nucleus is None:
+            return {"enabled": False, "tethers": [], "attachments": []}
+        chromatin = self.positions[:self.n_chromatin]
+        distance = self.nucleus.signed_distance(chromatin)
+        records = []
+        for index, spec in enumerate(self.tether_specs):
+            beads = np.arange(int(spec["start"]), int(spec["end"]) + 1)
+            attached = sum(1 for t in self.tethers if t["tether"] == index)
+            geometry, _ = self._tether_geometry(spec, chromatin[beads])
+            records.append({"id": spec["id"], "name": spec.get("name", spec["id"]), "start": int(spec["start"]),
+                            "end": int(spec["end"]), "anchor": spec.get("anchor", "envelope"),
+                            "body_id": spec.get("body_id"), "color": spec.get("color"),
+                            "attached": attached, "beads": int(len(beads)),
+                            "within_capture": int(np.count_nonzero(geometry <= float(spec.get("capture_distance", 1.5)))),
+                            "mean_anchor_surface_distance": float(np.mean(geometry))})
+        return {"enabled": True, **self.nucleus.state(self.positions),
+                "chromatin_envelope_distance": {"min": float(np.min(-distance)), "mean": float(np.mean(-distance)),
+                                                "within_1": int(np.count_nonzero(np.abs(distance) <= 1.0))},
+                "tethers": records,
+                "attachments": [{"bead": t["bead"], "tether": self.tether_specs[t["tether"]]["id"],
+                                 "anchor": list(t["anchor"])} for t in self.tethers]}
+
     def _legacy_gene_on_rate(self, spec):
         promoter = int(spec["start"])
         required, repressive = spec.get("required_mark"), spec.get("repressive_mark")
@@ -1131,6 +1259,7 @@ class Simulation:
         self._advance_nucleosome_sliding(dt)
         self._advance_marks(dt, chromatin_tree)
         self._advance_cohesin(dt)
+        self._advance_tethers(dt)
         self._advance_genes(dt)
 
     def advance_bookkeeping(self, dt):
@@ -1213,8 +1342,23 @@ class Simulation:
                 "off_rate_runs": {species_id: _run_length_encode(self._chromatin_off_rates(species_id))
                                   for species_id in self.species},
                 "binding_sites": binding_sites,
+                "tether_runs": _run_length_encode(self._tether_attached_array()),
+                "tether_region_runs": _run_length_encode(self._tether_region_array()),
                 "occupancy_runs": {species_id: _run_length_encode(values)
                                    for species_id, values in occupancy.items()}}
+
+    def _tether_attached_array(self):
+        values = np.zeros(self.n_chromatin, dtype=np.int64)
+        for tether in self.tethers:
+            values[tether["bead"]] = 1
+        return values
+
+    def _tether_region_array(self):
+        """0 = no active tethering element; i+1 = owned by active element i."""
+        values = np.zeros(self.n_chromatin, dtype=np.int64)
+        for bead, index in self._tether_owner.items():
+            values[bead] = index + 1
+        return values
 
     def interaction_state(self):
         """Summarize the current molecular binding graph without changing state.
@@ -1377,6 +1521,7 @@ class Simulation:
         bonds = [{"a": self.positions[b["a"]].tolist(), "b": self.positions[b["b"]].tolist(), "kind": b["kind"]}
                  for b in self.bindings]
         bonds.extend({"a": self.positions[a].tolist(), "b": self.positions[b].tolist(), "kind": "cohesin"} for a, b in self.cohesin)
+        bonds.extend({"a": self.positions[t["bead"]].tolist(), "b": list(t["anchor"]), "kind": "tether"} for t in self.tethers)
         regulation = self.regulation_state()
         gene_regulation = {gene["id"]: gene for gene in regulation["genes"]}
         chromatin_contacts = (self._chromatin_contact_state()["report"] if self.chrom.get("state_interactions")
@@ -1398,6 +1543,7 @@ class Simulation:
                 "nucleosomes": self.nucleosome_state(),
                 "genomic_events": self.genomic_event_state(),
                 "transcription": transcription, "confinement": self.confinement_state(),
+                "nucleus": self.nucleus_state(),
                 "cohesin": copy.deepcopy(self.cohesin),
                 "genes": [{"id": g["config"]["id"], "name": g["config"].get("name", g["config"]["id"]),
                            "on": bool(g["on"]), "nascent": len(g["polymerases"]), "unprocessed": g["unprocessed"],

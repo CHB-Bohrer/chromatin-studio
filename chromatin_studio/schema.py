@@ -559,7 +559,10 @@ def validate_config(config):
                 for key, value in affinity.items():
                     if key not in ("occupied", "vacant"):
                         errors.append(path + "." + field + " has an unknown occupancy state.")
-                    number(value, path + "." + field + "." + str(key), 0, 20)
+                    # Release factors span the measured nucleosome effects on TF
+                    # dissociation (up to ~1000-fold faster; Luo et al. 2014).
+                    number(value, path + "." + field + "." + str(key), 0,
+                           1000 if field == "nucleosome_off_rate_multiplier" else 20)
         for field in ("nucleosome_eviction_rate", "nucleosome_reassembly_rate", "nucleosome_sliding_rate"):
             number(p.get(field, 0), path + "." + field, 0, 20)
         for field in ("writer_mark", "eraser_mark"):
@@ -628,6 +631,46 @@ def validate_config(config):
                 number(response.get(field, 1), response_path + "." + field, .01, 20)
         if g.get("body_responses"):
             warnings.append(path + ": nuclear-body responses are prescribed proximity-dependent hypotheses, not measured SIF-to-rate mappings.")
+    if "nucleus" in config:
+        nucleus = obj(config["nucleus"], "nucleus")
+        if not isinstance(nucleus.get("enabled", False), bool):
+            errors.append("nucleus.enabled must be boolean.")
+        radii = arr(nucleus.get("radii"), "nucleus.radii", 3)
+        center = arr(nucleus.get("center", [0, 0, 0]), "nucleus.center", 3)
+        if len(radii) != 3 or len(center) != 3:
+            errors.append("nucleus.radii and nucleus.center need three values.")
+        semi = [number(v, f"nucleus.radii[{k}]", 1, 2000) for k, v in enumerate(radii)]
+        mid = [number(v, f"nucleus.center[{k}]", -2000, 2000) for k, v in enumerate(center)]
+        number(nucleus.get("envelope_stiffness", 30), "nucleus.envelope_stiffness", 0, 200)
+        if nucleus.get("enabled") and len(semi) == 3 and len(mid) == 3:
+            scaled = math.sqrt(sum((m / a) ** 2 for m, a in zip(mid, semi)))
+            if scaled > 0.9:
+                errors.append("nucleus: the model origin (chromatin seed point) must lie inside the envelope, at most 0.9 of the way to the wall.")
+            warnings.append("Nuclear envelope is a soft ellipsoidal wall; tethers are phenomenological anchor springs. No lamina proteins, pores or membrane mechanics are represented.")
+        tethers = arr(nucleus.get("tethers", []), "nucleus.tethers", 128)
+        identity(tethers, "nucleus.tethers")
+        for k, t in enumerate(tethers):
+            path = f"nucleus.tethers[{k}]"
+            t = obj(t, path)
+            region(t, path)
+            if not isinstance(t.get("enabled", True), bool):
+                errors.append(path + ".enabled must be boolean.")
+            if t.get("anchor", "envelope") not in ("envelope", "body"):
+                errors.append(path + ".anchor must be envelope or body.")
+            if t.get("anchor") == "body":
+                reference(t.get("body_id"), body_ids, path + ".body_id")
+            for field, low, high, default in (("attach_rate", 0, 20, None), ("detach_rate", 0, 20, None),
+                                              ("capture_distance", 0.1, 10, 1.5), ("spring_k", 0, 50, 2.0),
+                                              ("rest_length", 0, 5, 0.5)):
+                number(t.get(field, default), path + "." + field, low, high)
+            reference(t.get("required_mark"), mark_ids, path + ".required_mark", True)
+            for field in ("occupancy_attach_multiplier", "occupancy_detach_multiplier"):
+                if field in t:
+                    factors = obj(t[field], path + "." + field)
+                    for key, value in factors.items():
+                        if key not in ("occupied", "vacant"):
+                            errors.append(path + "." + field + " has an unknown occupancy state.")
+                        number(value, path + "." + field + "." + str(key), 0, 1000)
     regions = arr(config.get("regulatory_regions", []), "regulatory_regions", MAX_REGULATORY_REGIONS)
     identity(regions, "regulatory_regions")
     gene_lookup = {g.get("id"): g for g in genes if isinstance(g, dict) and isinstance(g.get("id"), str)}
