@@ -4,7 +4,7 @@
   "tagline": "A visual builder and simulator for chromatin, reacting proteins, histone marks, cohesin and transcription.",
   "kind": "Research software",
   "stage": "Research prototype",
-  "as_of": "2026-11-09",
+  "as_of": "2026-11-12",
   "repo": "CHB-Bohrer/chromatin-studio",
   "links": [
     {
@@ -41,8 +41,8 @@
       "label": "Python tests pass; the other 2 are skipped GPU and OpenCL hardware checks"
     },
     {
-      "value": "16",
-      "label": "narrated tutorial chapters, about 10 minutes, built from real captured states of the app"
+      "value": "17",
+      "label": "tutorial chapters scripted from real captured states of the app; the rendered video has 16 until it is re-rendered"
     },
     {
       "value": "2,894",
@@ -119,8 +119,8 @@
           },
           {
             "name": "Narrated tutorial",
-            "state": "built",
-            "note": "A scripted walkthrough of genuine captured states, not continuous simulation footage."
+            "state": "partial",
+            "note": "A scripted walkthrough of genuine captured states, not continuous simulation footage. The script was revised on 2026-11-12 to state bead size clearly; the narrated video still shows the earlier wording until it is re-rendered."
           }
         ]
       },

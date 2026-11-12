@@ -32,6 +32,17 @@ The user selected individual nascent transcripts and diffusing released RNA as t
 
 Detailed definitions and coordinate conventions are in [CONTRACT.md](../CONTRACT.md) and [README.md](../README.md).
 
+## Tutorial scale-wording revision (2026-11-12)
+
+A viewer read "each bead is 10 kb" as contradicting "bead = nucleosome". Both are valid: bead size is a setting (`bp_per_bead`); the 20 Mb overview uses 10 kb bins, and the detailed 80 kb and 25.6 kb examples use 200 bp coarse nucleosome units. The tutorial opened with the 10 kb example without saying so.
+
+- Rewrote chapters 01 and 02 (narration, transcript and captions) to state bead size as a setting and to tie 200 bp to one coarse nucleosome unit.
+- Chapter 12 now says only bare-polymer models run fully on the GPU (native backend); models with proteins still evaluate forces and reactions on the CPU.
+- Audited the other chapters against the contract and status; no other scale or limit claims needed changes.
+- Added a future-update checklist to [tutorial/README.md](../tutorial/README.md).
+- **Not done:** narration audio and the MP4 were not regenerated (the Kokoro voice environment is not installed on this machine), so the shipped video still speaks the earlier wording and has no chapter 17. Captures were not retaken; chapter 01 still shows the 20 Mb capture, which now matches the narration.
+- Next concrete step: install the voice environment, run `narrate_neural.py` for scenes `01-overview`, `02-build-and-learn`, `12-cluster` and `17-nucleus-tethers`, then render the full tutorial and review it at 1×.
+
 ## Latest completed increment
 
 **Whole nucleus, tethering elements and occupancy views (2026-11-09, uncommitted on `feat/nucleus-tethering`).**
