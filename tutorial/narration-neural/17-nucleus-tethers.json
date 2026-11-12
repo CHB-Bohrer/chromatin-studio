@@ -1,0 +1,38 @@
+{
+  "voice": "af_heart",
+  "source_text": "Open Bodies and add Whole nucleus. The modeled territory still sits inside its own confinement sphere, while a larger soft ellipsoidal envelope represents the nuclear periphery. Place the envelope so it meets the territory where the domain should touch the lamina. Then add tethering elements: genomic intervals, such as lamina-associated domains, whose beads can attach to the envelope or to a landmark surface. Each bead within the capture distance attaches with its own hazard and, once attached, feels a spring to a fixed anchor. Attachment can require a mark and an occupied nucleosome, and vacant sites can release faster. In 3D, tick Whole nucleus to frame the envelope, and look for amber tether links. In 1D genome, the Tethers row shows each element and its attached beads, and the Nucleosomes row marks every vacant site. Tethers are phenomenological anchors, not lamina proteins.",
+  "spoken_text": "Open Bodies and add Whole nucleus. The modeled territory still sits inside its own confinement sphere, while a larger soft ellipsoidal envelope represents the nuclear periphery. Place the envelope so it meets the territory where the domain should touch the lamina. Then add tethering elements: genomic intervals, such as lamina-associated domains, whose beads can attach to the envelope or to a landmark surface. Each bead within the capture distance attaches with its own hazard and, once attached, feels a spring to a fixed anchor. Attachment can require a mark and an occupied nucleosome, and vacant sites can release faster. In 3D, tick Whole nucleus to frame the envelope, and look for amber tether links. In 1D genome, the Tethers row shows each element and its attached beads, and the Nucleosomes row marks every vacant site. Tethers are phenomenological anchors, not lamina proteins.",
+  "word_count": 142,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 148.82615986584685,
+  "model_speed": 0.9928732394366196,
+  "duration_seconds": 57.748,
+  "speech_seconds": 57.248,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 1.0124839544296265,
+  "gain": 0.9679165736034543,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 60.64,
+      "words_per_minute": 140.50131926121372,
+      "inference_seconds": 17.094000000040978
+    },
+    {
+      "model_speed": 0.9928732394366196,
+      "seconds": 57.248,
+      "words_per_minute": 148.82615986584685,
+      "inference_seconds": 16.140999999945052
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "17-nucleus-tethers",
+  "file": "17-nucleus-tethers.wav",
+  "fingerprint": "96a636961f215ce054b550a736026906e6a26a46a814a29ce96a2c46c47adcf7",
+  "wav_sha256": "0b297c7c250ca7fd07a316c6c073142662615c01904db8fd281a1b02a66aface",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

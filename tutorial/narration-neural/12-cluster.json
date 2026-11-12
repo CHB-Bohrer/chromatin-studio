@@ -1,35 +1,29 @@
 {
   "voice": "af_heart",
-  "source_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU integration is available, while forces, reactions and RNA still run on the CPU; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
-  "spoken_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. G P U integration is available, while forces, reactions and R N A still run on the C P U; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
-  "word_count": 91,
+  "source_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU integration is partial: only bare-polymer models run fully on the device, while forces, reactions and RNA for models with proteins still run on the CPU; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
+  "spoken_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. G P U integration is partial: only bare-polymer models run fully on the device, while forces, reactions and R N A for models with proteins still run on the C P U; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
+  "word_count": 103,
   "target_words_per_minute": 155.0,
-  "words_per_minute": 151.64420085913198,
-  "model_speed": 1.0638054845550053,
-  "duration_seconds": 36.50533333333333,
-  "speech_seconds": 36.00533333333333,
+  "words_per_minute": 148.57674060777023,
+  "model_speed": 1.007770873786408,
+  "duration_seconds": 42.09466666666667,
+  "speech_seconds": 41.59466666666667,
   "sample_rate": 24000,
   "padding_seconds": 0.5,
-  "peak_before_attenuation": 0.8158341646194458,
+  "peak_before_attenuation": 0.7620583176612854,
   "gain": 1.0,
   "attempts": [
     {
       "model_speed": 0.9,
-      "seconds": 39.632,
-      "words_per_minute": 137.7674606378684,
-      "inference_seconds": 8.959482250036672
+      "seconds": 44.64533333333333,
+      "words_per_minute": 138.4243220642695,
+      "inference_seconds": 12.671999999904074
     },
     {
-      "model_speed": 1.012575824175824,
-      "seconds": 37.008,
-      "words_per_minute": 147.53566796368352,
-      "inference_seconds": 8.353678499930538
-    },
-    {
-      "model_speed": 1.0638054845550053,
-      "seconds": 36.00533333333333,
-      "words_per_minute": 151.64420085913198,
-      "inference_seconds": 8.346003707963973
+      "model_speed": 1.007770873786408,
+      "seconds": 41.59466666666667,
+      "words_per_minute": 148.57674060777023,
+      "inference_seconds": 11.719000000040978
     }
   ],
   "within_target_pace": true,
@@ -38,7 +32,7 @@
   "speech_truncated": false,
   "id": "12-cluster",
   "file": "12-cluster.wav",
-  "fingerprint": "bd8dbfd26dfa8920739326a01dc12f7ef9c2d0d0f24dc6faba63c06ca3c663a2",
-  "wav_sha256": "3a83022f16ce62587b347f2d98adf5dfacd0a2dafa89b27df2d6d3d76f267e62",
+  "fingerprint": "221eb9e95b4deb6ee1f27aa1aee7d3f1216c4161a91ff7483155b5faa5dd1ae0",
+  "wav_sha256": "09e98c1ea14f586f94d30d58691c04e3a7066b4646648fd99fe521a0016eace4",
   "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
 }

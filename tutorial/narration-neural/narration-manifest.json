@@ -19,37 +19,37 @@
   },
   "time_stretch": false,
   "narration_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa",
-  "storyboard_sha256": "0a86a75a826314a1daba0a65161db64ea7d074f2b41f411a50cd5708ef734aa9",
+  "storyboard_sha256": "fcfcdabc1fb78f9cffed1781596f4eafe333c38ffdbe0e2e2b6e6c0d3987ffa2",
   "preserved_scene_ids": [],
   "complete": true,
-  "total_seconds": 590.16,
+  "total_seconds": 670.2813333333334,
   "scenes": [
     {
       "voice": "af_heart",
-      "source_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. The starting example spans twenty megabases using two thousand beads, so each bead represents ten kilobases. That is a coarse genomic mapping, not nucleosome resolution. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the scale, the run status, and the physical-clock label.",
-      "spoken_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. The starting example spans twenty megabases using two thousand beads, so each bead represents ten kilobases. That is a coarse genomic mapping, not nucleosome resolution. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the scale, the run status, and the physical-clock label.",
-      "word_count": 68,
+      "source_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a coarse genomic interval, and its size is a model setting. In the detailed examples a bead is two hundred base pairs, about one nucleosome unit. This opening overview is the coarse twenty-megabase example instead: two thousand beads of ten kilobases each, so one bead is a bin covering many nucleosomes. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
+      "spoken_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a coarse genomic interval, and its size is a model setting. In the detailed examples a bead is two hundred base pairs, about one nucleosome unit. This opening overview is the coarse twenty-megabase example instead: two thousand beads of ten kilobases each, so one bead is a bin covering many nucleosomes. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
+      "word_count": 99,
       "target_words_per_minute": 155.0,
-      "words_per_minute": 151.30537974683543,
-      "model_speed": 0.9475058823529412,
-      "duration_seconds": 27.465333333333334,
-      "speech_seconds": 26.965333333333334,
+      "words_per_minute": 151.18094203882177,
+      "model_speed": 0.9773454545454545,
+      "duration_seconds": 39.79066666666667,
+      "speech_seconds": 39.29066666666667,
       "sample_rate": 24000,
       "padding_seconds": 0.5,
-      "peak_before_attenuation": 0.6222525835037231,
+      "peak_before_attenuation": 0.7338705062866211,
       "gain": 1.0,
       "attempts": [
         {
           "model_speed": 0.9,
-          "seconds": 27.712,
-          "words_per_minute": 147.22863741339492,
-          "inference_seconds": 6.781506833038293
+          "seconds": 41.616,
+          "words_per_minute": 142.73356401384083,
+          "inference_seconds": 12.155999999959022
         },
         {
-          "model_speed": 0.9475058823529412,
-          "seconds": 26.965333333333334,
-          "words_per_minute": 151.30537974683543,
-          "inference_seconds": 6.208226541988552
+          "model_speed": 0.9773454545454545,
+          "seconds": 39.29066666666667,
+          "words_per_minute": 151.18094203882177,
+          "inference_seconds": 11.079000000027008
         }
       ],
       "within_target_pace": true,
@@ -58,42 +58,42 @@
       "speech_truncated": false,
       "id": "01-overview",
       "file": "01-overview.wav",
-      "fingerprint": "e6921487b6f81b7769b6d5cd228867e9296b085b71add5675674500241062235",
-      "wav_sha256": "d023b37ab27343fbbfb87731309cf05acc6689f885bee8c5ff6420a8057d718f",
+      "fingerprint": "7bc360173383611ff6101b33e19a64f0bbc6047facd1cc46e9a0ace50350ecf7",
+      "wav_sha256": "4072855bac0c71d22ff729c7c19f9c00e0237ac3b2ddd00fa091eb31f641bd73",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     },
     {
       "voice": "af_heart",
-      "source_text": "For the detailed walkthrough, choose Manuscript hypotheses at eighty kilobases. Four hundred coarse units represent two hundred base pairs each, with nucleosome occupancy and individual transcripts enabled. The preset includes transcription factors, coactivators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
-      "spoken_text": "For the detailed walkthrough, choose Manuscript hypotheses at eighty kilobases. Four hundred coarse units represent two hundred base pairs each, with nucleosome occupancy and individual transcripts enabled. The preset includes transcription factors, co-activators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
-      "word_count": 78,
+      "source_text": "For the detailed walkthrough, choose Manuscript hypotheses at eighty kilobases. Each of its four hundred beads is two hundred base pairs, a coarse nucleosome unit that can be occupied or vacant. Nucleosome occupancy and individual transcripts are enabled. The preset includes transcription factors, coactivators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
+      "spoken_text": "For the detailed walkthrough, choose Manuscript hypotheses at eighty kilobases. Each of its four hundred beads is two hundred base pairs, a coarse nucleosome unit that can be occupied or vacant. Nucleosome occupancy and individual transcripts are enabled. The preset includes transcription factors, co-activators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
+      "word_count": 89,
       "target_words_per_minute": 155.0,
-      "words_per_minute": 153.2215819800943,
-      "model_speed": 1.2943400039447732,
-      "duration_seconds": 31.044,
-      "speech_seconds": 30.544,
+      "words_per_minute": 152.55980496724058,
+      "model_speed": 1.2097948913296583,
+      "duration_seconds": 35.50266666666667,
+      "speech_seconds": 35.00266666666667,
       "sample_rate": 24000,
       "padding_seconds": 0.5,
-      "peak_before_attenuation": 0.8031940460205078,
+      "peak_before_attenuation": 0.7058656215667725,
       "gain": 1.0,
       "attempts": [
         {
           "model_speed": 0.9,
-          "seconds": 38.928,
-          "words_per_minute": 120.22194821208386,
-          "inference_seconds": 8.863955333945341
+          "seconds": 42.42666666666667,
+          "words_per_minute": 125.8642363293526,
+          "inference_seconds": 11.984000000054948
         },
         {
-          "model_speed": 1.160353846153846,
-          "seconds": 33.68,
-          "words_per_minute": 138.95486935866984,
-          "inference_seconds": 7.924436250003055
+          "model_speed": 1.1083370786516855,
+          "seconds": 37.605333333333334,
+          "words_per_minute": 142.00113459083818,
+          "inference_seconds": 10.60999999998603
         },
         {
-          "model_speed": 1.2943400039447732,
-          "seconds": 30.544,
-          "words_per_minute": 153.2215819800943,
-          "inference_seconds": 6.945902541978285
+          "model_speed": 1.2097948913296583,
+          "seconds": 35.00266666666667,
+          "words_per_minute": 152.55980496724058,
+          "inference_seconds": 9.702999999979511
         }
       ],
       "within_target_pace": true,
@@ -102,8 +102,8 @@
       "speech_truncated": false,
       "id": "02-build-and-learn",
       "file": "02-build-and-learn.wav",
-      "fingerprint": "05cc56c4f607703bf500fb067c3d8ac592dc4c2f89b47c48b75e26eb69f7afc7",
-      "wav_sha256": "37dbb73c50f4db2f5e4ce9ef0a715bcb1cd5073503942b6958d753743e4f3c11",
+      "fingerprint": "bd5c112648313b47a28e276170bdc24f037ab6c45f5e68f4a031cfb7a688e348",
+      "wav_sha256": "64fb182adc3760537da2c87a4e596a8c55838ba074e50b159f6f1e78bc9381c9",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     },
     {
@@ -236,6 +236,44 @@
       "file": "16-remodelers.wav",
       "fingerprint": "766c1edbb409993e780f447b8dec3beec73469138b5f75cbf8f978dadff7dbf6",
       "wav_sha256": "03f546486ad59c772ff5025fe61a89ae4abaef91f7222fe4e0eb95ab1b2a6b54",
+      "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+    },
+    {
+      "voice": "af_heart",
+      "source_text": "Open Bodies and add Whole nucleus. The modeled territory still sits inside its own confinement sphere, while a larger soft ellipsoidal envelope represents the nuclear periphery. Place the envelope so it meets the territory where the domain should touch the lamina. Then add tethering elements: genomic intervals, such as lamina-associated domains, whose beads can attach to the envelope or to a landmark surface. Each bead within the capture distance attaches with its own hazard and, once attached, feels a spring to a fixed anchor. Attachment can require a mark and an occupied nucleosome, and vacant sites can release faster. In 3D, tick Whole nucleus to frame the envelope, and look for amber tether links. In 1D genome, the Tethers row shows each element and its attached beads, and the Nucleosomes row marks every vacant site. Tethers are phenomenological anchors, not lamina proteins.",
+      "spoken_text": "Open Bodies and add Whole nucleus. The modeled territory still sits inside its own confinement sphere, while a larger soft ellipsoidal envelope represents the nuclear periphery. Place the envelope so it meets the territory where the domain should touch the lamina. Then add tethering elements: genomic intervals, such as lamina-associated domains, whose beads can attach to the envelope or to a landmark surface. Each bead within the capture distance attaches with its own hazard and, once attached, feels a spring to a fixed anchor. Attachment can require a mark and an occupied nucleosome, and vacant sites can release faster. In 3D, tick Whole nucleus to frame the envelope, and look for amber tether links. In 1D genome, the Tethers row shows each element and its attached beads, and the Nucleosomes row marks every vacant site. Tethers are phenomenological anchors, not lamina proteins.",
+      "word_count": 142,
+      "target_words_per_minute": 155.0,
+      "words_per_minute": 148.82615986584685,
+      "model_speed": 0.9928732394366196,
+      "duration_seconds": 57.748,
+      "speech_seconds": 57.248,
+      "sample_rate": 24000,
+      "padding_seconds": 0.5,
+      "peak_before_attenuation": 1.0124839544296265,
+      "gain": 0.9679165736034543,
+      "attempts": [
+        {
+          "model_speed": 0.9,
+          "seconds": 60.64,
+          "words_per_minute": 140.50131926121372,
+          "inference_seconds": 17.094000000040978
+        },
+        {
+          "model_speed": 0.9928732394366196,
+          "seconds": 57.248,
+          "words_per_minute": 148.82615986584685,
+          "inference_seconds": 16.140999999945052
+        }
+      ],
+      "within_target_pace": true,
+      "phoneme_overrides": [],
+      "time_stretch": false,
+      "speech_truncated": false,
+      "id": "17-nucleus-tethers",
+      "file": "17-nucleus-tethers.wav",
+      "fingerprint": "96a636961f215ce054b550a736026906e6a26a46a814a29ce96a2c46c47adcf7",
+      "wav_sha256": "0b297c7c250ca7fd07a316c6c073142662615c01904db8fd281a1b02a66aface",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     },
     {
@@ -734,36 +772,30 @@
     },
     {
       "voice": "af_heart",
-      "source_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU integration is available, while forces, reactions and RNA still run on the CPU; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
-      "spoken_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. G P U integration is available, while forces, reactions and R N A still run on the C P U; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
-      "word_count": 91,
+      "source_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU integration is partial: only bare-polymer models run fully on the device, while forces, reactions and RNA for models with proteins still run on the CPU; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
+      "spoken_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. G P U integration is partial: only bare-polymer models run fully on the device, while forces, reactions and R N A for models with proteins still run on the C P U; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
+      "word_count": 103,
       "target_words_per_minute": 155.0,
-      "words_per_minute": 151.64420085913198,
-      "model_speed": 1.0638054845550053,
-      "duration_seconds": 36.50533333333333,
-      "speech_seconds": 36.00533333333333,
+      "words_per_minute": 148.57674060777023,
+      "model_speed": 1.007770873786408,
+      "duration_seconds": 42.09466666666667,
+      "speech_seconds": 41.59466666666667,
       "sample_rate": 24000,
       "padding_seconds": 0.5,
-      "peak_before_attenuation": 0.8158341646194458,
+      "peak_before_attenuation": 0.7620583176612854,
       "gain": 1.0,
       "attempts": [
         {
           "model_speed": 0.9,
-          "seconds": 39.632,
-          "words_per_minute": 137.7674606378684,
-          "inference_seconds": 8.959482250036672
+          "seconds": 44.64533333333333,
+          "words_per_minute": 138.4243220642695,
+          "inference_seconds": 12.671999999904074
         },
         {
-          "model_speed": 1.012575824175824,
-          "seconds": 37.008,
-          "words_per_minute": 147.53566796368352,
-          "inference_seconds": 8.353678499930538
-        },
-        {
-          "model_speed": 1.0638054845550053,
-          "seconds": 36.00533333333333,
-          "words_per_minute": 151.64420085913198,
-          "inference_seconds": 8.346003707963973
+          "model_speed": 1.007770873786408,
+          "seconds": 41.59466666666667,
+          "words_per_minute": 148.57674060777023,
+          "inference_seconds": 11.719000000040978
         }
       ],
       "within_target_pace": true,
@@ -772,8 +804,8 @@
       "speech_truncated": false,
       "id": "12-cluster",
       "file": "12-cluster.wav",
-      "fingerprint": "bd8dbfd26dfa8920739326a01dc12f7ef9c2d0d0f24dc6faba63c06ca3c663a2",
-      "wav_sha256": "3a83022f16ce62587b347f2d98adf5dfacd0a2dafa89b27df2d6d3d76f267e62",
+      "fingerprint": "221eb9e95b4deb6ee1f27aa1aee7d3f1216c4161a91ff7483155b5faa5dd1ae0",
+      "wav_sha256": "09e98c1ea14f586f94d30d58691c04e3a7066b4646648fd99fe521a0016eace4",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     }
   ],

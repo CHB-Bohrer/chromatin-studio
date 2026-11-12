@@ -34,6 +34,7 @@ Optional settings include `--voice af_bella`, `--target-wpm 145`, and `--threads
 ## Render
 
 Use a Python environment with **Pillow** and **imageio-ffmpeg**, such as this workspace's `../../work/sim-env/bin/python`.
+On Windows, set `PYTHONUTF8=1` for both narration and rendering; the renderer falls back to `C:WindowsFontsrial.ttf`. After rendering, make sure `render-manifest.json` and `render-timeline.json` hold repo-relative `narration-neural/...` paths, not absolute local ones.
 
 ```sh
 python tutorial/render_tutorial.py \

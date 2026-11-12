@@ -40,8 +40,10 @@ A viewer read "each bead is 10 kb" as contradicting "bead = nucleosome". Both ar
 - Chapter 12 now says only bare-polymer models run fully on the GPU (native backend); models with proteins still evaluate forces and reactions on the CPU.
 - Audited the other chapters against the contract and status; no other scale or limit claims needed changes.
 - Added a future-update checklist to [tutorial/README.md](../tutorial/README.md).
-- **Not done:** narration audio and the MP4 were not regenerated (the Kokoro voice environment is not installed on this machine), so the shipped video still speaks the earlier wording and has no chapter 17. Captures were not retaken; chapter 01 still shows the 20 Mb capture, which now matches the narration.
-- Next concrete step: install the voice environment, run `narrate_neural.py` for scenes `01-overview`, `02-build-and-learn`, `12-cluster` and `17-nucleus-tethers`, then render the full tutorial and review it at 1×.
+- **Regenerated later the same day:** installed Python 3.12 and Kokoro on the Windows machine (venvs outside the repo), narrated scenes `01-overview`, `02-build-and-learn`, `12-cluster` and `17-nucleus-tethers` (the other 13 reused), and rendered all 17 chapters (691.8 s, natural 1× pace). The old video lacked chapter 17.
+- `render_tutorial.py` gained a Windows Arial fallback. On Windows run with `PYTHONUTF8=1`, or the renderer fails on the "≈" in a caption. The renderer wrote absolute local paths into `render-manifest.json` and `render-timeline.json`; they were rewritten to repo-relative `narration-neural/...` before committing.
+- **Not done:** captures were not retaken (chapter 01 still shows the 20 Mb capture, which matches the narration). The video was rendered but not watched at 1×, so audio, key-point readability and transitions are unreviewed.
+- Next concrete step: watch the video at 1× and fix any problems.
 
 ## Latest completed increment
 

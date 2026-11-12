@@ -42,7 +42,7 @@
     },
     {
       "value": "17",
-      "label": "tutorial chapters scripted from real captured states of the app; the rendered video has 16 until it is re-rendered"
+      "label": "narrated tutorial chapters, about 11.5 minutes, built from real captured states of the app"
     },
     {
       "value": "2,894",
@@ -119,8 +119,8 @@
           },
           {
             "name": "Narrated tutorial",
-            "state": "partial",
-            "note": "A scripted walkthrough of genuine captured states, not continuous simulation footage. The script was revised on 2026-11-12 to state bead size clearly; the narrated video still shows the earlier wording until it is re-rendered."
+            "state": "built",
+            "note": "A scripted walkthrough of genuine captured states, not continuous simulation footage. Re-rendered on 2026-11-12 with 17 chapters and clearer bead-size wording; not yet reviewed at 1×."
           }
         ]
       },

@@ -4,7 +4,7 @@
   "subtitle": "An editable walkthrough of the actual application",
   "language": "en",
   "playback_speed": 1,
-  "normal_duration_seconds": 610.4,
+  "normal_duration_seconds": 691.8,
   "delivery": {
     "preferred_resolution": "1920x1080",
     "frame_rate": 30,
@@ -46,30 +46,30 @@
     {
       "id": "01-overview",
       "title": "Start with the workbench",
-      "normal_duration_seconds": 28.733333333333334,
+      "normal_duration_seconds": 41.06666666666667,
       "primary_capture": "01-overview.png",
-      "narration": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. The starting example spans twenty megabases using two thousand beads, so each bead represents ten kilobases. That is a coarse genomic mapping, not nucleosome resolution. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the scale, the run status, and the physical-clock label.",
+      "narration": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a coarse genomic interval, and its size is a model setting. In the detailed examples a bead is two hundred base pairs, about one nucleosome unit. This opening overview is the coarse twenty-megabase example instead: two thousand beads of ten kilobases each, so one bead is a bin covering many nucleosomes. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
       "captions": [
         {
           "start": 0.0,
-          "end": 8.979166666666668,
+          "end": 12.833333333333334,
           "text": "Build on the left. Inspect the applied model in the center. Follow measurements and events."
         },
         {
-          "start": 8.979166666666668,
-          "end": 19.754166666666666,
-          "text": "20 Mb example = 2,000 beads × 10 kb. Individual nucleosomes are unresolved at this scale."
+          "start": 12.833333333333334,
+          "end": 28.233333333333334,
+          "text": "Bead size is a setting. Detailed examples: 200 bp ≈ one nucleosome unit. This 20 Mb overview: 10 kb bins, nucleosomes unresolved."
         },
         {
-          "start": 19.754166666666666,
-          "end": 28.733333333333334,
+          "start": 28.233333333333334,
+          "end": 41.06666666666667,
           "text": "Draft settings and the current run are different. Check the scale and calibration status first."
         }
       ],
       "keyframes": [
         {
           "capture": "01-overview.png",
-          "duration": 16.1625,
+          "duration": 23.1,
           "actions": [
             "Open the recording instance with the 20 Mb chromatin preset paused.",
             "Show the 3D nucleus, genomic-scale label, and run controls."
@@ -77,7 +77,7 @@
         },
         {
           "capture": "01-overview-inspector.png",
-          "duration": 12.570833333333333,
+          "duration": 17.96666666666667,
           "actions": [
             "Select a visible chromatin bead or protein in the actual 3D view.",
             "Show its inspector alongside the paused run."
@@ -91,44 +91,44 @@
       "source_duration_seconds": 32.0,
       "narration_audio": {
         "path": "narration-neural/01-overview.wav",
-        "sha256": "d023b37ab27343fbbfb87731309cf05acc6689f885bee8c5ff6420a8057d718f",
+        "sha256": "4072855bac0c71d22ff729c7c19f9c00e0237ac3b2ddd00fa091eb31f641bd73",
         "voice": "af_heart",
         "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
-        "duration_seconds": 27.465333333333334,
-        "words_per_minute": 151.30537974683543,
+        "duration_seconds": 39.79066666666667,
+        "words_per_minute": 151.18094203882177,
         "acceleration": 1,
         "time_stretch": false,
         "speech_truncated": false,
-        "reading_pause_seconds": 1.2680000000000007
+        "reading_pause_seconds": 1.2760000000000034
       }
     },
     {
       "id": "02-build-and-learn",
       "title": "Choose a focused experiment",
-      "normal_duration_seconds": 32.3,
+      "normal_duration_seconds": 36.766666666666666,
       "primary_capture": "02-build-and-learn.png",
-      "narration": "For the detailed walkthrough, choose Manuscript hypotheses at eighty kilobases. Four hundred coarse units represent two hundred base pairs each, with nucleosome occupancy and individual transcripts enabled. The preset includes transcription factors, coactivators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
+      "narration": "For the detailed walkthrough, choose Manuscript hypotheses at eighty kilobases. Each of its four hundred beads is two hundred base pairs, a coarse nucleosome unit that can be occupied or vacant. Nucleosome occupancy and individual transcripts are enabled. The preset includes transcription factors, coactivators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
       "captions": [
         {
           "start": 0.0,
-          "end": 10.766666666666666,
+          "end": 12.255555555555556,
           "text": "Choose “Manuscript hypotheses · 80 kb” for a focused experiment with occupancy and individual RNA."
         },
         {
-          "start": 10.766666666666666,
-          "end": 21.53333333333333,
-          "text": "400 beads × 200 bp: coarse nucleosome units, without wrapped-DNA or histone-tail geometry."
+          "start": 12.255555555555556,
+          "end": 24.511111111111113,
+          "text": "1 bead = 200 bp = one coarse nucleosome unit (occupied or vacant); 400 beads = 80 kb. No wrapped-DNA or histone-tail geometry."
         },
         {
-          "start": 21.53333333333333,
-          "end": 32.3,
+          "start": 24.511111111111113,
+          "end": 36.766666666666666,
           "text": "“How it works” is a separate learning sandbox. Its controls leave the simulation unchanged."
         }
       ],
       "keyframes": [
         {
           "capture": "02-build-and-learn.png",
-          "duration": 16.15,
+          "duration": 18.383333333333333,
           "actions": [
             "In the isolated recording instance, select Manuscript hypotheses · 80 kb.",
             "Show the new genomic scale and enabled model components.",
@@ -137,7 +137,7 @@
         },
         {
           "capture": "02-motion-lesson.png",
-          "duration": 16.15,
+          "duration": 18.383333333333333,
           "actions": [
             "Open How it works, then Motion.",
             "Change the diffusion illustration slider and capture the updated equation result.",
@@ -152,15 +152,15 @@
       "source_duration_seconds": 36.0,
       "narration_audio": {
         "path": "narration-neural/02-build-and-learn.wav",
-        "sha256": "37dbb73c50f4db2f5e4ce9ef0a715bcb1cd5073503942b6958d753743e4f3c11",
+        "sha256": "64fb182adc3760537da2c87a4e596a8c55838ba074e50b159f6f1e78bc9381c9",
         "voice": "af_heart",
         "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
-        "duration_seconds": 31.044,
-        "words_per_minute": 153.2215819800943,
+        "duration_seconds": 35.50266666666667,
+        "words_per_minute": 152.55980496724058,
         "acceleration": 1,
         "time_stretch": false,
         "speech_truncated": false,
-        "reading_pause_seconds": 1.2559999999999967
+        "reading_pause_seconds": 1.2639999999999958
       }
     },
     {
@@ -418,6 +418,87 @@
         "time_stretch": false,
         "speech_truncated": false,
         "reading_pause_seconds": 1.2773333333333312
+      }
+    },
+    {
+      "id": "17-nucleus-tethers",
+      "title": "Add the whole nucleus and tethering elements",
+      "normal_duration_seconds": 59.0,
+      "primary_capture": "17-nucleus-envelope.png",
+      "narration": "Open Bodies and add Whole nucleus. The modeled territory still sits inside its own confinement sphere, while a larger soft ellipsoidal envelope represents the nuclear periphery. Place the envelope so it meets the territory where the domain should touch the lamina. Then add tethering elements: genomic intervals, such as lamina-associated domains, whose beads can attach to the envelope or to a landmark surface. Each bead within the capture distance attaches with its own hazard and, once attached, feels a spring to a fixed anchor. Attachment can require a mark and an occupied nucleosome, and vacant sites can release faster. In 3D, tick Whole nucleus to frame the envelope, and look for amber tether links. In 1D genome, the Tethers row shows each element and its attached beads, and the Nucleosomes row marks every vacant site. Tethers are phenomenological anchors, not lamina proteins.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 14.75,
+          "text": "Bodies → Whole nucleus adds a soft envelope around the confined territory. Place it where the domain meets the periphery."
+        },
+        {
+          "start": 14.75,
+          "end": 29.5,
+          "text": "Tethering elements are genomic intervals. Beads within the capture distance attach stochastically and feel a spring to a fixed anchor."
+        },
+        {
+          "start": 29.5,
+          "end": 44.25,
+          "text": "Attachment can require a mark and an occupied nucleosome; vacant sites can release faster."
+        },
+        {
+          "start": 44.25,
+          "end": 59.0,
+          "text": "1D genome shows attached beads per element and every vacant nucleosome site. Tethers are phenomenological anchors."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "17-nucleus-envelope.png",
+          "duration": 14.75,
+          "actions": [
+            "Use the isolated UI-check instance with a whole nucleus and three LAD tethers.",
+            "In 3D nucleus, tick Whole nucleus to frame the envelope around the territory."
+          ]
+        },
+        {
+          "capture": "17-tether-editor.png",
+          "duration": 14.75,
+          "actions": [
+            "Open Bodies → Whole nucleus & tethering in the expanded builder.",
+            "Show envelope stiffness, semi-axes, centre and the first tether element's interval and kinetics."
+          ]
+        },
+        {
+          "capture": "17-tethers-local.png",
+          "duration": 14.75,
+          "actions": [
+            "Untick Whole nucleus and zoom in to show amber tether links from attached beads to envelope anchors."
+          ]
+        },
+        {
+          "capture": "17-occupancy-tethers-1d.png",
+          "duration": 14.75,
+          "actions": [
+            "Open 1D genome → Live binding; show the Tethers row (attached beads per element) and the Nucleosomes row with vacant-site gaps and the occupancy count."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "The capture model (recording-nucleus-tethers-model.json) uses an accelerated attach rate and a wider capture distance so attachments appear within a short UI run. It is a UI check, not a scientific model.",
+        "The envelope is a soft imposed wall; there is no lamina meshwork, pore complex, membrane mechanics or anchor diffusion.",
+        "Tether hazards are model inputs, not measured lamina-binding kinetics.",
+        "The OpenMM backends refuse models with a nuclear envelope or tethers; only the NumPy Brownian reference integrates them.",
+        "Coarse 10 kb bins in 1D summarize occupancy states; individual nucleosomes are not resolved at that scale."
+      ],
+      "source_duration_seconds": 56.0,
+      "narration_audio": {
+        "path": "narration-neural/17-nucleus-tethers.wav",
+        "sha256": "0b297c7c250ca7fd07a316c6c073142662615c01904db8fd281a1b02a66aface",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 57.748,
+        "words_per_minute": 148.82615986584685,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2520000000000024
       }
     },
     {
@@ -1053,30 +1134,30 @@
     {
       "id": "12-cluster",
       "title": "Export a reproducible cluster experiment",
-      "normal_duration_seconds": 37.766666666666666,
+      "normal_duration_seconds": 43.36666666666667,
       "primary_capture": "12-cluster.png",
-      "narration": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU integration is available, while forces, reactions and RNA still run on the CPU; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
+      "narration": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU integration is partial: only bare-polymer models run fully on the device, while forces, reactions and RNA for models with proteins still run on the CPU; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
       "captions": [
         {
           "start": 0.0,
-          "end": 12.274166666666666,
+          "end": 14.094166666666668,
           "text": "Configure independent replicas, platform, sampling intervals and resources. Preview before exporting."
         },
         {
-          "start": 12.274166666666666,
-          "end": 25.4925,
+          "start": 14.094166666666668,
+          "end": 29.2725,
           "text": "A portable bundle starts fresh from the draft. GPU integration is partial; speedup still needs measurement."
         },
         {
-          "start": 25.4925,
-          "end": 37.766666666666666,
+          "start": 29.2725,
+          "end": 43.36666666666667,
           "text": "Build → inspect → calibrate → test. Preserve seeds, model provenance and controlled comparisons."
         }
       ],
       "keyframes": [
         {
           "capture": "12-cluster.png",
-          "duration": 17.939166666666665,
+          "duration": 20.59916666666667,
           "actions": [
             "Open Cluster job and show platform, replicas, output intervals and scheduler settings.",
             "Keep the hybrid CPU/GPU limitation and fresh-run notice visible."
@@ -1084,7 +1165,7 @@
         },
         {
           "capture": "12-cluster-preview.png",
-          "duration": 19.827499999999997,
+          "duration": 22.767500000000002,
           "actions": [
             "Preview the actual draft job and show the generated script, seeds and warnings.",
             "Optionally export a local ZIP as a demonstration; do not imply cluster upload, submission, or successful GPU execution."
@@ -1099,15 +1180,15 @@
       "source_duration_seconds": 40.0,
       "narration_audio": {
         "path": "narration-neural/12-cluster.wav",
-        "sha256": "3a83022f16ce62587b347f2d98adf5dfacd0a2dafa89b27df2d6d3d76f267e62",
+        "sha256": "09e98c1ea14f586f94d30d58691c04e3a7066b4646648fd99fe521a0016eace4",
         "voice": "af_heart",
         "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
-        "duration_seconds": 36.50533333333333,
-        "words_per_minute": 151.64420085913198,
+        "duration_seconds": 42.09466666666667,
+        "words_per_minute": 148.57674060777023,
         "acceleration": 1,
         "time_stretch": false,
         "speech_truncated": false,
-        "reading_pause_seconds": 1.261333333333333
+        "reading_pause_seconds": 1.2719999999999985
       }
     }
   ],
@@ -1133,7 +1214,5 @@
       "The 25.6 kb binding/remodeling example is explicitly distinguished from the 80 kb manuscript example and 20 Mb coarse overview. Event records retain their real identities and interval timing."
     ]
   },
-  "rendered_duration_seconds": 610.4,
-  "narration_path_base": "directory containing this metadata file",
-  "publication_note": "Narration paths normalized for source distribution; media, timings and recorded source hashes unchanged."
+  "rendered_duration_seconds": 691.8
 }

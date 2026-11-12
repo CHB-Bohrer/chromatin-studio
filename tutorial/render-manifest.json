@@ -1,24 +1,24 @@
 {
   "schema_version": 2,
-  "title": "Chromatin Studio — build, inspect, and test a model",
-  "storyboard_sha256": "0a86a75a826314a1daba0a65161db64ea7d074f2b41f411a50cd5708ef734aa9",
-  "renderer_sha256": "5c4390628b866aaf410bdb7555006b25b405c47df8ecd1e437fdc7de63d50d92",
+  "title": "Chromatin Studio \u2014 build, inspect, and test a model",
+  "storyboard_sha256": "fcfcdabc1fb78f9cffed1781596f4eafe333c38ffdbe0e2e2b6e6c0d3987ffa2",
+  "renderer_sha256": "a63260257a08f0f39e36931dbc50c85ebb4f3639192d6596ed41388248b45280",
   "speed": 1,
-  "normal_seconds": 610.4,
-  "delivered_seconds": 610.4,
+  "normal_seconds": 691.8,
+  "delivered_seconds": 691.8,
   "resolution": [
     1920,
     1080
   ],
   "fps": 30,
   "silent": false,
-  "video_sha256": "c7f29a260a67307d79d91ca4774aa33691acd1e33654b4917668ba83e1b88c58",
+  "video_sha256": "75b33bf6e4f1ec1806e803d7d1c6dbb5faac143a76f8dab1ee05c24c65aebee9",
   "scenes": [
     {
       "id": "01-overview",
-      "fingerprint": "79896a4dbdeb6ac3f91e2bf35697c9e213d81755ce562b356d33dbaed47055e6",
-      "normal_seconds": 28.733333333333334,
-      "delivered_seconds": 28.733333333333334,
+      "fingerprint": "8c04f88fbd0a383d855417f2cf0c07f8fcd1ef6c8563313156e545e787fef152",
+      "normal_seconds": 41.06666666666667,
+      "delivered_seconds": 41.06666666666667,
       "captures": [
         {
           "capture": "01-overview.png",
@@ -41,23 +41,23 @@
       ],
       "speech": {
         "path": "narration-neural/01-overview.wav",
-        "sha256": "d023b37ab27343fbbfb87731309cf05acc6689f885bee8c5ff6420a8057d718f",
+        "sha256": "4072855bac0c71d22ff729c7c19f9c00e0237ac3b2ddd00fa091eb31f641bd73",
         "voice": "af_heart",
         "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
-        "duration_seconds": 27.465333333333334,
-        "words_per_minute": 151.30537974683543,
+        "duration_seconds": 39.79066666666667,
+        "words_per_minute": 151.18094203882177,
         "acceleration": 1,
         "time_stretch": false,
         "speech_truncated": false,
-        "reading_pause_seconds": 1.2680000000000007
+        "reading_pause_seconds": 1.2760000000000034
       },
-      "clip_sha256": "a5649159599b8b1d9de4ea771ee23d7a09ff8ccc2bbf650a20fd13d28a9cf5f0"
+      "clip_sha256": "596efb2dae2b219bbbe5a4a4e0406d6772c7dc229a981d735e78f1d7f8a894d5"
     },
     {
       "id": "02-build-and-learn",
-      "fingerprint": "1234b46f769bc2ecf82ca9fb5885a702a7316ab9cd692f538cc2b488120b00c0",
-      "normal_seconds": 32.3,
-      "delivered_seconds": 32.3,
+      "fingerprint": "5f53e48b58c4e891f88ff25774fe05718f837e863289cbe9b0463bf2a6c21ca3",
+      "normal_seconds": 36.766666666666666,
+      "delivered_seconds": 36.766666666666666,
       "captures": [
         {
           "capture": "02-build-and-learn.png",
@@ -80,21 +80,21 @@
       ],
       "speech": {
         "path": "narration-neural/02-build-and-learn.wav",
-        "sha256": "37dbb73c50f4db2f5e4ce9ef0a715bcb1cd5073503942b6958d753743e4f3c11",
+        "sha256": "64fb182adc3760537da2c87a4e596a8c55838ba074e50b159f6f1e78bc9381c9",
         "voice": "af_heart",
         "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
-        "duration_seconds": 31.044,
-        "words_per_minute": 153.2215819800943,
+        "duration_seconds": 35.50266666666667,
+        "words_per_minute": 152.55980496724058,
         "acceleration": 1,
         "time_stretch": false,
         "speech_truncated": false,
-        "reading_pause_seconds": 1.2559999999999967
+        "reading_pause_seconds": 1.2639999999999958
       },
-      "clip_sha256": "640db24324e2fd3df17c5f9b827ee359f244a64ad264c260fe870cd4212da198"
+      "clip_sha256": "ac851856bede649a86d5f8343acdfd16d709707ef78ae98e5256f9a1b7e4c96f"
     },
     {
       "id": "13-confinement",
-      "fingerprint": "0ead186534a786081a323622eed31af8c08e56aaa7a7e29a3204240c552fc406",
+      "fingerprint": "4f25df4c66cc2aa8b98daab2e75f7682bc49a81d00a2416eb228cc2646a4673a",
       "normal_seconds": 38.733333333333334,
       "delivered_seconds": 38.733333333333334,
       "captures": [
@@ -129,11 +129,11 @@
         "speech_truncated": false,
         "reading_pause_seconds": 1.2680000000000007
       },
-      "clip_sha256": "763dd00098e9278eeb64001eafb79a9e0569b58c49a19f4b06497a75f7b98d6a"
+      "clip_sha256": "0109314c2dcf208df586ff631e54660ff69ce5643f305082aa5a195eb94e56f8"
     },
     {
       "id": "03-genome",
-      "fingerprint": "6b3dd2df0e592b2927c5ccb810706de81924a78c276344d124d33d6eb257ee28",
+      "fingerprint": "93746da923859d241824e25205ebf23f9a73544458e7efb59cbd7dfa2ae24720",
       "normal_seconds": 51.7,
       "delivered_seconds": 51.7,
       "captures": [
@@ -187,11 +187,11 @@
         "speech_truncated": false,
         "reading_pause_seconds": 1.2693333333333356
       },
-      "clip_sha256": "9127c8f2c5f9d752112b423a229bb8b5db12c3bb0872604cd93d3d13e3bf69bf"
+      "clip_sha256": "90891bf7188700b5dc20a023ae418b9cf7fe39a100e0499361979d0f5dbb804f"
     },
     {
       "id": "16-remodelers",
-      "fingerprint": "f7153be5fae7cd1c3e26d92708b456dc28457f1e07069af239cd00eb0f3e1c7d",
+      "fingerprint": "cb33132f4ff82f7fa9e5c74b78c8a325c692e5fc50260c4a426f702038f80a39",
       "normal_seconds": 58.3,
       "delivered_seconds": 58.3,
       "captures": [
@@ -264,11 +264,68 @@
         "speech_truncated": false,
         "reading_pause_seconds": 1.2773333333333312
       },
-      "clip_sha256": "5b66fed0b586e390ccb8834ea6fbe3ce6bf4099eaa5d28845272802eb91954dd"
+      "clip_sha256": "db639edd201cb0eec89cb73471ea5496e6c0ebb1d8598760bc9478f4870da1ba"
+    },
+    {
+      "id": "17-nucleus-tethers",
+      "fingerprint": "26673928096a735f2d4d3b2757997456af90822cc774769b635d13c758fc36d9",
+      "normal_seconds": 59.0,
+      "delivered_seconds": 59.0,
+      "captures": [
+        {
+          "capture": "17-nucleus-envelope.png",
+          "sha256": "8dac5457b796aea8e4b5c11336a8442db075ff0605c76b46e5dfbe5bbff1b0f4",
+          "dimensions": [
+            1707,
+            960
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "17-tether-editor.png",
+          "sha256": "d7449c71a790f5d883965a533c333899b9fd1d45e54027032c80cf5637aff81a",
+          "dimensions": [
+            1707,
+            960
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "17-tethers-local.png",
+          "sha256": "92dbd64a3319778e60b0ab7709cb55b7c1464d44b2931885bb9c01c961ccdb00",
+          "dimensions": [
+            1707,
+            960
+          ],
+          "focus_rect": null
+        },
+        {
+          "capture": "17-occupancy-tethers-1d.png",
+          "sha256": "5fa3ee2fa2c7c69d9c91ab83f2825897e0dabfb2afa225b13d86b761bcfa2e37",
+          "dimensions": [
+            1707,
+            960
+          ],
+          "focus_rect": null
+        }
+      ],
+      "speech": {
+        "path": "narration-neural/17-nucleus-tethers.wav",
+        "sha256": "0b297c7c250ca7fd07a316c6c073142662615c01904db8fd281a1b02a66aface",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 57.748,
+        "words_per_minute": 148.82615986584685,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2520000000000024
+      },
+      "clip_sha256": "207247a96efa9eb39a59feb53dd68ee021fd69e72ff6146dcb24aebdd50da30a"
     },
     {
       "id": "04-proteins",
-      "fingerprint": "9f1340b67438da25c60f52750ba6f702dd5b018940c7ea8848792235d31d3717",
+      "fingerprint": "f06bb1d11f11552bc5e29b70ea0f260874564601a318327dbdf04d2e2626c812",
       "normal_seconds": 39.63333333333333,
       "delivered_seconds": 39.63333333333333,
       "captures": [
@@ -308,11 +365,11 @@
         "speech_truncated": false,
         "reading_pause_seconds": 1.2506666666666675
       },
-      "clip_sha256": "77ffad93eafb393271b5e3e4109a311a2d6c689092683dd892dfdd4a057b6eca"
+      "clip_sha256": "b9b14d7174c55c73cf3ace2237224782ab9bb9578cceb84c658e865bfa34ad5a"
     },
     {
       "id": "05-interactions",
-      "fingerprint": "4ae58115ba353341fb99f84f1f79482f186a2767c6727619308aa11accd5bbf2",
+      "fingerprint": "e3794b4da05c05f70807ba29d6fc8ca6bdaaa81bfd63f8fed5806af1a13fa19d",
       "normal_seconds": 32.93333333333333,
       "delivered_seconds": 32.93333333333333,
       "captures": [
@@ -347,11 +404,11 @@
         "speech_truncated": false,
         "reading_pause_seconds": 1.2706666666666635
       },
-      "clip_sha256": "1b9343d11624dd007e3f277dac33909c022d239a29fa626f277d35e7c4eff657"
+      "clip_sha256": "9a66ce0d47bdb4230dd8f1b78d660214b8fa7e4eae0b967f93877fcc7dcea2e9"
     },
     {
       "id": "06-chromatin",
-      "fingerprint": "03ab7da76d7d1a2da2e6cd9721a33001c6258168a87a43770f3f05d05fb7448c",
+      "fingerprint": "1c7626c5723c0575f694072a9f90396791815e07177824423567df3b0e0a14cc",
       "normal_seconds": 35.3,
       "delivered_seconds": 35.3,
       "captures": [
@@ -386,11 +443,11 @@
         "speech_truncated": false,
         "reading_pause_seconds": 1.2693333333333285
       },
-      "clip_sha256": "409381bdde4bd71f5272ee972d6a44ad6965a6be21467fb0ca03da6cdf3f548d"
+      "clip_sha256": "aa7497233f4db125c476625c5edb4fb350334485618eb05ac6a0e3e408370aa4"
     },
     {
       "id": "07-regulation",
-      "fingerprint": "e59a073caf9a3a13adf3f7412d05917eacebb43d02065f418c77ea952c941c0e",
+      "fingerprint": "3fe7a0b112001038ca91ace7d10b9d77f17b5ff79875956f21dd66f2bb52a29f",
       "normal_seconds": 37.233333333333334,
       "delivered_seconds": 37.233333333333334,
       "captures": [
@@ -443,11 +500,11 @@
         "speech_truncated": false,
         "reading_pause_seconds": 1.261333333333333
       },
-      "clip_sha256": "a3ed577d8f47b2a34506d96a9b2b2f933c360946d548bcb956233f3d72e5547a"
+      "clip_sha256": "ce412ca0b49ad0166961446ac7c2b1d4d2b0e67ae4d4d9e3293cc7b711925292"
     },
     {
       "id": "08-elongation",
-      "fingerprint": "b008344d604e8f87448c484fd8df0be5ece02f5ff0c143ca1e8798e5388786eb",
+      "fingerprint": "d8d2a70793c3aa009d70920401e5d70c9840024a5b5e2622153f760c9c0ea35a",
       "normal_seconds": 37.03333333333333,
       "delivered_seconds": 37.03333333333333,
       "captures": [
@@ -482,11 +539,11 @@
         "speech_truncated": false,
         "reading_pause_seconds": 1.2746666666666613
       },
-      "clip_sha256": "727319e33c257f5f642102454752ddb46df67cd30250109aeff6a00368e32e9b"
+      "clip_sha256": "3d36ebce1592520963b4e933055eca9f3c005a8a44d7f9d972bc3348c446aa0b"
     },
     {
       "id": "09-architecture",
-      "fingerprint": "726750907880c7682bb25d56abbd5dae45ea105f0cea4f5048e550f734aebc2d",
+      "fingerprint": "f3a9c3fc4fc2cccb2099536e0507557bb78e4463bb6163d473a0eb1c5aee8320",
       "normal_seconds": 34.9,
       "delivered_seconds": 34.9,
       "captures": [
@@ -521,11 +578,11 @@
         "speech_truncated": false,
         "reading_pause_seconds": 1.2746666666666684
       },
-      "clip_sha256": "16c8e4fe63ad956fa99a862a7260828e2632265eb3e69840be68b05bbf6f6ba0"
+      "clip_sha256": "57e77a3b4b8a066c7cf7dc3f6cab643a414e85bbd001c92c6d4970211cb34fb9"
     },
     {
       "id": "10-calibration",
-      "fingerprint": "6514eef1376a2698e5d2bfe53db4d8252b1c5db9e915eff23a84890b35ab2130",
+      "fingerprint": "02e408db234ea2ec67719f5899b8b96f3975a8acaa9389bae348cda4e2808b76",
       "normal_seconds": 36.733333333333334,
       "delivered_seconds": 36.733333333333334,
       "captures": [
@@ -569,11 +626,11 @@
         "speech_truncated": false,
         "reading_pause_seconds": 1.2520000000000024
       },
-      "clip_sha256": "ca899e11b4428587f5c6834def03d621995643fbfae77ee86335c1cc38e2a7bc"
+      "clip_sha256": "be3f41b9a953bb082d2fc29968aa41bb45a75f2319cf1f66081491e5e1c745bf"
     },
     {
       "id": "11-benchmarks",
-      "fingerprint": "6c2b63a2b60cd71ecd766d7c6b5e5dd5e16cea0ca259f65bc545f31510e93c28",
+      "fingerprint": "58a7a5e6a84f7545898ac1038e89acde6d31a5807af2cbc0ccaf0db64649aeec",
       "normal_seconds": 32.766666666666666,
       "delivered_seconds": 32.766666666666666,
       "captures": [
@@ -608,11 +665,11 @@
         "speech_truncated": false,
         "reading_pause_seconds": 1.2746666666666648
       },
-      "clip_sha256": "76ee50ab7281449dd08f43b207e07ef0549c358253714a8529df76430eb8cdd2"
+      "clip_sha256": "eb3311296f497cc848663f748016a9df24a3196ac261a0a4c320dd7189f2f4d5"
     },
     {
       "id": "14-studies",
-      "fingerprint": "147a9f9f14031a1b95228c0d32fedb6919d5a079b788ba19625abf531dc4bb96",
+      "fingerprint": "18c4176c451a1e8f7c432e6716205e69de8552fdb933083019f4969a732c97aa",
       "normal_seconds": 39.46666666666667,
       "delivered_seconds": 39.46666666666667,
       "captures": [
@@ -647,11 +704,11 @@
         "speech_truncated": false,
         "reading_pause_seconds": 1.2546666666666653
       },
-      "clip_sha256": "a559caf9fc060f72f59aa6fe6603cc21c4699e7dc359b74aac9ea70aa07f6005"
+      "clip_sha256": "f686a811fd1503612c4166aca91095ea4247b0e1cb7f446914f714a9615c5bba"
     },
     {
       "id": "15-study-results",
-      "fingerprint": "f0c320b585f5b11af21e76b8760e09b5eceac06792e602c3101efbb232571b65",
+      "fingerprint": "fe133422cf4e3582a82f5424c7cfc4725f1c6af6e375ba622a17b5f55731766f",
       "normal_seconds": 36.86666666666667,
       "delivered_seconds": 36.86666666666667,
       "captures": [
@@ -686,13 +743,13 @@
         "speech_truncated": false,
         "reading_pause_seconds": 1.2573333333333352
       },
-      "clip_sha256": "24b8bfbee952faf6b7de62ddf82a40ab2cab202291007fd77df853cad3389cef"
+      "clip_sha256": "0208ec2a5692b83ce6936671e38cf7a27aa52b1d34870d8df8da4f52df562ea3"
     },
     {
       "id": "12-cluster",
-      "fingerprint": "02463c13d6e3c93c85e7ee0cfac3697195fc251d69433de3fec0b556d89cdf62",
-      "normal_seconds": 37.766666666666666,
-      "delivered_seconds": 37.766666666666666,
+      "fingerprint": "0c6fadad11d56237a589fd3ec43fef9e909ba30e14957ceb7e90d50f2d943771",
+      "normal_seconds": 43.36666666666667,
+      "delivered_seconds": 43.36666666666667,
       "captures": [
         {
           "capture": "12-cluster.png",
@@ -715,25 +772,23 @@
       ],
       "speech": {
         "path": "narration-neural/12-cluster.wav",
-        "sha256": "3a83022f16ce62587b347f2d98adf5dfacd0a2dafa89b27df2d6d3d76f267e62",
+        "sha256": "09e98c1ea14f586f94d30d58691c04e3a7066b4646648fd99fe521a0016eace4",
         "voice": "af_heart",
         "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
-        "duration_seconds": 36.50533333333333,
-        "words_per_minute": 151.64420085913198,
+        "duration_seconds": 42.09466666666667,
+        "words_per_minute": 148.57674060777023,
         "acceleration": 1,
         "time_stretch": false,
         "speech_truncated": false,
-        "reading_pause_seconds": 1.261333333333333
+        "reading_pause_seconds": 1.2719999999999985
       },
-      "clip_sha256": "8b99b15d96ed6f56c15b57f41c19c96df916c25f1099082e394dd060f95ec99f"
+      "clip_sha256": "c60610721461efdfb21fbe699c9e91ae452544b25c27ab73b154135c4f1cad67"
     }
   ],
   "capture_provenance": {
     "filename": "capture-provenance.json",
-    "sha256": "1952fae0dbc6725e586ec6e25dfed2c4e1d862f7b6bd2b3b96f54d3d7e1df751"
+    "sha256": "62601eaba5a7019ebc0f681ffba28ca118a6493f754027a6e9b1e6a4a87704dc"
   },
-  "narration_manifest_sha256": "dacc64667a46d01d3597e5946ba264d33a60064f3d066a9b65d9e1e436cf2e66",
-  "timing": "Visuals follow measured narration plus reading pauses; no speech acceleration.",
-  "narration_path_base": "directory containing this metadata file",
-  "publication_note": "Narration paths normalized for source distribution; media, timings and recorded source hashes unchanged."
+  "narration_manifest_sha256": "2838a1ac31fee11d9845dcd44b9685a14d6abda1132e189214884ca5425b0d5e",
+  "timing": "Visuals follow measured narration plus reading pauses; no speech acceleration."
 }

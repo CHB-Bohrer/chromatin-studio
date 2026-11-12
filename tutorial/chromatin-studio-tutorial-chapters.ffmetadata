@@ -2,80 +2,85 @@
 [CHAPTER]
 TIMEBASE=1/1000
 START=0
-END=28733
+END=41067
 title=Start with the workbench
 [CHAPTER]
 TIMEBASE=1/1000
-START=28733
-END=61033
+START=41067
+END=77833
 title=Choose a focused experiment
 [CHAPTER]
 TIMEBASE=1/1000
-START=61033
-END=99767
+START=77833
+END=116567
 title=Set the confining domain
 [CHAPTER]
 TIMEBASE=1/1000
-START=99767
-END=151467
+START=116567
+END=168267
 title=Watch binding along the chromosome
 [CHAPTER]
 TIMEBASE=1/1000
-START=151467
-END=209767
+START=168267
+END=226567
 title=Create gaps and recruit remodelers
 [CHAPTER]
 TIMEBASE=1/1000
-START=209767
-END=249400
+START=226567
+END=285567
+title=Add the whole nucleus and tethering elements
+[CHAPTER]
+TIMEBASE=1/1000
+START=285567
+END=325200
 title=Define many proteins and their roles
 [CHAPTER]
 TIMEBASE=1/1000
-START=249400
-END=282333
+START=325200
+END=358133
 title=Inspect binding in its context
 [CHAPTER]
 TIMEBASE=1/1000
-START=282333
-END=317633
+START=358133
+END=393433
 title=Connect accessibility, marks and stiffness
 [CHAPTER]
 TIMEBASE=1/1000
-START=317633
-END=354867
+START=393433
+END=430667
 title=Follow an enhancer to its target gene
 [CHAPTER]
 TIMEBASE=1/1000
-START=354867
-END=391900
+START=430667
+END=467700
 title=Watch polymerases produce individual RNA
 [CHAPTER]
 TIMEBASE=1/1000
-START=391900
-END=426800
+START=467700
+END=502600
 title=Separate loops, assemblies and nuclear bodies
 [CHAPTER]
 TIMEBASE=1/1000
-START=426800
-END=463533
+START=502600
+END=539333
 title=Give the polymer a defensible physical clock
 [CHAPTER]
 TIMEBASE=1/1000
-START=463533
-END=496300
+START=539333
+END=572100
 title=Ask what the model actually reproduces
 [CHAPTER]
 TIMEBASE=1/1000
-START=496300
-END=535767
+START=572100
+END=611567
 title=Separate competition and shared environments
 [CHAPTER]
 TIMEBASE=1/1000
-START=535767
-END=572633
+START=611567
+END=648433
 title=Read correlations without confusing controls
 [CHAPTER]
 TIMEBASE=1/1000
-START=572633
-END=610400
+START=648433
+END=691800
 title=Export a reproducible cluster experiment
