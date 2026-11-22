@@ -40,6 +40,6 @@ These files can also be supplied explicitly to an AI that does not automatically
 
 Update [PROJECT_STATUS.md](docs/PROJECT_STATUS.md) with the date, completed behavior, evidence, remaining work and the next concrete step. Update the contract when interfaces or semantics change. Keep old reports attributable to the source that produced them; do not alter an old result to make it look current.
 
-Also update `status.json` at the repository root. It feeds the public status page at https://chb-bohrer.github.io/chromatin-studio/ and the Projects list on the lab site. Keep its node states (built, partial, planned), notes and `as_of` date consistent with PROJECT_STATUS.md, and keep it public-safe: no unpublished results, credentials or manuscript text.
+Also update `status.json` at the repository root. It feeds the public status page at https://chb-bohrer.github.io/chromatin-studio/ and the Fun Code page on the lab site. Keep its node states (built, partial, planned), notes and `as_of` date consistent with PROJECT_STATUS.md, and keep it public-safe: no unpublished results, credentials or manuscript text.
 
 For documentation-only changes, check links and factual consistency. Do not rerun expensive scientific workloads merely to refresh a date. Report what actually ran in the current session.
