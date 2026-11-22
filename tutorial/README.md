@@ -59,6 +59,8 @@ Generated files include the MP4, timed key points in SRT/VTT, chapter JSON/FFmet
 
 ## Update one chapter
 
+Chapters are independent units. A chapter owns one scene entry in **storyboard.json**, its capture files, one block of **transcript.txt** and one `narration-neural/<scene-id>.wav`. Scene ids are stable names, not positions: playback order is the order of the `scenes` list, so a chapter can be inserted or moved without renaming the others. Only the final assembly (video, chapter times, player) spans chapters.
+
 1. Edit its wording or capture actions in **storyboard.json**.
 2. Recapture only affected UI views, retaining their filenames.
 3. Update the matching narration in **transcript.txt**.
@@ -74,7 +76,7 @@ A keyframe can specify `focus_rect: [x, y, width, height]` in source-image pixel
 
 Run this whenever a feature, preset, limit or default changes.
 
-1. **Single source of truth.** `storyboard.json` holds narration, captions and capture actions; `transcript.txt` must contain the same narration, in storyboard scene order (nothing checks this automatically, so compare them by hand). Edit both together.
+1. **Single source of truth.** `storyboard.json` holds narration, captions and capture actions; `transcript.txt` must contain each scene title followed by the same narration, in storyboard scene order, with one blank line between scenes. Edit both together, then run `python -m unittest tests.test_tutorial_sync`: it names the chapter whose transcript, capture files, caption/keyframe timings or recorded narration are out of step.
 2. **Scale vocabulary.** A bead is a coarse genomic interval whose size is a setting (`chromatin.bp_per_bead`). At 200 bp it is a coarse nucleosome unit (occupied/vacant). At 10 kb it is a bin of many nucleosomes. Never say "each bead is X" without naming the preset; the opening overview uses the 20 Mb preset (10 kb), while chapters 02–17 use 200 bp presets. Check against `chromatin_studio/schema.py` `PRESETS` and `examples/*.json`.
 3. **Claims audit.** Compare every number and limit (bead counts, bounds, GPU scope, calibration status) with `AGENTS.md`, `docs/PROJECT_STATUS.md` and `CONTRACT.md`. Narration must not claim calibration, validation or full-GPU execution that the status file does not.
 4. **Mark audio stale.** Changing a scene's text invalidates its `narration-neural/<scene>.wav`; regenerate with `narrate_neural.py --scene <id>`, then re-render. If the voice environment is unavailable, say so in `PROJECT_STATUS.md` and the `status.json` tutorial note rather than leaving the video described as current.

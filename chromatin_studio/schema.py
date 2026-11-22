@@ -454,6 +454,8 @@ def validate_config(config):
     for field, low, high in [("bond_length", 0.2, 2), ("bond_k", 1, 200),
                              ("diffusion", 0, 2), ("persistence_length", 0, 20), ("repulsion", 0, 100)]:
         number(chrom.get(field), "chromatin." + field, low, high)
+    if chrom.get("binding_capacity") is not None:     # optional; absent = unlimited protein bonds per bead
+        number(chrom["binding_capacity"], "chromatin.binding_capacity", 1, 64, True)
     marks = arr(config.get("marks"), "marks", 16)
     species = arr(config.get("proteins"), "proteins", 32)
     genes = arr(config.get("genes"), "genes", MAX_GENES)
@@ -553,6 +555,13 @@ def validate_config(config):
             errors.append(path + ".representation must be bead or idr.")
         particle_count += count * (beads if p.get("representation") == "idr" else 1)
         affinities(p.get("chromatin_affinity"), mark_ids | {"unmodified"}, path + ".chromatin_affinity")
+        if "mark_off_rate_multiplier" in p:
+            # Optional reader release factors: a mark can slow (<1) or speed (>1)
+            # dissociation, not only change association. Same range as the
+            # nucleosome release factors.
+            for key, value in obj(p["mark_off_rate_multiplier"], path + ".mark_off_rate_multiplier").items():
+                reference(key, mark_ids | {"unmodified"}, path + ".mark_off_rate_multiplier")
+                number(value, path + ".mark_off_rate_multiplier." + str(key), 0, 1000)
         for field in ("nucleosome_affinity", "nucleosome_off_rate_multiplier"):
             if field in p:
                 affinity = obj(p[field], path + "." + field)

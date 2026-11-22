@@ -16,10 +16,12 @@ Start with [AGENTS.md](../AGENTS.md) and [PROJECT_STATUS.md](PROJECT_STATUS.md).
 | `chromatin_studio/calibration.py`, `kinetics.py` | Physical mapping/MSD tools and separate idealized binding estimates. |
 | `chromatin_studio/studies.py`, `benchmarks.py`, `validation.py` | Independent ablations, analytical reference fixtures and numerical backend checks. |
 | `chromatin_studio/cluster.py`, `batch.py` | Portable job plans/bundles and headless per-replica execution. |
+| `chromatin_studio/components/` | Single-mechanism studies against analytical and experimental references. One self-contained file per study; `core.py` holds shared helpers and `runner.py` the study-agnostic runner. See [COMPONENT_STUDIES.md](COMPONENT_STUDIES.md). |
 | `static/app.js` | Draft model editing, API coordination and integration of the browser views. |
 | `static/genome-view.js`, `genome-live.css` | 1D genomic tracks, binding/occupancy detail and recorded-event display. |
 | `static/interaction-view.js`, `regulation-view.js`, `transcription-view.js` | Protein context, regulatory dependencies and individual RNA inspection. |
 | `static/calibration-view.js`, `cluster-view.js`, `study-view.js` | Calibration, cluster planning and isolated study interfaces. |
+| `static/evidence-view.js`, `evidence-view.css` | Evidence tab: read-only charts of saved component-study reports, drawn from each study's figure data (`chromatin_studio/components/evidence.py` serves the index). Pure helpers are tested in `tests/test_evidence_ui.cjs`. |
 | `static/learn-view.js`, `model-explain.js` | Explanatory illustrations and teaching controls, separate from measured run state. |
 | `examples/` | Complete editable model JSON specifications. |
 | `tests/`, `benchmarks/`, `references/` | Implementation tests and recorded scientific evidence; provenance and scope matter. |
@@ -66,6 +68,15 @@ For a focused nucleosome change:
 node --test tests/test_genome_ui.cjs
 ```
 
+For an Evidence-view change, run `tests.test_evidence` and `node --test tests/test_evidence_ui.cjs`, then open the tab against a folder of reports (`--evidence DIR`).
+
+For a change to one mechanism, also run its component study at smoke scale to confirm the pipeline, then at standard scale (outside the repository) when the change could alter that mechanism's numbers:
+
+```sh
+.venv/bin/python -m unittest tests.test_components tests.test_tutorial_sync -v
+.venv/bin/python -m chromatin_studio.components run cohesin_extrusion --scale standard --jobs 8 --output /path/outside/repo/cohesin_extrusion
+```
+
 Other changes require their corresponding tests; a numerical integration change also needs distribution/convergence checks. These checks produce new reports without overwriting saved historical results:
 
 ```sh
@@ -77,7 +88,7 @@ Use unique output paths for retained evidence. A CPU pass is not a substitute fo
 
 ## Tutorial changes
 
-Follow [the tutorial guide](../tutorial/README.md). Edit the storyboard and transcript together, recapture affected views from real simulations, regenerate changed narration, then render and check the assembled result. Verify image dimensions before setting focus rectangles. Preserve model/run provenance, the natural 1× voice pace and the distinction between draft, applied model, illustration and measurement.
+Follow [the tutorial guide](../tutorial/README.md). Each chapter is one scene in the storyboard with its own captures and audio file, so one chapter can be changed alone; `tests/test_tutorial_sync.py` names any chapter whose transcript, captures, timings or recorded narration no longer match. Edit the storyboard and transcript together, recapture affected views from real simulations, regenerate changed narration, then render and check the assembled result. Verify image dimensions before setting focus rectangles. Preserve model/run provenance, the natural 1× voice pace and the distinction between draft, applied model, illustration and measurement.
 
 Do not regenerate the entire video for a development-handoff-only change. After a behavior/UI change, identify which chapters are affected rather than silently leaving contradictory instructions in the video.
 

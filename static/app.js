@@ -26,7 +26,7 @@
   }
   const S = {config:null, applied:null, snapshot:null, history:[], events:[], eventKeys:new Set(), capabilities:null, presets:[], tab:"system", dirty:false, running:false, busy:false, ready:false, backend:"numpy", selected:null, camera:{yaw:-0.42,pitch:0.22,zoom:1}, hitTargets:[], view:{bonds:true,proteins:true,labels:true,rna:true,occupancy:true,nucleus:true,fitNucleus:false}, presetId:"", renderPending:false};
   const colors = ["#9b79bd","#58a59a","#c7a068","#7294bd","#bc818e","#89a76f","#bf956d","#7c8abd"];
-  let toastTimer, runGeneration = 0, genomeView=null, interactionView=null, regulationView=null, clusterView=null, learnView=null, calibrationView=null,studyView=null;
+  let toastTimer, runGeneration = 0, genomeView=null, interactionView=null, regulationView=null, clusterView=null, learnView=null, calibrationView=null,studyView=null,evidenceView=null;
 
   async function api(path, body) {
     const options = body === undefined ? {} : {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)};
@@ -53,7 +53,7 @@
     c.bodies.forEach(b=>{b.protein_affinity ??= {}; b.center ??= [0,0,0];});
     return c;
   }
-  function setPath(path, value) { let parent=S.config; for(const key of path.slice(0,-1)){parent[key]??={};parent=parent[key];} if(value===null&&["chromatin_affinity","protein_affinity"].includes(path.at(-2)))delete parent[path.at(-1)];else parent[path.at(-1)]=value; }
+  function setPath(path, value) { let parent=S.config; for(const key of path.slice(0,-1)){parent[key]??={};parent=parent[key];} if(value===null&&["chromatin_affinity","protein_affinity","mark_off_rate_multiplier"].includes(path.at(-2)))delete parent[path.at(-1)];else parent[path.at(-1)]=value; }
   function getPath(path) { return path.reduce((a,b)=>a?.[b],S.config); }
   function pathAttr(path) { return esc(JSON.stringify(path)); }
   function updateBodyResponsePreviews() { document.querySelectorAll("[data-body-response-id]").forEach(row=>{const body=S.config.bodies?.find(b=>b.id===row.dataset.bodyResponseId),gene=S.config.genes?.[Number(row.dataset.bodyResponseGene)],preview=row.querySelector(".body-response-preview");if(body&&gene&&preview)preview.outerHTML=window.ChromatinModelExplain.bodyResponseHTML(body,gene.body_responses?.[body.id]);}); }
@@ -190,21 +190,28 @@
     const current=getPath([...path,id]),inherited=path.includes("chromatin_affinity")&&id!=="unmodified"&&current===undefined;
     return `<label class="affinity-label" for="aff-${path.join("-")}-${esc(id)}"><i class="affinity-dot" style="background:${esc(color||"#9ca7a1")}"></i>${esc(name)}</label><input id="aff-${path.join("-")}-${esc(id)}" aria-label="Affinity for ${esc(name)}" title="${signed?"Signed imposed-field affinity: negative repels, positive attracts.":inherited?"Unset: no override for this mark. Zero overrides the baseline; another present mapped mark can still permit binding.":"Dimensionless encounter-rate multiplier; clear a mark value to inherit the unmodified baseline."}" type="number" min="${signed?-20:0}" max="20" step="0.1" value="${esc(current??(inherited?"":0))}" placeholder="${inherited?"baseline":""}" data-path="${pathAttr([...path,id])}">`;
   }).join("")}</div>`;}
+  function releaseFields(path,entries) {return `<div class="affinity-grid">${entries.map(([id,name,color])=>{
+    const current=getPath([...path,id]),inherited=id!=="unmodified"&&current===undefined;
+    return `<label class="affinity-label" for="rel-${path.join("-")}-${esc(id)}"><i class="affinity-dot" style="background:${esc(color||"#9ca7a1")}"></i>${esc(name)}</label><input id="rel-${path.join("-")}-${esc(id)}" aria-label="Release multiplier on ${esc(name)}" title="${inherited?"Unset: uses the unmodified release factor.":"Multiplies the unbinding hazard while the bound bead carries this state. Below 1 lengthens residence; 1 leaves it unchanged."}" type="number" min="0" max="1000" step="0.1" value="${esc(current??(inherited?"":1))}" placeholder="${inherited?"unmodified":""}" data-path="${pathAttr([...path,id])}">`;
+  }).join("")}</div>`;}
 
   function renderEditor() {
-    if(["cluster","learn","calibration","studies"].includes(S.tab))S.builderExpanded=false;
+    if(["cluster","learn","calibration","studies","evidence"].includes(S.tab))S.builderExpanded=false;
     updateBuilderLayout();
     if(!S.config)return;
-    const leavingCluster=(document.body.classList.contains("cluster-workspace")||document.body.classList.contains("learn-workspace")||document.body.classList.contains("calibration-workspace")||document.body.classList.contains("study-workspace"))&&!["cluster","learn","calibration","studies"].includes(S.tab);
+    const leavingCluster=(document.body.classList.contains("cluster-workspace")||document.body.classList.contains("learn-workspace")||document.body.classList.contains("calibration-workspace")||document.body.classList.contains("study-workspace")||document.body.classList.contains("evidence-workspace"))&&!["cluster","learn","calibration","studies","evidence"].includes(S.tab);
     document.body.classList.toggle("cluster-workspace",S.tab==="cluster");
     document.body.classList.toggle("learn-workspace",S.tab==="learn");
     document.body.classList.toggle("calibration-workspace",S.tab==="calibration");
     document.body.classList.toggle("study-workspace",S.tab==="studies");
+    document.body.classList.toggle("evidence-workspace",S.tab==="evidence");
     $$("#editor-nav [data-tab]").forEach(b=>{b.setAttribute("aria-current",b.dataset.tab===S.tab?"page":"false");});
     if(clusterView){clusterView.destroy();clusterView=null;}
     if(learnView){learnView.destroy();learnView=null;}
     if(calibrationView){calibrationView.destroy();calibrationView=null;}
     if(studyView){studyView.destroy();studyView=null;}
+    if(evidenceView){evidenceView.destroy();evidenceView=null;}
+    if(S.tab==="evidence"){S.evidenceSession??={};evidenceView=window.ChromatinEvidence.render($("#editor-content"),{session:S.evidenceSession,onNavigate:section=>navigateEditor(section)});return;}
     if(S.tab==="studies"){S.studySession??={};studyView=window.ChromatinStudy.render($("#editor-content"),{getConfig:()=>S.config,session:S.studySession,onNavigate:section=>navigateEditor(section)});return;}
     if(S.tab==="calibration"){
       S.calibrationSession??={};
@@ -246,6 +253,7 @@
         const roles=proteinRoles(c,p.id);if(roles.length)body=`<div class="info-note"><strong>Configured role:</strong> ${esc(roles.join(" · "))}. This is an explicit diffusing species; its role follows its assignments in Genes and Regulation.</div>`+body;
         if(p.representation==="idr")body+=section("Coarse domain chain")+`<div class="form-grid">${num([...path,"idr_beads"],"Beads per molecule",{step:1,min:2})}${num([...path,"sticker_fraction"],"Sticker fraction",{max:1,step:0.05})}</div><div class="info-note purple">A domain-level chain with stickers, not a residue-level CALVADOS force field. Valence is shared by chromatin and protein links.</div>`;
         body+=section("Chromatin encounter affinity")+affinityFields([...path,"chromatin_affinity"],[["unmodified","Unmodified","#869cb0"],...c.marks.map(m=>[m.id,m.name,m.color])]);
+        if(c.marks.length)body+=section("Mark-dependent release","optional ×")+releaseFields([...path,"mark_off_rate_multiplier"],[["unmodified","Unmodified","#869cb0"],...c.marks.map(m=>[m.id,m.name,m.color])]);
         body+=`<p class="editor-description" style="font-size:9px;margin:9px 0 0">Dimensionless association-rate multipliers. “Baseline” means no override. Present mapped marks use their greatest value, including explicit 0; otherwise the unmodified baseline applies. Another positive mapped mark can still permit binding.</p>`;
         body+=section("Nucleosome access & release")+`<div class="form-grid">${num([...path,"nucleosome_affinity","occupied"],"Occupied-site capture ×",{note:"Association multiplier when this site has a nucleosome; 0 blocks new binding."})}${num([...path,"nucleosome_affinity","vacant"],"Vacant-site capture ×",{note:"Association multiplier in a nucleosome-free site; species may prefer either state."})}${num([...path,"nucleosome_off_rate_multiplier","occupied"],"Occupied-site release ×",{note:"Multiplies the unbinding hazard while the bound site is occupied."})}${num([...path,"nucleosome_off_rate_multiplier","vacant"],"Vacant-site release ×",{note:"Multiplies the unbinding hazard while the bound site is vacant; 1 preserves the base rate."})}</div><div class="info-note">Capture hazard = binding rate × mark preference × element preference × occupancy preference, conditional on an eligible encounter. Release hazard = unbinding rate × current occupancy release factor. These are reduced-time hazards, not molar association constants.</div>`;
         body+=section("Chromatin remodeling","while recruited")+`<div class="form-grid">${num([...path,"nucleosome_eviction_rate"],"Nucleosome eviction rate",{note:"Remove a nucleosome and its marks at a recruited site."})}${num([...path,"nucleosome_reassembly_rate"],"Nucleosome reassembly rate",{note:"Fill a vacant recruited site with an unmarked nucleosome."})}${num([...path,"nucleosome_sliding_rate"],"Nucleosome sliding rate",{full:true,note:"Move an occupied nucleosome and its marks into an adjacent vacant bead."})}</div><p class="editor-description" style="font-size:10px;margin:9px 0 0">Requires enabled nucleosome occupancy and chromatin recruitment. Set a rate to 0 to disable that action. Sliding preserves nucleosome number. These coarse kinetic rules do not resolve ATP hydrolysis or DNA wrapping.</p>`;
@@ -366,7 +374,7 @@
       const [p]=c.proteins.splice(index,1);c.interactions=c.interactions.filter(x=>x.a!==p.id&&x.b!==p.id);c.bodies.forEach(b=>delete b.protein_affinity[p.id]);c.genes.forEach(g=>{if(g.activator_species===p.id)g.activator_species="";});c.regulatory_regions=c.regulatory_regions.filter(r=>r.tf_species!==p.id);c.regulatory_regions.forEach(r=>{if(r.coactivator_species===p.id)r.coactivator_species="";});
     } else if(action==="add-mark") {const id=uniqueId("mark");c.marks.push({id,name:`Mark ${c.marks.length+1}`,color:colors[(c.marks.length+2)%colors.length],decay_rate:0.01,spread_rate:0,contact_radius:1.2});
     } else if(action==="remove-mark") {
-      const [m]=c.marks.splice(index,1);c.chromatin.initial_marks=c.chromatin.initial_marks.filter(r=>r.mark!==m.id);c.proteins.forEach(p=>{delete p.chromatin_affinity[m.id];if(p.writer_mark===m.id)p.writer_mark="";if(p.eraser_mark===m.id)p.eraser_mark="";});c.genes.forEach(g=>{if(g.required_mark===m.id)g.required_mark="";if(g.repressive_mark===m.id)g.repressive_mark="";});c.chromatin.state_interactions=c.chromatin.state_interactions.filter(r=>r.a!==m.id&&r.b!==m.id);
+      const [m]=c.marks.splice(index,1);c.chromatin.initial_marks=c.chromatin.initial_marks.filter(r=>r.mark!==m.id);c.proteins.forEach(p=>{delete p.chromatin_affinity[m.id];if(p.mark_off_rate_multiplier)delete p.mark_off_rate_multiplier[m.id];if(p.writer_mark===m.id)p.writer_mark="";if(p.eraser_mark===m.id)p.eraser_mark="";});c.genes.forEach(g=>{if(g.required_mark===m.id)g.required_mark="";if(g.repressive_mark===m.id)g.repressive_mark="";});c.chromatin.state_interactions=c.chromatin.state_interactions.filter(r=>r.a!==m.id&&r.b!==m.id);
     } else if(action==="add-gene") {const start=Math.max(0,Math.floor(c.chromatin.beads*.35));c.genes.push({id:uniqueId("gene"),name:`Gene ${c.genes.length+1}`,start,end:Math.min(c.chromatin.beads-1,start+10),on_rate:0.05,off_rate:0.1,initiation_rate:0.6,elongation_rate:2,processing_rate:0.2,rna_decay_rate:0.01,activator_species:"",required_mark:"",repressive_mark:"",speckle_gain:2,persistence_multiplier:1,nucleosome_eviction_rate:0,pause_rate:0,resume_rate:1,occupied_elongation_multiplier:1});
     } else if(action==="remove-gene"){const [g]=c.genes.splice(index,1);c.regulatory_regions=c.regulatory_regions.filter(r=>r.target_gene!==g.id);}
     else if(action==="add-enhancer"||action==="add-promoter") {if(!c.genes.length||!c.proteins.length){toast("Add a gene and a protein species before defining a regulatory element.");return;}if(c.regulatory_regions.length>=128){toast("This model already has the supported 128 regulatory elements.");return;}const kind=action==="add-promoter"?"promoter":"enhancer",gene=kind==="promoter"?c.genes.find(g=>!c.regulatory_regions.some(r=>r.kind==="promoter"&&r.enabled&&r.target_gene===g.id)):c.genes[0];if(!gene){toast("Every gene already has an enabled promoter. Edit or disable an existing promoter before adding another.");return;}const start=kind==="promoter"?gene.start:Math.max(0,gene.start-20);c.regulatory_regions.push({id:uniqueId(kind),name:`${kind==="promoter"?"Promoter":"Enhancer"} ${c.regulatory_regions.filter(r=>r.kind===kind).length+1}`,color:kind==="promoter"?"#639f9c":"#c7975c",kind,start,end:Math.min(c.chromatin.beads-1,start+2),target_gene:gene.id,tf_species:c.proteins[0].id,coactivator_species:"",tf_affinity_multiplier:3,activation_gain:2,initiation_gain:1,coactivator_gain:1,contact_radius:2,enabled:true});}
@@ -507,12 +515,12 @@
   $("#view-3d").addEventListener("click",()=>showSceneView("3d"));$("#view-1d").addEventListener("click",()=>showSceneView("1d"));$("#view-interactions").addEventListener("click",()=>showSceneView("interactions"));$("#view-regulation").addEventListener("click",()=>showSceneView("regulation"));
   function download(data,filename){const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
   function fileName(suffix){return `${(S.config?.name||"chromatin-studio").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"chromatin-studio"}-${suffix}.json`;}
-  $("#mobile-workspace-nav").addEventListener("click",e=>{const b=e.target.closest("[data-mobile-tab]");if(!b)return;if(b.dataset.mobileTab!=="editor"&&S.builderExpanded)setBuilderExpanded(false);if(["learn","calibration","studies"].includes(S.tab)&&b.dataset.mobileTab!=="editor"){S.tab="system";$$("#editor-nav button").forEach(x=>x.classList.toggle("active",x.dataset.tab===S.tab));renderEditor();}document.body.dataset.mobileView=b.dataset.mobileTab;$$("#mobile-workspace-nav button").forEach(x=>{x.classList.toggle("active",x===b);x.setAttribute("aria-pressed",String(x===b));});queueRender();});
+  $("#mobile-workspace-nav").addEventListener("click",e=>{const b=e.target.closest("[data-mobile-tab]");if(!b)return;if(b.dataset.mobileTab!=="editor"&&S.builderExpanded)setBuilderExpanded(false);if(["learn","calibration","studies","evidence"].includes(S.tab)&&b.dataset.mobileTab!=="editor"){S.tab="system";$$("#editor-nav button").forEach(x=>x.classList.toggle("active",x.dataset.tab===S.tab));renderEditor();}document.body.dataset.mobileView=b.dataset.mobileTab;$$("#mobile-workspace-nav button").forEach(x=>{x.classList.toggle("active",x===b);x.setAttribute("aria-pressed",String(x===b));});queueRender();});
   function focusHeading(selector){const heading=$(selector);if(heading){heading.setAttribute("tabindex","-1");heading.focus({preventScroll:true});}}
   function updateBuilderLayout(){
     const expanded=Boolean(S.builderExpanded),button=$("#expand-builder-btn");
     document.body.classList.toggle("builder-workspace",expanded);
-    button.hidden=["cluster","learn","calibration","studies"].includes(S.tab);
+    button.hidden=["cluster","learn","calibration","studies","evidence"].includes(S.tab);
     button.textContent=expanded?"← Return to simulation":"Expand builder ↗";
     button.setAttribute("aria-expanded",String(expanded));
   }
@@ -565,6 +573,7 @@
   $("#import-file").addEventListener("change",safe(async e=>{const file=e.target.files[0];if(!file)return;const raw=JSON.parse(await file.text()),config=raw.config||raw,validation=await api("/api/validate",config);if(!validation.valid)throw new Error((validation.errors||["Invalid configuration file."]).join("\n"));S.config=normalizeConfig(config);S.presetId="";$("#preset-select").value="";markDirty();renderEditor();toast("Configuration imported. Apply & restart when ready.");e.target.value="";}));
   $("#export-btn").addEventListener("click",()=>{if(S.config)download(S.config,fileName("configuration"));});
   $("#studies-btn").addEventListener("click",()=>navigateEditor("studies"));
+  $("#evidence-btn").addEventListener("click",()=>navigateEditor("evidence"));
   $("#cluster-btn").addEventListener("click",()=>{$("#editor-nav [data-tab='cluster']").click();$("#mobile-workspace-nav [data-mobile-tab='editor']").click();});
   $("#export-run-btn").addEventListener("click",safe(async()=>{await settleRun();download(await api("/api/export"),fileName("run"));toast("Run data exported.");}));
   $("#home-camera").addEventListener("click",()=>{S.camera={yaw:-.42,pitch:.22,zoom:1};queueRender();});

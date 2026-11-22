@@ -492,6 +492,32 @@ class Simulation:
                 "dropped": self.genomic_event_count - len(self.genomic_events),
                 "events": copy.deepcopy(list(self.genomic_events))}
 
+    def _mark_release_factors(self, species_id):
+        """Per-bead release multipliers from current marks (optional; default 1).
+
+        ``mark_off_rate_multiplier`` maps mark ids and ``unmodified`` to factors.
+        A bead carrying several listed marks takes the smallest factor (the most
+        stabilizing reader contact), mirroring the strongest-affinity rule for
+        association; beads without a listed mark use ``unmodified``.
+        """
+        mapping = self.species[species_id].get("mark_off_rate_multiplier") or {}
+        result = np.full(self.n_chromatin, float(mapping.get("unmodified", 1)))
+        mapped = np.zeros(self.n_chromatin, dtype=bool)
+        for mark, flags in self.marks.items():
+            if mark in mapping:
+                value = float(mapping[mark])
+                result[flags & ~mapped] = value
+                result[flags & mapped] = np.minimum(result[flags & mapped], value)
+                mapped |= flags
+        return result
+
+    def _mark_release_factor(self, species_id, bead):
+        mapping = self.species[species_id].get("mark_off_rate_multiplier")
+        if not mapping:
+            return 1.0
+        listed = [float(mapping[mark]) for mark, flags in self.marks.items() if mark in mapping and flags[bead]]
+        return min(listed) if listed else float(mapping.get("unmodified", 1))
+
     def _chromatin_off_rates(self, species_id, base_rate=None):
         protein = self.species[species_id]
         rates = np.full(self.n_chromatin, float(protein.get("off_rate", 0) if base_rate is None else base_rate))
@@ -499,6 +525,8 @@ class Simulation:
             factors = protein.get("nucleosome_off_rate_multiplier", {})
             rates *= np.where(self.nucleosome_occupied, float(factors.get("occupied", 1)),
                               float(factors.get("vacant", 1)))
+        if protein.get("mark_off_rate_multiplier"):
+            rates *= self._mark_release_factors(species_id)
         return rates
 
     def _bond_off_rate(self, bond):
@@ -508,6 +536,8 @@ class Simulation:
         if bond["kind"] == "chromatin" and self.nucleosomes_enabled:
             state = "occupied" if self.nucleosome_occupied[bond["a"]] else "vacant"
             rate *= float(self.species[particle["species"]].get("nucleosome_off_rate_multiplier", {}).get(state, 1))
+        if bond["kind"] == "chromatin":
+            rate *= self._mark_release_factor(particle["species"], bond["a"])
         return rate
 
     def _chromatin_affinity(self, species_id):
@@ -692,6 +722,11 @@ class Simulation:
         self.bindings = retained
         used_molecule = np.zeros(len(self.molecules), dtype=int)
         used_site = np.zeros(len(self.positions), dtype=int)
+        # Optional limit on protein bonds per chromatin bead (all species together).
+        # Absent: unlimited, as before. Checked only when a capture is accepted, so
+        # the random draws are the same with or without it.
+        bead_capacity = self.chrom.get("binding_capacity")
+        used_bead = np.zeros(self.n_chromatin, dtype=int)
         existing = set()
         molecule_chromatin = set()
         for bond in self.bindings:
@@ -702,6 +737,7 @@ class Simulation:
                     used_site[index] += 1
             if bond["kind"] == "chromatin":
                 molecule_chromatin.add((self._particle_info[bond["b"]]["molecule"], bond["a"]))
+                used_bead[bond["a"]] += 1
 
         def available(particle):
             return (particle["sticker"] and used_site[particle["index"]] < particle["capacity"]
@@ -757,12 +793,15 @@ class Simulation:
                 continue
             if kind == "chromatin" and (pb["molecule"], a) in molecule_chromatin:
                 continue
+            if kind == "chromatin" and bead_capacity is not None and used_bead[a] >= int(bead_capacity):
+                continue
             if tuple(sorted((a, b))) in existing:
                 continue
             if kind == "chromatin":
                 off_rate = float(self.species[pb["species"]].get("off_rate", 0))
                 stiffness = 12.0
                 molecule_chromatin.add((pb["molecule"], a))
+                used_bead[a] += 1
             else:
                 off_rate = float(interaction.get("off_rate", 0))
                 stiffness = float(interaction.get("strength", 1))

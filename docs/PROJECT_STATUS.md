@@ -1,6 +1,6 @@
 # Chromatin Studio project status
 
-Last reviewed: **2026-11-09**. Application: **0.10.0**. Configuration format: **0.1**.
+Last reviewed: **2026-11-22**. Application: **0.10.0**. Configuration format: **0.1**.
 
 The application is a functioning local research prototype with a visual model builder, coupled simulation, live inspection, tests and an editable tutorial. The latest completed feature work is live 1D protein binding, nucleosome accessibility and chromatin remodeling. The current development task is preparing the project for sharing and making its state understandable to future contributors.
 
@@ -31,6 +31,77 @@ The user selected individual nascent transcripts and diffusing released RNA as t
 | Cluster execution | Validated draft export, Slurm/job-array scripts, headless execution, streamed results and provenance | Fresh runs only; the app does not submit jobs or provide exact checkpoint continuation. |
 
 Detailed definitions and coordinate conventions are in [CONTRACT.md](../CONTRACT.md) and [README.md](../README.md).
+
+## Experiment-matched component studies and the Evidence view (2026-11-21/22)
+
+**Why.** The user asked for charts in the interface of the tests that were actually run, for more tests, and for models built from experiments: nucleosome effects on transcription-factor binding kinetics (Donovan et al.) and histone-mark effects on reader binding. Each model is checked against the experiment before anything is combined.
+
+**Engine and schema (optional; defaults and seed replay unchanged).**
+
+- `chromatin.binding_capacity` (1–64, absent = unlimited) caps protein bonds per chromatin bead. It is checked only when a capture is accepted, so it adds no random draws; a cap no bead reaches reproduces the unlimited trajectory exactly. Tests: `tests/test_binding_capacity.py` (4).
+- `proteins[].mark_off_rate_multiplier` makes release mark-dependent (smallest factor among a bead's listed marks; `unmodified` otherwise). Tests: `tests/test_mark_release.py` (5).
+
+**New studies.**
+
+- `nucleosome_tf_kinetics`: a chain with static nucleosomes at binding sites and one monovalent factor. For Reb1, Cbf1, Pho4 and Gal4 the measured nucleosome/reference association and dissociation ratios are inputs (input-matched); the test is the ensemble affinity ratio implied by simulated occupancy against the papers' independent titrations (prediction, factor-of-2 window). Two release rules per factor: occlusion only, or occlusion plus the measured release change.
+- `hp1_mark_density`: a 12-nucleosome array with H3K9me3 at 0–100% and one tagged reader (Kilic et al. 2015). One association hazard is tuned to the 100%/mononucleosome residence ratio; residence and association at 25–75%, and residence with competing unlabelled HP1α, are predictions.
+
+**Evidence view.** An Evidence tab (`static/evidence-view.js`, `.css`) draws every saved `report.json` under the folder given by `--evidence DIR` or `CHROMATIN_STUDIO_EVIDENCE`: overview tiles, figures from each study's own figure data (hover values, keyboard stepping, table view), and every check with its acceptance window, grouped by evidence level and tagged input-matched, tuned or prediction. It only reads files (`/api/evidence`, `/api/evidence/report`). Reports are now format 2 (`changed_since_run`, `analysis_source_sha256`, `report-history/`). The chart palette was checked with a color-vision validator against the chart surface: all eight hues pass against their neighbours, but only the first three pass every pair, so a figure may use at most three hues (`core.MAX_COLORED_GROUPS`, enforced in `tests/test_components.py`). Checked in the in-app browser at 1440×900 and 375×812 with no console errors. Tests: `tests/test_evidence.py` (6); `tests/test_evidence_ui.cjs` (10) passed in Chromium through a small shim but has **not** run under Node (not installed here).
+
+**Results at standard scale** (NumPy engine, Windows, Python 3.12; run data under `component-studies/` in the folder named in `LOCAL_DATA.md`; each run used a frozen source copy and was re-analyzed on 2026-11-22 with the current code, so reports list `changed_since_run`).
+
+| Study | Result | Evidence level |
+| --- | --- | --- |
+| `nucleosome_tf_kinetics` (24 runs, source `src-2026-11-21`) | 26 of 28 pass. All numerical checks pass (realized kinetic ratios; occupancy-derived affinity equals kon/koff ratio). Occlusion alone predicts nucleosome/DNA affinity ratios of 55.4 ± 1.1 for Reb1 (measured S½ ratio 0.47–0.65) and 259 ± 2 for Cbf1 (2.7–4.1): **both fail**. Adding the measured slower release gives 0.37 ± 0.03 and 3.2 ± 0.3: both pass. Pho4 (98 ± 2, measured > 40) and Gal4 (134 ± 4, measured 93–140) pass with occlusion alone. | numerical; experimental (kinetics input-matched, affinity a prediction) |
+| `tf_binding` (Sox2; 12 runs, source `src-2026-11-15`, finished 2026-11-21) | 13 of 15 pass. The free interval scales as 1/hazard (9.9, 4.9, 2.5 s for 0.08, 0.165, 0.33); the measured 3.5 s lies between scan points, and the selected point 0.33 fails the interval (2.5 vs 3.3–3.7 s) and the contact count (82 vs 84–97) while its bound fraction passes (0.27 vs 0.235 ± 0.047). Interpolation suggests a hazard near 0.235 would meet all three. Diffusion 0.8 vs 5 barely changes the means but changes the shape: median/mean free interval 0.27 vs 0.56 at hazard 0.33 (rebinding clusters). | numerical; experimental (tuned + predictions) |
+| `hp1_mark_density` | First run (2026-11-21) stopped after 10 of 108 jobs: the spatial escape criterion counted the mononucleosome's inert spacer beads, and the array's neighbourhood filled most of the confinement. Kept as `2026-11-21/hp1_mark_density-superseded` with a note. Redesigned: bonds separated by gaps shorter than `merge_gap` form one episode (as within one camera frame), arrival rates use search time at risk, rare-binding cases run longer, hazards 0.5–4. Rerun of 132 jobs started 2026-11-22 from `src-2026-11-22` on 12 workers; **not yet analyzed**. | numerical; experimental (pending) |
+| `fbn2_cohesin` | Not run. The 2026-11-15 queue stopped before `tf_binding` finished (background runs end when the app closes), so it never started. | — |
+
+**Interpretation.** Steric occlusion alone cannot explain why pioneer-like factors bind nucleosomal and naked sites with similar affinity; the model needs nucleosomes to slow their release, as the experiments report. Because both kinetic ratios are inputs, this shows consistency between the kinetic and titration measurements as realized by a 3D search with rebinding, not a mechanism for the slower release.
+
+**Tutorial.** See the tutorial entry below for whether a chapter was added in this increment.
+
+**Checks run this session.** Python suite (`python -m unittest discover -s tests`, Windows, Python 3.12, OpenMM installed): 286 tests run, 285 passed, 1 skipped (the symlink case). `tests/test_evidence_ui.cjs`: 10 of 10 in Chromium through a shim; the Node interface tests were **not run** (Node.js is not installed). Standard-scale runs as listed above; no GPU run.
+
+**Next concrete step.** Analyze `2026-11-22/hp1_mark_density` when it finishes and record it here. Then add a Sox2 hazard near 0.235 (4 runs) and run `fbn2_cohesin` overnight. Run the Node interface tests on a machine with Node.
+
+## Logic review and component studies (2026-11-15)
+
+**Why.** The combined models could not be interpreted because no single mechanism had been compared with a reference on its own. This increment reviews the engine logic and adds studies that switch on one mechanism at a time. See [COMPONENT_STUDIES.md](COMPONENT_STUDIES.md) for the commands and the module contract.
+
+**Logic review.**
+
+- Read in full: `engine.py`, `transcription.py`, `neighbors.py`, `chromatin_contacts.py`, `nucleus.py`, `kinetics.py`, `batch.py` and the ablation rules in `studies.py`. Forces were checked against their energies term by term; reaction rules were checked against their stated two-state, Poisson and exponential-clock forms.
+- **No defect was found in the engine's mechanics or reaction rules.** The standard-scale component studies below agree with closed-form results for nucleosome turnover, promoter switching, RNA statistics and cohesin stepping.
+- Not reviewed line by line: `server.py`, `cluster.py`, `calibration.py`, the two OpenMM backends, most validation branches of `schema.py`, and the browser code. Their existing tests pass.
+- Fixed: `tests/test_tutorial_server.py` created a symlink in `setUpClass`, so on Windows accounts without the symlink privilege all five tests in the class errored. The symlink case is now its own test and is skipped there; the other requests run.
+- Model properties that the review surfaced (documented behavior, not defects, but they matter for the comparisons below):
+  - `chromatin.persistence_length` is a bending modulus. On a discrete chain the realized persistence length is shorter: `-bond / ln(coth(k) - 1/k)` with `k = persistence_length / bond_length`.
+  - A chromatin bead has no binding capacity limit (2026-11-21: the optional `chromatin.binding_capacity` now adds one; absent still means unlimited). Any number of molecules can bind one bead; only soft protein repulsion limits crowding. Bound fractions therefore do not saturate at a site count.
+  - Barriers are impermeable and never release a stalled cohesin leg. Unloaded cohesin reloads at once, so the number of bound extruders is constant.
+  - Under the provisional 10 kb mapping the schema's maximum protein diffusion (5 reduced) is about 0.05 µm²/s. Protein mobility in the coarse presets is therefore far below live-cell transcription-factor diffusion and is not on the polymer clock.
+
+**New: `chromatin_studio/components/`.** Seven studies, one file each, with a shared runner and command line. Every check is labelled `numerical_check`, `analytical_reference` or `experimental_reference`. Tests: `tests/test_components.py` (9 tests: module contract, end-to-end runs of every study at tiny scale, resume, partial results, check rules, a wrong-physics rejection).
+
+**Results at standard scale (NumPy engine, Windows, Python 3.12, 8 parallel processes).** Run data is local, not committed (`component-studies/2026-11-15/` under the folder named in `LOCAL_DATA.md`).
+
+| Study | Result | Evidence level |
+| --- | --- | --- |
+| `nucleosome_turnover` | 5 of 5 pass. Occupied fraction follows the two-state relaxation within 0.4% at five times (8 replicas × 4,000 sites). | analytical |
+| `telegraph_transcription` | 6 of 6 pass in both transcription modes. ON fraction 0.199 and 0.200 (expected 0.200); mean RNA 19.9 and 20.2 (20); Fano factor 6.84 ± 0.05 and 7.07 ± 0.05 (6.93). | analytical |
+| `cohesin_extrusion` | 6 of 6 pass. Growth speed 0.010256 beads per time (expected 0.010254); residence 6,464 ± 69 (6,436); loop at unloading 65.3 ± 0.6 beads (67, biased low by excluding chain-end residences); no leg crossed a blocking barrier. In physical units 0.500 kb/s and 22.1 min, which are **input-matched** and confirm unit conversion only. | numerical, analytical, experimental (input-matched) |
+| `protein_diffusion` | 6 of 6 pass for single beads and 4-bead IDR chains. Centre-of-mass MSD is 0.0–1.5% below 6Dt, growing with lag (4.75 and 4.73 against 4.80 at t = 1.6); the shortfall is larger than the standard error, so it is a small real effect, probably soft collisions and the wall, and is not yet explained. | analytical |
+| `polymer_wlc` | 4 of 4 pass (8 replicas × 6,000,000 steps, 48 beads of 25 bp). Neighbor-bond cosine 0.8272 ± 0.0008 against the exact 0.8300 (0.3% low, more than the standard error; soft bonds are the likely cause). Persistence length from tangent decay 47.2 ± 1.7 nm: consistent with the discrete-chain prediction of 45.6 nm and inside the 45–53 nm range for DNA, but **too noisy to tell 45.6 nm from 50 nm**. Mean-square end-to-end distance 500 ± 31 against 472. A modulus of 6.40 bonds instead of 5.88 would realize 50 nm at this resolution. The run's own report step did not write its log; the report was produced afterwards with `analyze`. | analytical, experimental |
+| `tf_binding` | Running (6 cases × 2 replicas × 2,000,000 steps, started 2026-11-15 17:45 local); not yet analyzed. Analyzed 2026-11-22: see above. | numerical, experimental |
+| `fbn2_cohesin` | Queued behind `tf_binding` (3 cases × 3 replicas × 6,000,000 steps, warm-started from the equilibrated Fbn2 baseline replicas; about 8 h); not yet analyzed. | experimental |
+
+**How to read the experimental comparisons.** `tf_binding` takes the two Sox2 dwell times as inputs and scans the association hazard; the free interval is the tuning target, and the trial count and bound fraction are the tests. `fbn2_cohesin` fits nothing: it uses the literature cohesin count, residence and speed, and its headline checks are ratios of mean-square anchor separation between cases, which do not depend on the length mapping. Both use the provisional clock (`needs_review`) wherever seconds appear. Neither is a calibration.
+
+**Tutorial.** No narration, capture or video changed: the component studies have no interface yet, and no engine behavior shown in the tutorial changed. The tutorial is now checked chapter by chapter by `tests/test_tutorial_sync.py` (5 tests: unique scene ids, transcript equals storyboard narration, every capture exists, caption and keyframe timings fill each chapter, recorded narration matches the current text). All five pass, so the existing 17 chapters are internally consistent. The video has still not been watched at 1×.
+
+**Checks run this session.** Python suite: 270 tests run, 269 passed, 1 skipped (the symlink case), including the OpenMM tests on this machine. `chromatin_studio.validation --platform numpy`: 27 of 27 checks passed. The Node interface tests were **not run** (Node.js is not installed on this machine); no browser file changed.
+
+**Next concrete step.** Run `python -m chromatin_studio.components analyze <dir>` on `tf_binding` and `fbn2_cohesin` when they finish and record the outcome here. If the wild-type anchor separation or looped fraction disagrees with the Fbn2 data, the first candidates are barrier permeability and CTCF occupancy, which the engine does not represent. A tutorial chapter for component studies needs an interface view first.
 
 ## Tutorial scale-wording revision (2026-11-12)
 

@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/static/workbench.css">
   <link rel="stylesheet" href="/static/calibration-view.css">
   <link rel="stylesheet" href="/static/study-view.css">
+  <link rel="stylesheet" href="/static/evidence-view.css">
   <link rel="stylesheet" href="/static/mechanism-view.css">
   <link rel="stylesheet" href="/static/genome-live.css">
 </head>
@@ -18,7 +19,7 @@
   <div id="app">
     <header class="app-header">
       <div class="brand"><div class="brand-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 5c20 4-4 18 16 22M24 5C4 9 28 23 8 27M11 8h10M12 15h8M11 23h10"/></svg></div><div><h1>Chromatin <span>Studio</span></h1><p>Spatial gene regulation workbench</p></div><span class="prototype-tag">RESEARCH PROTOTYPE</span></div>
-      <div class="header-actions"><button id="learn-btn" class="quiet-button learn-entry" title="Explore illustrated explanations of the model">How it works <span aria-hidden="true">↗</span></button><a class="quiet-button tutorial-entry" href="/tutorial/index.html" target="_blank" rel="noopener" title="Watch the narrated tutorial with chapters and adjustable playback speed">Tutorial</a><button id="import-btn" class="quiet-button" title="Import a configuration JSON file"><span aria-hidden="true">↥</span> Import</button><button id="export-btn" class="quiet-button" title="Export the draft configuration as JSON"><span aria-hidden="true">↧</span> Export</button><button id="export-run-btn" class="quiet-button" title="Download applied configuration and simulation history">Save run</button><button id="studies-btn" class="quiet-button" title="Compare manuscript hypotheses with independent controls">Studies</button><button id="cluster-btn" class="quiet-button" title="Prepare a cluster job from the draft model">Cluster job</button><input id="import-file" type="file" accept=".json,application/json" hidden><span class="local-badge"><i></i> LOCAL SESSION</span></div>
+      <div class="header-actions"><button id="learn-btn" class="quiet-button learn-entry" title="Explore illustrated explanations of the model">How it works <span aria-hidden="true">↗</span></button><a class="quiet-button tutorial-entry" href="/tutorial/index.html" target="_blank" rel="noopener" title="Watch the narrated tutorial with chapters and adjustable playback speed">Tutorial</a><button id="import-btn" class="quiet-button" title="Import a configuration JSON file"><span aria-hidden="true">↥</span> Import</button><button id="export-btn" class="quiet-button" title="Export the draft configuration as JSON"><span aria-hidden="true">↧</span> Export</button><button id="export-run-btn" class="quiet-button" title="Download applied configuration and simulation history">Save run</button><button id="studies-btn" class="quiet-button" title="Compare manuscript hypotheses with independent controls">Studies</button><button id="evidence-btn" class="quiet-button" title="Charts of the component tests that were actually run">Evidence</button><button id="cluster-btn" class="quiet-button" title="Prepare a cluster job from the draft model">Cluster job</button><input id="import-file" type="file" accept=".json,application/json" hidden><span class="local-badge"><i></i> LOCAL SESSION</span></div>
     </header>
     <section class="workspace-intro" aria-label="Workbench introduction">
       <div class="intro-copy"><span class="intro-kicker">A SPATIAL MODEL OF GENE REGULATION</span><h2 class="intro-title">From molecular motion to <em>gene expression.</em></h2><p class="intro-caption">Build a hypothesis. Follow the molecules. Test what changes.</p></div>
@@ -42,7 +43,7 @@
         <div class="editor-heading"><span class="eyebrow">MODEL BUILDER</span><span id="particle-budget" class="small-muted">— particles</span><button id="expand-builder-btn" class="text-button" aria-expanded="false" aria-controls="editor-content">Expand builder ↗</button></div>
         <div id="draft-genomic-scale" class="draft-genomic-scale" aria-live="polite">Loading genomic scale…</div>
         <nav id="editor-nav" class="editor-nav" aria-label="Configuration sections">
-          <button data-tab="system" class="active"><span>◫</span>System</button><button data-tab="proteins"><span>●</span>Proteins</button><button data-tab="interactions"><span>⌘</span>Interactions</button><button data-tab="chromatin"><span>⌁</span>Chromatin</button><button data-tab="genes"><span>≋</span>Genes</button><button data-tab="regulation"><span>⇢</span>Regulation</button><button data-tab="bodies"><span>◉</span>Bodies</button><button data-tab="cohesin"><span>⋈</span>Cohesin</button><button data-tab="studies"><span>⇄</span>Studies</button><button data-tab="calibration"><span>◷</span>Calibrate</button><button data-tab="cluster"><span>▦</span>Cluster</button><button data-tab="model"><span>ⓘ</span>Model</button><button data-tab="learn"><span>◈</span>Learn</button>
+          <button data-tab="system" class="active"><span>◫</span>System</button><button data-tab="proteins"><span>●</span>Proteins</button><button data-tab="interactions"><span>⌘</span>Interactions</button><button data-tab="chromatin"><span>⌁</span>Chromatin</button><button data-tab="genes"><span>≋</span>Genes</button><button data-tab="regulation"><span>⇢</span>Regulation</button><button data-tab="bodies"><span>◉</span>Bodies</button><button data-tab="cohesin"><span>⋈</span>Cohesin</button><button data-tab="studies"><span>⇄</span>Studies</button><button data-tab="evidence"><span>✓</span>Evidence</button><button data-tab="calibration"><span>◷</span>Calibrate</button><button data-tab="cluster"><span>▦</span>Cluster</button><button data-tab="model"><span>ⓘ</span>Model</button><button data-tab="learn"><span>◈</span>Learn</button>
         </nav>
         <div id="editor-content" class="editor-content"><div class="loading-note">Loading your model…</div></div>
         <div class="editor-footer"><span class="status-dot"></span><span>Reduced units · kBT = 1<br><button id="calibration-status" class="text-button" title="Set and inspect the physical length and time mapping">No physical clock · Calibrate ↗</button></span></div>
@@ -95,6 +96,7 @@
   <script src="/static/calibration-view.js"></script>
   <script src="/static/model-explain.js"></script>
   <script src="/static/study-view.js"></script>
+  <script src="/static/evidence-view.js"></script>
   <script src="/static/app.js"></script>
 </body>
 </html>
