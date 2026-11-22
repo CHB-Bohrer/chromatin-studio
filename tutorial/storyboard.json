@@ -4,7 +4,7 @@
   "subtitle": "An editable walkthrough of the actual application",
   "language": "en",
   "playback_speed": 1,
-  "normal_duration_seconds": 760,
+  "normal_duration_seconds": 808,
   "delivery": {
     "preferred_resolution": "1920x1080",
     "frame_rate": 30,
@@ -921,6 +921,57 @@
       "accuracy_notes": [
         "Actual UI captures; all response parameters are illustrative unless independently calibrated.",
         "Reference confidence intervals use independent cells. Finite samples can show apparent effects under a true null; the retained initial-study-pilot.json illustrates this sampling limitation."
+      ]
+    },
+    {
+      "id": "18-evidence",
+      "title": "Check what the component tests actually showed",
+      "normal_duration_seconds": 48,
+      "primary_capture": "18-evidence-overview.png",
+      "narration": "Evidence shows the component tests that were actually run. Each study switches on one mechanism and compares the engine with its own rule, a closed-form result, or a published measurement. Those three levels are counted separately. The page only reads saved reports, so it runs nothing and leaves your simulation untouched. Select a study to see its figures. In the nucleosome kinetics study, based on Donovan and colleagues, blocking the site alone makes Reb1 and Cbf1 bind far too weakly. Matching their titrations requires slower release from the nucleosome. Hover for values, or open the table. Every check shows its accepted window, and experimental checks say whether they are input-matched, tuned, or a prediction. A pass under the provisional unit mapping is not a calibration.",
+      "captions": [
+        {
+          "start": 0,
+          "end": 16,
+          "text": "Numerical checks, closed-form references and published measurements are counted separately."
+        },
+        {
+          "start": 16,
+          "end": 32,
+          "text": "Donovan et al.: occlusion alone is too weak for Reb1 and Cbf1; slower release from the nucleosome matches."
+        },
+        {
+          "start": 32,
+          "end": 48,
+          "text": "Each check shows its window and basis: input-matched, tuned or prediction. A pass is not a calibration."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "18-evidence-overview.png",
+          "duration": 16.0,
+          "actions": [
+            "Open Evidence and show the totals by evidence level and the list of studies with saved reports."
+          ]
+        },
+        {
+          "capture": "18-evidence-figure.png",
+          "duration": 16.0,
+          "actions": [
+            "Select the nucleosome kinetics study and hover the Reb1 affinity point to show its tooltip."
+          ]
+        },
+        {
+          "capture": "18-evidence-checks.png",
+          "duration": 16.0,
+          "actions": [
+            "Scroll to the experimental checks and show their accepted windows and basis tags."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "Actual UI captures of an isolated instance reading the saved component-study reports; nothing was run from the page.",
+        "Experimental passes use the provisional polymer mapping or input-matched rates as each check's note states. They are not calibration or biological validation."
       ]
     },
     {

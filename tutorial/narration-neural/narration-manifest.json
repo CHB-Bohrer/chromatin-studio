@@ -19,10 +19,28 @@
   },
   "time_stretch": false,
   "narration_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa",
-  "storyboard_sha256": "fcfcdabc1fb78f9cffed1781596f4eafe333c38ffdbe0e2e2b6e6c0d3987ffa2",
-  "preserved_scene_ids": [],
+  "storyboard_sha256": "8fece59a3ee33d19ac9b43209556b874b6ba58cd52a088bdac325fdb719422a9",
+  "preserved_scene_ids": [
+    "01-overview",
+    "02-build-and-learn",
+    "13-confinement",
+    "03-genome",
+    "16-remodelers",
+    "17-nucleus-tethers",
+    "04-proteins",
+    "05-interactions",
+    "06-chromatin",
+    "07-regulation",
+    "08-elongation",
+    "09-architecture",
+    "10-calibration",
+    "11-benchmarks",
+    "14-studies",
+    "15-study-results",
+    "12-cluster"
+  ],
   "complete": true,
-  "total_seconds": 670.2813333333334,
+  "total_seconds": 720.3333333333334,
   "scenes": [
     {
       "voice": "af_heart",
@@ -768,6 +786,44 @@
       "file": "15-study-results.wav",
       "fingerprint": "a62f767cec32288b4d9c187d7d0af9160cc199b6ea783943384b26e275d86a2c",
       "wav_sha256": "c9a2ba3958d07c0a7d6fe9986ee617e1c13a327322b85b69b718a55ce5e2acb0",
+      "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+    },
+    {
+      "voice": "af_heart",
+      "source_text": "Evidence shows the component tests that were actually run. Each study switches on one mechanism and compares the engine with its own rule, a closed-form result, or a published measurement. Those three levels are counted separately. The page only reads saved reports, so it runs nothing and leaves your simulation untouched. Select a study to see its figures. In the nucleosome kinetics study, based on Donovan and colleagues, blocking the site alone makes Reb1 and Cbf1 bind far too weakly. Matching their titrations requires slower release from the nucleosome. Hover for values, or open the table. Every check shows its accepted window, and experimental checks say whether they are input-matched, tuned, or a prediction. A pass under the provisional unit mapping is not a calibration.",
+      "spoken_text": "Evidence shows the component tests that were actually run. Each study switches on one mechanism and compares the engine with its own rule, a closed-form result, or a published measurement. Those three levels are counted separately. The page only reads saved reports, so it runs nothing and leaves your simulation untouched. Select a study to see its figures. In the nucleosome kinetics study, based on Donovan and colleagues, blocking the site alone makes Reb1 and Cbf1 bind far too weakly. Matching their titrations requires slower release from the nucleosome. Hover for values, or open the table. Every check shows its accepted window, and experimental checks say whether they are input-matched, tuned, or a prediction. A pass under the provisional unit mapping is not a calibration.",
+      "word_count": 125,
+      "target_words_per_minute": 155.0,
+      "words_per_minute": 151.35615111398127,
+      "model_speed": 0.9530143999999999,
+      "duration_seconds": 50.052,
+      "speech_seconds": 49.552,
+      "sample_rate": 24000,
+      "padding_seconds": 0.5,
+      "peak_before_attenuation": 0.6574496030807495,
+      "gain": 1.0,
+      "attempts": [
+        {
+          "model_speed": 0.9,
+          "seconds": 51.23733333333333,
+          "words_per_minute": 146.37764130321642,
+          "inference_seconds": 30.25
+        },
+        {
+          "model_speed": 0.9530143999999999,
+          "seconds": 49.552,
+          "words_per_minute": 151.35615111398127,
+          "inference_seconds": 28.5
+        }
+      ],
+      "within_target_pace": true,
+      "phoneme_overrides": [],
+      "time_stretch": false,
+      "speech_truncated": false,
+      "id": "18-evidence",
+      "file": "18-evidence.wav",
+      "fingerprint": "b831b4ada416739445bdc44cbb2f996291027491ff813a9eaf9b8c86e8da46a1",
+      "wav_sha256": "01c151fc44d41fdf3d4d6ee5498b221e40490cfe98437dba8194f6f41723420e",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     },
     {

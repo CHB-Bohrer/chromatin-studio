@@ -112,10 +112,17 @@
     "narration": "After the study finishes, compare cis and trans correlations and their difference. The interval reflects sampling uncertainty, not proof of causality. Switch between latent nascent activity, detected activity and promoter state; these observables answer different questions. The spatial pilot instead measures two genes on one chain across independent replicas. Its independent-replica null is not a trans-allele control. Download the plan and results to retain parameters, seeds and limitations. Reproducing the manuscript quantitatively still requires the underlying data, matched observation models, calibrated units and substantially longer converged experiments."
   },
   {
+    "id": "18-evidence",
+    "title": "Check what the component tests actually showed",
+    "start": 648.4333333333334,
+    "end": 699.7666666666668,
+    "narration": "Evidence shows the component tests that were actually run. Each study switches on one mechanism and compares the engine with its own rule, a closed-form result, or a published measurement. Those three levels are counted separately. The page only reads saved reports, so it runs nothing and leaves your simulation untouched. Select a study to see its figures. In the nucleosome kinetics study, based on Donovan and colleagues, blocking the site alone makes Reb1 and Cbf1 bind far too weakly. Matching their titrations requires slower release from the nucleosome. Hover for values, or open the table. Every check shows its accepted window, and experimental checks say whether they are input-matched, tuned, or a prediction. A pass under the provisional unit mapping is not a calibration."
+  },
+  {
     "id": "12-cluster",
     "title": "Export a reproducible cluster experiment",
-    "start": 648.4333333333334,
-    "end": 691.8000000000001,
+    "start": 699.7666666666668,
+    "end": 743.1333333333334,
     "narration": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU integration is partial: only bare-polymer models run fully on the device, while forces, reactions and RNA for models with proteins still run on the CPU; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence."
   }
 ]

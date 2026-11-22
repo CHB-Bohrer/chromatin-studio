@@ -41,8 +41,8 @@
       "label": "Python tests pass on the development branch (22 Nov 2026); the other is a Windows-only skip. Browser interface tests were not rerun"
     },
     {
-      "value": "17",
-      "label": "narrated tutorial chapters, about 11.5 minutes, built from real captured states of the app"
+      "value": "18",
+      "label": "narrated tutorial chapters, about 12.5 minutes, built from real captured states of the app"
     },
     {
       "value": "2,894",
@@ -115,7 +115,7 @@
           {
             "name": "Single-mechanism component studies",
             "state": "partial",
-            "note": "In development, not yet released: nine studies that each switch on one mechanism, and an Evidence view in the app that charts every saved check against its reference. Nucleosome turnover, single-gene bursting, single-cohesin extrusion, free diffusion and the bare-DNA chain match their closed-form results. Against published single-molecule experiments: nucleosome effects on transcription-factor binding (Donovan et al.) are reproduced only when nucleosomes also slow factor release, not by blocking access alone; Sox2 search times bracket the measured value but the coarse scan has not yet hit it; HP1α residence versus H3K9me3 density (Kilic et al.) is running. A pass against an experiment is not a calibration."
+            "note": "In development, not yet released: nine studies that each switch on one mechanism, and an Evidence view in the app that charts every saved check against its reference. Nucleosome turnover, single-gene bursting, single-cohesin extrusion, free diffusion and the bare-DNA chain match their closed-form results. Against published single-molecule experiments: nucleosome effects on transcription-factor binding (Donovan et al.) are reproduced only when nucleosomes also slow factor release, not by blocking access alone; Sox2 search times bracket the measured value but the coarse scan has not yet hit it; rebinding among marked nucleosomes reproduces how HP1α residence grows with H3K9me3 density (Kilic et al.), but not how strongly competing HP1α shortens it, which points to a missing mechanism such as facilitated dissociation. A pass against an experiment is not a calibration."
           },
           {
             "name": "Cluster and headless runs",
@@ -125,7 +125,7 @@
           {
             "name": "Narrated tutorial",
             "state": "built",
-            "note": "A scripted walkthrough of genuine captured states, not continuous simulation footage. Re-rendered on 2026-11-12 with 17 chapters and clearer bead-size wording; not yet reviewed at 1×."
+            "note": "A scripted walkthrough of genuine captured states, not continuous simulation footage. Re-rendered on 2026-11-22 with 18 chapters; the new one walks through the Evidence view and the component tests that were run. Not yet reviewed at 1×."
           }
         ]
       },
@@ -146,7 +146,7 @@
           {
             "name": "3. Calibrate the biological mechanisms",
             "state": "partial",
-            "note": "Started: each mechanism is tested alone against a reference, including nucleosome and histone-mark effects on protein binding. Still to do: finish the HP1 and cohesin comparisons and refine the Sox2 scan, then fit protein mobility, residence times and transcription separately before combining mechanisms. Protein mobility in the coarse presets is far below measured values and is not yet on the polymer clock."
+            "note": "Started: each mechanism is tested alone against a reference, including nucleosome and histone-mark effects on protein binding. Still to do: finish the cohesin comparison, refine the Sox2 and HP1 scans and test a facilitated-dissociation rule for HP1, then fit protein mobility, residence times and transcription separately before combining mechanisms. Protein mobility in the coarse presets is far below measured values and is not yet on the polymer clock."
           },
           {
             "name": "4. Validate and speed up GPU and cluster runs",

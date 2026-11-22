@@ -199,13 +199,25 @@ Nascent-positive ≠ promoter ON. Detection assumptions affect observed correlat
 The one-chain spatial pilot has no matched trans alleles; its replica null is labeled separately.
 
 51
-00:10:48,433 --> 00:11:02,528
-Configure independent replicas, platform, sampling intervals and resources. Preview before exporting.
+00:10:48,433 --> 00:11:05,544
+Numerical checks, closed-form references and published measurements are counted separately.
 
 52
-00:11:02,528 --> 00:11:17,706
-A portable bundle starts fresh from the draft. GPU integration is partial; speedup still needs measurement.
+00:11:05,544 --> 00:11:22,656
+Donovan et al.: occlusion alone is too weak for Reb1 and Cbf1; slower release from the nucleosome matches.
 
 53
-00:11:17,706 --> 00:11:31,800
+00:11:22,656 --> 00:11:39,767
+Each check shows its window and basis: input-matched, tuned or prediction. A pass is not a calibration.
+
+54
+00:11:39,767 --> 00:11:53,861
+Configure independent replicas, platform, sampling intervals and resources. Preview before exporting.
+
+55
+00:11:53,861 --> 00:12:09,039
+A portable bundle starts fresh from the draft. GPU integration is partial; speedup still needs measurement.
+
+56
+00:12:09,039 --> 00:12:23,133
 Build → inspect → calibrate → test. Preserve seeds, model provenance and controlled comparisons.

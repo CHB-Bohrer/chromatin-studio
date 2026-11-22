@@ -82,5 +82,10 @@ title=Read correlations without confusing controls
 [CHAPTER]
 TIMEBASE=1/1000
 START=648433
-END=691800
+END=699767
+title=Check what the component tests actually showed
+[CHAPTER]
+TIMEBASE=1/1000
+START=699767
+END=743133
 title=Export a reproducible cluster experiment

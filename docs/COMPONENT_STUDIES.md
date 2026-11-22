@@ -27,7 +27,7 @@ Studies that convert to seconds or nanometres use the provisional polymer mappin
 | `cohesin_extrusion` | One cohesin on a 1D lattice, with and without barriers | Growth speed, residence, loop size; in vitro extrusion speed (input-matched) | about 10 min |
 | `tf_binding` | Chain plus one monovalent DNA-binding protein | Sox2 single-molecule tracking: free interval, trial count, bound fraction | 12 runs, hours |
 | `nucleosome_tf_kinetics` | Chain with static nucleosomes at binding sites, one monovalent factor | Donovan et al. single-molecule kinetics for Reb1, Cbf1, Pho4 and Gal4: kinetic ratios (input-matched) and titrated affinity ratios (prediction) | 24 runs, several hours |
-| `hp1_mark_density` | 12-nucleosome array with H3K9me3 marks, one monovalent reader | Kilic et al. 2015 HP1α residence and association versus H3K9me3 density and competing HP1α (one tuned hazard, the rest predictions) | 132 runs, about 3 h on 5 workers (estimate, not yet run) |
+| `hp1_mark_density` | 12-nucleosome array with H3K9me3 marks, one monovalent reader | Kilic et al. 2015 HP1α residence and association versus H3K9me3 density and competing HP1α (one tuned hazard, the rest predictions) | 108 runs, about 65 min on 12 workers |
 | `fbn2_cohesin` | Chain, cohesin, convergent barriers | Fbn2 anchor separation with and without cohesin and CTCF (data in `references/hansen`) | 9 runs, overnight |
 
 Both nucleosome studies limit each binding-site bead to one bound factor with the optional `chromatin.binding_capacity` (see [CONTRACT.md](../CONTRACT.md)); without it a bead accepts any number of bonds, which would make site competition meaningless.
