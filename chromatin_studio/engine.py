@@ -101,6 +101,7 @@ class Simulation:
         self._initialize_particles()
         self.bindings = []
         self.interactions = {tuple(sorted((r["a"], r["b"]))): r for r in config.get("interactions", [])}
+        self._attraction = self._build_attraction()
         self.barriers = {}
         for barrier in self.chrom.get("barriers", []):
             self.barriers.setdefault(int(barrier["bead"]), set()).add(barrier["direction"])
@@ -282,6 +283,93 @@ class Simulation:
                                float(self.nucleosome_config.get("vacant_persistence_multiplier", 0.5)))
         return values
 
+    def _build_attraction(self):
+        """Tables for attraction-mode pairs: a smooth well between sticker beads.
+
+        Flat-bottomed well, per species pair, with contact distance sigma = r_i + r_j:
+            U = -eps                    for r <= sigma
+            U = -eps*(1-s^2)^2,  s = (r-sigma)/(rc-sigma)   for sigma < r < rc
+            U = 0                       for r >= rc
+        It exerts no force inside contact; eps is the depth at contact (kT).
+        Attracting pairs also get a steep WCA core inside contact,
+            U_core = 4*((w/r)^12 - (w/r)^6) + 1  for r < sigma,  w = sigma/2^(1/6)
+            (r floored at sigma/2, where the core is ~4000 kT),
+        because the bounded soft repulsion alone lets many attracting beads
+        collapse onto each other. Beads of the same molecule do not interact
+        here. Returns None when no rule applies.
+        """
+        rules = [r for r in self.config.get("interactions", [])
+                 if r.get("mode") == "attraction" and float(r.get("strength", 0)) > 0]
+        if not rules:
+            return None
+        names = sorted(self.species)
+        code = {name: i for i, name in enumerate(names)}
+        eps = np.zeros((len(names), len(names)))
+        rc2 = np.ones((len(names), len(names)))
+        for r in rules:
+            i, j = code[r["a"]], code[r["b"]]
+            eps[i, j] = eps[j, i] = float(r["strength"])
+            rc2[i, j] = rc2[j, i] = float(r["radius"]) ** 2
+        involved = {r["a"] for r in rules} | {r["b"] for r in rules}
+        particles = np.array([p["index"] for p in self.protein_particles
+                              if p["sticker"] and p["species"] in involved], dtype=int)
+        if particles.size < 2:
+            return None
+        species = np.full(len(self.positions), -1, dtype=int)
+        molecule = np.full(len(self.positions), -1, dtype=int)
+        for p in self.protein_particles:
+            species[p["index"]] = code[p["species"]]
+            molecule[p["index"]] = p["molecule"]
+        return {"particles": particles, "species": species, "molecule": molecule, "eps": eps, "rc2": rc2,
+                "cutoff": float(np.sqrt(np.max(rc2[eps > 0]))), "names": names}
+
+    def _attraction_terms(self):
+        """Forces, energy, per-particle curvature bound and contact pairs of the attraction wells."""
+        x = self.positions
+        a = self._attraction
+        force = np.zeros_like(x)
+        stiffness = np.zeros(len(x))
+        if a is None:
+            return force, 0.0, stiffness, np.empty((0, 2), dtype=int)
+        local = neighbor_pairs(x[a["particles"]], a["cutoff"])
+        if not local.size:
+            return force, 0.0, stiffness, np.empty((0, 2), dtype=int)
+        i, j = a["particles"][local[:, 0]], a["particles"][local[:, 1]]
+        si, sj = a["species"][i], a["species"][j]
+        eps, rc2 = a["eps"][si, sj], a["rc2"][si, sj]
+        delta = x[i] - x[j]
+        r2 = np.einsum("ij,ij->i", delta, delta)
+        keep = (eps > 0) & (r2 < rc2) & (a["molecule"][i] != a["molecule"][j])
+        i, j, eps, rc2, delta, r2 = i[keep], j[keep], eps[keep], rc2[keep], delta[keep], r2[keep]
+        sigma = self.radii[i] + self.radii[j]
+        width = np.sqrt(rc2) - sigma
+        r = np.sqrt(r2)
+        s = np.clip((r - sigma) / width, 0.0, 1.0)
+        q = 1 - s ** 2
+        # dU/dr = 4*eps*q*s/width inside the shell, zero in contact.
+        dudr = 4 * eps * q * s / width
+        energy = float(-np.sum(eps * q ** 2))
+        safe = np.where(r > 0, r, 1e-12)
+        core = r < sigma
+        # (w/r)^6, with r floored at sigma/2 (core energy there ~4000 kT) so the
+        # single-precision device kernel cannot overflow; identical on the host.
+        rr = np.maximum(safe, 0.5 * sigma)
+        x6 = np.where(core, (sigma / rr) ** 6 / 2.0, 0.0)
+        energy += float(np.sum(np.where(core, 4 * (x6 * x6 - x6) + 1, 0.0)))
+        dudr += np.where(core & (safe > 0.5 * sigma), -24 * (2 * x6 * x6 - x6) / rr, 0.0)
+        pair_force = (-dudr / safe)[:, None] * delta
+        np.add.at(force, i, pair_force)
+        np.add.at(force, j, -pair_force)
+        # Shell: |d2U/dr2| <= 4*eps/width^2, |dU/dr|/r <= 1.54*eps/(width*sigma).
+        # Core: its curvature at the current separation (r >= 0.8*sigma bound).
+        rc_ = np.maximum(r, 0.8 * sigma)
+        y6 = (sigma / rc_) ** 6 / 2.0
+        core_curvature = np.where(core, 4 * (156 * y6 * y6 - 42 * y6) / rc_ ** 2, 0.0)
+        curvature = 4 * eps / width ** 2 + 1.54 * eps / (width * sigma) + core_curvature
+        np.add.at(stiffness, i, curvature)
+        np.add.at(stiffness, j, curvature)
+        return force, energy, stiffness, np.column_stack([i, j])
+
     def _repulsion_pairs(self):
         """Actual nonbonded soft-core contacts, with no stored N-by-N arrays."""
         pairs = neighbor_pairs(self.positions, self._repulsion_cutoff)
@@ -360,6 +448,10 @@ class Simulation:
             contacts = self._chromatin_contact_state()
             f[:self.n_chromatin] += contacts["forces"]
             energy += contacts["energy"]
+        if self._attraction is not None:
+            attraction, attraction_energy, _, _ = self._attraction_terms()
+            f += attraction
+            energy += attraction_energy
         # Confinement is a soft harmonic wall, not an undocumented coordinate clamp.
         radial = np.linalg.norm(x, axis=1)
         outside = radial > self.radius
@@ -433,6 +525,8 @@ class Simulation:
         stiffness += 2 * float(self.chrom.get("repulsion", 0)) / (2 * self.radii) ** 2
         if self.chrom.get("state_interactions"):
             stiffness[:self.n_chromatin] += self._chromatin_contact_state()["stiffness"]
+        if self._attraction is not None:
+            stiffness += self._attraction_terms()[2]
         # The spectral magnitude of the Gaussian-well Hessian is bounded by
         # |amplitude|/radius^2. Both attraction and exclusion can be stiff.
         for body, amplitude in zip(self.bodies, self._body_affinities):

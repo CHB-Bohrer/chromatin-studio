@@ -35,7 +35,10 @@ class ScopeTests(unittest.TestCase):
     def test_every_chemistry_feature_is_reported(self):
         base = small_polymer()
         cases = {
-            "protein particles": lambda c: c["proteins"].append({"id": "p", "count": 3}),
+            "IDR-chain proteins": lambda c: c["proteins"].append({"id": "p", "count": 3, "representation": "idr"}),
+            "protein-chromatin binding": lambda c: c["proteins"].append(
+                {"id": "p", "count": 3, "on_rate": 1.0, "chromatin_affinity": {"unmodified": 0.5}}),
+            "bond-mode protein interactions": lambda c: c["interactions"].append({"a": "p", "b": "p", "on_rate": 1.0}),
             "histone marks": lambda c: c["marks"].append({"id": "m"}),
             "state-selective chromatin attraction": lambda c: c["chromatin"].update(state_interactions=[{"a": "m"}]),
             "nuclear bodies": lambda c: c["bodies"].append({"id": "b"}),
@@ -54,7 +57,7 @@ class ScopeTests(unittest.TestCase):
         from chromatin_studio.openmm_native import NativePolymerSimulation
         config = small_polymer()
         config["cohesin"]["enabled"] = True
-        with self.assertRaisesRegex(ValueError, "bare polymers only"):
+        with self.assertRaisesRegex(ValueError, "supports bare polymers and one-bead attraction-mode proteins only"):
             NativePolymerSimulation(config, platform="Reference")
 
 
