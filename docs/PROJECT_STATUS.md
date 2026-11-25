@@ -105,6 +105,16 @@ For HP1α, rebinding among neighbouring H3K9me3 nucleosomes, with mark-dependent
 
 **Next concrete step.** Run `python -m chromatin_studio.components analyze <dir>` on `tf_binding` and `fbn2_cohesin` when they finish and record the outcome here. If the wild-type anchor separation or looped fraction disagrees with the Fbn2 data, the first candidates are barrier permeability and CTCF occupancy, which the engine does not represent. A tutorial chapter for component studies needs an interface view first.
 
+## Small presets at one nucleosome unit per bead (2026-11-25)
+
+The user asked for one nucleosome per bead in every model that can carry it.
+
+- **Default model and four presets.** `default_config()` is now 96 kb as 480 × 200 bp `nucleosome_unit` beads (was 96 × 1 kb). Marks, barriers and the gene keep their genomic layout (1 kb bead *i* became beads 5*i*…5*i*+4); confinement radius 11 → 14. Nuclear neighborhood, Reader–writer memory and Loop extrusion inherit it; Multivalent assembly is 64 kb as 320 beads in radius 9 (was 64 beads in radius 7). Per-bead mechanics and rates (bond, stiffness, diffusion, cohesin step, elongation, spreading) were **not** rescaled, following the existing 80 kb nucleosome-unit preset; they remain illustrative. `examples/` for these presets were regenerated.
+- **20 Mb presets stay at 10 kb** and `twenty_mb` now states `representation: coarse` explicitly. One nucleosome per bead at 20 Mb needs 100,000 beads, above `MAX_CHROMATIN_BEADS` (4,000) and `MAX_PARTICLES` (6,000).
+- **Component studies.** `bare_config` no longer inherits the nucleosome-unit label. Nucleosome turnover, nucleosome–TF kinetics (200 bp) and HP1 mark density (177 bp) were already one nucleosome per bead; the worm-like-chain study stays at 25 bp because it tests bare DNA. Telegraph transcription now inherits 200 bp (its observables do not use bead size). Protein diffusion is pinned to its earlier 1 kb label, and TF search (10 kb) and cohesin extrusion (10 kb) are unchanged: all three convert units with the provisional 10 kb clock, and no 200 bp clock exists. Moving them needs that clock first (pending the user's decision).
+- **Seed replay.** Saved runs of the four old presets no longer match the presets of the same name.
+- **Checks run.** Python suite: 285 passed, 1 skipped (one calibration test hard-coded 1,000 bp and now uses 200). `chromatin_studio.validation --platform numpy`: 27 of 27. Node interface tests not run (Node.js not installed).
+
 ## Tutorial at 200 bp per bead throughout (2026-11-24)
 
 The user's review notes asked three things: why the tutorial does not use the 200 bp setting, what "25.6 kb nucleosome access" means and what "release hazards" are, and why the nucleolus sits at the side of the nucleus.

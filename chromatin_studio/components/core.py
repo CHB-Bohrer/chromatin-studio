@@ -38,6 +38,9 @@ def bare_config(beads, *, seed=1, dt=0.002, radius=60.0, name="component study",
     config.update(name=name, seed=int(seed), marks=[], proteins=[], interactions=[], bodies=[], genes=[])
     config["cohesin"] = {"enabled": False, "count": 0, "step_rate": 0, "off_rate": 0, "spring_k": 0}
     config["simulation"].update(dt=dt, confinement_radius=radius)
+    # The default model is labelled as nucleosome units; studies state their own
+    # representation, so the label is not inherited (coarse unless given).
+    config["chromatin"].pop("representation", None)
     config["chromatin"].update(beads=int(beads), initial_marks=[], barriers=[])
     config["chromatin"].update(chromatin)
     return config

@@ -10,6 +10,7 @@
   "chromatin": {
     "beads": 2000,
     "bp_per_bead": 10000,
+    "representation": "coarse",
     "bond_length": 0.85,
     "bond_k": 45.0,
     "diffusion": 0.08,

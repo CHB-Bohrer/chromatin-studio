@@ -5,11 +5,12 @@
   "simulation": {
     "dt": 0.002,
     "steps_per_frame": 10,
-    "confinement_radius": 11.0
+    "confinement_radius": 14.0
   },
   "chromatin": {
-    "beads": 96,
-    "bp_per_bead": 1000,
+    "beads": 480,
+    "bp_per_bead": 200,
+    "representation": "nucleosome_unit",
     "bond_length": 0.85,
     "bond_k": 45.0,
     "diffusion": 0.08,
@@ -17,23 +18,23 @@
     "repulsion": 8.0,
     "initial_marks": [
       {
-        "start": 8,
-        "end": 25,
+        "start": 40,
+        "end": 129,
         "mark": "H3K9me3"
       },
       {
-        "start": 40,
-        "end": 58,
+        "start": 200,
+        "end": 294,
         "mark": "H3K27ac"
       }
     ],
     "barriers": [
       {
-        "bead": 30,
+        "bead": 150,
         "direction": "right"
       },
       {
-        "bead": 69,
+        "bead": 345,
         "direction": "left"
       }
     ]
@@ -70,8 +71,8 @@
     {
       "id": "gene_a",
       "name": "Gene A",
-      "start": 40,
-      "end": 58,
+      "start": 200,
+      "end": 294,
       "on_rate": 0.3,
       "off_rate": 0.2,
       "initiation_rate": 1.0,

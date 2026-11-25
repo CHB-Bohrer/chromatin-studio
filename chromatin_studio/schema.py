@@ -43,14 +43,19 @@ def _protein(identifier, name, color, count, **overrides):
 def default_config():
     return {
         "version": "0.1", "name": "Chromatin × nuclear bodies", "seed": 42,
-        "simulation": {"dt": 0.002, "steps_per_frame": 10, "confinement_radius": 11.0},
-        "chromatin": {"beads": 96, "bp_per_bead": 1000, "bond_length": 0.85,
+        # 96 kb at one coarse nucleosome unit (200 bp) per bead. Region and
+        # barrier positions keep the genomic layout of the earlier 1 kb model
+        # (bead i at 1 kb is beads 5i..5i+4 here). Mechanics and rates are per
+        # bead and were not rescaled; they remain illustrative.
+        "simulation": {"dt": 0.002, "steps_per_frame": 10, "confinement_radius": 14.0},
+        "chromatin": {"beads": 480, "bp_per_bead": 200, "representation": "nucleosome_unit",
+                      "bond_length": 0.85,
                       "bond_k": 45.0, "diffusion": 0.08, "persistence_length": 2.0,
                       "repulsion": 8.0,
-                      "initial_marks": [{"start": 8, "end": 25, "mark": "H3K9me3"},
-                                        {"start": 40, "end": 58, "mark": "H3K27ac"}],
-                      "barriers": [{"bead": 30, "direction": "right"},
-                                   {"bead": 69, "direction": "left"}]},
+                      "initial_marks": [{"start": 40, "end": 129, "mark": "H3K9me3"},
+                                        {"start": 200, "end": 294, "mark": "H3K27ac"}],
+                      "barriers": [{"bead": 150, "direction": "right"},
+                                   {"bead": 345, "direction": "left"}]},
         "marks": [
             {"id": "H3K9me3", "name": "H3K9me3", "color": "#8064b0", "decay_rate": 0.015, "spread_rate": 0.04, "contact_radius": 1.25},
             {"id": "H3K27ac", "name": "H3K27ac", "color": "#dfaa49", "decay_rate": 0.02, "spread_rate": 0.01, "contact_radius": 1.25},
@@ -84,7 +89,7 @@ def default_config():
              "chromatin_affinity": -0.4, "protein_affinity": {"npm1": 4.0, "hp1": 0.5}, "enabled": True},
         ],
         "cohesin": {"enabled": True, "count": 3, "step_rate": 1.5, "off_rate": 0.08, "spring_k": 2.5},
-        "genes": [{"id": "gene_a", "name": "Gene A", "start": 40, "end": 58,
+        "genes": [{"id": "gene_a", "name": "Gene A", "start": 200, "end": 294,
                    "on_rate": 0.3, "off_rate": 0.2, "initiation_rate": 1.0,
                    "elongation_rate": 3.0, "processing_rate": 0.5, "rna_decay_rate": 0.03,
                    "activator_species": "activator", "required_mark": "H3K27ac",
@@ -94,10 +99,10 @@ def default_config():
 
 
 PRESETS = [
-    {"id": "nuclear", "name": "Nuclear neighborhood", "description": "Six species, two nuclear landmarks, writers, IDRs and cohesin."},
-    {"id": "assembly", "name": "Multivalent assembly", "description": "Explicit flexible sticker chains with higher-order binding; no imposed bodies."},
-    {"id": "epigenetic", "name": "Reader–writer memory", "description": "Mark-dependent binding and spreading on a chromatin polymer."},
-    {"id": "extrusion", "name": "Loop extrusion", "description": "Cohesin movement with directional barriers and a transcribing gene."},
+    {"id": "nuclear", "name": "Nuclear neighborhood", "description": "96 kb at 200 bp per bead (480 nucleosome units): six species, two nuclear landmarks, writers, IDRs and cohesin."},
+    {"id": "assembly", "name": "Multivalent assembly", "description": "Explicit flexible sticker chains with higher-order binding on 64 kb at 200 bp per bead; no imposed bodies."},
+    {"id": "epigenetic", "name": "Reader–writer memory", "description": "Mark-dependent binding and spreading on 96 kb at 200 bp per bead."},
+    {"id": "extrusion", "name": "Loop extrusion", "description": "Cohesin movement with directional barriers and a transcribing gene on 96 kb at 200 bp per bead."},
     {"id": "twenty_mb", "name": "20 Mb chromatin", "description": "2,000 beads at 10 kb each, six protein species, six gene regions and 24 cohesins; illustrative reduced-unit dynamics."},
     {"id": "regulatory_20mb", "name": "20 Mb regulatory landscape", "description": "Enhancers, promoters, TF–coactivator recruitment and mark-selective attraction at 10 kb per bead; sub-bead elements are unresolved."},
     {"id": "nucleosome_locus", "name": "80 kb nucleosome-unit locus", "description": "400 beads at a chosen 200 bp repeat, with enhancers, promoters and coactivators; coarse nucleosome units, without wrapped-DNA geometry."},
@@ -115,7 +120,7 @@ def preset_config(identifier):
         return c
     if identifier == "assembly":
         c["name"] = "Multivalent IDR assembly"
-        c["chromatin"]["beads"] = 64
+        c["chromatin"]["beads"] = 320          # 64 kb at 200 bp per bead
         c["chromatin"]["barriers"] = []
         c["chromatin"]["initial_marks"] = []
         c["genes"] = []
@@ -127,7 +132,7 @@ def preset_config(identifier):
             p["idr_beads"] = 5
             p["valence"] = 6
         c["interactions"] = [p for p in c["interactions"] if p["a"] in ("srrm2", "npm1") and p["b"] in ("srrm2", "npm1")]
-        c["simulation"]["confinement_radius"] = 7.0
+        c["simulation"]["confinement_radius"] = 9.0
     elif identifier == "epigenetic":
         c["name"] = "Reader–writer chromatin"
         c["proteins"] = [p for p in c["proteins"] if p["id"] in ("hp1", "writer")]
@@ -147,7 +152,7 @@ def preset_config(identifier):
         c["simulation"]["confinement_radius"] = 20.0
         c["simulation"]["steps_per_frame"] = 10
         c["chromatin"].update(
-            beads=2000, bp_per_bead=10000,
+            beads=2000, bp_per_bead=10000, representation="coarse",
             initial_marks=[
                 {"start": 80, "end": 249, "mark": "H3K9me3"},
                 {"start": 720, "end": 899, "mark": "H3K9me3"},
