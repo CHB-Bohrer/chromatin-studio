@@ -5,11 +5,12 @@
   "simulation": {
     "dt": 0.002,
     "steps_per_frame": 10,
-    "confinement_radius": 7.0
+    "confinement_radius": 9.0
   },
   "chromatin": {
-    "beads": 64,
-    "bp_per_bead": 1000,
+    "beads": 320,
+    "bp_per_bead": 200,
+    "representation": "nucleosome_unit",
     "bond_length": 0.85,
     "bond_k": 45.0,
     "diffusion": 0.08,

@@ -214,7 +214,7 @@ class UnitMappingTests(unittest.TestCase):
         self.assertTrue(summary["baseline_matches"])
         self.assertAlmostEqual(summary["simulation"]["dt_s"], .002*2.5)
         self.assertAlmostEqual(summary["chromatin"]["bare_bead_diffusion_um2_s"], .08*.04**2/2.5)
-        self.assertAlmostEqual(summary["genes"][0]["elongation_nt_s"], 3*1000/2.5)
+        self.assertAlmostEqual(summary["genes"][0]["elongation_nt_s"], 3*200/2.5)
         self.assertAlmostEqual(summary["proteins"][0]["on_rate_s_inv"], 1.2/2.5)
         original_hash = config_fingerprint(config)
         config.update(seed=999, name="renamed", calibration=profile)

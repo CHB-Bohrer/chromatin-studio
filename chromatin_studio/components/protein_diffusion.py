@@ -40,7 +40,9 @@ def cases(params):
 
 
 def simulate(params, case, seed, save_partial):
-    config = bare_config(8, seed=seed, dt=params["dt"], radius=params["radius"], repulsion=8.0)
+    # Kept at the earlier 1 kb label: this study converts units with the 10 kb
+    # provisional clock, and no 200 bp clock exists yet.
+    config = bare_config(8, seed=seed, dt=params["dt"], radius=params["radius"], repulsion=8.0, bp_per_bead=1000)
     config["proteins"] = [protein("probe", params["count"], diffusion=params["diffusion"],
                                   representation=case["representation"], idr_beads=4)]
     sim = Simulation(validated(config))
