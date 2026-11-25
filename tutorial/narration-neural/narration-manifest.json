@@ -19,9 +19,8 @@
   },
   "time_stretch": false,
   "narration_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa",
-  "storyboard_sha256": "8fece59a3ee33d19ac9b43209556b874b6ba58cd52a088bdac325fdb719422a9",
+  "storyboard_sha256": "d652fb3143b79adc7a8ffe21e4ef30ed4f3b6b304969dd85b1a7ef3a83e6027e",
   "preserved_scene_ids": [
-    "01-overview",
     "02-build-and-learn",
     "13-confinement",
     "03-genome",
@@ -37,37 +36,32 @@
     "11-benchmarks",
     "14-studies",
     "15-study-results",
+    "18-evidence",
     "12-cluster"
   ],
   "complete": true,
-  "total_seconds": 720.3333333333334,
+  "total_seconds": 764.92,
   "scenes": [
     {
       "voice": "af_heart",
-      "source_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a coarse genomic interval, and its size is a model setting. In the detailed examples a bead is two hundred base pairs, about one nucleosome unit. This opening overview is the coarse twenty-megabase example instead: two thousand beads of ten kilobases each, so one bead is a bin covering many nucleosomes. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
-      "spoken_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a coarse genomic interval, and its size is a model setting. In the detailed examples a bead is two hundred base pairs, about one nucleosome unit. This opening overview is the coarse twenty-megabase example instead: two thousand beads of ten kilobases each, so one bead is a bin covering many nucleosomes. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
-      "word_count": 99,
+      "source_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a stretch of DNA, and its size is a model setting. This walkthrough uses one size throughout: two hundred base pairs per bead, about one nucleosome and its linker. The example is Manuscript hypotheses at eighty kilobases: four hundred beads of two hundred base pairs each. Coarser presets also exist, where one bead stands for ten kilobases and many nucleosomes, but they are not used here. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
+      "spoken_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a stretch of D N A, and its size is a model setting. This walkthrough uses one size throughout: two hundred base pairs per bead, about one nucleosome and its linker. The example is Manuscript hypotheses at eighty kilobases: four hundred beads of two hundred base pairs each. Coarser presets also exist, where one bead stands for ten kilobases and many nucleosomes, but they are not used here. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
+      "word_count": 116,
       "target_words_per_minute": 155.0,
-      "words_per_minute": 151.18094203882177,
-      "model_speed": 0.9773454545454545,
-      "duration_seconds": 39.79066666666667,
-      "speech_seconds": 39.29066666666667,
+      "words_per_minute": 150.64065566201086,
+      "model_speed": 0.9,
+      "duration_seconds": 46.702666666666666,
+      "speech_seconds": 46.202666666666666,
       "sample_rate": 24000,
       "padding_seconds": 0.5,
-      "peak_before_attenuation": 0.7338705062866211,
+      "peak_before_attenuation": 0.7370302081108093,
       "gain": 1.0,
       "attempts": [
         {
           "model_speed": 0.9,
-          "seconds": 41.616,
-          "words_per_minute": 142.73356401384083,
-          "inference_seconds": 12.155999999959022
-        },
-        {
-          "model_speed": 0.9773454545454545,
-          "seconds": 39.29066666666667,
-          "words_per_minute": 151.18094203882177,
-          "inference_seconds": 11.079000000027008
+          "seconds": 46.202666666666666,
+          "words_per_minute": 150.64065566201086,
+          "inference_seconds": 13.76500000001397
         }
       ],
       "within_target_pace": true,
@@ -76,42 +70,42 @@
       "speech_truncated": false,
       "id": "01-overview",
       "file": "01-overview.wav",
-      "fingerprint": "7bc360173383611ff6101b33e19a64f0bbc6047facd1cc46e9a0ace50350ecf7",
-      "wav_sha256": "4072855bac0c71d22ff729c7c19f9c00e0237ac3b2ddd00fa091eb31f641bd73",
+      "fingerprint": "159d2a4c9447b9962dcb48aac352a816ce0730997da71916e6d37802dc738f60",
+      "wav_sha256": "da51984aef8d24705e9034a180cecdf5da8db7930efd0fca311125798426079d",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     },
     {
       "voice": "af_heart",
-      "source_text": "For the detailed walkthrough, choose Manuscript hypotheses at eighty kilobases. Each of its four hundred beads is two hundred base pairs, a coarse nucleosome unit that can be occupied or vacant. Nucleosome occupancy and individual transcripts are enabled. The preset includes transcription factors, coactivators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
-      "spoken_text": "For the detailed walkthrough, choose Manuscript hypotheses at eighty kilobases. Each of its four hundred beads is two hundred base pairs, a coarse nucleosome unit that can be occupied or vacant. Nucleosome occupancy and individual transcripts are enabled. The preset includes transcription factors, co-activators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
-      "word_count": 89,
+      "source_text": "The Manuscript hypotheses example is the main model for this walkthrough. Each of its four hundred beads is two hundred base pairs, a coarse nucleosome unit that can be occupied or vacant. Nucleosome occupancy and individual transcripts are enabled. The preset includes transcription factors, coactivators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
+      "spoken_text": "The Manuscript hypotheses example is the main model for this walkthrough. Each of its four hundred beads is two hundred base pairs, a coarse nucleosome unit that can be occupied or vacant. Nucleosome occupancy and individual transcripts are enabled. The preset includes transcription factors, co-activators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
+      "word_count": 90,
       "target_words_per_minute": 155.0,
-      "words_per_minute": 152.55980496724058,
-      "model_speed": 1.2097948913296583,
-      "duration_seconds": 35.50266666666667,
-      "speech_seconds": 35.00266666666667,
+      "words_per_minute": 150.33407572383072,
+      "model_speed": 1.169840776186557,
+      "duration_seconds": 36.42,
+      "speech_seconds": 35.92,
       "sample_rate": 24000,
       "padding_seconds": 0.5,
-      "peak_before_attenuation": 0.7058656215667725,
+      "peak_before_attenuation": 0.7669917941093445,
       "gain": 1.0,
       "attempts": [
         {
           "model_speed": 0.9,
-          "seconds": 42.42666666666667,
-          "words_per_minute": 125.8642363293526,
-          "inference_seconds": 11.984000000054948
+          "seconds": 41.78666666666667,
+          "words_per_minute": 129.2278238672623,
+          "inference_seconds": 13.155999999959022
         },
         {
-          "model_speed": 1.1083370786516855,
-          "seconds": 37.605333333333334,
-          "words_per_minute": 142.00113459083818,
-          "inference_seconds": 10.60999999998603
+          "model_speed": 1.079488888888889,
+          "seconds": 37.754666666666665,
+          "words_per_minute": 143.02867636671846,
+          "inference_seconds": 11.875
         },
         {
-          "model_speed": 1.2097948913296583,
-          "seconds": 35.00266666666667,
-          "words_per_minute": 152.55980496724058,
-          "inference_seconds": 9.702999999979511
+          "model_speed": 1.169840776186557,
+          "seconds": 35.92,
+          "words_per_minute": 150.33407572383072,
+          "inference_seconds": 10.703000000037719
         }
       ],
       "within_target_pace": true,
@@ -120,8 +114,8 @@
       "speech_truncated": false,
       "id": "02-build-and-learn",
       "file": "02-build-and-learn.wav",
-      "fingerprint": "bd5c112648313b47a28e276170bdc24f037ab6c45f5e68f4a031cfb7a688e348",
-      "wav_sha256": "64fb182adc3760537da2c87a4e596a8c55838ba074e50b159f6f1e78bc9381c9",
+      "fingerprint": "f362e42ff85a46f96c63a063f3594896b10f244550d72bb8e8ffa1a212c8c3bd",
+      "wav_sha256": "ccf1cf2a0c4fd799c7eb9eb08daf0cd7c7673cb2b4740a068f7c8a1c2bed9def",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     },
     {
@@ -170,36 +164,30 @@
     },
     {
       "voice": "af_heart",
-      "source_text": "For a clear binding example, choose the twenty-five point six kilobase nucleosome-access preset. Open the one-dimensional genome and choose Live binding. Genes, nucleosome occupancy and directly bound proteins share one genomic axis. Navigate to a gene, then use Binding detail to see individual sites. Here, two hundred base pairs per bead represents a coarse nucleosome unit. In the twenty-megabase example, each symbol instead represents a much larger bin. Each molecule marker comes from a real chromatin bond; proximity alone is not binding. Run to watch bindings change, then pause and select a site. The table separates association and release hazards for each species. Times remain reduced until an empirical physical mapping is attached. All tracks restores the wider view of marks, loops, polymerases and protein preferences.",
-      "spoken_text": "For a clear binding example, choose the twenty-five point six kilobase nucleosome-access preset. Open the one-dimensional genome and choose Live binding. Genes, nucleosome occupancy and directly bound proteins share one genomic axis. Navigate to a gene, then use Binding detail to see individual sites. Here, two hundred base pairs per bead represents a coarse nucleosome unit. In the twenty-megabase example, each symbol instead represents a much larger bin. Each molecule marker comes from a real chromatin bond; proximity alone is not binding. Run to watch bindings change, then pause and select a site. The table separates association and release hazards for each species. Times remain reduced until an empirical physical mapping is attached. All tracks restores the wider view of marks, loops, polymerases and protein preferences.",
-      "word_count": 126,
+      "source_text": "For a clearer view of binding, switch to a smaller example. In the Experiment menu it is called Live nucleosome access, twenty-five point six kilobases. That simply means a twenty-five point six kilobase stretch of chromatin: one hundred twenty-eight beads, still two hundred base pairs each, set up so that nucleosomes visibly control which sites proteins can reach. Open the one-dimensional genome and choose Live binding. Genes, nucleosome occupancy and directly bound proteins share one genomic axis. Navigate to a gene, then use Binding detail to see individual sites. Each molecule marker comes from a real chromatin bond; proximity alone is not binding. Run to watch bindings change, then pause and select a site. The table gives two rates for each protein. The association hazard is how often a nearby molecule binds, per unit of time. The release hazard is how often a bound molecule lets go; one over the release hazard is the average time it stays bound. Times remain reduced until an empirical physical mapping is attached. All tracks restores the wider view of marks, loops, polymerases and protein preferences.",
+      "spoken_text": "For a clearer view of binding, switch to a smaller example. In the Experiment menu it is called Live nucleosome access, twenty-five point six kilobases. That simply means a twenty-five point six kilobase stretch of chromatin: one hundred twenty-eight beads, still two hundred base pairs each, set up so that nucleosomes visibly control which sites proteins can reach. Open the one-dimensional genome and choose Live binding. Genes, nucleosome occupancy and directly bound proteins share one genomic axis. Navigate to a gene, then use Binding detail to see individual sites. Each molecule marker comes from a real chromatin bond; proximity alone is not binding. Run to watch bindings change, then pause and select a site. The table gives two rates for each protein. The association hazard is how often a nearby molecule binds, per unit of time. The release hazard is how often a bound molecule lets go; one over the release hazard is the average time it stays bound. Times remain reduced until an empirical physical mapping is attached. All tracks restores the wider view of marks, loops, polymerases and protein preferences.",
+      "word_count": 182,
       "target_words_per_minute": 155.0,
-      "words_per_minute": 151.40995513779106,
-      "model_speed": 1.2152705113966575,
-      "duration_seconds": 50.43066666666667,
-      "speech_seconds": 49.93066666666667,
+      "words_per_minute": 150.2642007926024,
+      "model_speed": 0.9771472527472528,
+      "duration_seconds": 73.172,
+      "speech_seconds": 72.672,
       "sample_rate": 24000,
       "padding_seconds": 0.5,
-      "peak_before_attenuation": 0.7299994230270386,
+      "peak_before_attenuation": 0.7542866468429565,
       "gain": 1.0,
       "attempts": [
         {
           "model_speed": 0.9,
-          "seconds": 60.36266666666667,
-          "words_per_minute": 125.24297579077574,
-          "inference_seconds": 23.48872637504246
+          "seconds": 76.49066666666667,
+          "words_per_minute": 142.76251568818853,
+          "inference_seconds": 22.59399999998277
         },
         {
-          "model_speed": 1.1138349206349207,
-          "seconds": 53.216,
-          "words_per_minute": 142.0625375826819,
-          "inference_seconds": 21.1868143749889
-        },
-        {
-          "model_speed": 1.2152705113966575,
-          "seconds": 49.93066666666667,
-          "words_per_minute": 151.40995513779106,
-          "inference_seconds": 20.75808220799081
+          "model_speed": 0.9771472527472528,
+          "seconds": 72.672,
+          "words_per_minute": 150.2642007926024,
+          "inference_seconds": 20.59399999998277
         }
       ],
       "within_target_pace": true,
@@ -208,42 +196,42 @@
       "speech_truncated": false,
       "id": "03-genome",
       "file": "03-genome.wav",
-      "fingerprint": "775fcf1e1c0728f82a9faca2333245c16fce2a78e915e6953dfeed1dad03b4a1",
-      "wav_sha256": "8a44924aece0cadde27ddf374c097bacbf02f5ec84e6f5bd4d77173e6009e133",
+      "fingerprint": "7514555ba26cdcdc1ec5d9e8a637de1ee6330098d625bee59cf68abf26d9962b",
+      "wav_sha256": "3fef685b8a98ba974c7b33cafe67d50367e6620bb2a51b4d09b5486780422bb3",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     },
     {
       "voice": "af_heart",
-      "source_text": "Stay in the nucleosome-access example. In Chromatin, define an initially vacant interval to create a nucleosome-free region. This sets the starting state; reassembly can fill the gap later. In Proteins, each species has separate occupied and vacant capture and release multipliers. Opening a site can favor one species and disfavor another, especially when eviction also removes a mark. Add chromatin remodeler creates an editable species and enables occupancy in the draft. Its eviction, reassembly and sliding rates act when it is attached to chromatin or recruited through a configured transcription factor. Eviction clears marks. Reassembly starts unmarked. Sliding moves occupancy and its marks into an adjacent vacant bead, conserving nucleosome number. Inspect Recorded binding and remodeling events to follow what actually occurred. These are recent recorded events, not a complete microscopic history. Apply changes only when ready to start a new run.",
-      "spoken_text": "Stay in the nucleosome-access example. In Chromatin, define an initially vacant interval to create a nucleosome-free region. This sets the starting state; reassembly can fill the gap later. In Proteins, each species has separate occupied and vacant capture and release multipliers. Opening a site can favor one species and disfavor another, especially when eviction also removes a mark. Add chromatin remodeler creates an editable species and enables occupancy in the draft. Its eviction, reassembly and sliding rates act when it is attached to chromatin or recruited through a configured transcription factor. Eviction clears marks. Reassembly starts unmarked. Sliding moves occupancy and its marks into an adjacent vacant bead, conserving nucleosome number. Inspect Recorded binding and remodeling events to follow what actually occurred. These are recent recorded events, not a complete microscopic history. Apply changes only when ready to start a new run.",
-      "word_count": 142,
+      "source_text": "Stay in the twenty-five point six kilobase nucleosome-access example. In Chromatin, define an initially vacant interval to create a nucleosome-free region. This sets the starting state; reassembly can fill the gap later. In Proteins, each species has separate multipliers for occupied and vacant sites: one scales how often it binds, the other how quickly it lets go. Opening a site can favor one species and disfavor another, especially when eviction also removes a mark. Add chromatin remodeler creates an editable species and enables occupancy in the draft. Its eviction, reassembly and sliding rates act when it is attached to chromatin or recruited through a configured transcription factor. Eviction clears marks. Reassembly starts unmarked. Sliding moves occupancy and its marks into an adjacent vacant bead, conserving nucleosome number. Inspect Recorded binding and remodeling events to follow what actually occurred. These are recent recorded events, not a complete microscopic history. Apply changes only when ready to start a new run.",
+      "spoken_text": "Stay in the twenty-five point six kilobase nucleosome-access example. In Chromatin, define an initially vacant interval to create a nucleosome-free region. This sets the starting state; reassembly can fill the gap later. In Proteins, each species has separate multipliers for occupied and vacant sites: one scales how often it binds, the other how quickly it lets go. Opening a site can favor one species and disfavor another, especially when eviction also removes a mark. Add chromatin remodeler creates an editable species and enables occupancy in the draft. Its eviction, reassembly and sliding rates act when it is attached to chromatin or recruited through a configured transcription factor. Eviction clears marks. Reassembly starts unmarked. Sliding moves occupancy and its marks into an adjacent vacant bead, conserving nucleosome number. Inspect Recorded binding and remodeling events to follow what actually occurred. These are recent recorded events, not a complete microscopic history. Apply changes only when ready to start a new run.",
+      "word_count": 158,
       "target_words_per_minute": 155.0,
-      "words_per_minute": 150.73598792224948,
-      "model_speed": 1.2098782968458641,
-      "duration_seconds": 57.022666666666666,
-      "speech_seconds": 56.522666666666666,
+      "words_per_minute": 150.20280547574785,
+      "model_speed": 1.1472590425323577,
+      "duration_seconds": 63.614666666666665,
+      "speech_seconds": 63.114666666666665,
       "sample_rate": 24000,
       "padding_seconds": 0.5,
-      "peak_before_attenuation": 0.777323842048645,
+      "peak_before_attenuation": 0.8386818170547485,
       "gain": 1.0,
       "attempts": [
         {
           "model_speed": 0.9,
-          "seconds": 67.552,
-          "words_per_minute": 126.12505921364281,
-          "inference_seconds": 27.084892999962904
+          "seconds": 72.39466666666667,
+          "words_per_minute": 130.94887284514513,
+          "inference_seconds": 20.25
         },
         {
-          "model_speed": 1.1060450704225353,
-          "seconds": 60.128,
-          "words_per_minute": 141.6977115486961,
-          "inference_seconds": 23.489474833011627
+          "model_speed": 1.0653012658227847,
+          "seconds": 65.86666666666666,
+          "words_per_minute": 143.92712550607288,
+          "inference_seconds": 18.06299999996554
         },
         {
-          "model_speed": 1.2098782968458641,
-          "seconds": 56.522666666666666,
-          "words_per_minute": 150.73598792224948,
-          "inference_seconds": 22.08577674999833
+          "model_speed": 1.1472590425323577,
+          "seconds": 63.114666666666665,
+          "words_per_minute": 150.20280547574785,
+          "inference_seconds": 17.375
         }
       ],
       "within_target_pace": true,
@@ -252,36 +240,36 @@
       "speech_truncated": false,
       "id": "16-remodelers",
       "file": "16-remodelers.wav",
-      "fingerprint": "766c1edbb409993e780f447b8dec3beec73469138b5f75cbf8f978dadff7dbf6",
-      "wav_sha256": "03f546486ad59c772ff5025fe61a89ae4abaef91f7222fe4e0eb95ab1b2a6b54",
+      "fingerprint": "00aebc139e911915ef1a38a52e12ef5c95930216b336447abfccd66f6142cc52",
+      "wav_sha256": "758f6eaa86547088fc51040cfcd2d1b0161d5a42a0d6167f1875845c7d5d550f",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     },
     {
       "voice": "af_heart",
-      "source_text": "Open Bodies and add Whole nucleus. The modeled territory still sits inside its own confinement sphere, while a larger soft ellipsoidal envelope represents the nuclear periphery. Place the envelope so it meets the territory where the domain should touch the lamina. Then add tethering elements: genomic intervals, such as lamina-associated domains, whose beads can attach to the envelope or to a landmark surface. Each bead within the capture distance attaches with its own hazard and, once attached, feels a spring to a fixed anchor. Attachment can require a mark and an occupied nucleosome, and vacant sites can release faster. In 3D, tick Whole nucleus to frame the envelope, and look for amber tether links. In 1D genome, the Tethers row shows each element and its attached beads, and the Nucleosomes row marks every vacant site. Tethers are phenomenological anchors, not lamina proteins.",
-      "spoken_text": "Open Bodies and add Whole nucleus. The modeled territory still sits inside its own confinement sphere, while a larger soft ellipsoidal envelope represents the nuclear periphery. Place the envelope so it meets the territory where the domain should touch the lamina. Then add tethering elements: genomic intervals, such as lamina-associated domains, whose beads can attach to the envelope or to a landmark surface. Each bead within the capture distance attaches with its own hazard and, once attached, feels a spring to a fixed anchor. Attachment can require a mark and an occupied nucleosome, and vacant sites can release faster. In 3D, tick Whole nucleus to frame the envelope, and look for amber tether links. In 1D genome, the Tethers row shows each element and its attached beads, and the Nucleosomes row marks every vacant site. Tethers are phenomenological anchors, not lamina proteins.",
-      "word_count": 142,
+      "source_text": "Return to the eighty-kilobase example, open Bodies and add Whole nucleus. The modeled region still sits inside its own confinement sphere, while a much larger soft envelope represents the nuclear periphery. The region is a small part of the nucleus, so one side of it meets the envelope. By default that is the side away from the nucleolus, which faces the nuclear interior; you can move the envelope. Then add tethering elements: genomic intervals, such as lamina-associated domains, whose beads can attach to the envelope or to a landmark surface. Each bead within the capture distance attaches with its own hazard and, once attached, feels a spring to a fixed anchor. Attachment can require a mark and an occupied nucleosome, and vacant sites can release faster. In 3D, tick Whole nucleus to frame the envelope, and look for amber tether links. In 1D genome, the Tethers row shows attached beads, and the Nucleosomes row marks every vacant site. Tethers are phenomenological anchors, not lamina proteins.",
+      "spoken_text": "Return to the eighty-kilobase example, open Bodies and add Whole nucleus. The modeled region still sits inside its own confinement sphere, while a much larger soft envelope represents the nuclear periphery. The region is a small part of the nucleus, so one side of it meets the envelope. By default that is the side away from the nucleolus, which faces the nuclear interior; you can move the envelope. Then add tethering elements: genomic intervals, such as lamina-associated domains, whose beads can attach to the envelope or to a landmark surface. Each bead within the capture distance attaches with its own hazard and, once attached, feels a spring to a fixed anchor. Attachment can require a mark and an occupied nucleosome, and vacant sites can release faster. In 3D, tick Whole nucleus to frame the envelope, and look for amber tether links. In 1D genome, the Tethers row shows attached beads, and the Nucleosomes row marks every vacant site. Tethers are phenomenological anchors, not lamina proteins.",
+      "word_count": 165,
       "target_words_per_minute": 155.0,
-      "words_per_minute": 148.82615986584685,
-      "model_speed": 0.9928732394366196,
-      "duration_seconds": 57.748,
-      "speech_seconds": 57.248,
+      "words_per_minute": 150.9882869692533,
+      "model_speed": 0.9620896969696969,
+      "duration_seconds": 66.068,
+      "speech_seconds": 65.568,
       "sample_rate": 24000,
       "padding_seconds": 0.5,
-      "peak_before_attenuation": 1.0124839544296265,
-      "gain": 0.9679165736034543,
+      "peak_before_attenuation": 0.8955448269844055,
+      "gain": 1.0,
       "attempts": [
         {
           "model_speed": 0.9,
-          "seconds": 60.64,
-          "words_per_minute": 140.50131926121372,
-          "inference_seconds": 17.094000000040978
+          "seconds": 68.27733333333333,
+          "words_per_minute": 144.99687548820498,
+          "inference_seconds": 19.03200000000652
         },
         {
-          "model_speed": 0.9928732394366196,
-          "seconds": 57.248,
-          "words_per_minute": 148.82615986584685,
-          "inference_seconds": 16.140999999945052
+          "model_speed": 0.9620896969696969,
+          "seconds": 65.568,
+          "words_per_minute": 150.9882869692533,
+          "inference_seconds": 18.125
         }
       ],
       "within_target_pace": true,
@@ -290,42 +278,42 @@
       "speech_truncated": false,
       "id": "17-nucleus-tethers",
       "file": "17-nucleus-tethers.wav",
-      "fingerprint": "96a636961f215ce054b550a736026906e6a26a46a814a29ce96a2c46c47adcf7",
-      "wav_sha256": "0b297c7c250ca7fd07a316c6c073142662615c01904db8fd281a1b02a66aface",
+      "fingerprint": "35ba2e2deb0ed2fc2713d714586137cc421c875f23a0e1453ca6fd140098dca2",
+      "wav_sha256": "c24970aacb0a64f3385f8909eb510640e7a59e2063a4fad7d23e4d90c4d48ba8",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     },
     {
       "voice": "af_heart",
-      "source_text": "Return to the eighty-kilobase manuscript example for the rest of the walkthrough. The Proteins editor defines each species independently. Expand builder gives these settings room. Set abundance, free diffusion, binding valence, mark preferences, and occupied-versus-vacant capture and release factors. A species can also write or erase a mark, or remodel nucleosomes. An IDR representation expands a molecule into a flexible chain of domain beads with binding stickers. This supports higher-order assemblies, but it is not an amino-acid-resolved protein model. Choose roles and interactions as explicit hypotheses; a biological name is not a calibrated parameter set.",
-      "spoken_text": "Return to the eighty-kilobase manuscript example for the rest of the walkthrough. The Proteins editor defines each species independently. Expand builder gives these settings room. Set abundance, free diffusion, binding valence, mark preferences, and occupied-versus-vacant capture and release factors. A species can also write or erase a mark, or remodel nucleosomes. An I D R representation expands a molecule into a flexible chain of domain beads with binding stickers. This supports higher-order assemblies, but it is not an amino-acid-resolved protein model. Choose roles and interactions as explicit hypotheses; a biological name is not a calibrated parameter set.",
-      "word_count": 97,
+      "source_text": "The rest of the walkthrough stays in the eighty-kilobase example. The Proteins editor defines each species independently. Expand builder gives these settings room. Set abundance, free diffusion, binding valence, mark preferences, and occupied-versus-vacant capture and release factors. A species can also write or erase a mark, or remodel nucleosomes. An IDR representation expands a molecule into a flexible chain of domain beads with binding stickers. This supports higher-order assemblies, but it is not an amino-acid-resolved protein model. Choose roles and interactions as explicit hypotheses; a biological name is not a calibrated parameter set.",
+      "spoken_text": "The rest of the walkthrough stays in the eighty-kilobase example. The Proteins editor defines each species independently. Expand builder gives these settings room. Set abundance, free diffusion, binding valence, mark preferences, and occupied-versus-vacant capture and release factors. A species can also write or erase a mark, or remodel nucleosomes. An I D R representation expands a molecule into a flexible chain of domain beads with binding stickers. This supports higher-order assemblies, but it is not an amino-acid-resolved protein model. Choose roles and interactions as explicit hypotheses; a biological name is not a calibrated parameter set.",
+      "word_count": 95,
       "target_words_per_minute": 155.0,
-      "words_per_minute": 153.6322680557511,
-      "model_speed": 1.2571036182378572,
-      "duration_seconds": 38.382666666666665,
-      "speech_seconds": 37.882666666666665,
+      "words_per_minute": 154.1095890410959,
+      "model_speed": 1.2653723733136348,
+      "duration_seconds": 37.486666666666665,
+      "speech_seconds": 36.986666666666665,
       "sample_rate": 24000,
       "padding_seconds": 0.5,
-      "peak_before_attenuation": 0.6775609254837036,
+      "peak_before_attenuation": 0.6459357142448425,
       "gain": 1.0,
       "attempts": [
         {
           "model_speed": 0.9,
-          "seconds": 47.248,
-          "words_per_minute": 123.17981713511683,
-          "inference_seconds": 18.2200058340095
+          "seconds": 46.522666666666666,
+          "words_per_minute": 122.52092170124958,
+          "inference_seconds": 13.0
         },
         {
-          "model_speed": 1.1324907216494844,
-          "seconds": 41.68,
-          "words_per_minute": 139.63531669865642,
-          "inference_seconds": 15.927655874984339
+          "model_speed": 1.138581052631579,
+          "seconds": 40.86933333333333,
+          "words_per_minute": 139.468876419157,
+          "inference_seconds": 11.202999999979511
         },
         {
-          "model_speed": 1.2571036182378572,
-          "seconds": 37.882666666666665,
-          "words_per_minute": 153.6322680557511,
-          "inference_seconds": 14.554922708077356
+          "model_speed": 1.2653723733136348,
+          "seconds": 36.986666666666665,
+          "words_per_minute": 154.1095890410959,
+          "inference_seconds": 10.25
         }
       ],
       "within_target_pace": true,
@@ -334,8 +322,8 @@
       "speech_truncated": false,
       "id": "04-proteins",
       "file": "04-proteins.wav",
-      "fingerprint": "b76ba56e48aa7820c83aed7b28f770e8331ab3685384596422c6af82725e7a21",
-      "wav_sha256": "7a7bea603aafc83f065f043d04e581819ed0b0b0ed60e4d70f62ea13d1009190",
+      "fingerprint": "4ff8c6354ae4d0555c9f4413c81cbd835372f83269161eeefc3e8aa1d7946a63",
+      "wav_sha256": "e9f7bd795fb703e1af916b7567faec5bdcf5550c8fad3612705129d503399fee",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     },
     {

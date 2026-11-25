@@ -1,6 +1,6 @@
 # Chromatin Studio project status
 
-Last reviewed: **2026-11-22**. Application: **0.10.0**. Configuration format: **0.1**.
+Last reviewed: **2026-11-24**. Application: **0.10.0**. Configuration format: **0.1**.
 
 The application is a functioning local research prototype with a visual model builder, coupled simulation, live inspection, tests and an editable tutorial. The latest completed feature work is live 1D protein binding, nucleosome accessibility and chromatin remodeling. The current development task is preparing the project for sharing and making its state understandable to future contributors.
 
@@ -104,6 +104,18 @@ For HP1α, rebinding among neighbouring H3K9me3 nucleosomes, with mark-dependent
 **Checks run this session.** Python suite: 270 tests run, 269 passed, 1 skipped (the symlink case), including the OpenMM tests on this machine. `chromatin_studio.validation --platform numpy`: 27 of 27 checks passed. The Node interface tests were **not run** (Node.js is not installed on this machine); no browser file changed.
 
 **Next concrete step.** Run `python -m chromatin_studio.components analyze <dir>` on `tf_binding` and `fbn2_cohesin` when they finish and record the outcome here. If the wild-type anchor separation or looped fraction disagrees with the Fbn2 data, the first candidates are barrier permeability and CTCF occupancy, which the engine does not represent. A tutorial chapter for component studies needs an interface view first.
+
+## Tutorial at 200 bp per bead throughout (2026-11-24)
+
+The user's review notes asked three things: why the tutorial does not use the 200 bp setting, what "25.6 kb nucleosome access" means and what "release hazards" are, and why the nucleolus sits at the side of the nucleus.
+
+- **200 bp everywhere.** Chapter 01 now opens on the 80 kb manuscript-hypothesis model (400 × 200 bp) instead of the 20 Mb preset at 10 kb per bead; the 10 kb presets are only mentioned. Chapter 17 now uses the 80 kb model too. Chapters 02 and 04 were reworded so the 80 kb model is the main example, and the sentence comparing 200 bp sites with 10 kb bins was removed from chapter 03.
+- **Plain-language terms.** Chapter 03 now says the 25.6 kb example is a 25.6 kb stretch (128 × 200 bp beads) set up to show how nucleosomes control which sites proteins reach, and defines the association hazard (how often a nearby molecule binds, per unit time) and the release hazard (how often a bound molecule lets go; its inverse is the mean bound time). Chapter 16 describes the occupied/vacant multipliers the same way.
+- **Nucleolus faces the interior.** `static/app.js` (Bodies → Add Whole nucleus): the default envelope used to be centred at (−4.2R, 0, 0), which put the territory's +x side, where every preset places the nucleolus, against the periphery. It is now centred 4.2R from the origin in the direction of the first enabled nucleolus (x–y plane), so the territory meets the envelope on the side away from the nucleolus. Without a nucleolus the old placement is kept. This changes only newly added envelopes; saved configurations and engine behaviour are unchanged, and seed replay is unaffected. The editor note says so.
+- **Captures.** Nine captures were retaken from isolated servers with headless Chrome and real UI clicks (`capture-provenance.json`, `bp200_capture`): chapter 01 (two), chapter 17 (four: the 80 kb model plus the app's default envelope, which was checked against the UI draft, and one accelerated LAD tether over the H3K9me3 domain, 10 of 50 beads attached at reduced time 6.0) and chapter 18 (three; two are byte-identical to the previous ones). The old 17 and 18 provenance records are kept and marked superseded. The capture script is kept with the run data, not in the repository.
+- **Narration and video.** Kokoro af_heart narration was regenerated for 01, 02, 03, 16, 17 and 04 (150–154 words per minute, not accelerated); the other 12 were reused. Re-rendered: 18 chapters, 787.7 s (`--validate-only`: valid, 45 captures). Manifests were rewritten to repo-relative paths. The legacy `chromatin-studio-tutorial-2x.*` files (7 Nov) are out of date and lack chapters 17–18; the player does not use them.
+- **Checks run.** Python suite in the `simlive` environment with its DLL path set: 277 run, 1 skipped, and `test_tutorial_renderer` could not import (that environment lacks imageio-ffmpeg); in the render environment its 10 tests pass, so 286 tests, 285 pass, 1 skipped. Without the conda DLL path, NumPy's `eigvalsh` crashes the process (0xc06d007f), which is an environment issue. Node interface tests were **not run** (Node.js is not installed), so the `app.js` change is covered only by the UI draft check above. The video has not been watched at 1×.
+- **Next concrete step.** Watch the tutorial at 1×; decide whether to rebuild or delete the 2× files.
 
 ## Tutorial scale-wording revision (2026-11-12)
 
