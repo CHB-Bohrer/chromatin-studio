@@ -4,7 +4,7 @@ A local visual builder and exploratory simulator for chromatin, reacting protein
 
 **This is a working research prototype in reduced units.** It now includes an explicit MSD calibration workflow and reproducible polymer reference benchmarks. No experimental clock is attached to the supplied presets. Numerical agreement with a reference model is separate from calibration and biological validation.
 
-**Continuing development with an AI or a new collaborator?** Start with [AGENTS.md](AGENTS.md), the [current project status and unfinished milestones](docs/PROJECT_STATUS.md), and the [development guide](docs/DEVELOPMENT.md). They record what is implemented, what the evidence supports, and how to continue without relying on earlier chats.
+**Continuing development with an AI or a new collaborator?** Start with [AGENTS.md](AGENTS.md), the [current project status and unfinished milestones](docs/PROJECT_STATUS.md), and the [development guide](docs/DEVELOPMENT.md). They record what is implemented, what the evidence supports, and how to continue without relying on earlier chats. For a readable description of how the simulator works and how each part was validated, see the [software paper](docs/paper/chromatin-studio-paper.pdf) ([sources](docs/paper/README.md)).
 
 ## Open the application
 

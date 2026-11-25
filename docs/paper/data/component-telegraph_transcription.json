@@ -1,0 +1,155 @@
+{
+ "study": "telegraph_transcription",
+ "title": "Single-gene bursting versus the telegraph model",
+ "question": "Do the ON fraction, mean and Fano factor of RNA copy number match the telegraph model?",
+ "scale": "standard",
+ "analyzed_utc": "2026-11-25T17:23:42+00:00",
+ "application_version": "0.10.0",
+ "source_matches_current": true,
+ "changed_since_run": [],
+ "complete_jobs": 16,
+ "expected_jobs": 16,
+ "check_summary": {
+  "total": 6,
+  "passed": 6,
+  "by_evidence": {
+   "numerical_check": {
+    "total": 0,
+    "passed": 0
+   },
+   "analytical_reference": {
+    "total": 6,
+    "passed": 6
+   },
+   "experimental_reference": {
+    "total": 0,
+    "passed": 0
+   }
+  }
+ },
+ "checks": [
+  {
+   "id": "count_on_fraction",
+   "label": "count: promoter ON fraction",
+   "evidence": "analytical_reference",
+   "unit": "dimensionless",
+   "observed": 0.1989624004987844,
+   "expected": 0.2,
+   "sem": 0.00023837397332495582,
+   "note": null,
+   "tolerance": 0.03,
+   "allowed": 0.006,
+   "deviation": 0.0010375995012156247,
+   "relative_deviation": 0.005187997506078124,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  },
+  {
+   "id": "count_mean",
+   "label": "count: mean RNA copy number",
+   "evidence": "analytical_reference",
+   "unit": "dimensionless",
+   "observed": 19.906875,
+   "expected": 20.0,
+   "sem": 0.0450567956178554,
+   "note": null,
+   "tolerance": 0.05,
+   "allowed": 1.0,
+   "deviation": 0.09312500000000057,
+   "relative_deviation": 0.004656250000000028,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  },
+  {
+   "id": "count_fano",
+   "label": "count: Fano factor",
+   "evidence": "analytical_reference",
+   "unit": "dimensionless",
+   "observed": 6.83888368882598,
+   "expected": 6.925925925925926,
+   "sem": 0.04475886484014673,
+   "note": "Samples are spaced four RNA lifetimes apart.",
+   "tolerance": 0.1,
+   "allowed": 0.6925925925925926,
+   "deviation": 0.0870422370999453,
+   "relative_deviation": 0.012567595731008145,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  },
+  {
+   "id": "explicit_on_fraction",
+   "label": "explicit: promoter ON fraction",
+   "evidence": "analytical_reference",
+   "unit": "dimensionless",
+   "observed": 0.200491082806042,
+   "expected": 0.2,
+   "sem": 0.0007024705154915394,
+   "note": null,
+   "tolerance": 0.03,
+   "allowed": 0.006,
+   "deviation": 0.000491082806041987,
+   "relative_deviation": 0.0024554140302099348,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  },
+  {
+   "id": "explicit_mean",
+   "label": "explicit: mean RNA copy number",
+   "evidence": "analytical_reference",
+   "unit": "dimensionless",
+   "observed": 20.150875,
+   "expected": 20.0,
+   "sem": 0.08878657166227157,
+   "note": null,
+   "tolerance": 0.05,
+   "allowed": 1.0,
+   "deviation": 0.1508749999999992,
+   "relative_deviation": 0.00754374999999996,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  },
+  {
+   "id": "explicit_fano",
+   "label": "explicit: Fano factor",
+   "evidence": "analytical_reference",
+   "unit": "dimensionless",
+   "observed": 7.06978066601428,
+   "expected": 6.925925925925926,
+   "sem": 0.051412871892498276,
+   "note": "Samples are spaced four RNA lifetimes apart.",
+   "tolerance": 0.1,
+   "allowed": 0.6925925925925926,
+   "deviation": 0.1438547400883543,
+   "relative_deviation": 0.02077047049404046,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  }
+ ],
+ "findings": [],
+ "figures": [],
+ "summary": {
+  "theory": {
+   "on_fraction": 0.2,
+   "mean": 20.0,
+   "fano": 6.925925925925926
+  }
+ },
+ "parameters": {
+  "on_rate": 0.05,
+  "off_rate": 0.2,
+  "initiation_rate": 2.0,
+  "decay_rate": 0.02,
+  "processing_rate": 0.5,
+  "elongation_rate": 20.0,
+  "reaction_interval": 1.0,
+  "burn_in": 1000.0,
+  "sample_every": 200.0,
+  "samples": 3000,
+  "replicas": 8,
+  "seed": 41
+ },
+ "environment": {
+  "python": "3.13.18",
+  "platform": "Linux-6.18.44-fc-v880-x86_64-with-glibc2.39"
+ }
+}
