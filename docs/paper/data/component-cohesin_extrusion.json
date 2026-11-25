@@ -1,0 +1,158 @@
+{
+ "study": "cohesin_extrusion",
+ "title": "Loop extrusion by a single cohesin",
+ "question": "Do loop growth, residence and barrier stalling follow the configured rates?",
+ "scale": "standard",
+ "analyzed_utc": "2026-11-25T17:29:25+00:00",
+ "application_version": "0.10.0",
+ "source_matches_current": true,
+ "changed_since_run": [],
+ "complete_jobs": 16,
+ "expected_jobs": 16,
+ "check_summary": {
+  "total": 6,
+  "passed": 6,
+  "by_evidence": {
+   "numerical_check": {
+    "total": 1,
+    "passed": 1
+   },
+   "analytical_reference": {
+    "total": 3,
+    "passed": 3
+   },
+   "experimental_reference": {
+    "total": 2,
+    "passed": 2
+   }
+  }
+ },
+ "checks": [
+  {
+   "id": "growth_speed",
+   "label": "Loop growth speed",
+   "evidence": "analytical_reference",
+   "unit": "beads per reduced time",
+   "observed": 0.010256375283543846,
+   "expected": 0.0102541478,
+   "sem": 1.1378147754674666e-05,
+   "note": null,
+   "tolerance": 0.03,
+   "allowed": 0.000307624434,
+   "deviation": 2.2274835438460677e-06,
+   "relative_deviation": 0.00021722756364464218,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  },
+  {
+   "id": "residence",
+   "label": "Mean residence",
+   "evidence": "analytical_reference",
+   "unit": "reduced time",
+   "observed": 6464.3803333333335,
+   "expected": 6436.419630873908,
+   "sem": 68.9014629778792,
+   "note": "Interval-endpoint timing adds up to one reaction interval.",
+   "tolerance": 0.05,
+   "allowed": 321.82098154369544,
+   "deviation": 27.960702459425193,
+   "relative_deviation": 0.00434413914302676,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  },
+  {
+   "id": "processivity",
+   "label": "Mean loop size at unloading",
+   "evidence": "analytical_reference",
+   "unit": "beads",
+   "observed": 65.33534769558653,
+   "expected": 66.9999981978025,
+   "sem": 0.5792055811217652,
+   "note": "Residences that reached a chain end are excluded, which biases this slightly low.",
+   "tolerance": 0.1,
+   "allowed": 6.69999981978025,
+   "deviation": 1.664650502215963,
+   "relative_deviation": 0.024845530552127106,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  },
+  {
+   "id": "speed_kb_per_s",
+   "label": "Loop growth in physical units",
+   "evidence": "experimental_reference",
+   "unit": "kb/s",
+   "observed": 0.5003109894411633,
+   "expected": 0.5,
+   "sem": 0.0005550315977890081,
+   "note": "Input-matched to Kim 2019 (0.5 kb/s average) through the provisional clock (needs_review); Davidson 2019 reports up to 2.1 kb/s. Confirms unit conversion only.",
+   "tolerance": 0.05,
+   "allowed": 0.025,
+   "deviation": 0.00031098944116325633,
+   "relative_deviation": 0.0006219788823265127,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  },
+  {
+   "id": "residence_min",
+   "label": "Residence in physical units",
+   "evidence": "experimental_reference",
+   "unit": "min",
+   "observed": 22.086632805555556,
+   "expected": 22.0,
+   "sem": 0.2354133318410873,
+   "note": "Input-matched to Hansen 2017 (about 22 min) through the provisional clock.",
+   "tolerance": 0.05,
+   "allowed": 1.1,
+   "deviation": 0.0866328055555563,
+   "relative_deviation": 0.003937854797979832,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  },
+  {
+   "id": "barrier_violations",
+   "label": "Legs crossing a blocking barrier",
+   "evidence": "numerical_check",
+   "unit": "events",
+   "observed": 0.0,
+   "expected": 0.0,
+   "sem": null,
+   "note": null,
+   "low": 0,
+   "high": 0,
+   "rule": "inside stated interval",
+   "passed": true
+  }
+ ],
+ "findings": [
+  "With one extruder and impermeable convergent barriers 800 kb apart, both anchors are held 0.006 of the time (\u00b1 0.001). Barriers never release a stalled leg; only cohesin unloading does."
+ ],
+ "figures": [],
+ "summary": {
+  "expected_speed": 0.0102541478,
+  "expected_residence": 6436.419630873908,
+  "mapping": {
+   "length_nm_per_unit": 47.2,
+   "time_s_per_unit": 0.205,
+   "time_s_per_unit_range": [
+    0.13,
+    0.32
+   ],
+   "status": "needs_review",
+   "scope": "2,000 beads x 10 kb Fbn2 baseline mechanics only"
+  }
+ },
+ "parameters": {
+  "beads": 2000,
+  "bp_per_bead": 10000,
+  "step_rate": 0.0051270739,
+  "off_rate": 0.00015536588,
+  "reaction_interval": 2.0,
+  "residences": 1500,
+  "replicas": 8,
+  "seed": 51
+ },
+ "environment": {
+  "python": "3.13.18",
+  "platform": "Linux-6.18.44-fc-v880-x86_64-with-glibc2.39"
+ }
+}

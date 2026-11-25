@@ -31,7 +31,14 @@ class TutorialServerTests(unittest.TestCase):
         (cls.assets / "player.js").write_text("document.title = 'Tutorial';")
         (cls.assets / "private.json").write_text('{"private":true}')
         (cls.root / "outside.txt").write_text("outside")
-        (cls.assets / "transcript.txt").symlink_to(cls.root / "outside.txt")
+        # Creating a symlink needs a privilege that ordinary Windows accounts lack
+        # (WinError 1314). Only the symlink case is skipped there; every other
+        # request in this class still runs.
+        try:
+            (cls.assets / "transcript.txt").symlink_to(cls.root / "outside.txt")
+            cls.symlink_available = True
+        except OSError:
+            cls.symlink_available = False
         cls.patch = patch.object(server, "TUTORIAL", cls.assets)
         cls.patch.start()
         cls.http = ThreadingHTTPServer(("127.0.0.1", 0), server.Handler)
@@ -111,11 +118,16 @@ class TutorialServerTests(unittest.TestCase):
                     self.assertEqual(headers["Content-Range"], f"bytes */{len(self.video)}")
                     self.assertEqual(content, b"")
 
-    def test_unpublished_assets_traversal_and_outside_symlink_are_refused(self):
+    def test_unpublished_assets_and_traversal_are_refused(self):
         for name in ("private.json", "../outside.txt", "%2e%2e/outside.txt", "%252e%252e/outside.txt",
-                     "subdir/index.html", "index.html%00", "transcript.txt", "render_tutorial.py"):
+                     "subdir/index.html", "index.html%00", "render_tutorial.py"):
             with self.subTest(path=name):
                 self.assertEqual(self.get(name)[0], 404)
+
+    def test_symlink_pointing_outside_the_tutorial_is_refused(self):
+        if not self.symlink_available:
+            self.skipTest("This account cannot create symlinks (Windows privilege); the refusal is untested here.")
+        self.assertEqual(self.get("transcript.txt")[0], 404)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,321 @@
+{
+ "study": "protein_diffusion",
+ "title": "Free protein diffusion",
+ "question": "Does a free molecule's centre of mass diffuse with the configured coefficient?",
+ "scale": "standard",
+ "analyzed_utc": "2026-11-25T17:40:24+00:00",
+ "application_version": "0.10.0",
+ "source_matches_current": true,
+ "changed_since_run": [],
+ "complete_jobs": 8,
+ "expected_jobs": 8,
+ "check_summary": {
+  "total": 6,
+  "passed": 6,
+  "by_evidence": {
+   "numerical_check": {
+    "total": 0,
+    "passed": 0
+   },
+   "analytical_reference": {
+    "total": 6,
+    "passed": 6
+   },
+   "experimental_reference": {
+    "total": 0,
+    "passed": 0
+   }
+  }
+ },
+ "checks": [
+  {
+   "id": "bead_lag1",
+   "label": "bead MSD at t = 0.1",
+   "evidence": "analytical_reference",
+   "unit": "reduced length^2",
+   "observed": 0.2998792332146385,
+   "expected": 0.30000000000000004,
+   "sem": 0.00024113626721586646,
+   "note": "Dilute probes; the confining wall and soft collisions are negligible here.",
+   "tolerance": 0.05,
+   "allowed": 0.015000000000000003,
+   "deviation": 0.00012076678536154795,
+   "relative_deviation": 0.00040255595120515975,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  },
+  {
+   "id": "bead_lag4",
+   "label": "bead MSD at t = 0.4",
+   "evidence": "analytical_reference",
+   "unit": "reduced length^2",
+   "observed": 1.193923088588938,
+   "expected": 1.2000000000000002,
+   "sem": 0.0004536121239784684,
+   "note": "Dilute probes; the confining wall and soft collisions are negligible here.",
+   "tolerance": 0.05,
+   "allowed": 0.06000000000000001,
+   "deviation": 0.006076911411062147,
+   "relative_deviation": 0.005064092842551788,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  },
+  {
+   "id": "bead_lag16",
+   "label": "bead MSD at t = 1.6",
+   "evidence": "analytical_reference",
+   "unit": "reduced length^2",
+   "observed": 4.74952250014556,
+   "expected": 4.800000000000001,
+   "sem": 0.006159571784499126,
+   "note": "Dilute probes; the confining wall and soft collisions are negligible here.",
+   "tolerance": 0.05,
+   "allowed": 0.24000000000000005,
+   "deviation": 0.05047749985444039,
+   "relative_deviation": 0.010516145803008413,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  },
+  {
+   "id": "idr_lag1",
+   "label": "idr MSD at t = 0.1",
+   "evidence": "analytical_reference",
+   "unit": "reduced length^2",
+   "observed": 0.2990298807839183,
+   "expected": 0.30000000000000004,
+   "sem": 0.0001518507758055332,
+   "note": "Dilute probes; the confining wall and soft collisions are negligible here.",
+   "tolerance": 0.05,
+   "allowed": 0.015000000000000003,
+   "deviation": 0.0009701192160817551,
+   "relative_deviation": 0.0032337307202725167,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  },
+  {
+   "id": "idr_lag4",
+   "label": "idr MSD at t = 0.4",
+   "evidence": "analytical_reference",
+   "unit": "reduced length^2",
+   "observed": 1.1911138695528087,
+   "expected": 1.2000000000000002,
+   "sem": 0.001111479192933886,
+   "note": "Dilute probes; the confining wall and soft collisions are negligible here.",
+   "tolerance": 0.05,
+   "allowed": 0.06000000000000001,
+   "deviation": 0.008886130447191443,
+   "relative_deviation": 0.007405108705992868,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  },
+  {
+   "id": "idr_lag16",
+   "label": "idr MSD at t = 1.6",
+   "evidence": "analytical_reference",
+   "unit": "reduced length^2",
+   "observed": 4.727153898308368,
+   "expected": 4.800000000000001,
+   "sem": 0.011875052668077821,
+   "note": "Dilute probes; the confining wall and soft collisions are negligible here.",
+   "tolerance": 0.05,
+   "allowed": 0.24000000000000005,
+   "deviation": 0.07284610169163308,
+   "relative_deviation": 0.015176271185756889,
+   "rule": "|observed - expected| <= max(tolerance x |expected|, 3 x sem)",
+   "passed": true
+  }
+ ],
+ "findings": [
+  "Under the provisional 10 kb polymer mapping (needs_review), D = 0.5 reduced is 0.0054 um^2/s and the schema maximum of 5 is 0.054 um^2/s. Free nuclear transcription factors are typically reported at roughly 1-10 um^2/s by single-molecule tracking (order of magnitude; not re-verified in this study), so protein mobility in the coarse presets is not on the polymer clock and must be calibrated separately."
+ ],
+ "figures": [
+  {
+   "id": "msd",
+   "title": "Free-protein mean-square displacement",
+   "kind": "xy",
+   "categories": null,
+   "x_label": "lag (reduced time)",
+   "y_label": "mean-square displacement (reduced length\u00b2)",
+   "x_scale": "log",
+   "y_scale": "log",
+   "series": [
+    {
+     "label": "Free diffusion, 6Dt",
+     "role": "reference",
+     "style": "line",
+     "group": null,
+     "x": [
+      0.05,
+      0.05562657380482433,
+      0.06188631426527141,
+      0.06885047255971347,
+      0.07659831786679867,
+      0.08521803964285743,
+      0.09480775143391715,
+      0.10547660764816466,
+      0.11734604600046261,
+      0.13055116977098094,
+      0.14524228561143251,
+      0.16158661440291452,
+      0.17977019463910837,
+      0.19999999999999998,
+      0.22250629521929738,
+      0.24754525706108557,
+      0.27540189023885386,
+      0.3063932714671948,
+      0.34087215857142983,
+      0.3792310057356686,
+      0.42190643059265864,
+      0.46938418400185056,
+      0.5222046790839238,
+      0.5809691424457298,
+      0.6463464576116583,
+      0.7190807785564335,
+      0.7999999999999999,
+      0.8900251808771897,
+      0.9901810282443425,
+      1.1016075609554155,
+      1.225573085868779,
+      1.3634886342857195,
+      1.5169240229426746,
+      1.6876257223706346,
+      1.877536736007403,
+      2.0888187163356955,
+      2.3238765697829202,
+      2.5853858304466324,
+      2.876323114225735,
+      3.2
+     ],
+     "y": [
+      0.15000000000000002,
+      0.166879721414473,
+      0.1856589427958142,
+      0.2065514176791404,
+      0.22979495360039603,
+      0.25565411892857226,
+      0.2844232543017514,
+      0.31642982294449395,
+      0.35203813800138783,
+      0.39165350931294285,
+      0.43572685683429757,
+      0.48475984320874355,
+      0.5393105839173251,
+      0.6,
+      0.6675188856578922,
+      0.7426357711832567,
+      0.8262056707165616,
+      0.9191798144015844,
+      1.0226164757142895,
+      1.1376930172070057,
+      1.2657192917779758,
+      1.4081525520055518,
+      1.5666140372517714,
+      1.7429074273371894,
+      1.939039372834975,
+      2.1572423356693005,
+      2.4,
+      2.670075542631569,
+      2.9705430847330274,
+      3.3048226828662464,
+      3.676719257606337,
+      4.090465902857159,
+      4.5507720688280235,
+      5.062877167111903,
+      5.632610208022209,
+      6.2664561490070865,
+      6.971629709348761,
+      7.756157491339897,
+      8.628969342677205,
+      9.600000000000001
+     ]
+    },
+    {
+     "label": "Engine, bead probe (mean \u00b1 SEM)",
+     "role": "model",
+     "style": "points",
+     "group": null,
+     "x": [
+      0.1,
+      0.4,
+      1.6
+     ],
+     "y": [
+      0.2998792332146385,
+      1.193923088588938,
+      4.74952250014556
+     ],
+     "low": [
+      0.2996380969474226,
+      1.1934694764649596,
+      4.743362928361061
+     ],
+     "high": [
+      0.3001203694818544,
+      1.1943767007129165,
+      4.755682071930059
+     ]
+    },
+    {
+     "label": "Engine, idr probe (mean \u00b1 SEM)",
+     "role": "model",
+     "style": "points",
+     "group": null,
+     "x": [
+      0.1,
+      0.4,
+      1.6
+     ],
+     "y": [
+      0.2990298807839183,
+      1.1911138695528087,
+      4.727153898308368
+     ],
+     "low": [
+      0.29887803000811275,
+      1.1900023903598749,
+      4.71527884564029
+     ],
+     "high": [
+      0.29918173155972383,
+      1.1922253487457426,
+      4.739028950976445
+     ]
+    }
+   ],
+   "bands": [],
+   "note": "IDR probes are tracked by their centre of mass."
+  }
+ ],
+ "summary": {
+  "reduced_to_um2_per_s": 0.010867512195121954,
+  "mapping": {
+   "length_nm_per_unit": 47.2,
+   "time_s_per_unit": 0.205,
+   "time_s_per_unit_range": [
+    0.13,
+    0.32
+   ],
+   "status": "needs_review",
+   "scope": "2,000 beads x 10 kb Fbn2 baseline mechanics only"
+  }
+ },
+ "parameters": {
+  "count": 40,
+  "diffusion": 0.5,
+  "dt": 0.002,
+  "steps": 400000,
+  "record_every": 50,
+  "lags": [
+   1,
+   4,
+   16
+  ],
+  "radius": 40.0,
+  "replicas": 4,
+  "seed": 21
+ },
+ "environment": {
+  "python": "3.13.18",
+  "platform": "Linux-6.18.44-fc-v880-x86_64-with-glibc2.39"
+ }
+}

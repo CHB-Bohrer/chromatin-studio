@@ -4,7 +4,7 @@ A local visual builder and exploratory simulator for chromatin, reacting protein
 
 **This is a working research prototype in reduced units.** It now includes an explicit MSD calibration workflow and reproducible polymer reference benchmarks. No experimental clock is attached to the supplied presets. Numerical agreement with a reference model is separate from calibration and biological validation.
 
-**Continuing development with an AI or a new collaborator?** Start with [AGENTS.md](AGENTS.md), the [current project status and unfinished milestones](docs/PROJECT_STATUS.md), and the [development guide](docs/DEVELOPMENT.md). They record what is implemented, what the evidence supports, and how to continue without relying on earlier chats.
+**Continuing development with an AI or a new collaborator?** Start with [AGENTS.md](AGENTS.md), the [current project status and unfinished milestones](docs/PROJECT_STATUS.md), and the [development guide](docs/DEVELOPMENT.md). They record what is implemented, what the evidence supports, and how to continue without relying on earlier chats. For a readable description of how the simulator works and how each part was validated, see the [software paper](docs/paper/chromatin-studio-paper.pdf) ([sources](docs/paper/README.md)).
 
 ## Open the application
 
@@ -35,7 +35,7 @@ See [release scope and attribution](docs/RELEASE.md), [citation metadata](CITATI
 
 ## Tutorial and experimental references
 
-Use **Tutorial** in the application header, or open [the offline player](tutorial/index.html). The captioned walkthrough uses natural narration at a comfortable speaking pace. Chapter links let you revisit individual topics, and the player offers adjustable playback speed; start at 1× and choose the pace that suits you. It uses actual application captures: the 20 Mb overview is coarse; the 80 kb manuscript-hypothesis example demonstrates regulation and individual RNA; and the 25.6 kb nucleosome-access example shows live 1D binding, occupied/vacant sites, species-specific capture/release and remodelers. Preset changes are explicit. The [editable storyboard](tutorial/storyboard.json), [renderer instructions](tutorial/README.md), transcript, captions and original captures let you regenerate only changed scenes. This is a scripted keyframe walkthrough, not an uninterrupted recording of simulation dynamics.
+Use **Tutorial** in the application header, or open [the offline player](tutorial/index.html). The captioned walkthrough uses natural narration at a comfortable speaking pace. Chapter links let you revisit individual topics, and the player offers adjustable playback speed; start at 1× and choose the pace that suits you. It uses actual application captures, all at 200 bp per bead: the 80 kb manuscript-hypothesis example demonstrates regulation, individual RNA and the whole nucleus; and the 25.6 kb nucleosome-access example shows live 1D binding, occupied/vacant sites, species-specific capture/release and remodelers. Preset changes are explicit. The [editable storyboard](tutorial/storyboard.json), [renderer instructions](tutorial/README.md), transcript, captions and original captures let you regenerate only changed scenes. This is a scripted keyframe walkthrough, not an uninterrupted recording of simulation dynamics.
 
 **Calibrate → Import measured MSD** now imports public Hansen lab Fbn2 measurements, keeping all twelve conditions separate. The 17 curve variants include raw and noise-corrected RAD21 2h references and a movie-level fitting/holdout split. The fitting subset contains 424 trajectories from 74 movies; 113 trajectories from 18 different movies remain held out. Import retains units, sources, processing, counts and distance statistics. It neither assigns a physical clock nor changes the live run.
 
@@ -564,6 +564,10 @@ Useful primary references:
 - [Bhat et al.: speckle proximity and splicing](https://pmc.ncbi.nlm.nih.gov/articles/PMC11164319/).
 - [Feric et al.: nucleolar subcompartments and multivalent domain models](https://pmc.ncbi.nlm.nih.gov/articles/PMC5127388/).
 - [CALVADOS: sequence-based IDR and multidomain protein models](https://github.com/KULL-Centre/CALVADOS).
+
+## Component studies: one mechanism at a time
+
+Before trusting a combined model, test its parts. `python -m chromatin_studio.components list` shows studies that each switch on a single mechanism (bare DNA, one diffusing protein, nucleosome turnover, one gene, one cohesin, DNA plus one binding protein, transcription-factor kinetics with and without a nucleosome, HP1 binding versus H3K9me3 density, DNA plus cohesin and barriers) and compare the engine with a closed-form result or a published measurement. Every check is labelled as a numerical check, an analytical reference or an experimental reference, and experimental comparisons state whether they are input-matched, tuned or genuine predictions. Passing an experimental check is not a calibration. Start the server with `--evidence <folder with study outputs>` and open the **Evidence** tab to see every saved check and figure charted against its reference; the view only reads reports. See the [component study guide](docs/COMPONENT_STUDIES.md) for commands, the module contract and how to add a study; dated results are in the [project status](docs/PROJECT_STATUS.md).
 
 ## Source layout
 

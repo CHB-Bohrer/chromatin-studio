@@ -34,6 +34,7 @@ Optional settings include `--voice af_bella`, `--target-wpm 145`, and `--threads
 ## Render
 
 Use a Python environment with **Pillow** and **imageio-ffmpeg**, such as this workspace's `../../work/sim-env/bin/python`.
+On Windows, set `PYTHONUTF8=1` for both narration and rendering; the renderer falls back to `C:WindowsFontsrial.ttf`. After rendering, make sure `render-manifest.json` and `render-timeline.json` hold repo-relative `narration-neural/...` paths, not absolute local ones.
 
 ```sh
 python tutorial/render_tutorial.py \
@@ -58,6 +59,8 @@ Generated files include the MP4, timed key points in SRT/VTT, chapter JSON/FFmet
 
 ## Update one chapter
 
+Chapters are independent units. A chapter owns one scene entry in **storyboard.json**, its capture files, one block of **transcript.txt** and one `narration-neural/<scene-id>.wav`. Scene ids are stable names, not positions: playback order is the order of the `scenes` list, so a chapter can be inserted or moved without renaming the others. Only the final assembly (video, chapter times, player) spans chapters.
+
 1. Edit its wording or capture actions in **storyboard.json**.
 2. Recapture only affected UI views, retaining their filenames.
 3. Update the matching narration in **transcript.txt**.
@@ -69,9 +72,20 @@ Use the same work directory and render settings to reuse cached clips. Renderer 
 
 A keyframe can specify `focus_rect: [x, y, width, height]` in source-image pixels. Keep important status labels visible. Without a crop, the full screenshot is letterboxed. PNG and JPEG content are supported, including captures with a `.png` filename containing JPEG pixels.
 
+## Keeping the tutorial current (checklist for future AI contributors)
+
+Run this whenever a feature, preset, limit or default changes.
+
+1. **Single source of truth.** `storyboard.json` holds narration, captions and capture actions; `transcript.txt` must contain each scene title followed by the same narration, in storyboard scene order, with one blank line between scenes. Edit both together, then run `python -m unittest tests.test_tutorial_sync`: it names the chapter whose transcript, capture files, caption/keyframe timings or recorded narration are out of step.
+2. **Scale vocabulary.** A bead is a coarse genomic interval whose size is a setting (`chromatin.bp_per_bead`). At 200 bp it is a coarse nucleosome unit (occupied/vacant). At 10 kb it is a bin of many nucleosomes. Never say "each bead is X" without naming the preset; every chapter uses 200 bp presets (since 2026-11-24); the 10 kb presets are only mentioned in chapter 01. Check against `chromatin_studio/schema.py` `PRESETS` and `examples/*.json`.
+3. **Claims audit.** Compare every number and limit (bead counts, bounds, GPU scope, calibration status) with `AGENTS.md`, `docs/PROJECT_STATUS.md` and `CONTRACT.md`. Narration must not claim calibration, validation or full-GPU execution that the status file does not.
+4. **Mark audio stale.** Changing a scene's text invalidates its `narration-neural/<scene>.wav`; regenerate with `narrate_neural.py --scene <id>`, then re-render. If the voice environment is unavailable, say so in `PROJECT_STATUS.md` and the `status.json` tutorial note rather than leaving the video described as current.
+5. **Recapture** only the UI views whose labels or layout changed, keeping filenames; record provenance.
+6. **Update handoff.** Add a dated entry to `docs/PROJECT_STATUS.md` and keep `status.json` consistent.
+
 ## Capture and scientific review
 
-Use an isolated recording instance or preserve and restore the current run. Only actual engine steps should create demonstrated bindings, contacts and RNA. Distinguish three recording models: the coarse 20 Mb overview, the 80 kb manuscript-hypothesis nucleosome-unit example, and the focused 25.6 kb nucleosome-access example. Chapters **03-genome** and **16-remodelers** explicitly switch to the 25.6 kb example; **04-proteins** explicitly returns to the 80 kb example. Preserve separate model/run provenance for these captures. The v0.10 storyboard contains **16 chapters**, adding a live 1D binding walkthrough and a dedicated accessibility/remodeler chapter to confinement, the live regulatory rate map, body responses, within-interval promoter timing and isolated manuscript studies. The rendered duration comes from measured narration; do not reuse the previous video duration after rebuilding.
+Use an isolated recording instance or preserve and restore the current run. Only actual engine steps should create demonstrated bindings, contacts and RNA. Distinguish two recording models, both at 200 bp per bead: the 80 kb manuscript-hypothesis nucleosome-unit example (chapters 01, 02 and 17 onward) and the focused 25.6 kb nucleosome-access example. Chapter 17 adds a whole nucleus to the 80 kb model, with the envelope at the app's default placement away from the nucleolus. Chapters **03-genome** and **16-remodelers** explicitly switch to the 25.6 kb example; **17-nucleus-tethers** explicitly returns to the 80 kb example. Preserve separate model/run provenance for these captures. The storyboard now contains **18 chapters** (chapter 17 covers the whole nucleus and tethering; chapter 18, placed after the study results, covers the Evidence view and the component tests that were run). The v0.10 set of 16 added a live 1D binding walkthrough and a dedicated accessibility/remodeler chapter to confinement, the live regulatory rate map, body responses, within-interval promoter timing and isolated manuscript studies. The rendered duration comes from measured narration; do not reuse the previous video duration after rebuilding.
 
 Verify the distinctions between draft and applied models, learning illustrations and measurements, affinity and observed occupancy, basal transcription and TF-dependent gains, coarse IDRs and molecular detail, synthetic calibration and empirical evidence, implementation tests and published-figure replication, and cluster export and completed GPU execution.
 

@@ -4,7 +4,7 @@
   "tagline": "A visual builder and simulator for chromatin, reacting proteins, histone marks, cohesin and transcription.",
   "kind": "Research software",
   "stage": "Research prototype",
-  "as_of": "2026-11-06",
+  "as_of": "2026-11-24",
   "repo": "CHB-Bohrer/chromatin-studio",
   "links": [
     {
@@ -37,12 +37,12 @@
       "label": "current release"
     },
     {
-      "value": "235 of 237",
-      "label": "Python tests pass; the other 2 are skipped GPU and OpenCL hardware checks"
+      "value": "285 of 286",
+      "label": "Python tests pass on the development branch (22 Nov 2026); the other is a Windows-only skip. Browser interface tests were not rerun"
     },
     {
-      "value": "16",
-      "label": "narrated tutorial chapters, about 10 minutes, built from real captured states of the app"
+      "value": "18",
+      "label": "narrated tutorial chapters, about 13 minutes, built from real captured states of the app"
     },
     {
       "value": "2,894",
@@ -98,6 +98,11 @@
             "note": "Separately configurable spatial affinity fields with transcription responses. They are imposed fields, not self-assembled organelles."
           },
           {
+            "name": "Whole nucleus and tethering",
+            "state": "partial",
+            "note": "In development, not yet released: a soft nuclear envelope around the modeled region, and genomic elements such as lamina-associated domains that attach to it with mark- and nucleosome-dependent rates. These are phenomenological anchors, not lamina proteins, and they run only on the CPU engine."
+          },
+          {
             "name": "Live inspection",
             "state": "built",
             "note": "3D view, live 1D binding with occupied and vacant sites, genomic tracks, regulatory rate breakdowns and individual RNAs. Read-only snapshots."
@@ -108,6 +113,11 @@
             "note": "Independent control runs and reference calculations work. Quantitative manuscript conclusions and full matched-allele spatial comparisons are unfinished."
           },
           {
+            "name": "Single-mechanism component studies",
+            "state": "partial",
+            "note": "In development, not yet released: nine studies that each switch on one mechanism, and an Evidence view in the app that charts every saved check against its reference. Nucleosome turnover, single-gene bursting, single-cohesin extrusion, free diffusion and the bare-DNA chain match their closed-form results. Against published single-molecule experiments: nucleosome effects on transcription-factor binding (Donovan et al.) are reproduced only when nucleosomes also slow factor release, not by blocking access alone; Sox2 search times bracket the measured value but the coarse scan has not yet hit it; rebinding among marked nucleosomes reproduces how HP1α residence grows with H3K9me3 density (Kilic et al.), but not how strongly competing HP1α shortens it, which points to a missing mechanism such as facilitated dissociation. A pass against an experiment is not a calibration."
+          },
+          {
             "name": "Cluster and headless runs",
             "state": "built",
             "note": "Slurm and job-array scripts, headless execution, streamed results and provenance. Fresh runs only: the app does not submit jobs and cannot continue a run from a checkpoint."
@@ -115,7 +125,7 @@
           {
             "name": "Narrated tutorial",
             "state": "built",
-            "note": "A scripted walkthrough of genuine captured states, not continuous simulation footage."
+            "note": "A scripted walkthrough of genuine captured states, not continuous simulation footage. Re-rendered on 2026-11-24 with 18 chapters, all at 200 bp per bead (about one nucleosome), with plainer explanations of binding and release rates. Not yet reviewed at 1×."
           }
         ]
       },
@@ -135,8 +145,8 @@
           },
           {
             "name": "3. Calibrate the biological mechanisms",
-            "state": "planned",
-            "note": "Fit protein mobility, residence times and transcription separately, then compare controlled limits before combining mechanisms."
+            "state": "partial",
+            "note": "Started: each mechanism is tested alone against a reference, including nucleosome and histone-mark effects on protein binding. Still to do: finish the cohesin comparison, refine the Sox2 and HP1 scans and test a facilitated-dissociation rule for HP1, then fit protein mobility, residence times and transcription separately before combining mechanisms. Protein mobility in the coarse presets is far below measured values and is not yet on the polymer clock."
           },
           {
             "name": "4. Validate and speed up GPU and cluster runs",
@@ -183,5 +193,5 @@
       "caption": "A coarse 20 Mb model: 2,000 beads at 10 kb per bead."
     }
   ],
-  "source_note": "Summarised from the project's own status document (docs/PROJECT_STATUS.md, last reviewed 6 Nov 2026). When the status changes, edit status.json in this folder."
+  "source_note": "Summarised from the project's own status document (docs/PROJECT_STATUS.md, last reviewed 24 Nov 2026). When the status changes, edit status.json in this folder."
 }

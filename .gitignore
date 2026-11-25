@@ -28,3 +28,6 @@ desktop.ini
 # Never commit credentials or the full manuscript
 .env
 *.pem
+
+# Software paper build intermediates
+docs/paper/build/

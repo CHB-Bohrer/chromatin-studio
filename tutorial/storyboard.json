@@ -4,7 +4,7 @@
   "subtitle": "An editable walkthrough of the actual application",
   "language": "en",
   "playback_speed": 1,
-  "normal_duration_seconds": 704,
+  "normal_duration_seconds": 808,
   "delivery": {
     "preferred_resolution": "1920x1080",
     "frame_rate": 30,
@@ -20,14 +20,14 @@
     "narration_manifest": "narration-neural/narration-manifest.json"
   },
   "capture_session": {
-    "starting_preset": "twenty_mb",
+    "starting_preset": "manuscript_locus",
     "demonstration_preset": "manuscript_locus",
-    "starting_preset_label": "20 Mb chromatin",
+    "starting_preset_label": "Manuscript hypotheses \u00b7 80 kb",
     "demonstration_preset_label": "Manuscript hypotheses \u00b7 80 kb",
     "preparation": [
       "Use an isolated recording instance or preserve and restore the user's current model, run state and history.",
       "Keep the user's working application untouched while preparing tutorial examples.",
-      "Capture the 20 Mb starting model for orientation, then explicitly switch the isolated recording instance to the 80 kb manuscript-hypothesis preset.",
+      "Capture the 80 kb manuscript-hypothesis model (200 bp per bead) for orientation; every chapter uses 200 bp beads.",
       "Use real simulation steps to obtain any demonstrated bonds, contacts, polymerases or RNA. Retain the seed and run provenance used for those captures.",
       "For chapters 03 and 16, explicitly switch a separate isolated recording instance to nucleosome_access (128 beads \u00d7 200 bp). Return to the saved 80 kb manuscript example for chapter 04 onward. Preserve both model/run records.",
       "Pause before inspecting a state so the selected object and displayed measurements remain consistent.",
@@ -48,7 +48,7 @@
       "title": "Start with the workbench",
       "normal_duration_seconds": 32,
       "primary_capture": "01-overview.png",
-      "narration": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. The starting example spans twenty megabases using two thousand beads, so each bead represents ten kilobases. That is a coarse genomic mapping, not nucleosome resolution. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the scale, the run status, and the physical-clock label.",
+      "narration": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a stretch of DNA, and its size is a model setting. This walkthrough uses one size throughout: two hundred base pairs per bead, about one nucleosome and its linker. The example is Manuscript hypotheses at eighty kilobases: four hundred beads of two hundred base pairs each. Coarser presets also exist, where one bead stands for ten kilobases and many nucleosomes, but they are not used here. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
       "captions": [
         {
           "start": 0,
@@ -58,7 +58,7 @@
         {
           "start": 10,
           "end": 22,
-          "text": "20 Mb example = 2,000 beads \u00d7 10 kb. Individual nucleosomes are unresolved at this scale."
+          "text": "Bead size is a setting. This tutorial uses 200 bp per bead throughout: about one nucleosome and its linker. 400 beads = 80 kb."
         },
         {
           "start": 22,
@@ -71,7 +71,7 @@
           "capture": "01-overview.png",
           "duration": 18,
           "actions": [
-            "Open the recording instance with the 20 Mb chromatin preset paused.",
+            "Open the recording instance with Manuscript hypotheses \u00b7 80 kb (400 beads \u00d7 200 bp), paused after a short genuine run.",
             "Show the 3D nucleus, genomic-scale label, and run controls."
           ]
         },
@@ -79,13 +79,13 @@
           "capture": "01-overview-inspector.png",
           "duration": 14,
           "actions": [
-            "Select a visible chromatin bead or protein in the actual 3D view.",
+            "Select Gene A from the gene activity list.",
             "Show its inspector alongside the paused run."
           ]
         }
       ],
       "accuracy_notes": [
-        "The twenty_mb starting preset does not itself demonstrate every regional TF or individual-RNA feature.",
+        "Every chapter uses 200 bp beads. Coarse 10 kb presets are mentioned but not shown.",
         "Do not call reduced time seconds unless the applied model has a documented calibration record."
       ]
     },
@@ -94,17 +94,17 @@
       "title": "Choose a focused experiment",
       "normal_duration_seconds": 36,
       "primary_capture": "02-build-and-learn.png",
-      "narration": "For the detailed walkthrough, choose Manuscript hypotheses at eighty kilobases. Four hundred coarse units represent two hundred base pairs each, with nucleosome occupancy and individual transcripts enabled. The preset includes transcription factors, coactivators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
+      "narration": "The Manuscript hypotheses example is the main model for this walkthrough. Each of its four hundred beads is two hundred base pairs, a coarse nucleosome unit that can be occupied or vacant. Nucleosome occupancy and individual transcripts are enabled. The preset includes transcription factors, coactivators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
       "captions": [
         {
           "start": 0,
           "end": 12,
-          "text": "Choose \u201cManuscript hypotheses \u00b7 80 kb\u201d for a focused experiment with occupancy and individual RNA."
+          "text": "\u201cManuscript hypotheses \u00b7 80 kb\u201d is the main example, with nucleosome occupancy and individual RNA."
         },
         {
           "start": 12,
           "end": 24,
-          "text": "400 beads \u00d7 200 bp: coarse nucleosome units, without wrapped-DNA or histone-tail geometry."
+          "text": "1 bead = 200 bp = one coarse nucleosome unit (occupied or vacant); 400 beads = 80 kb. No wrapped-DNA or histone-tail geometry."
         },
         {
           "start": 24,
@@ -133,7 +133,7 @@
         }
       ],
       "accuracy_notes": [
-        "Make the preset change explicit; do not present the small-locus run as a nucleosome-resolved 20 Mb simulation.",
+        "Keep the 200 bp bead size explicit; a bead is a coarse nucleosome unit, not wrapped DNA.",
         "The motion lesson shows an analytical example, not a measured trajectory."
       ]
     },
@@ -185,22 +185,22 @@
       "title": "Watch binding along the chromosome",
       "normal_duration_seconds": 54,
       "primary_capture": "03-genome.png",
-      "narration": "For a clear binding example, choose the twenty-five point six kilobase nucleosome-access preset. Open the one-dimensional genome and choose Live binding. Genes, nucleosome occupancy and directly bound proteins share one genomic axis. Navigate to a gene, then use Binding detail to see individual sites. Here, two hundred base pairs per bead represents a coarse nucleosome unit. In the twenty-megabase example, each symbol instead represents a much larger bin. Each molecule marker comes from a real chromatin bond; proximity alone is not binding. Run to watch bindings change, then pause and select a site. The table separates association and release hazards for each species. Times remain reduced until an empirical physical mapping is attached. All tracks restores the wider view of marks, loops, polymerases and protein preferences.",
+      "narration": "For a clearer view of binding, switch to a smaller example. In the Experiment menu it is called Live nucleosome access, twenty-five point six kilobases. That simply means a twenty-five point six kilobase stretch of chromatin: one hundred twenty-eight beads, still two hundred base pairs each, set up so that nucleosomes visibly control which sites proteins can reach. Open the one-dimensional genome and choose Live binding. Genes, nucleosome occupancy and directly bound proteins share one genomic axis. Navigate to a gene, then use Binding detail to see individual sites. Each molecule marker comes from a real chromatin bond; proximity alone is not binding. Run to watch bindings change, then pause and select a site. The table gives two rates for each protein. The association hazard is how often a nearby molecule binds, per unit of time. The release hazard is how often a bound molecule lets go; one over the release hazard is the average time it stays bound. Times remain reduced until an empirical physical mapping is attached. All tracks restores the wider view of marks, loops, polymerases and protein preferences.",
       "captions": [
         {
           "start": 0,
           "end": 18,
-          "text": "Choose the 25.6 kb nucleosome-access example, then Live binding. Use Binding detail to inspect individual sites."
+          "text": "\u201cLive nucleosome access \u00b7 25.6 kb\u201d: a 25.6 kb region, 128 beads \u00d7 200 bp, built to show how nucleosomes control binding."
         },
         {
           "start": 18,
           "end": 36,
-          "text": "200 bp beads show coarse nucleosome units; 10 kb beads show effective bins. Proximity alone is not binding."
+          "text": "Live binding, then Binding detail, shows individual sites. Each marker is a real bond; proximity alone is not binding."
         },
         {
           "start": 36,
           "end": 54,
-          "text": "Select a site to compare association and release hazards. Times remain reduced unless a physical mapping is attached."
+          "text": "Association hazard: how often a nearby molecule binds. Release hazard: how often a bound one lets go; 1/release = mean time bound."
         }
       ],
       "keyframes": [
@@ -250,7 +250,7 @@
         "Capture hazards are not equilibrium Kd or macroscopic molar kon. Site release hazards use the current occupancy state.",
         "This video uses paused captures from genuine engine runs; the app itself updates the view while running.",
         "Do not call reduced time seconds unless the applied model carries a documented physical mapping.",
-        "This chapter explicitly changes the recording preset from the preceding 80 kb example. The following remodeler chapter uses this same 25.6 kb example."
+        "This chapter explicitly changes the recording preset from the 80 kb example to the smaller 25.6 kb example, still at 200 bp per bead. The remodeler chapter uses this same example."
       ]
     },
     {
@@ -258,7 +258,7 @@
       "title": "Create gaps and recruit remodelers",
       "normal_duration_seconds": 64,
       "primary_capture": "16-nucleosome-gaps.png",
-      "narration": "Stay in the nucleosome-access example. In Chromatin, define an initially vacant interval to create a nucleosome-free region. This sets the starting state; reassembly can fill the gap later. In Proteins, each species has separate occupied and vacant capture and release multipliers. Opening a site can favor one species and disfavor another, especially when eviction also removes a mark. Add chromatin remodeler creates an editable species and enables occupancy in the draft. Its eviction, reassembly and sliding rates act when it is attached to chromatin or recruited through a configured transcription factor. Eviction clears marks. Reassembly starts unmarked. Sliding moves occupancy and its marks into an adjacent vacant bead, conserving nucleosome number. Inspect Recorded binding and remodeling events to follow what actually occurred. These are recent recorded events, not a complete microscopic history. Apply changes only when ready to start a new run.",
+      "narration": "Stay in the twenty-five point six kilobase nucleosome-access example. In Chromatin, define an initially vacant interval to create a nucleosome-free region. This sets the starting state; reassembly can fill the gap later. In Proteins, each species has separate multipliers for occupied and vacant sites: one scales how often it binds, the other how quickly it lets go. Opening a site can favor one species and disfavor another, especially when eviction also removes a mark. Add chromatin remodeler creates an editable species and enables occupancy in the draft. Its eviction, reassembly and sliding rates act when it is attached to chromatin or recruited through a configured transcription factor. Eviction clears marks. Reassembly starts unmarked. Sliding moves occupancy and its marks into an adjacent vacant bead, conserving nucleosome number. Inspect Recorded binding and remodeling events to follow what actually occurred. These are recent recorded events, not a complete microscopic history. Apply changes only when ready to start a new run.",
       "captions": [
         {
           "start": 0,
@@ -356,11 +356,79 @@
       ]
     },
     {
+      "id": "17-nucleus-tethers",
+      "title": "Add the whole nucleus and tethering elements",
+      "normal_duration_seconds": 56,
+      "primary_capture": "17-nucleus-envelope.png",
+      "narration": "Return to the eighty-kilobase example, open Bodies and add Whole nucleus. The modeled region still sits inside its own confinement sphere, while a much larger soft envelope represents the nuclear periphery. The region is a small part of the nucleus, so one side of it meets the envelope. By default that is the side away from the nucleolus, which faces the nuclear interior; you can move the envelope. Then add tethering elements: genomic intervals, such as lamina-associated domains, whose beads can attach to the envelope or to a landmark surface. Each bead within the capture distance attaches with its own hazard and, once attached, feels a spring to a fixed anchor. Attachment can require a mark and an occupied nucleosome, and vacant sites can release faster. In 3D, tick Whole nucleus to frame the envelope, and look for amber tether links. In 1D genome, the Tethers row shows attached beads, and the Nucleosomes row marks every vacant site. Tethers are phenomenological anchors, not lamina proteins.",
+      "captions": [
+        {
+          "start": 0,
+          "end": 14,
+          "text": "Bodies \u2192 Whole nucleus adds a soft envelope. The region meets it on the side away from the nucleolus, which faces the nuclear interior."
+        },
+        {
+          "start": 14,
+          "end": 28,
+          "text": "Tethering elements are genomic intervals. Beads within the capture distance attach stochastically and feel a spring to a fixed anchor."
+        },
+        {
+          "start": 28,
+          "end": 42,
+          "text": "Attachment can require a mark and an occupied nucleosome; vacant sites can release faster."
+        },
+        {
+          "start": 42,
+          "end": 56,
+          "text": "1D genome shows attached beads per element and every vacant nucleosome site. Tethers are phenomenological anchors."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "17-nucleus-envelope.png",
+          "duration": 14,
+          "actions": [
+            "Use the isolated UI-check instance: the 80 kb model with a default-placed whole nucleus and one LAD tether over the H3K9me3 domain.",
+            "In 3D nucleus, tick Whole nucleus to frame the envelope around the territory."
+          ]
+        },
+        {
+          "capture": "17-tether-editor.png",
+          "duration": 14,
+          "actions": [
+            "Open Bodies \u2192 Whole nucleus & tethering in the expanded builder.",
+            "Show envelope stiffness, semi-axes, centre and the first tether element's interval and kinetics."
+          ]
+        },
+        {
+          "capture": "17-tethers-local.png",
+          "duration": 14,
+          "actions": [
+            "Untick Whole nucleus and zoom in to show amber tether links from attached beads to envelope anchors."
+          ]
+        },
+        {
+          "capture": "17-occupancy-tethers-1d.png",
+          "duration": 14,
+          "actions": [
+            "Open 1D genome \u2192 Live binding; show the Tethers row (attached beads per element) and the Nucleosomes row with vacant-site gaps and the occupancy count."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "The capture model (recording-nucleus-tethers-model.json) uses an accelerated attach rate and a wider capture distance so attachments appear within a short UI run. It is a UI check, not a scientific model.",
+        "The envelope is a soft imposed wall; there is no lamina meshwork, pore complex, membrane mechanics or anchor diffusion.",
+        "Tether hazards are model inputs, not measured lamina-binding kinetics.",
+        "The OpenMM backends refuse models with a nuclear envelope or tethers; only the NumPy Brownian reference integrates them.",
+        "The envelope position follows the app's default, which places the peripheral side away from the nucleolus. Nuclear bodies are imposed fields inside the modeled region; nothing requires the nucleolus to sit at the periphery."
+      ]
+    },
+    {
       "id": "04-proteins",
       "title": "Define many proteins and their roles",
       "normal_duration_seconds": 40,
       "primary_capture": "04-proteins.png",
-      "narration": "Return to the eighty-kilobase manuscript example for the rest of the walkthrough. The Proteins editor defines each species independently. Expand builder gives these settings room. Set abundance, free diffusion, binding valence, mark preferences, and occupied-versus-vacant capture and release factors. A species can also write or erase a mark, or remodel nucleosomes. An IDR representation expands a molecule into a flexible chain of domain beads with binding stickers. This supports higher-order assemblies, but it is not an amino-acid-resolved protein model. Choose roles and interactions as explicit hypotheses; a biological name is not a calibrated parameter set.",
+      "narration": "The rest of the walkthrough stays in the eighty-kilobase example. The Proteins editor defines each species independently. Expand builder gives these settings room. Set abundance, free diffusion, binding valence, mark preferences, and occupied-versus-vacant capture and release factors. A species can also write or erase a mark, or remodel nucleosomes. An IDR representation expands a molecule into a flexible chain of domain beads with binding stickers. This supports higher-order assemblies, but it is not an amino-acid-resolved protein model. Choose roles and interactions as explicit hypotheses; a biological name is not a calibrated parameter set.",
       "captions": [
         {
           "start": 0,
@@ -856,11 +924,62 @@
       ]
     },
     {
+      "id": "18-evidence",
+      "title": "Check what the component tests actually showed",
+      "normal_duration_seconds": 48,
+      "primary_capture": "18-evidence-overview.png",
+      "narration": "Evidence shows the component tests that were actually run. Each study switches on one mechanism and compares the engine with its own rule, a closed-form result, or a published measurement. Those three levels are counted separately. The page only reads saved reports, so it runs nothing and leaves your simulation untouched. Select a study to see its figures. In the nucleosome kinetics study, based on Donovan and colleagues, blocking the site alone makes Reb1 and Cbf1 bind far too weakly. Matching their titrations requires slower release from the nucleosome. Hover for values, or open the table. Every check shows its accepted window, and experimental checks say whether they are input-matched, tuned, or a prediction. A pass under the provisional unit mapping is not a calibration.",
+      "captions": [
+        {
+          "start": 0,
+          "end": 16,
+          "text": "Numerical checks, closed-form references and published measurements are counted separately."
+        },
+        {
+          "start": 16,
+          "end": 32,
+          "text": "Donovan et al.: occlusion alone is too weak for Reb1 and Cbf1; slower release from the nucleosome matches."
+        },
+        {
+          "start": 32,
+          "end": 48,
+          "text": "Each check shows its window and basis: input-matched, tuned or prediction. A pass is not a calibration."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "18-evidence-overview.png",
+          "duration": 16.0,
+          "actions": [
+            "Open Evidence and show the totals by evidence level and the list of studies with saved reports."
+          ]
+        },
+        {
+          "capture": "18-evidence-figure.png",
+          "duration": 16.0,
+          "actions": [
+            "Select the nucleosome kinetics study and hover the Reb1 affinity point to show its tooltip."
+          ]
+        },
+        {
+          "capture": "18-evidence-checks.png",
+          "duration": 16.0,
+          "actions": [
+            "Scroll to the experimental checks and show their accepted windows and basis tags."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "Actual UI captures of an isolated instance reading the saved component-study reports; nothing was run from the page.",
+        "Experimental passes use the provisional polymer mapping or input-matched rates as each check's note states. They are not calibration or biological validation."
+      ]
+    },
+    {
       "id": "12-cluster",
       "title": "Export a reproducible cluster experiment",
       "normal_duration_seconds": 40,
       "primary_capture": "12-cluster.png",
-      "narration": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU integration is available, while forces, reactions and RNA still run on the CPU; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
+      "narration": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU integration is partial: only bare-polymer models run fully on the device, while forces, reactions and RNA for models with proteins still run on the CPU; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
       "captions": [
         {
           "start": 0,
@@ -919,10 +1038,10 @@
       "All screenshots come from the actual application or explicitly labeled learning illustrations.",
       "No fabricated trajectory samples, molecule identities, calibration evidence or cluster completion states.",
       "Synthetic calibration is visibly labeled and never applied as empirical evidence.",
-      "The 20 Mb overview and 80 kb nucleosome-unit demonstration are explicitly distinguished.",
+      "Every chapter uses 200 bp beads; coarse 10 kb presets are mentioned, not shown.",
       "Fixed nuclear fields, coarse IDRs, passive RNA points and partial GPU execution remain accurately described.",
       "Caption text and transcript match the final recording and current feature names.",
-      "The 25.6 kb binding/remodeling example is explicitly distinguished from the 80 kb manuscript example and 20 Mb coarse overview. Event records retain their real identities and interval timing."
+      "The 25.6 kb binding/remodeling example is explicitly distinguished from the 80 kb manuscript example. Event records retain their real identities and interval timing."
     ]
   }
 }
