@@ -1,29 +1,23 @@
 {
   "voice": "af_heart",
-  "source_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. The starting example spans twenty megabases using two thousand beads, so each bead represents ten kilobases. That is a coarse genomic mapping, not nucleosome resolution. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the scale, the run status, and the physical-clock label.",
-  "spoken_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. The starting example spans twenty megabases using two thousand beads, so each bead represents ten kilobases. That is a coarse genomic mapping, not nucleosome resolution. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the scale, the run status, and the physical-clock label.",
-  "word_count": 68,
+  "source_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a stretch of DNA, and its size is a model setting. This walkthrough uses one size throughout: two hundred base pairs per bead, about one nucleosome and its linker. The example is Manuscript hypotheses at eighty kilobases: four hundred beads of two hundred base pairs each. Coarser presets also exist, where one bead stands for ten kilobases and many nucleosomes, but they are not used here. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
+  "spoken_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a stretch of D N A, and its size is a model setting. This walkthrough uses one size throughout: two hundred base pairs per bead, about one nucleosome and its linker. The example is Manuscript hypotheses at eighty kilobases: four hundred beads of two hundred base pairs each. Coarser presets also exist, where one bead stands for ten kilobases and many nucleosomes, but they are not used here. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
+  "word_count": 116,
   "target_words_per_minute": 155.0,
-  "words_per_minute": 151.30537974683543,
-  "model_speed": 0.9475058823529412,
-  "duration_seconds": 27.465333333333334,
-  "speech_seconds": 26.965333333333334,
+  "words_per_minute": 150.64065566201086,
+  "model_speed": 0.9,
+  "duration_seconds": 46.702666666666666,
+  "speech_seconds": 46.202666666666666,
   "sample_rate": 24000,
   "padding_seconds": 0.5,
-  "peak_before_attenuation": 0.6222525835037231,
+  "peak_before_attenuation": 0.7370302081108093,
   "gain": 1.0,
   "attempts": [
     {
       "model_speed": 0.9,
-      "seconds": 27.712,
-      "words_per_minute": 147.22863741339492,
-      "inference_seconds": 6.781506833038293
-    },
-    {
-      "model_speed": 0.9475058823529412,
-      "seconds": 26.965333333333334,
-      "words_per_minute": 151.30537974683543,
-      "inference_seconds": 6.208226541988552
+      "seconds": 46.202666666666666,
+      "words_per_minute": 150.64065566201086,
+      "inference_seconds": 13.76500000001397
     }
   ],
   "within_target_pace": true,
@@ -32,7 +26,7 @@
   "speech_truncated": false,
   "id": "01-overview",
   "file": "01-overview.wav",
-  "fingerprint": "e6921487b6f81b7769b6d5cd228867e9296b085b71add5675674500241062235",
-  "wav_sha256": "d023b37ab27343fbbfb87731309cf05acc6689f885bee8c5ff6420a8057d718f",
+  "fingerprint": "159d2a4c9447b9962dcb48aac352a816ce0730997da71916e6d37802dc738f60",
+  "wav_sha256": "da51984aef8d24705e9034a180cecdf5da8db7930efd0fca311125798426079d",
   "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
 }

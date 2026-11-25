@@ -1,0 +1,9 @@
+# Keep LF line endings in every checkout, including Windows with core.autocrlf.
+# Recorded SHA-256 hashes (bundle manifests, publication metadata) refer to LF bytes.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.mp4 binary
+*.wav binary
+*.zip binary

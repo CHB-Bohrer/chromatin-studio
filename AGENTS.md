@@ -30,9 +30,11 @@ These files can also be supplied explicitly to an AI that does not automatically
 - Keep draft edits separate from the applied run. Apply/restart is an explicit state change. Studies and cluster export operate on independent configurations.
 - Keep snapshots, rate diagnostics and UI summaries read-only; they must not draw from the model RNG or mutate physics. Demonstrate events from real engine transitions.
 - Preserve optional defaults and backwards compatibility unless the user requests a behavior change. Explain changes that invalidate seed replay or physical calibration.
+- Test one mechanism at a time before interpreting a combined model: see [component studies](docs/COMPONENT_STUDIES.md). Each study is one self-contained file; change or add a study without editing the others. Keep its three evidence labels apart, and say whether an experimental comparison is input-matched, tuned or a prediction.
 - Run checks that match the change. Record skipped platforms, the actual backend and the scope of any scientific claim. Never turn missing GPU hardware into a passing GPU result.
 - Use existing tutorial sources and capture real UI states. Preserve natural narration at 1×; do not speed speech to fit old timings. See [tutorial instructions](tutorial/README.md).
 - The user authorized public release of the tool, hypothesis examples, tutorial and development handoff on 2026-11-06, excluding the complete manuscript. Keep the full manuscript, full-text extractions, credentials and machine-specific local notes out of the repository. Included simulated examples/reference summaries are intentional public tool content. Do not treat this as permission to publish future experimental data automatically.
+- Run data (trajectories, calibration reports, run scripts) lives outside the repository. Before reading or writing run data, check for a gitignored `LOCAL_DATA.md` at the repository root; it records where this machine keeps the data. If it is missing, ask the user. Never commit run data or `LOCAL_DATA.md`.
 - Task ownership is temporary. Coordinate concurrent edits, but do not infer permanent ownership from names in an earlier chat.
 
 ## At the end of substantive work

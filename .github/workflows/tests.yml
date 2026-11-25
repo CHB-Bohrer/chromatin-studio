@@ -1,0 +1,38 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: python -m pip install -r requirements-dev.txt
+      # CPU-only runner: OpenMM/polychrom and GPU device checks skip themselves.
+      - name: Python test suite
+        run: python -m unittest discover -s tests -v
+      - name: NumPy acceptance validation
+        run: python -m chromatin_studio.validation --platform numpy --output "$RUNNER_TEMP/validation-numpy.json"
+
+  interface:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Interface helper tests
+        run: node --test tests/*ui.cjs

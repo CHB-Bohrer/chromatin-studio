@@ -6,26 +6,26 @@
 .view-explanation p{font-size:11px;line-height:1.6;margin:0;max-width:600px}.view-explanation button{flex-shrink:0;font-size:10px;color:#acd0eb}
 .learn-entry{border:1px solid #4c6078!important;border-radius:6px;color:#cde2f5!important;padding:9px 12px!important;}
 .learn-entry span{font-size:13px;margin:0 0 0 7px!important}
-body:is(.learn-workspace,.calibration-workspace,.study-workspace) .workspace-intro,body.cluster-workspace .workspace-intro{display:none}
+body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .workspace-intro,body.cluster-workspace .workspace-intro{display:none}
 body.learn-workspace .editor-nav button[data-tab='learn']{background:#22374b;color:#c1dff5;border-color:#476887}
 body.learn-workspace .editor-nav button[data-tab='learn'] span{color:#a9d4f2}
-body:is(.learn-workspace,.calibration-workspace,.study-workspace) .simulation-panel,body:is(.learn-workspace,.calibration-workspace,.study-workspace) .insight-panel{display:none!important}
-body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-content{background:#0b1017 url('/static/nucleus-watermark.svg') no-repeat right -125px;background-size:720px auto;}
+body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .simulation-panel,body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .insight-panel{display:none!important}
+body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .editor-content{background:#0b1017 url('/static/nucleus-watermark.svg') no-repeat right -125px;background-size:720px auto;}
 @media(min-width:701px){
- body:is(.learn-workspace,.calibration-workspace,.study-workspace) .workspace{display:block;min-height:calc(100vh - 149px)}
- body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-panel{display:grid;grid-template-columns:204px minmax(0,1fr);grid-template-rows:auto auto 1fr auto;position:static;width:100%;max-height:none;min-height:calc(100vh - 149px);border-right:0;align-items:start}
- body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-heading{grid-column:1;grid-row:1;padding:24px 16px 17px;flex-wrap:wrap;gap:7px}
- body:is(.learn-workspace,.calibration-workspace,.study-workspace) .draft-genomic-scale{grid-column:1;grid-row:2;margin:0 13px 17px}
- body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-nav{grid-column:1;grid-row:3;align-self:start;padding:0 11px 20px;grid-template-columns:repeat(2,minmax(0,1fr))}
- body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-nav button{font-size:11px;padding:12px 3px;min-height:64px}
- body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-footer{grid-column:1;grid-row:4;align-self:end;padding:17px 13px;font-size:10px}
- body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-content{grid-column:2;grid-row:1/5;min-width:0;min-height:calc(100vh - 149px);max-height:none;overflow:visible;padding:30px 32px 52px;border-left:1px solid #283342}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .workspace{display:block;min-height:calc(100vh - 149px)}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .editor-panel{display:grid;grid-template-columns:204px minmax(0,1fr);grid-template-rows:auto auto 1fr auto;position:static;width:100%;max-height:none;min-height:calc(100vh - 149px);border-right:0;align-items:start}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .editor-heading{grid-column:1;grid-row:1;padding:24px 16px 17px;flex-wrap:wrap;gap:7px}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .draft-genomic-scale{grid-column:1;grid-row:2;margin:0 13px 17px}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .editor-nav{grid-column:1;grid-row:3;align-self:start;padding:0 11px 20px;grid-template-columns:repeat(2,minmax(0,1fr))}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .editor-nav button{font-size:11px;padding:12px 3px;min-height:64px}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .editor-footer{grid-column:1;grid-row:4;align-self:end;padding:17px 13px;font-size:10px}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .editor-content{grid-column:2;grid-row:1/5;min-width:0;min-height:calc(100vh - 149px);max-height:none;overflow:visible;padding:30px 32px 52px;border-left:1px solid #283342}
 }
 @media(max-width:1050px){.view-explanation{align-items:flex-start;flex-direction:column;gap:5px}}
 @media(max-width:700px){
- body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-panel{display:flex!important;max-height:none;position:static}
- body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-heading,body:is(.learn-workspace,.calibration-workspace,.study-workspace) .draft-genomic-scale,body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-nav,body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-footer{display:none}
- body:is(.learn-workspace,.calibration-workspace,.study-workspace) .editor-content{padding:20px 15px 35px;overflow:visible}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .editor-panel{display:flex!important;max-height:none;position:static}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .editor-heading,body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .draft-genomic-scale,body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .editor-nav,body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .editor-footer{display:none}
+ body:is(.learn-workspace,.calibration-workspace,.study-workspace,.evidence-workspace) .editor-content{padding:20px 15px 35px;overflow:visible}
  .view-explanation p{font-size:12px}.view-explanation button{font-size:11px;min-height:32px}
  .context-lesson{font-size:12px}
 }
@@ -82,3 +82,4 @@ body.calibration-workspace .editor-nav button[data-tab="calibration"]{background
 .tutorial-entry{color:#a9ceec;text-decoration:none;white-space:nowrap}.tutorial-entry:focus-visible{outline:2px solid #79b7de;outline-offset:3px}
 
 body.study-workspace .editor-nav button[data-tab="studies"]{background:#22374b;color:#c1dff5;border-color:#476887}
+body.evidence-workspace .editor-nav button[data-tab="evidence"]{background:#22374b;color:#c1dff5;border-color:#476887}

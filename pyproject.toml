@@ -15,4 +15,4 @@ chromatin-batch = "chromatin_studio.batch:main"
 chromatin-validate = "chromatin_studio.validation:main"
 
 [tool.setuptools]
-packages = ["chromatin_studio"]
+packages = ["chromatin_studio", "chromatin_studio.components"]
