@@ -1,0 +1,30 @@
+{
+ "_note": "Numbers recorded in docs/PROJECT_STATUS.md from standard-scale runs on the project's Windows machine. The run data itself lives outside the repository. Update this file when those studies are rerun.",
+ "donovan": {
+  "source": "docs/PROJECT_STATUS.md, nucleosome_tf_kinetics, 24 runs, source src-2026-11-21, analyzed 2026-11-22",
+  "factors": [
+   {"label": "Reb1", "occlusion": [55.4, 1.1], "release": [0.37, 0.03], "measured": [0.47, 0.65]},
+   {"label": "Cbf1", "occlusion": [259, 2], "release": [3.2, 0.3], "measured": [2.7, 4.1]},
+   {"label": "Pho4", "occlusion": [98, 2], "release": null, "measured": [40, null]},
+   {"label": "Gal4 (P31/P26)", "occlusion": [134, 4], "release": null, "measured": [93, 140]}
+  ],
+  "rule": "pass if within a factor of 2 of the measured range"
+ },
+ "kilic": {
+  "source": "docs/PROJECT_STATUS.md, hp1_mark_density, 108 runs, source src-2026-11-22; measured values from Kilic et al. 2015 Table 1 as coded in chromatin_studio/components/hp1_mark_density.py",
+  "residence_measured_s": {"mn": [0.13, 0.01], "0": [0.08, 0.03], "25": [0.15, 0.02], "50": [0.17, 0.03], "75": [0.19, 0.01], "100": [0.25, 0.03]},
+  "residence_model_ratio": {"0": 0.48, "25": 1.08, "50": 1.38, "75": 1.64, "100": 2.21},
+  "competition_measured_s": {"50": [0.19, 0.05], "250": [0.13, 0.02], "1000": [0.11, 0.01]},
+  "competition_model_ratio": {"50": 2.14, "250": 1.84, "1000": 1.50},
+  "kd_nM": 1160
+ },
+ "calibration_noise": {
+  "source": "docs/PROJECT_STATUS.md, remaining protocol checks 2026-11-08, pair 974-1025",
+  "rows": [
+   {"s": 0.0, "length_nm": 49.6, "time_s": 0.12, "log_rmse": 0.158, "status": "shape incompatible"},
+   {"s": 0.8, "length_nm": 48.1, "time_s": 0.162, "log_rmse": 0.092, "status": "fitted"},
+   {"s": 1.0, "length_nm": 47.2, "time_s": 0.205, "log_rmse": 0.034, "status": "fitted"},
+   {"s": 1.2, "length_nm": 46.1, "time_s": 0.304, "log_rmse": 0.120, "status": "fitted"}
+  ]
+ }
+}
