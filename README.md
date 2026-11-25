@@ -342,6 +342,22 @@ For a selected protein pair, three diagrams separate connections where **neither
 
 The view distinguishes physical domain links from unique molecular pairs: two IDR molecules connected through several domain contacts remain one molecular pair. Components describe connected molecules in the current frame; their identifiers are not persistent assembly lineages. The same configured protein–protein reaction rule currently applies in all three attachment contexts. Attachment changes mechanics and encounter opportunities; it does not silently introduce a different chemical affinity.
 
+### Attraction mode: coarse phase separation on the GPU
+
+Each protein–protein interaction has a `mode`. **bonds** (the default) is the stochastic association described above. **attraction** replaces discrete bonds with a smooth pair well between sticker beads, so condensates can be simulated at the scale of thousands of molecules:
+
+```text
+U = -strength                         r <= sigma         (sigma = r_a + r_b, contact)
+U = -strength × (1 - s²)²,  s = (r - sigma)/(radius - sigma)   sigma < r < radius
+U = 0                                 r >= radius
+```
+
+`strength` is the depth at contact in kT, and `radius` is where the well ends (it must exceed the contact distance). The well exerts no force inside contact. Attracting pairs also get a steep WCA core inside contact, `4((w/r)¹² − (w/r)⁶) + 1` with `w = sigma/2^(1/6)`: the bounded soft repulsion alone lets many attracting beads collapse onto one another. Attraction-mode pairs never form bonds, so they take no `on_rate` or `off_rate`, and molecules do not carry a fixed valence for them; how many partners fit is set by geometry.
+
+The **Phase separation · 80 kb** preset uses one-bead scaffold and client proteins around a 400 × 200 bp chain. A model whose proteins are one-bead and interact only in attraction mode (no chromatin binding, writers, bodies, genes or cohesin) runs entirely on the native GPU engine. The same well is implemented on the CPU engine and checked against the GPU to 10⁻¹² (Reference platform) and 10⁻⁴ (CUDA mixed precision).
+
+A dense cluster is phase separation only if it coexists with a dilute phase, appears above a threshold concentration, and exchanges molecules with its surroundings. The well depth is not a measured affinity.
+
 ### Estimating physical binding constants
 
 The **physical binding estimate** requires a length mapping (nanometers per reduced length), a time mapping (seconds per reduced time), and a target dissociation constant in micromolar. These are explicit modeling assumptions, not inferred from base pairs per bead. The estimate does not edit the simulation's reaction rates.
@@ -410,7 +426,7 @@ The newer [nucleosome and RNA benchmark](benchmark-nucleosome-rna.json) exercise
 | Component | Implemented representation | Interpretation and boundary |
 |---|---|---|
 | Chromatin | Bead–spring chain, bending stiffness, soft repulsion, optional state-selective attraction and confinement | Coarse mechanics; nucleosome-unit labels do not add wrapped-DNA geometry. Soft interactions can permit chain crossing; no topological conservation guarantee. |
-| Protein species | Independent counts, free molecular diffusion, radii, binding valence and affinities | Up to 32 species and 6,000 chromatin/protein particles in the local workbench; individual RNA has a separate cap. |
+| Protein species | Independent counts, free molecular diffusion, radii, binding valence and affinities | No hard size cap: above about 4,000 chromatin beads or 6,000 particles the app warns that the CPU engine and live view will be slow. Individual RNA has a separate cap. |
 | Higher-order association | Reversible molecule–molecule connections, bounded by valence | Assemblies can exceed dimers. Cluster size counts connected molecules, not proof of liquid–liquid phase separation. |
 | Explicit IDRs | Flexible domain-bead chains with selectable sticker fraction | Spatial chain conformations and stickers are explicit. These are not residue-level sequences, electrostatics or CALVADOS parameters. |
 | Chromatin binding | Reversible mechanical tethers with reciprocal forces | Reduced mobility arises from attachment and collective motion. Free diffusivity and measured effective mobility are distinct. |

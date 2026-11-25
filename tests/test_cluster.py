@@ -58,11 +58,11 @@ class ClusterTests(unittest.TestCase):
         normalized = normalize_job({"device_index": "02", "partition": "gpu-a", "account": "lab_1", "walltime": "2-03:04:05"}, default_config())
         self.assertEqual(normalized["device_index"], 2)
 
-    def test_existing_particle_limits_still_apply(self):
+    def test_large_models_plan_with_a_warning(self):
         config = default_config()
         config["chromatin"]["beads"] = 100000
-        with self.assertRaises(ValueError):
-            plan_job(config, {"platform": "CUDA"})
+        plan = plan_job(config, {"platform": "CUDA"})
+        self.assertTrue(any("Large model" in w for w in plan["warnings"]))
 
     def test_bundle_is_portable_and_hashes_detect_tampering(self):
         raw = build_bundle(default_config(), {"platform": "numpy", "replicas": 1, "steps": 3})

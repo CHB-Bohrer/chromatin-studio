@@ -168,12 +168,13 @@ class ServerTests(unittest.TestCase):
         for value in (0, 101, True, "10"):
             self.assertEqual(self.request("/api/step", {"steps": value})[0], 400)
 
-    def test_validation_returns_resource_errors_without_initialization(self):
+    def test_validation_returns_resource_warnings_without_initialization(self):
         c = default_config()
         c["proteins"][0]["count"] = 10000
         status, result = self.request("/api/validate", c)
         self.assertEqual(status, 200)
-        self.assertFalse(result["valid"])
+        self.assertTrue(result["valid"], result["errors"])
+        self.assertTrue(any("Large model" in w for w in result["warnings"]))
         self.assertIsNone(server.WORKSPACE.sim)
 
     def test_physical_binding_estimate_uses_applied_config_without_mutation(self):

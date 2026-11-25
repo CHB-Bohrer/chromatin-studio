@@ -31,14 +31,14 @@ class SchemaTests(unittest.TestCase):
         self.assertFalse(report["valid"])
         self.assertGreaterEqual(len(report["errors"]), 3)
 
-    def test_particle_limit_counts_explicit_idr_beads(self):
+    def test_large_particle_count_warns_and_counts_explicit_idr_beads(self):
         c = default_config()
         p = c["proteins"][0]
         p.update(count=400, representation="idr", idr_beads=16)
         report = validate_config(c)
-        self.assertFalse(report["valid"])
+        self.assertTrue(report["valid"], report["errors"])
         self.assertGreater(report["particle_count"], MAX_PARTICLES)
-        self.assertTrue(any("at most 6000" in error for error in report["errors"]))
+        self.assertTrue(any("Large model" in w and "particles" in w for w in report["warnings"]))
 
     def test_twenty_mb_span_and_coarse_resolution_warning(self):
         c = preset_config("twenty_mb")
@@ -73,7 +73,9 @@ class SchemaTests(unittest.TestCase):
         self.assertFalse(validate_config(c)["valid"])
         c["genes"][0]["end"] = MAX_CHROMATIN_BEADS-1
         c["chromatin"]["beads"] = MAX_CHROMATIN_BEADS+1
-        self.assertFalse(validate_config(c)["valid"])
+        report = validate_config(c)
+        self.assertTrue(report["valid"], report["errors"])
+        self.assertTrue(any("Large model" in w and "chromatin beads" in w for w in report["warnings"]))
 
     def test_exact_particle_limit_is_allowed(self):
         c = default_config()
@@ -83,8 +85,11 @@ class SchemaTests(unittest.TestCase):
         report = validate_config(c)
         self.assertEqual(report["particle_count"], MAX_PARTICLES)
         self.assertTrue(report["valid"], report["errors"])
+        self.assertFalse(any("Large model" in w and "particles" in w for w in report["warnings"]))
         c["proteins"][2]["count"] = 1
-        self.assertFalse(validate_config(c)["valid"])
+        report = validate_config(c)
+        self.assertTrue(report["valid"], report["errors"])
+        self.assertTrue(any("Large model" in w and "particles" in w for w in report["warnings"]))
 
     def test_dense_twenty_mb_annotation_and_motor_limits(self):
         c = preset_config("twenty_mb")
@@ -104,7 +109,9 @@ class SchemaTests(unittest.TestCase):
         c["cohesin"]["count"] = MAX_COHESIN
         self.assertTrue(validate_config(c)["valid"])
         c["cohesin"]["count"] = MAX_COHESIN + 1
-        self.assertFalse(validate_config(c)["valid"])
+        report = validate_config(c)
+        self.assertTrue(report["valid"], report["errors"])
+        self.assertTrue(any("Large model" in w and "cohesins" in w for w in report["warnings"]))
         c["cohesin"]["count"] = 100
         c["genes"].append(dict(copy.deepcopy(template), id="extra_gene"))
         self.assertFalse(validate_config(c)["valid"])
@@ -152,14 +159,13 @@ class SchemaTests(unittest.TestCase):
         self.assertEqual((small["genes"][0]["end"] + 1) * 200, 40_000)
         self.assertTrue(any("Wrapped DNA" in warning for warning in validate_config(small)["warnings"]))
 
-    def test_twenty_mb_at_two_hundred_bp_is_rejected_at_one_hundred_thousand_beads(self):
+    def test_twenty_mb_at_two_hundred_bp_is_allowed_with_a_large_model_warning(self):
         config = preset_config("nucleosome_locus")
         config["chromatin"]["beads"] = 100_000
         report = validate_config(config)
-        self.assertFalse(report["valid"])
+        self.assertTrue(report["valid"], report["errors"])
         self.assertEqual(report["genomic_span_bp"], 20_000_000)
-        self.assertTrue(any("chromatin.beads" in error for error in report["errors"]))
-        self.assertTrue(any("4000" in error for error in report["errors"]))
+        self.assertTrue(any("Large model" in w and "100,000 chromatin beads" in w for w in report["warnings"]))
 
     def test_regulatory_references_promoter_position_and_unique_enabled_promoter(self):
         base = preset_config("nucleosome_locus")

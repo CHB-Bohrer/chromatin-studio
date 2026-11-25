@@ -1,0 +1,90 @@
+{
+  "version": "0.1",
+  "name": "Phase separation \u00b7 80 kb",
+  "seed": 42,
+  "simulation": {
+    "dt": 0.002,
+    "steps_per_frame": 25,
+    "confinement_radius": 12.0
+  },
+  "chromatin": {
+    "beads": 400,
+    "bp_per_bead": 200,
+    "representation": "nucleosome_unit",
+    "bond_length": 0.85,
+    "bond_k": 45.0,
+    "diffusion": 0.08,
+    "persistence_length": 2.0,
+    "repulsion": 8.0,
+    "initial_marks": [],
+    "barriers": []
+  },
+  "marks": [],
+  "proteins": [
+    {
+      "id": "scaffold",
+      "name": "Condensate scaffold",
+      "color": "#399c97",
+      "count": 600,
+      "diffusion": 0.5,
+      "radius": 0.3,
+      "valence": 1,
+      "representation": "bead",
+      "idr_beads": 4,
+      "sticker_fraction": 0.75,
+      "chromatin_affinity": {
+        "unmodified": 0.0
+      },
+      "on_rate": 0.0,
+      "off_rate": 0.0,
+      "writer_mark": null,
+      "eraser_mark": null,
+      "catalytic_rate": 0.0
+    },
+    {
+      "id": "client",
+      "name": "Client",
+      "color": "#d6a34a",
+      "count": 150,
+      "diffusion": 0.5,
+      "radius": 0.3,
+      "valence": 1,
+      "representation": "bead",
+      "idr_beads": 4,
+      "sticker_fraction": 0.75,
+      "chromatin_affinity": {
+        "unmodified": 0.0
+      },
+      "on_rate": 0.0,
+      "off_rate": 0.0,
+      "writer_mark": null,
+      "eraser_mark": null,
+      "catalytic_rate": 0.0
+    }
+  ],
+  "interactions": [
+    {
+      "a": "scaffold",
+      "b": "scaffold",
+      "mode": "attraction",
+      "strength": 1.5,
+      "radius": 1.0
+    },
+    {
+      "a": "client",
+      "b": "scaffold",
+      "mode": "attraction",
+      "strength": 0.8999999999999999,
+      "radius": 1.0
+    }
+  ],
+  "bodies": [],
+  "cohesin": {
+    "enabled": false,
+    "count": 0,
+    "step_rate": 0,
+    "off_rate": 0,
+    "spring_k": 0
+  },
+  "genes": []
+}

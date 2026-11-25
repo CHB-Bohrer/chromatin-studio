@@ -60,7 +60,7 @@ def capabilities():
                     "remote_submission": False, "resume_supported": False,
                     "acceleration": "OpenMM integration only; forces, reactions and RNA remain on CPU."},
         "limits": {"particles": MAX_PARTICLES, "chromatin_beads": MAX_CHROMATIN_BEADS,
-                   "species": 32, "genes": MAX_GENES, "cohesin": MAX_COHESIN,
+                   "advisory": True, "species": 1024, "genes": MAX_GENES, "cohesin": MAX_COHESIN,
                    "regulatory_regions": MAX_REGULATORY_REGIONS,
                    "transcripts": MAX_TRANSCRIPTS},
     }

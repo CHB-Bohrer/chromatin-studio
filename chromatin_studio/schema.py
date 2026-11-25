@@ -10,8 +10,13 @@ import math
 import re
 
 
+# Sizes above these run, with a warning: they are where the live CPU engine and
+# the 3D view were comfortable, not limits of the model. Large models should
+# use the GPU engine and a thinned display.
 MAX_CHROMATIN_BEADS = 4000
 MAX_PARTICLES = 6000
+HARD_BEAD_LIMIT = 10**8            # guards against typos only
+PHASE_SEPARATION_DEPTH = 1.5       # scaffold-scaffold contact depth (kT); see docs/PROJECT_STATUS.md
 MAX_GENES = 256
 MAX_COHESIN = 256
 MAX_REGULATORY_REGIONS = 128
@@ -110,6 +115,7 @@ PRESETS = [
     {"id": "nucleosome_access", "name": "Live nucleosome access · 25.6 kb", "description": "128 nucleosome units, open regions, distinct TF access and residence preferences, and a recruited sliding/evicting remodeler. Illustrative kinetics."},
     {"id": "transcription_20mb", "name": "20 Mb transcription landscape", "description": "Individual polymerases and RNA with effective occupancy/accessibility states in 10 kb bins; individual nucleosomes remain unresolved."},
     {"id": "manuscript_locus", "name": "Manuscript hypotheses · 80 kb", "description": "Coarse nucleosome units, TF/coactivators, acetylation and Polycomb hypotheses, and optional nuclear-environment responses. Illustrative parameters, not a fit to the manuscript."},
+    {"id": "phase_separation", "name": "Phase separation · 80 kb", "description": "One-bead scaffold and client proteins with attraction-mode pair wells around an 80 kb chain at 200 bp per bead. Runs on the GPU engine; well depths are illustrative."},
     {"id": "manuscript_20mb", "name": "Manuscript hypotheses · 20 Mb", "description": "The same candidate mechanisms across a 20 Mb coarse chain; occupancy represents 10 kb bins, not individual nucleosomes. Use matched ablations."},
 ]
 
@@ -344,6 +350,27 @@ def preset_config(identifier):
                      chromatin_affinity={"unmodified": .05, "H3K27me3": 2, "H2AK119ub1": 1})])
         c["chromatin"]["state_interactions"].append(
             dict(a="H3K27me3", b="H3K27me3", strength=.3, radius=1.5, min_separation=3))
+    elif identifier == "phase_separation":
+        # Coarse condensate: each protein is one bead; scaffolds attract each
+        # other and clients attract scaffolds through smooth pair wells (kT).
+        # No discrete bonds, chromatin binding, marks, genes or cohesin, so the
+        # whole model runs on the native GPU engine.
+        c["name"] = "Phase separation · 80 kb"
+        c["simulation"].update(confinement_radius=12.0, steps_per_frame=25)
+        c["chromatin"].update(beads=400, bp_per_bead=200, representation="nucleosome_unit",
+                              initial_marks=[], barriers=[])
+        c["marks"] = []
+        c["proteins"] = [
+            _protein("scaffold", "Condensate scaffold", "#399c97", 600, valence=1, diffusion=0.5, radius=0.3,
+                     chromatin_affinity={"unmodified": 0.0}, on_rate=0.0, off_rate=0.0, catalytic_rate=0.0),
+            _protein("client", "Client", "#d6a34a", 150, valence=1, diffusion=0.5, radius=0.3,
+                     chromatin_affinity={"unmodified": 0.0}, on_rate=0.0, off_rate=0.0, catalytic_rate=0.0)]
+        c["interactions"] = [
+            {"a": "scaffold", "b": "scaffold", "mode": "attraction", "strength": PHASE_SEPARATION_DEPTH, "radius": 1.0},
+            {"a": "client", "b": "scaffold", "mode": "attraction", "strength": 0.6 * PHASE_SEPARATION_DEPTH, "radius": 1.0}]
+        c["bodies"] = []
+        c["genes"] = []
+        c["cohesin"] = {"enabled": False, "count": 0, "step_rate": 0, "off_rate": 0, "spring_k": 0}
     else:
         raise KeyError(identifier)
     return c
@@ -436,7 +463,10 @@ def validate_config(config):
     chrom = obj(config.get("chromatin"), "chromatin")
     if chrom.get("representation", "coarse") not in ("coarse", "nucleosome_unit"):
         errors.append("chromatin.representation must be coarse or nucleosome_unit.")
-    n = number(chrom.get("beads"), "chromatin.beads", 8, MAX_CHROMATIN_BEADS, True)
+    n = number(chrom.get("beads"), "chromatin.beads", 8, HARD_BEAD_LIMIT, True)
+    if n > MAX_CHROMATIN_BEADS:
+        warnings.append(f"Large model: {int(n):,} chromatin beads (live CPU engine was sized for {MAX_CHROMATIN_BEADS:,}). "
+                        "Expect slow steps on the CPU engine; use the GPU engine where the model allows it.")
     bp_per_bead = number(chrom.get("bp_per_bead"), "chromatin.bp_per_bead", 1, 1000000, True)
     raw_dimensions = (chrom.get("beads"), chrom.get("bp_per_bead"))
     genomic_span = None
@@ -461,8 +491,8 @@ def validate_config(config):
         number(chrom.get(field), "chromatin." + field, low, high)
     if chrom.get("binding_capacity") is not None:     # optional; absent = unlimited protein bonds per bead
         number(chrom["binding_capacity"], "chromatin.binding_capacity", 1, 64, True)
-    marks = arr(config.get("marks"), "marks", 16)
-    species = arr(config.get("proteins"), "proteins", 32)
+    marks = arr(config.get("marks"), "marks", 256)
+    species = arr(config.get("proteins"), "proteins", 1024)
     genes = arr(config.get("genes"), "genes", MAX_GENES)
     bodies = arr(config.get("bodies"), "bodies", 12)
     mark_ids, species_ids = identity(marks, "marks"), identity(species, "proteins")
@@ -543,12 +573,12 @@ def validate_config(config):
         state_pairs.add(pair)
         number(rule.get("strength"), path + ".strength", 0, 20)
         number(rule.get("radius"), path + ".radius", .2, 5)
-        number(rule.get("min_separation", 3), path + ".min_separation", 1, MAX_CHROMATIN_BEADS, True)
+        number(rule.get("min_separation", 3), path + ".min_separation", 1, max(1, int(n)), True)
     particle_count = n
     for k, p in enumerate(species):
         p = obj(p, f"proteins[{k}]")
         path = f"proteins[{k}]"
-        count = number(p.get("count"), path + ".count", 0, 500, True)
+        count = number(p.get("count"), path + ".count", 0, HARD_BEAD_LIMIT, True)
         beads = number(p.get("idr_beads"), path + ".idr_beads", 2, 16, True)
         number(p.get("valence"), path + ".valence", 0, 16, True)
         number(p.get("diffusion"), path + ".diffusion", 0, 5)
@@ -582,7 +612,8 @@ def validate_config(config):
         for field in ("writer_mark", "eraser_mark"):
             reference(p.get(field), mark_ids, path + "." + field, True)
     if particle_count > MAX_PARTICLES:
-        errors.append(f"Model has {int(particle_count)} particles; this local prototype supports at most {MAX_PARTICLES}. Reduce counts or IDR chain lengths.")
+        warnings.append(f"Large model: {int(particle_count):,} particles (live CPU engine and 3D view were sized for {MAX_PARTICLES:,}). "
+                        "Expect slow steps on the CPU engine and use a thinned display.")
     pair_keys = set()
     for k, r in enumerate(arr(config.get("interactions"), "interactions", 528)):
         r = obj(r, f"interactions[{k}]")
@@ -593,8 +624,32 @@ def validate_config(config):
         if pair in pair_keys:
             errors.append(path + " duplicates an existing symmetric species pair.")
         pair_keys.add(pair)
-        for field, low, high in [("strength", 0, 20), ("on_rate", 0, 20), ("off_rate", 0, 20), ("radius", 0.2, 5)]:
-            number(r.get(field), path + "." + field, low, high)
+        mode = r.get("mode", "bonds")
+        if mode not in ("bonds", "attraction"):
+            errors.append(path + ".mode must be bonds or attraction.")
+        if mode == "attraction":
+            # A flat-bottomed pair well between sticker beads: depth `strength` (kT)
+            # at contact, smoothly zero at `radius`; no discrete bonds, so
+            # association rates must be absent or zero.
+            number(r.get("strength"), path + ".strength", 0, 20)
+            reach = number(r.get("radius"), path + ".radius", 0.2, 5)
+            radii = {str(p.get("id")): p.get("radius", 0.3) for p in species if isinstance(p, dict)}
+            try:
+                contact = float(radii.get(str(r.get("a")), 0)) + float(radii.get(str(r.get("b")), 0))
+            except (TypeError, ValueError):
+                contact = 0.0
+            if reach <= contact:
+                errors.append(f"{path}.radius must exceed the contact distance of the two species ({contact:g}).")
+            for field in ("on_rate", "off_rate"):
+                if number(r.get(field, 0), path + "." + field, 0, 20) not in (0, None):
+                    errors.append(path + "." + field + " must be 0 in attraction mode (no discrete bonds).")
+        else:
+            for field, low, high in [("strength", 0, 20), ("on_rate", 0, 20), ("off_rate", 0, 20), ("radius", 0.2, 5)]:
+                number(r.get(field), path + "." + field, low, high)
+    if any(r.get("mode") == "attraction" for r in config.get("interactions") or [] if isinstance(r, dict)):
+        warnings.append("Attraction-mode interactions are a smooth pair well between sticker beads (depth at contact in kT). "
+                        "Dense clusters are phase separation only if they coexist with a dilute phase, appear above a "
+                        "threshold concentration and exchange molecules; the well depth is not a measured affinity.")
     for k, b in enumerate(bodies):
         b = obj(b, f"bodies[{k}]")
         path = f"bodies[{k}]"
@@ -617,7 +672,9 @@ def validate_config(config):
     coh = obj(config.get("cohesin"), "cohesin")
     if not isinstance(coh.get("enabled"), bool):
         errors.append("cohesin.enabled must be boolean.")
-    number(coh.get("count"), "cohesin.count", 0, min(MAX_COHESIN, int(n)//2), True)
+    cohesin_count = number(coh.get("count"), "cohesin.count", 0, max(0, int(n)//2), True)
+    if cohesin_count > MAX_COHESIN:
+        warnings.append(f"Large model: {int(cohesin_count):,} cohesins (live CPU engine was sized for {MAX_COHESIN}).")
     for field in ("step_rate", "off_rate", "spring_k"):
         number(coh.get(field), "cohesin." + field, 0, 20)
     for k, g in enumerate(genes):

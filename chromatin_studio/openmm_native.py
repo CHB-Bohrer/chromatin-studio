@@ -38,8 +38,19 @@ def unsupported_features(config) -> list[str]:
     """Reasons the model needs host chemistry; empty when native is exact."""
     reasons = []
     chrom = config.get("chromatin", {})
-    if any(int(p.get("count", 0)) for p in config.get("proteins", [])):
-        reasons.append("protein particles")
+    proteins = [p for p in config.get("proteins", []) if int(p.get("count", 0))]
+    # One-bead proteins whose only activity is attraction-mode pair wells are
+    # pure mechanics and run on the device; anything reactive needs the host.
+    if any(p.get("representation", "bead") != "bead" for p in proteins):
+        reasons.append("IDR-chain proteins")
+    if any(float(p.get("on_rate", 0)) > 0 and any(float(v) > 0 for v in p.get("chromatin_affinity", {}).values())
+           for p in proteins):
+        reasons.append("protein-chromatin binding")
+    if any(p.get("writer_mark") or p.get("eraser_mark") for p in proteins):
+        reasons.append("mark writers or erasers")
+    if any(r.get("mode", "bonds") != "attraction" and float(r.get("on_rate", 0)) > 0
+           for r in config.get("interactions", [])):
+        reasons.append("bond-mode protein interactions")
     if config.get("marks"):
         reasons.append("histone marks")
     if chrom.get("initial_marks"):
@@ -117,6 +128,39 @@ def build_system(sim):
         system.addForce(repulsion)
         forces["repulsion"] = repulsion
 
+    attraction = getattr(sim, "_attraction", None)
+    if attraction is not None:
+        # Same flat-bottomed well as the reference engine (see
+        # Simulation._build_attraction), eps and rc^2 looked up per species
+        # pair; non-participants use row 0 of an extra "none" species (depth 0).
+        names = attraction["names"]
+        size = len(names) + 1
+        eps_table = np.zeros((size, size))
+        rc2_table = np.ones((size, size))
+        eps_table[1:, 1:] = attraction["eps"]
+        rc2_table[1:, 1:] = attraction["rc2"]
+        well = mm.CustomNonbondedForce(
+            "-e*(1-u*u)^2 + select(e, step(sig-r)*(4*(x6*x6-x6)+1), 0); "
+            "x6=(sig/max(r, 0.5*sig))^6/2; u=min(max((r-sig)/(sqrt(rc2)-sig), 0), 1); sig=radius1+radius2; "
+            "e=eps_table(s1,s2); rc2=rc2_table(s1,s2)")
+        well.addTabulatedFunction("eps_table", mm.Discrete2DFunction(size, size, eps_table.ravel(order="F").tolist()))
+        well.addTabulatedFunction("rc2_table", mm.Discrete2DFunction(size, size, rc2_table.ravel(order="F").tolist()))
+        well.addPerParticleParameter("s")
+        well.addPerParticleParameter("radius")
+        participating = np.zeros(n, dtype=bool)
+        participating[attraction["particles"]] = True
+        for i in range(n):
+            well.addParticle([float(attraction["species"][i] + 1) if participating[i] else 0.0, float(sim.radii[i])])
+        if eps:
+            # CUDA requires identical exclusions on every nonbonded force; the
+            # excluded backbone pairs are chromatin, which never attracts here.
+            well.createExclusionsFromBonds(bonds, 1)
+        well.setNonbondedMethod(mm.CustomNonbondedForce.CutoffNonPeriodic)
+        well.setCutoffDistance(float(attraction["cutoff"]))
+        well.setForceGroup(4)
+        system.addForce(well)
+        forces["attraction"] = well
+
     if sim.confinement_stiffness > 0:
         # The tiny offset keeps the radial derivative finite at the origin
         # (the reference chain starts with bead 0 exactly there); its effect
@@ -153,13 +197,37 @@ class NativePolymerSimulation:
 
         reasons = unsupported_features(config)
         if reasons:
-            raise ValueError("The native OpenMM backend supports bare polymers only; this model has: "
+            raise ValueError("The native OpenMM backend supports bare polymers and one-bead attraction-mode proteins only; this model has: "
                              + ", ".join(reasons) + ". Use the numpy or polychrom engine.")
         requested = validate_backend_options(platform=platform, device_index=device_index,
                                              precision=precision)
         mm, unit = _openmm()
         self._sim = sim = Simulation(config)
         self.substeps = int(sim.integration_substeps())  # static: no bonds change
+        self._fine_steps, self._fine_substeps = 0, self.substeps
+        if sim._attraction is not None:
+            # Attraction contacts change during the run, so use a static bound
+            # for the run: up to 12 simultaneous close contacts (thermal overlaps
+            # into the WCA core are shallow), each with the shell curvature bound
+            # plus the core curvature at contact (72/sigma^2). The initial
+            # placement allows overlaps down to 0.65*sigma, so the first
+            # FINE_START steps use the reference engine's contact-based count.
+            a = sim._attraction
+            bound = np.zeros(len(sim.positions))
+            protein_radius = float(np.min(sim.radii[a["particles"]]))
+            for index in a["particles"]:
+                row = a["species"][index]
+                sigma = sim.radii[index] + protein_radius
+                width = np.maximum(np.sqrt(a["rc2"][row]) - sigma, 1e-6)
+                pair = 4 * a["eps"][row] / width ** 2 + 1.54 * a["eps"][row] / (width * sigma)
+                core = 72.0 / sigma ** 2
+                bound[index] = 12 * float(np.max(np.where(a["eps"][row] > 0, pair + core, 0.0)))
+            run_substeps = int(math.ceil(sim.dt * float(np.max(sim.diffusion * bound)) / 0.35))
+            stiffness_floor = int(math.ceil(sim.dt * float(np.max(sim.diffusion * (2 * float(sim.chrom["bond_k"])
+                                    + 2 * float(sim.chrom.get("repulsion", 0)) / (2 * sim.radii) ** 2
+                                    + sim.confinement_stiffness))) / 0.35))
+            self._fine_steps, self._fine_substeps = self.FINE_START, max(self.substeps, run_substeps)
+            self.substeps = max(1, run_substeps, stiffness_floor)
         sim.last_substeps = self.substeps
         system, self.forces = build_system(sim)
         integrator = mm.CustomIntegrator(sim.dt / self.substeps)
@@ -206,12 +274,20 @@ class NativePolymerSimulation:
             f"Native OpenMM ({actual.getName()}) computes the bare-polymer forces and integration on the device. "
             "Statistically equivalent to the NumPy engine, not trajectory-identical. Reduced units.")
 
+    FINE_START = 500
+
     def step(self, steps: int):
         if isinstance(steps, bool) or not isinstance(steps, (int, np.integer)) or steps < 0:
             raise ValueError("steps must be a nonnegative integer")
         if steps == 0:
             return
-        self.integrator.step(int(steps) * self.substeps)
+        fine = min(int(steps), self._fine_steps)
+        if fine:
+            self.integrator.setStepSize(self._sim.dt / self._fine_substeps)
+            self.integrator.step(fine * self._fine_substeps)
+            self._fine_steps -= fine
+            self.integrator.setStepSize(self._sim.dt / self.substeps)
+        self.integrator.step((int(steps) - fine) * self.substeps)
         self._pull_positions()
         self._sim.time += float(steps) * self._sim.dt
         self._sim.step_count += int(steps)
