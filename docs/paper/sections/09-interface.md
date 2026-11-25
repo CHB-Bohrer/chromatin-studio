@@ -31,4 +31,4 @@ Component studies (Section 10) save a `report.json` with every check and the dat
 
 ## Built-in teaching material
 
-**How it works** and **Learn** open illustrated lessons on motion, encounters, accessibility, regulation and validation. A narrated tutorial video (18 chapters, about 12 minutes) walks through real captured states of the app. Both are separate from the simulation and never change it.
+**How it works** and **Learn** open illustrated lessons on motion, encounters, accessibility, regulation and validation. A narrated tutorial video (18 chapters, about 13 minutes, all at 200 bp per bead) walks through real captured states of the app. Both are separate from the simulation and never change it.
