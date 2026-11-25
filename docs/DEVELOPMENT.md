@@ -11,14 +11,17 @@ Start with [AGENTS.md](../AGENTS.md) and [PROJECT_STATUS.md](PROJECT_STATUS.md).
 | `chromatin_studio/transcription.py` | Promoter paths, initiation, elongation, individual RNA and associated summaries. |
 | `chromatin_studio/neighbors.py`, `chromatin_contacts.py` | Spatial candidates and chromatin contact/attraction calculations. |
 | `chromatin_studio/openmm_backend.py` | Optional polychrom/OpenMM integration and actual platform metadata. The CPU engine still evaluates the model. |
+| `chromatin_studio/openmm_native.py` | Bare-polymer models only: the engine's mechanics as native OpenMM forces, with forces and integration on the device. Refuses models with chemistry. |
 | `chromatin_studio/server.py`, `run.py` | Local HTTP API, applied workspace, static/tutorial serving and launch entry point. |
 | `chromatin_studio/calibration.py`, `kinetics.py` | Physical mapping/MSD tools and separate idealized binding estimates. |
 | `chromatin_studio/studies.py`, `benchmarks.py`, `validation.py` | Independent ablations, analytical reference fixtures and numerical backend checks. |
 | `chromatin_studio/cluster.py`, `batch.py` | Portable job plans/bundles and headless per-replica execution. |
+| `chromatin_studio/components/` | Single-mechanism studies against analytical and experimental references. One self-contained file per study; `core.py` holds shared helpers and `runner.py` the study-agnostic runner. See [COMPONENT_STUDIES.md](COMPONENT_STUDIES.md). |
 | `static/app.js` | Draft model editing, API coordination and integration of the browser views. |
 | `static/genome-view.js`, `genome-live.css` | 1D genomic tracks, binding/occupancy detail and recorded-event display. |
 | `static/interaction-view.js`, `regulation-view.js`, `transcription-view.js` | Protein context, regulatory dependencies and individual RNA inspection. |
 | `static/calibration-view.js`, `cluster-view.js`, `study-view.js` | Calibration, cluster planning and isolated study interfaces. |
+| `static/evidence-view.js`, `evidence-view.css` | Evidence tab: read-only charts of saved component-study reports, drawn from each study's figure data (`chromatin_studio/components/evidence.py` serves the index). Pure helpers are tested in `tests/test_evidence_ui.cjs`. |
 | `static/learn-view.js`, `model-explain.js` | Explanatory illustrations and teaching controls, separate from measured run state. |
 | `examples/` | Complete editable model JSON specifications. |
 | `tests/`, `benchmarks/`, `references/` | Implementation tests and recorded scientific evidence; provenance and scope matter. |
@@ -65,6 +68,15 @@ For a focused nucleosome change:
 node --test tests/test_genome_ui.cjs
 ```
 
+For an Evidence-view change, run `tests.test_evidence` and `node --test tests/test_evidence_ui.cjs`, then open the tab against a folder of reports (`--evidence DIR`).
+
+For a change to one mechanism, also run its component study at smoke scale to confirm the pipeline, then at standard scale (outside the repository) when the change could alter that mechanism's numbers:
+
+```sh
+.venv/bin/python -m unittest tests.test_components tests.test_tutorial_sync -v
+.venv/bin/python -m chromatin_studio.components run cohesin_extrusion --scale standard --jobs 8 --output /path/outside/repo/cohesin_extrusion
+```
+
 Other changes require their corresponding tests; a numerical integration change also needs distribution/convergence checks. These checks produce new reports without overwriting saved historical results:
 
 ```sh
@@ -76,7 +88,7 @@ Use unique output paths for retained evidence. A CPU pass is not a substitute fo
 
 ## Tutorial changes
 
-Follow [the tutorial guide](../tutorial/README.md). Edit the storyboard and transcript together, recapture affected views from real simulations, regenerate changed narration, then render and check the assembled result. Verify image dimensions before setting focus rectangles. Preserve model/run provenance, the natural 1× voice pace and the distinction between draft, applied model, illustration and measurement.
+Follow [the tutorial guide](../tutorial/README.md). Each chapter is one scene in the storyboard with its own captures and audio file, so one chapter can be changed alone; `tests/test_tutorial_sync.py` names any chapter whose transcript, captures, timings or recorded narration no longer match. Edit the storyboard and transcript together, recapture affected views from real simulations, regenerate changed narration, then render and check the assembled result. Verify image dimensions before setting focus rectangles. Preserve model/run provenance, the natural 1× voice pace and the distinction between draft, applied model, illustration and measurement.
 
 Do not regenerate the entire video for a development-handoff-only change. After a behavior/UI change, identify which chapters are affected rather than silently leaving contradictory instructions in the video.
 
@@ -89,7 +101,7 @@ For each substantive change, record:
 3. Work still incomplete, with the next action and its completion criteria.
 4. Changes needed in the contract, examples, UI and tutorial.
 
-Keep process IDs, absolute personal paths, private manuscript details and temporary environment instructions in a local note outside the release directory. Keep durable scientific/engineering state in the project. Never depend on another AI having access to prior chat messages.
+Keep process IDs, absolute personal paths, private manuscript details and temporary environment instructions in a local note outside the release directory. Run data (trajectories, analysis reports and the scripts that produced them) is also kept outside the repository. Each machine records its data location in a gitignored `LOCAL_DATA.md` at the repository root; read it before working with run data. Keep durable scientific/engineering state in the project. Never depend on another AI having access to prior chat messages.
 
 A reusable opening instruction for another collaborator is:
 

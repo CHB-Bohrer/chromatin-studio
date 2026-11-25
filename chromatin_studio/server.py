@@ -124,6 +124,9 @@ class Workspace:
 
 WORKSPACE = Workspace()
 STUDY_LOCK = threading.Lock()
+# Folder of saved component-study reports (run data lives outside the repository).
+# Set by --evidence or CHROMATIN_STUDIO_EVIDENCE; read-only, never served as files.
+EVIDENCE = {"root": None}
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -164,6 +167,20 @@ class Handler(BaseHTTPRequestHandler):
             if path == "/api/studies/catalog":
                 from .studies import study_catalog
                 return self.respond(study_catalog())
+            if path in ("/api/evidence", "/api/evidence/report"):
+                from .components import evidence
+                root = EVIDENCE["root"] if EVIDENCE["root"] is not None else evidence.configured_root()
+                if path == "/api/evidence":
+                    return self.respond(evidence.index(root))
+                requested = parse_qs(urlparse(self.path).query).get("path", [])
+                try:
+                    if len(requested) != 1:
+                        raise ValueError("Supply exactly one report path.")
+                    return self.respond(evidence.report(root, requested[0]))
+                except FileNotFoundError as exc:
+                    return self.respond({"error": str(exc)}, 404)
+                except ValueError as exc:
+                    return self.respond({"error": str(exc)}, 400)
             if path == "/api/studies/benchmarks":
                 report = ROOT / "references" / "manuscript" / "verification.json"
                 if not report.is_file():
@@ -394,9 +411,15 @@ def main():
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--config", type=Path, help="Optional JSON configuration to load")
     parser.add_argument("--open", action="store_true", help="Open the local app in your default browser")
+    parser.add_argument("--evidence", type=Path,
+                        help="Folder of component-study outputs to show in the Evidence view "
+                             "(default: CHROMATIN_STUDIO_EVIDENCE)")
     args = parser.parse_args()
     if args.config:
         WORKSPACE.config = checked_config(json.loads(args.config.read_text()))
+    if args.evidence:
+        from .components.evidence import configured_root
+        EVIDENCE["root"] = configured_root(str(args.evidence))
     server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
     print(f"Chromatin Studio {__version__}: http://127.0.0.1:{args.port}", flush=True)
     print("Local exploratory simulation. Press Ctrl+C to stop.", flush=True)

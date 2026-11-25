@@ -1,35 +1,35 @@
 {
   "voice": "af_heart",
-  "source_text": "For the detailed walkthrough, choose Manuscript hypotheses at eighty kilobases. Four hundred coarse units represent two hundred base pairs each, with nucleosome occupancy and individual transcripts enabled. The preset includes transcription factors, coactivators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
-  "spoken_text": "For the detailed walkthrough, choose Manuscript hypotheses at eighty kilobases. Four hundred coarse units represent two hundred base pairs each, with nucleosome occupancy and individual transcripts enabled. The preset includes transcription factors, co-activators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
-  "word_count": 78,
+  "source_text": "The Manuscript hypotheses example is the main model for this walkthrough. Each of its four hundred beads is two hundred base pairs, a coarse nucleosome unit that can be occupied or vacant. Nucleosome occupancy and individual transcripts are enabled. The preset includes transcription factors, coactivators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
+  "spoken_text": "The Manuscript hypotheses example is the main model for this walkthrough. Each of its four hundred beads is two hundred base pairs, a coarse nucleosome unit that can be occupied or vacant. Nucleosome occupancy and individual transcripts are enabled. The preset includes transcription factors, co-activators, and illustrative active and repressive marks. These are starting hypotheses, not fitted biology. Expand builder gives the settings room. Ordinary edits stay in the draft until Apply and restart. How it works is a separate learning sandbox: its sliders explain equations without changing your run.",
+  "word_count": 90,
   "target_words_per_minute": 155.0,
-  "words_per_minute": 153.2215819800943,
-  "model_speed": 1.2943400039447732,
-  "duration_seconds": 31.044,
-  "speech_seconds": 30.544,
+  "words_per_minute": 150.33407572383072,
+  "model_speed": 1.169840776186557,
+  "duration_seconds": 36.42,
+  "speech_seconds": 35.92,
   "sample_rate": 24000,
   "padding_seconds": 0.5,
-  "peak_before_attenuation": 0.8031940460205078,
+  "peak_before_attenuation": 0.7669917941093445,
   "gain": 1.0,
   "attempts": [
     {
       "model_speed": 0.9,
-      "seconds": 38.928,
-      "words_per_minute": 120.22194821208386,
-      "inference_seconds": 8.863955333945341
+      "seconds": 41.78666666666667,
+      "words_per_minute": 129.2278238672623,
+      "inference_seconds": 13.155999999959022
     },
     {
-      "model_speed": 1.160353846153846,
-      "seconds": 33.68,
-      "words_per_minute": 138.95486935866984,
-      "inference_seconds": 7.924436250003055
+      "model_speed": 1.079488888888889,
+      "seconds": 37.754666666666665,
+      "words_per_minute": 143.02867636671846,
+      "inference_seconds": 11.875
     },
     {
-      "model_speed": 1.2943400039447732,
-      "seconds": 30.544,
-      "words_per_minute": 153.2215819800943,
-      "inference_seconds": 6.945902541978285
+      "model_speed": 1.169840776186557,
+      "seconds": 35.92,
+      "words_per_minute": 150.33407572383072,
+      "inference_seconds": 10.703000000037719
     }
   ],
   "within_target_pace": true,
@@ -38,7 +38,7 @@
   "speech_truncated": false,
   "id": "02-build-and-learn",
   "file": "02-build-and-learn.wav",
-  "fingerprint": "05cc56c4f607703bf500fb067c3d8ac592dc4c2f89b47c48b75e26eb69f7afc7",
-  "wav_sha256": "37dbb73c50f4db2f5e4ce9ef0a715bcb1cd5073503942b6958d753743e4f3c11",
+  "fingerprint": "f362e42ff85a46f96c63a063f3594896b10f244550d72bb8e8ffa1a212c8c3bd",
+  "wav_sha256": "ccf1cf2a0c4fd799c7eb9eb08daf0cd7c7673cb2b4740a068f7c8a1c2bed9def",
   "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
 }

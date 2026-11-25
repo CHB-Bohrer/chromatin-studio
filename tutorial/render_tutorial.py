@@ -11,6 +11,7 @@ import hashlib
 import html
 import json
 import math
+import os
 from pathlib import Path
 import re
 import shutil
@@ -72,7 +73,8 @@ def load_storyboard(path):
 def font(size,bold=False):
     candidates=[FONT_ROOT/("Arial Bold.ttf" if bold else "Arial.ttf"),
                 Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold
-                     else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")]
+                     else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
+                Path(os.environ.get("WINDIR","C:/Windows"))/"Fonts"/("arialbd.ttf" if bold else "arial.ttf")]
     for path in candidates:
         if path.exists():
             return ImageFont.truetype(str(path),size)

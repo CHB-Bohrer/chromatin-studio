@@ -1,7 +1,7 @@
 {
   "version": 3,
   "application_version": "0.10.0",
-  "updated_date": "2026-11-06",
+  "updated_date": "2026-11-24",
   "capture_method": "Actual Codex in-app browser screenshots; scripted keyframe walkthrough, not continuous trajectory recording.",
   "new_capture_viewport_pixels": [
     1707,
@@ -47,15 +47,15 @@
   "captures": [
     {
       "file": "captures/01-overview.png",
-      "sha256": "3b2659f41dffa5c629e11715e7f2c486a151bd3b2c783fb41acc48c7719424de",
-      "recording_version": "0.9.0",
-      "recording": "capture-provenance-v0.9.json"
+      "sha256": "6474d7d22cc9e82e8d202b5903a3181bc572fcf26325d4571323f474f167b95a",
+      "recording_version": "0.10.0",
+      "recording": "bp200_capture"
     },
     {
       "file": "captures/01-overview-inspector.png",
-      "sha256": "a5b2c1a4ba64c58b8355b83d4546ce5af04e438e9560e4a5c29f4dec483cfe4d",
-      "recording_version": "0.9.0",
-      "recording": "capture-provenance-v0.9.json"
+      "sha256": "816a48301d1c19706cd982d6dc9c894f96ced4b575c7639c4f3c0c64ffea36b5",
+      "recording_version": "0.10.0",
+      "recording": "bp200_capture"
     },
     {
       "file": "captures/02-build-and-learn.png",
@@ -272,12 +272,30 @@
       "sha256": "5ab494a8a3b8a690cb291ee2a28865449d173552eedfbf6f666b3cd347f06182",
       "recording_version": "0.9.0",
       "recording": "capture-provenance-v0.9.json"
+    },
+    {
+      "file": "captures/18-evidence-overview.png",
+      "sha256": "d4b93b1a6388816eee10413ff189fb2d9d4b3cc20fa120034e0c1cbaaf0e1852",
+      "recording_version": "0.10.0",
+      "recording": "bp200_capture"
+    },
+    {
+      "file": "captures/18-evidence-figure.png",
+      "sha256": "2113e927a8f421d45dd0d4a322de82813e5af0689e66fcade756c1bb7230f4fe",
+      "recording_version": "0.10.0",
+      "recording": "bp200_capture"
+    },
+    {
+      "file": "captures/18-evidence-checks.png",
+      "sha256": "ad4e9026746557ad0b0612ebfe75b8b104127a4a0dd49de0594bc60e46430708",
+      "recording_version": "0.10.0",
+      "recording": "bp200_capture"
     }
   ],
   "source_records": [
     {
       "file": "storyboard.json",
-      "sha256": "0a86a75a826314a1daba0a65161db64ea7d074f2b41f411a50cd5708ef734aa9"
+      "sha256": "d652fb3143b79adc7a8ffe21e4ef30ed4f3b6b304969dd85b1a7ef3a83e6027e"
     },
     {
       "file": "recording-model.json",
@@ -302,6 +320,10 @@
     {
       "file": "recording-nucleosome-run.json",
       "sha256": "6d233efe0b239c5f7b3a0da1ae37445ccaa583eb33169cfa9a6ee33c194fcd0d"
+    },
+    {
+      "file": "recording-nucleus-tethers-model.json",
+      "sha256": "fb37be95caa9f253a6e6e61e75ebc166293d3c61dacbc58b7f512fdfbbd760cc"
     }
   ],
   "focus_crops": "New detail scenes use documented focus rectangles of the original browser captures for readable UI text. No pixels or measurements were edited.",
@@ -309,5 +331,121 @@
     1687,
     949
   ],
-  "capture_size_note": "Native browser viewport was reported as 1707 \u00d7 960; saved browser screenshots are 1687 \u00d7 949. Focus rectangles are validated against the saved PNG dimensions."
+  "capture_size_note": "Native browser viewport was reported as 1707 \u00d7 960; saved browser screenshots are 1687 \u00d7 949. Focus rectangles are validated against the saved PNG dimensions.",
+  "nucleus_tethers_capture": {
+    "date": "2026-11-09",
+    "port": 8766,
+    "model": "recording-nucleus-tethers-model.json",
+    "method": "Headless Chrome driven over the DevTools protocol at a 1707x960 viewport (dark scheme); real UI clicks/toggles via page scripts, no injected state.",
+    "advance_method": "Actual UI Run then Pause; captured at reduced time 2.3 (1,150 integration steps).",
+    "captures": {
+      "17-nucleus-envelope.png": "8dac5457b796aea8e4b5c11336a8442db075ff0605c76b46e5dfbe5bbff1b0f4",
+      "17-tether-editor.png": "d7449c71a790f5d883965a533c333899b9fd1d45e54027032c80cf5637aff81a",
+      "17-tethers-local.png": "92dbd64a3319778e60b0ab7709cb55b7c1464d44b2931885bb9c01c961ccdb00",
+      "17-occupancy-tethers-1d.png": "5fa3ee2fa2c7c69d9c91ab83f2825897e0dabfb2afa225b13d86b761bcfa2e37"
+    },
+    "scope": "UI check model with accelerated tether attachment; not a calibrated or scientific configuration.",
+    "superseded_by": "bp200_capture (2026-11-24); these captures were replaced"
+  },
+  "evidence_capture": {
+    "date": "2026-11-22",
+    "port": 8793,
+    "model": "Default startup model of an isolated instance; the Evidence tab reads saved component-study reports and runs nothing.",
+    "method": "Headless Chrome driven over the DevTools protocol at a 1707x960 viewport (dark scheme); real UI clicks, scrolling and one pointer hover via page scripts, no injected state.",
+    "source": "Server started with --evidence pointing to the local component-study folder (see LOCAL_DATA.md); absolute paths are shortened before reaching the browser and none appear in the captures.",
+    "captures": {
+      "18-evidence-overview.png": "647b87a048e0e235a294c90910f0d9f2d8b3b55e0d773b718fc8b064261c4937",
+      "18-evidence-figure.png": "2113e927a8f421d45dd0d4a322de82813e5af0689e66fcade756c1bb7230f4fe",
+      "18-evidence-checks.png": "ad4e9026746557ad0b0612ebfe75b8b104127a4a0dd49de0594bc60e46430708"
+    },
+    "scope": "Shows saved reports analyzed on 2026-11-22. Experimental passes are conditional on the provisional unit mapping or input-matched rates stated in each check.",
+    "superseded_by": "bp200_capture (2026-11-24); these captures were replaced"
+  },
+  "bp200_capture": {
+    "date": "2026-11-24",
+    "reason": "Every chapter now uses 200 bp beads; chapter 01 no longer shows the 20 Mb (10 kb per bead) preset, and chapter 17 uses the 80 kb model with the envelope placed away from the nucleolus.",
+    "method": "Headless Chrome driven over the DevTools protocol at a 1707x960 viewport (dark scheme); real UI clicks, Run/Pause, scrolling and one pointer hover via page scripts, no injected state.",
+    "instances": {
+      "manuscript_80kb": {
+        "port": 8795,
+        "model": "examples/manuscript_locus.json",
+        "seed": 42,
+        "advance_method": "Actual UI Run then Pause",
+        "time_reduced": 2.08,
+        "step": 1040,
+        "captures": [
+          "01-overview.png",
+          "01-overview-inspector.png",
+          "18-evidence-overview.png",
+          "18-evidence-figure.png",
+          "18-evidence-checks.png"
+        ],
+        "evidence_source": "Server started with --evidence pointing to the local component-study folder (see LOCAL_DATA.md); no paths appear in the captures.",
+        "ui_default_nucleus_check": [
+          [
+            "[\"nucleus\",\"enabled\"]",
+            "on"
+          ],
+          [
+            "[\"nucleus\",\"envelope_stiffness\"]",
+            "30"
+          ],
+          [
+            "[\"nucleus\",\"radii\",0]",
+            "65"
+          ],
+          [
+            "[\"nucleus\",\"radii\",1]",
+            "65"
+          ],
+          [
+            "[\"nucleus\",\"radii\",2]",
+            "52"
+          ],
+          [
+            "[\"nucleus\",\"center\",0]",
+            "46.454"
+          ],
+          [
+            "[\"nucleus\",\"center\",1]",
+            "-28.692"
+          ],
+          [
+            "[\"nucleus\",\"center\",2]",
+            "0"
+          ]
+        ]
+      },
+      "nucleus_tethers_80kb": {
+        "port": 8796,
+        "model": "recording-nucleus-tethers-model.json",
+        "seed": 42,
+        "advance_method": "Actual UI Run then Pause, stopped once at least 10 LAD beads were attached",
+        "time_reduced": 6.0,
+        "step": 3000,
+        "attached_beads": [
+          10
+        ],
+        "captures": [
+          "17-nucleus-envelope.png",
+          "17-tether-editor.png",
+          "17-tethers-local.png",
+          "17-occupancy-tethers-1d.png"
+        ],
+        "note": "17-occupancy-tethers-1d.png was retaken from the same paused server state in a fresh headless page, scrolled to show the Tethers and Nucleosomes rows."
+      }
+    },
+    "captures": {
+      "01-overview-inspector.png": "816a48301d1c19706cd982d6dc9c894f96ced4b575c7639c4f3c0c64ffea36b5",
+      "01-overview.png": "6474d7d22cc9e82e8d202b5903a3181bc572fcf26325d4571323f474f167b95a",
+      "17-nucleus-envelope.png": "6173e3c7df5283fda7e536096bc9b4c035c6b8e81e32626316a423bdede87492",
+      "17-occupancy-tethers-1d.png": "79582558cf57d0f339fcf47ea194e1bf74f5269754c67657e56a28693e5d04c2",
+      "17-tether-editor.png": "e683aecc2415b90e093e77005e9fae7d1d4099f3a8b0eabdb16d8174a251e138",
+      "17-tethers-local.png": "3833fa97fedb51b1ba2156986176af167889c2fd4851061ec3c2e669a9accdaa",
+      "18-evidence-checks.png": "ad4e9026746557ad0b0612ebfe75b8b104127a4a0dd49de0594bc60e46430708",
+      "18-evidence-figure.png": "2113e927a8f421d45dd0d4a322de82813e5af0689e66fcade756c1bb7230f4fe",
+      "18-evidence-overview.png": "d4b93b1a6388816eee10413ff189fb2d9d4b3cc20fa120034e0c1cbaaf0e1852"
+    },
+    "scope": "The tether model is the 80 kb preset plus the app's default whole-nucleus placement (verified against the UI draft) and one accelerated LAD tether; a UI check, not a scientific configuration. Evidence captures show reports analyzed on 2026-11-22."
+  }
 }
