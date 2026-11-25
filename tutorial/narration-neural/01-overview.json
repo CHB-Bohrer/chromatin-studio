@@ -1,29 +1,23 @@
 {
   "voice": "af_heart",
-  "source_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a coarse genomic interval, and its size is a model setting. In the detailed examples a bead is two hundred base pairs, about one nucleosome unit. This opening overview is the coarse twenty-megabase example instead: two thousand beads of ten kilobases each, so one bead is a bin covering many nucleosomes. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
-  "spoken_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a coarse genomic interval, and its size is a model setting. In the detailed examples a bead is two hundred base pairs, about one nucleosome unit. This opening overview is the coarse twenty-megabase example instead: two thousand beads of ten kilobases each, so one bead is a bin covering many nucleosomes. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
-  "word_count": 99,
+  "source_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a stretch of DNA, and its size is a model setting. This walkthrough uses one size throughout: two hundred base pairs per bead, about one nucleosome and its linker. The example is Manuscript hypotheses at eighty kilobases: four hundred beads of two hundred base pairs each. Coarser presets also exist, where one bead stands for ten kilobases and many nucleosomes, but they are not used here. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
+  "spoken_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a stretch of D N A, and its size is a model setting. This walkthrough uses one size throughout: two hundred base pairs per bead, about one nucleosome and its linker. The example is Manuscript hypotheses at eighty kilobases: four hundred beads of two hundred base pairs each. Coarser presets also exist, where one bead stands for ten kilobases and many nucleosomes, but they are not used here. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
+  "word_count": 116,
   "target_words_per_minute": 155.0,
-  "words_per_minute": 151.18094203882177,
-  "model_speed": 0.9773454545454545,
-  "duration_seconds": 39.79066666666667,
-  "speech_seconds": 39.29066666666667,
+  "words_per_minute": 150.64065566201086,
+  "model_speed": 0.9,
+  "duration_seconds": 46.702666666666666,
+  "speech_seconds": 46.202666666666666,
   "sample_rate": 24000,
   "padding_seconds": 0.5,
-  "peak_before_attenuation": 0.7338705062866211,
+  "peak_before_attenuation": 0.7370302081108093,
   "gain": 1.0,
   "attempts": [
     {
       "model_speed": 0.9,
-      "seconds": 41.616,
-      "words_per_minute": 142.73356401384083,
-      "inference_seconds": 12.155999999959022
-    },
-    {
-      "model_speed": 0.9773454545454545,
-      "seconds": 39.29066666666667,
-      "words_per_minute": 151.18094203882177,
-      "inference_seconds": 11.079000000027008
+      "seconds": 46.202666666666666,
+      "words_per_minute": 150.64065566201086,
+      "inference_seconds": 13.76500000001397
     }
   ],
   "within_target_pace": true,
@@ -32,7 +26,7 @@
   "speech_truncated": false,
   "id": "01-overview",
   "file": "01-overview.wav",
-  "fingerprint": "7bc360173383611ff6101b33e19a64f0bbc6047facd1cc46e9a0ace50350ecf7",
-  "wav_sha256": "4072855bac0c71d22ff729c7c19f9c00e0237ac3b2ddd00fa091eb31f641bd73",
+  "fingerprint": "159d2a4c9447b9962dcb48aac352a816ce0730997da71916e6d37802dc738f60",
+  "wav_sha256": "da51984aef8d24705e9034a180cecdf5da8db7930efd0fca311125798426079d",
   "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
 }

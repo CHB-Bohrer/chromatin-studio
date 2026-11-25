@@ -4,7 +4,7 @@
   "tagline": "A visual builder and simulator for chromatin, reacting proteins, histone marks, cohesin and transcription.",
   "kind": "Research software",
   "stage": "Research prototype",
-  "as_of": "2026-11-22",
+  "as_of": "2026-11-24",
   "repo": "CHB-Bohrer/chromatin-studio",
   "links": [
     {
@@ -42,7 +42,7 @@
     },
     {
       "value": "18",
-      "label": "narrated tutorial chapters, about 12.5 minutes, built from real captured states of the app"
+      "label": "narrated tutorial chapters, about 13 minutes, built from real captured states of the app"
     },
     {
       "value": "2,894",
@@ -125,7 +125,7 @@
           {
             "name": "Narrated tutorial",
             "state": "built",
-            "note": "A scripted walkthrough of genuine captured states, not continuous simulation footage. Re-rendered on 2026-11-22 with 18 chapters; the new one walks through the Evidence view and the component tests that were run. Not yet reviewed at 1×."
+            "note": "A scripted walkthrough of genuine captured states, not continuous simulation footage. Re-rendered on 2026-11-24 with 18 chapters, all at 200 bp per bead (about one nucleosome), with plainer explanations of binding and release rates. Not yet reviewed at 1×."
           }
         ]
       },
@@ -193,5 +193,5 @@
       "caption": "A coarse 20 Mb model: 2,000 beads at 10 kb per bead."
     }
   ],
-  "source_note": "Summarised from the project's own status document (docs/PROJECT_STATUS.md, last reviewed 22 Nov 2026). When the status changes, edit status.json in this folder."
+  "source_note": "Summarised from the project's own status document (docs/PROJECT_STATUS.md, last reviewed 24 Nov 2026). When the status changes, edit status.json in this folder."
 }
