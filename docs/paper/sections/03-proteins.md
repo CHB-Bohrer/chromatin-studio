@@ -38,7 +38,19 @@ $r_\text{nuc}$ lets a nucleosome speed up or slow down release (allowed range 0 
 
 ## Protein–protein links
 
-Pairs of species can be given an interaction rule: a capture radius, an on-hazard, an off-hazard and a spring strength. Links obey valence, so molecules can form chains and networks larger than dimers. The interface reports the largest connected cluster. A large cluster is **not** evidence of liquid–liquid phase separation; that would need a phase diagram the model has not computed.
+Pairs of species can be given an interaction rule in one of two modes.
+
+**Bonds** (the default): a capture radius, an on-hazard, an off-hazard and a spring strength. Links obey valence, so molecules can form chains and networks larger than dimers. The interface reports the largest connected cluster.
+
+**Attraction**: no discrete bonds. Sticker beads of the two species feel a smooth pair well. Its depth $\varepsilon$ (in $k_BT$) applies at contact, $r \le \sigma = r_a + r_b$, and it fades to zero at the rule's radius $r_c$:
+
+$$U(r) = -\varepsilon\,(1 - s^2)^2, \qquad s = \frac{r - \sigma}{r_c - \sigma} \text{ clipped to } [0, 1].$$
+
+Inside contact the well is flat, so it exerts no force there. Attracting pairs also get a steep core inside contact, $4[(w/r)^{12} - (w/r)^6] + 1$ with $w = \sigma/2^{1/6}$. Without it, the bounded soft repulsion let many attracting beads collapse onto one another, giving clusters far denser than beads can pack **[Assumption: the core shape is the standard WCA form, not fitted]**. How many partners fit is then set by geometry, not by a valence number. This mode is meant for coarse phase separation with one bead per protein. It runs on the GPU when it is the only protein activity (Section 8).
+
+A large cluster alone is **not** evidence of liquid–liquid phase separation. The tests are: a dense phase coexisting with a dilute one, a threshold concentration below which no droplet forms, and molecules exchanging between the two.
+
+**Does the attraction mode phase-separate?** The **Phase separation · 80 kb** preset (400 × 200 bp chain, 600 one-bead scaffolds, 150 clients) was run on the GPU, with one seed per case **[Unverified: single seeds, not converged to one droplet at high concentration]**. At 600 scaffolds, a 1.0 $k_BT$ contact depth gave no droplet. 1.5 $k_BT$ gave one droplet (density about 4 per unit volume, below close packing of about 6.5), with about 13% of its members replaced every 20,000 steps. 2.0 $k_BT$ gave two droplets that did not merge, and 3.0 $k_BT$ several small arrested clusters. At 1.5 $k_BT$, no droplet formed at scaffold densities of 0.014 to 0.055. Droplets formed at 0.083 and 0.138, where the dilute phase stayed at 0.050 and 0.038, so the dilute concentration did not rise with the total amount. The preset uses 1.5 $k_BT$. The well depth is a model setting, not a measured affinity.
 
 ## What the numbers mean
 

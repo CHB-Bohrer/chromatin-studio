@@ -39,9 +39,11 @@ Changes to the core rules (such as the move to exact within-step promoter paths 
 |---|---|---|
 | NumPy (reference) | Everything on the CPU. | Default; all features. About 2.1 ms per step for the 2,000-bead baseline. |
 | OpenMM adapter | OpenMM integrates motion; the CPU still computes forces and reactions. | Works, but is *slower* on a GPU (2.8–3.6 ms per step) because data crosses to the device every sub-step. |
-| OpenMM native | All polymer forces and integration on the GPU. | Bare polymers only; refuses any chemistry. About 60 µs per step, about 35 times faster. Statistically equivalent to NumPy within 0.3%. |
+| OpenMM native | All forces and integration on the GPU. | Bare polymers, plus one-bead proteins whose only activity is attraction-mode wells (Section 3); refuses any other chemistry. About 60 µs per step for the bare baseline, about 35 times faster, and statistically equivalent to NumPy within 0.3%. Forces match the CPU engine to 10⁻¹² (Reference platform) and 10⁻⁴ (CUDA mixed precision). |
 
-Models with proteins, marks, cohesin or genes therefore run on the CPU for now. A native GPU path for chemistry is future work (Section 13).
+With attraction wells, the GPU uses a fixed sub-step count that allows for up to 12 close contacts per bead, and finer sub-steps for the first 500 steps, because the initial placement allows overlaps down to 0.65 of contact. The steep core is capped at half the contact distance (about 4,000 $k_BT$) so that it cannot overflow in single precision. Measured on an RTX 3090 that was shared with other runs, so the numbers are pessimistic: 0.4–0.7 ms per step for bare chains of 5,000–50,000 beads, and 9–16 ms per step for 10,000–50,000 beads plus 5,000–20,000 droplet proteins.
+
+Models with chromatin binding, marks, cohesin or genes still run on the CPU. A native GPU path for that chemistry is future work (Section 13).
 
 ## Running at scale
 

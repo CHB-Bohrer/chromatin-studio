@@ -19,7 +19,7 @@ Sources: AGENTS.md "Scientific distinctions to preserve", README.md "What this v
 
 - Soft repulsion lets chains pass through each other; topology is not preserved.
 - Nucleosomes are on/off states on fixed beads, with no wrapped DNA, histone identity, tails or histone pool.
-- IDRs are coarse bead chains, not sequences. Speckles and nucleoli are imposed fields, not self-assembled condensates. Large clusters are not evidence of phase separation.
+- IDRs are coarse bead chains, not sequences. Speckles and nucleoli are imposed fields, not self-assembled condensates. Attraction-mode condensates form by themselves, but their well depths are illustrative and they do not yet bind chromatin. Large clusters alone are not evidence of phase separation.
 - Cohesin barriers are perfect, unloaded cohesin reloads instantly, and there is no loading rate.
 - Transcription has no free polymerase pool, no polymerase traffic or backtracking, no introns, and RNA is a point particle with no forces or protein binding.
 - Tethers are anchor springs, with no lamina, pores or membrane mechanics.
@@ -32,8 +32,8 @@ Sources: AGENTS.md "Scientific distinctions to preserve", README.md "What this v
 
 **Scale and speed.**
 
-- At most 4,000 chromatin beads; 20 Mb at nucleosome resolution is out of reach.
-- The GPU only speeds up bare polymers. Models with chemistry run on the CPU.
+- Size is not capped, but the CPU engine takes about 220 ms per step at 50,000 beads with full chemistry, and each live frame of a large model is several megabytes, so the 3D view does not yet thin what it draws.
+- The GPU speeds up bare polymers and one-bead proteins that interact only through attraction-mode wells. Models with any other chemistry run on the CPU.
 
 **Validation.**
 

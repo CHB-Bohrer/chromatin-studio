@@ -30,15 +30,17 @@ All inputs are in **reduced units**. Energy is measured in units of thermal ener
 
 ## Size limits
 
-| Quantity | Current limit |
+The default model and the four small presets (Nuclear neighborhood, Multivalent assembly, Reader–writer memory, Loop extrusion) use one coarse nucleosome unit (200 bp) per bead; the 96 kb default is 480 beads. The 20 Mb presets stay at 10 kb per bead.
+
+Model size is no longer capped. Above the sizes below, validation only warns that the CPU engine and the live view will be slow:
+
+| Quantity | Warning above |
 |---|---|
 | Chromatin beads | 4,000 |
 | Chromatin plus protein particles | 6,000 |
-| Individually tracked RNA molecules | 5,000 |
-| Protein species | 32 |
-| Regulatory elements, tethering elements | 128 each |
+| Cohesin complexes | 256 |
 
-So 20 Mb fits at 10 kb per bead (2,000 beads), and at 200 bp per bead the longest region is 0.8 Mb. A 20 Mb region at nucleosome resolution would need 100,000 beads and is not supported.
+Hard limits remain for individually tracked RNA (5,000), genes (256) and regulatory or tethering elements (128 each); up to 1,024 protein species and 256 marks are accepted. Measured cost per step on the CPU engine with full chemistry is about 3 ms at 480 beads, 35 ms at 10,000 and 220 ms at 50,000. A 20 Mb region at nucleosome resolution (100,000 beads) now validates, but is practical only on the GPU engine and for models it supports (Section 8).
 
 ## How the code is organised
 
