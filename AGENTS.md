@@ -43,4 +43,6 @@ Update [PROJECT_STATUS.md](docs/PROJECT_STATUS.md) with the date, completed beha
 
 Also update `status.json` at the repository root. It feeds the public status page at https://chb-bohrer.github.io/chromatin-studio/ and the Fun Code page on the lab site. Keep its node states (built, partial, planned), notes and `as_of` date consistent with PROJECT_STATUS.md, and keep it public-safe: no unpublished results, credentials or manuscript text.
 
+Keep the software paper current: when you change code, update the section(s) of `docs/paper/sections/` whose header comment names the changed file, rerun only the validation check for a mechanism whose numbers could change, and rebuild with `python docs/paper/build.py` (it redraws only stale figures and never runs a simulation). Commit the section, data, figures and PDF with the code. See [docs/paper/README.md](docs/paper/README.md).
+
 For documentation-only changes, check links and factual consistency. Do not rerun expensive scientific workloads merely to refresh a date. Report what actually ran in the current session.
