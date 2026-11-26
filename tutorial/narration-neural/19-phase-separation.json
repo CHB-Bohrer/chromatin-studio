@@ -1,0 +1,32 @@
+{
+  "voice": "af_heart",
+  "source_text": "Phase separation at eighty kilobases shows a second way proteins can interact. Choose it from the Experiment menu. Around the same four hundred bead chain it places six hundred scaffold proteins and one hundred fifty clients, each a single bead. Open Interactions. These pairs use attraction mode: instead of forming bonds, two nearby proteins feel a shallow energy well. Here, Link strength is the well depth at contact, one and a half kT between scaffolds and nine tenths between client and scaffold, and Encounter radius is where the well ends. The association and dissociation rates are not used in this mode. This model needs hundreds of thousands of steps, more than the live engine reaches in a session, so the next states were advanced with the native engine and then opened in the workbench for display. At the preset's six hundred scaffolds, clusters of up to about forty molecules formed and dissolved again over four hundred thousand steps. Next, raise the scaffold count to one thousand and apply. Now dense droplets of about two hundred fifty molecules appear within about fifty thousand steps and persist, while about a fifth of their members are replaced every twenty-five thousand steps. Several droplets formed and had not merged by three hundred thousand steps. That contrast is what to look for: a dense phase that coexists with a dilute one, appears only above a threshold concentration, and keeps exchanging molecules. These are single runs, and an earlier GPU check did form one droplet at six hundred scaffolds, so the preset sits close to the threshold. Largest assembly stays at one, because it counts bonds. The well depth is not a measured affinity.",
+  "spoken_text": "Phase separation at eighty kilobases shows a second way proteins can interact. Choose it from the Experiment menu. Around the same four hundred bead chain it places six hundred scaffold proteins and one hundred fifty clients, each a single bead. Open Interactions. These pairs use attraction mode: instead of forming bonds, two nearby proteins feel a shallow energy well. Here, Link strength is the well depth at contact, one and a half kT between scaffolds and nine tenths between client and scaffold, and Encounter radius is where the well ends. The association and dissociation rates are not used in this mode. This model needs hundreds of thousands of steps, more than the live engine reaches in a session, so the next states were advanced with the native engine and then opened in the workbench for display. At the preset's six hundred scaffolds, clusters of up to about forty molecules formed and dissolved again over four hundred thousand steps. Next, raise the scaffold count to one thousand and apply. Now dense droplets of about two hundred fifty molecules appear within about fifty thousand steps and persist, while about a fifth of their members are replaced every twenty-five thousand steps. Several droplets formed and had not merged by three hundred thousand steps. That contrast is what to look for: a dense phase that coexists with a dilute one, appears only above a threshold concentration, and keeps exchanging molecules. These are single runs, and an earlier G P U check did form one droplet at six hundred scaffolds, so the preset sits close to the threshold. Largest assembly stays at one, because it counts bonds. The well depth is not a measured affinity.",
+  "word_count": 280,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 152.85326086956522,
+  "model_speed": 0.9,
+  "duration_seconds": 110.40933333333334,
+  "speech_seconds": 109.90933333333334,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 0.7645999193191528,
+  "gain": 1.0,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 109.90933333333334,
+      "words_per_minute": 152.85326086956522,
+      "inference_seconds": 47.03200000000652
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "19-phase-separation",
+  "file": "19-phase-separation.wav",
+  "fingerprint": "c4837c4cf78deb7ec43a9d32ce47042b2cdb86584515802545a687b938a1efad",
+  "wav_sha256": "6812656ae3970b2e8a53f3707582ab1cb0f594645f6772541f8e2aa123b078d5",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

@@ -2,90 +2,100 @@
 [CHAPTER]
 TIMEBASE=1/1000
 START=0
-END=47967
+END=51733
 title=Start with the workbench
 [CHAPTER]
 TIMEBASE=1/1000
-START=47967
-END=85667
+START=51733
+END=89433
 title=Choose a focused experiment
 [CHAPTER]
 TIMEBASE=1/1000
-START=85667
-END=124400
+START=89433
+END=159833
+title=Save your work, pick an engine, and grow a model
+[CHAPTER]
+TIMEBASE=1/1000
+START=159833
+END=198567
 title=Set the confining domain
 [CHAPTER]
 TIMEBASE=1/1000
-START=124400
-END=198833
+START=198567
+END=273000
 title=Watch binding along the chromosome
 [CHAPTER]
 TIMEBASE=1/1000
-START=198833
-END=263700
+START=273000
+END=337867
 title=Create gaps and recruit remodelers
 [CHAPTER]
 TIMEBASE=1/1000
-START=263700
-END=331033
+START=337867
+END=405200
 title=Add the whole nucleus and tethering elements
 [CHAPTER]
 TIMEBASE=1/1000
-START=331033
-END=369800
+START=405200
+END=443967
 title=Define many proteins and their roles
 [CHAPTER]
 TIMEBASE=1/1000
-START=369800
-END=402733
+START=443967
+END=487333
 title=Inspect binding in its context
 [CHAPTER]
 TIMEBASE=1/1000
-START=402733
-END=438033
+START=487333
+END=522633
 title=Connect accessibility, marks and stiffness
 [CHAPTER]
 TIMEBASE=1/1000
-START=438033
-END=475267
+START=522633
+END=559867
 title=Follow an enhancer to its target gene
 [CHAPTER]
 TIMEBASE=1/1000
-START=475267
-END=512300
+START=559867
+END=596900
 title=Watch polymerases produce individual RNA
 [CHAPTER]
 TIMEBASE=1/1000
-START=512300
-END=547200
+START=596900
+END=631800
 title=Separate loops, assemblies and nuclear bodies
 [CHAPTER]
 TIMEBASE=1/1000
-START=547200
-END=583933
+START=631800
+END=743467
+title=Grow droplets from attraction alone
+[CHAPTER]
+TIMEBASE=1/1000
+START=743467
+END=780200
 title=Give the polymer a defensible physical clock
 [CHAPTER]
 TIMEBASE=1/1000
-START=583933
-END=616700
+START=780200
+END=812967
 title=Ask what the model actually reproduces
 [CHAPTER]
 TIMEBASE=1/1000
-START=616700
-END=656167
+START=812967
+END=852433
 title=Separate competition and shared environments
 [CHAPTER]
 TIMEBASE=1/1000
-START=656167
-END=693033
+START=852433
+END=889300
 title=Read correlations without confusing controls
 [CHAPTER]
 TIMEBASE=1/1000
-START=693033
-END=744367
+START=889300
+END=949733
 title=Check what the component tests actually showed
 [CHAPTER]
 TIMEBASE=1/1000
-START=744367
-END=787733
+START=949733
+END=1003833
 title=Export a reproducible cluster experiment

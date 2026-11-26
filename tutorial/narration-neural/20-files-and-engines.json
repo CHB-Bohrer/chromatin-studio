@@ -1,0 +1,32 @@
+{
+  "voice": "af_heart",
+  "source_text": "Three everyday tools sit in the top bar. Import loads a model file into the draft, and Export saves the draft as a model file, so an experiment can be shared or rebuilt exactly. Save run downloads the applied model together with its current state and the history the server recorded. That is one snapshot plus measurements, not a full trajectory. Beside the Experiment menu, Engine chooses how the run is integrated. Brownian reference is the built-in engine used throughout this tutorial. Polychrom with OpenMM is an integration adapter: forces and reactions still run on the CPU. The Model tab lists which engines are installed here. Model size is no longer capped. In this example the chain was raised to five thousand beads, one megabase. The model still runs, but the notes below the observables now include a Large model warning, because the live engine and the 3D view were sized for about four thousand beads and six thousand particles. Open these model notes whenever you change a model.",
+  "spoken_text": "Three everyday tools sit in the top bar. Import loads a model file into the draft, and Export saves the draft as a model file, so an experiment can be shared or rebuilt exactly. Save run downloads the applied model together with its current state and the history the server recorded. That is one snapshot plus measurements, not a full trajectory. Beside the Experiment menu, Engine chooses how the run is integrated. Brownian reference is the built-in engine used throughout this tutorial. Polychrom with OpenMM is an integration adapter: forces and reactions still run on the C P U. The Model tab lists which engines are installed here. Model size is no longer capped. In this example the chain was raised to five thousand beads, one megabase. The model still runs, but the notes below the observables now include a Large model warning, because the live engine and the 3D view were sized for about four thousand beads and six thousand particles. Open these model notes whenever you change a model.",
+  "word_count": 171,
+  "target_words_per_minute": 155.0,
+  "words_per_minute": 149.47552447552448,
+  "model_speed": 0.9,
+  "duration_seconds": 69.14,
+  "speech_seconds": 68.64,
+  "sample_rate": 24000,
+  "padding_seconds": 0.5,
+  "peak_before_attenuation": 1.020951271057129,
+  "gain": 0.9598891032137836,
+  "attempts": [
+    {
+      "model_speed": 0.9,
+      "seconds": 68.64,
+      "words_per_minute": 149.47552447552448,
+      "inference_seconds": 34.0
+    }
+  ],
+  "within_target_pace": true,
+  "phoneme_overrides": [],
+  "time_stretch": false,
+  "speech_truncated": false,
+  "id": "20-files-and-engines",
+  "file": "20-files-and-engines.wav",
+  "fingerprint": "51446e0d7180a72c1b811e73049e5b247f7a8ec554c7cb3bb91686cb4bc1d24a",
+  "wav_sha256": "636fee3dcfd0cbdc28d2a4d8f66fd853b13cfcc603929cfa4b9798f7a2b1dfcb",
+  "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+}

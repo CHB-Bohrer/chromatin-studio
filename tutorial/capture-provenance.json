@@ -1,7 +1,7 @@
 {
   "version": 3,
   "application_version": "0.10.0",
-  "updated_date": "2026-11-24",
+  "updated_date": "2026-11-25",
   "capture_method": "Actual Codex in-app browser screenshots; scripted keyframe walkthrough, not continuous trajectory recording.",
   "new_capture_viewport_pixels": [
     1707,
@@ -43,7 +43,7 @@
   },
   "session_preservation": "Ports 8765 and 8766 were already stopped before this update. Existing saved run files were preserved; 8766 now hosts the new 25.6 kb example. Temporary recording instance 8767 is shut down after capture.",
   "calibration": "No accepted physical mapping attached. All simulation rates and times are reduced units; no experimental fit claimed.",
-  "narration": "Local Kokoro af_heart; approximately 155 words per minute, 1\u00d7 default, no acceleration or truncation.",
+  "narration": "Local Kokoro af_heart; approximately 155 words per minute, 1× default, no acceleration or truncation.",
   "captures": [
     {
       "file": "captures/01-overview.png",
@@ -290,12 +290,60 @@
       "sha256": "ad4e9026746557ad0b0612ebfe75b8b104127a4a0dd49de0594bc60e46430708",
       "recording_version": "0.10.0",
       "recording": "bp200_capture"
+    },
+    {
+      "file": "captures/20-files.png",
+      "sha256": "a55c265838e37e4e558b5224bd5bfacf0d38c8df92d00de663007f52da7dde5a",
+      "recording_version": "0.10.0",
+      "recording": "full_update_capture"
+    },
+    {
+      "file": "captures/20-engines.png",
+      "sha256": "13314b8562e4fe217517fff12f5e27968a0a67cb6147e411626a1546cddd435b",
+      "recording_version": "0.10.0",
+      "recording": "full_update_capture"
+    },
+    {
+      "file": "captures/20-large-model.png",
+      "sha256": "215605ae5d84c323acca929e3da694cdfd8381665cbc9526fd471c2b01488a4f",
+      "recording_version": "0.10.0",
+      "recording": "full_update_capture"
+    },
+    {
+      "file": "captures/19-phase-preset.png",
+      "sha256": "941c8498f900fdea5d3de5b454752f8d64726d18a0c4c338a48c3f1e050d582f",
+      "recording_version": "0.10.0",
+      "recording": "full_update_capture"
+    },
+    {
+      "file": "captures/19-phase-interactions.png",
+      "sha256": "5e5648f176e27c148bddc0050a45edd73978a462d6d677c1f1f8777678cc7d7f",
+      "recording_version": "0.10.0",
+      "recording": "full_update_capture"
+    },
+    {
+      "file": "captures/19-phase-cluster.png",
+      "sha256": "af9c90724389b054855ce64571d4d3ef08ac78f9d6f8d69abc79af353fcb8c89",
+      "recording_version": "0.10.0",
+      "recording": "full_update_capture"
+    },
+    {
+      "file": "captures/19-phase-count.png",
+      "sha256": "e16ac9d510afc47500df53e3b28c59663ee30082a98f9064a44ae95bd6d019c2",
+      "recording_version": "0.10.0",
+      "recording": "full_update_capture"
+    },
+    {
+      "file": "captures/19-phase-droplet.png",
+      "sha256": "41f88f82096796232728cd4f5a106caf14aa2e5a41daddfde07f7044dd0738cc",
+      "recording_version": "0.10.0",
+      "recording": "full_update_capture"
     }
   ],
   "source_records": [
     {
       "file": "storyboard.json",
-      "sha256": "d652fb3143b79adc7a8ffe21e4ef30ed4f3b6b304969dd85b1a7ef3a83e6027e"
+      "sha256": "49f1f9828f4f713545440ac59598aa4e6201b28c23568ac9d2b792aed5b415b3"
     },
     {
       "file": "recording-model.json",
@@ -323,7 +371,15 @@
     },
     {
       "file": "recording-nucleus-tethers-model.json",
-      "sha256": "fb37be95caa9f253a6e6e61e75ebc166293d3c61dacbc58b7f512fdfbbd760cc"
+      "sha256": "4db091c8d4cc1a13829c1c63a4606a448c2beb0e2b407483f25d9ea30d2bea2b"
+    },
+    {
+      "file": "recording-phase-run-600.json",
+      "sha256": "f742ed27ac03a65482027a5122c77bfa2d19a174f7c30363f9b70995c2f0c0e8"
+    },
+    {
+      "file": "recording-phase-run-1000.json",
+      "sha256": "66eca9cbe0bc80268e967fe700143890771e9b672b4f3c14cdf63caf5659824a"
     }
   ],
   "focus_crops": "New detail scenes use documented focus rectangles of the original browser captures for readable UI text. No pixels or measurements were edited.",
@@ -331,7 +387,7 @@
     1687,
     949
   ],
-  "capture_size_note": "Native browser viewport was reported as 1707 \u00d7 960; saved browser screenshots are 1687 \u00d7 949. Focus rectangles are validated against the saved PNG dimensions.",
+  "capture_size_note": "Native browser viewport was reported as 1707 × 960; saved browser screenshots are 1687 × 949. Focus rectangles are validated against the saved PNG dimensions.",
   "nucleus_tethers_capture": {
     "date": "2026-11-09",
     "port": 8766,
@@ -447,5 +503,17 @@
       "18-evidence-overview.png": "d4b93b1a6388816eee10413ff189fb2d9d4b3cc20fa120034e0c1cbaaf0e1852"
     },
     "scope": "The tether model is the 80 kb preset plus the app's default whole-nucleus placement (verified against the UI draft) and one accelerated LAD tether; a UI check, not a scientific configuration. Evidence captures show reports analyzed on 2026-11-22."
+  },
+  "full_update_capture": {
+    "date": "2026-11-25",
+    "reason": "Bring the tutorial up to the current software: Import/Export/Save run, engines and advisory size limits (chapter 20) and attraction-mode phase separation (chapter 19).",
+    "method": "Headless Chrome driven over the DevTools protocol at a 1707x960 viewport; real UI clicks and input events via page scripts.",
+    "instances": {
+      "8772": "tutorial/recording-model.json (80 kb manuscript example) advanced 1,000 steps through /api/step; then Chromatin beads set to 5,000 in the UI and applied for 20-large-model.png.",
+      "8771": "examples/phase_separation.json at step 2,000 (reference engine via /api/step); 19-phase-count.png edits the draft scaffold count to 1,000 without applying.",
+      "8773": "phase_separation preset; positions at 175,000 steps from the native engine (OpenMM CPU platform, seed 42) loaded into the reference engine for display only. Log: recording-phase-run-600.json.",
+      "8774": "phase_separation preset with 1,000 scaffolds; positions at 300,000 steps from the native engine (OpenMM CPU platform, seed 42) loaded for display only. Log: recording-phase-run-1000.json."
+    },
+    "loaded_state_note": "Loaded states change no pixels or measurements; the workbench computes every displayed value from the loaded coordinates. The narration says the states were advanced elsewhere and opened for display."
   }
 }

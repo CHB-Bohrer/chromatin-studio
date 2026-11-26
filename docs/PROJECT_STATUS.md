@@ -105,6 +105,18 @@ For HP1α, rebinding among neighbouring H3K9me3 nucleosomes, with mark-dependent
 
 **Next concrete step.** Run `python -m chromatin_studio.components analyze <dir>` on `tf_binding` and `fbn2_cohesin` when they finish and record the outcome here. If the wild-type anchor separation or looped fraction disagrees with the Fbn2 data, the first candidates are barrier permeability and CTCF occupancy, which the engine does not represent. A tutorial chapter for component studies needs an interface view first.
 
+## Tutorial brought up to date: 20 chapters (2026-11-25)
+
+The user asked for the tutorial to cover everything currently in the software, walked through clearly, because they use it to see what has been built.
+
+- **New chapter 20-files-and-engines** (third in order): Import/Export of model files, Save run (applied model, current state and recorded history: one snapshot, not a trajectory), the Engine menu (Brownian reference; Polychrom/OpenMM computes forces and reactions on the CPU) and advisory size limits, shown by applying a 5,000-bead model and opening the Large model note.
+- **New chapter 19-phase-separation** (after architecture): the Phase separation · 80 kb preset, attraction mode as shown in the builder, and the threshold. States were advanced with `NativePolymerSimulation` on the **OpenMM CPU platform** (GPU left to the clock runs; seed 42, 9 substeps) and loaded into an isolated workbench only for display; the narration says so. Logs: `tutorial/recording-phase-run-600.json`, `-1000.json`.
+- **Finding, single seed.** At the preset's 600 scaffolds (0.083 per unit volume), no droplet held over 400,000 steps: the largest cluster (link 0.8) ranged 6–44 molecules and dissolved again. The earlier CUDA check at the same settings found one droplet of ~150–240, so the preset sits close to the threshold and nucleation there is stochastic. With 1,000 scaffolds, droplets of ~240–276 formed by 75,000 steps and persisted to 300,000 with 73–83% of members kept per 25,000 steps; several droplets (~250, ~250, ~150, ~70) had not merged. Few clients (3–9) sat in the largest droplet.
+- **Interface gap the chapter works around.** The Interactions builder has no mode field: an attraction pair shows Link strength (well depth), Encounter radius (well range) and unused rate fields, and the note beside the matrix describes bonds only. Largest assembly counts bonds, so it reads 1 in attraction models. The attraction-mode validation note appears only after Apply, not on reload.
+- **Edited chapters.** 01 (default model and small presets are 200 bp; only 20 Mb presets are 10 kb), 05 (bond mode versus attraction mode), 12 (exported jobs run only the integrator on the GPU; the native engine is used from Python and is not in the export), 18 (points to the software paper).
+- **Not covered.** The 200 bp time-scale fit and nucleosome attraction (in progress on another branch).
+- **Checks run.** `tests.test_tutorial_sync`: 5 of 5. Narration regenerated for 01, 05, 12, 18, 19, 20 (Kokoro af_heart, ~150 wpm); full video re-rendered. The software paper's interface section was edited (chapter count and length) but the PDF was **not rebuilt**: pandoc and Playwright are not installed on this machine. Not yet reviewed at 1×.
+
 ## Coarse phase separation on the GPU and advisory size limits (2026-11-25)
 
 The user asked to remove the particle cap for the simulation, to have GPU phase separation built in, and for a coarse (one bead per protein) condensate model.

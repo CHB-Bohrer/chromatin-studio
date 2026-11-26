@@ -1,0 +1,81 @@
+{
+ "preset": "phase_separation",
+ "engine": "openmm-native",
+ "platform": "CPU",
+ "seed": 42,
+ "substeps": 9,
+ "log": [
+  {
+   "step": 25000,
+   "time": 50.0,
+   "largest_cluster": 159,
+   "wall_s": 287.1
+  },
+  {
+   "step": 50000,
+   "time": 100.0,
+   "largest_cluster": 198,
+   "wall_s": 765.4
+  },
+  {
+   "step": 75000,
+   "time": 150.0,
+   "largest_cluster": 240,
+   "wall_s": 1013.9
+  },
+  {
+   "step": 100000,
+   "time": 200.0,
+   "largest_cluster": 240,
+   "wall_s": 1267.0
+  },
+  {
+   "step": 125000,
+   "time": 250.0,
+   "largest_cluster": 255,
+   "wall_s": 1520.0
+  },
+  {
+   "step": 150000,
+   "time": 300.0,
+   "largest_cluster": 253,
+   "wall_s": 1774.3
+  },
+  {
+   "step": 175000,
+   "time": 350.0,
+   "largest_cluster": 264,
+   "wall_s": 2029.7
+  },
+  {
+   "step": 200000,
+   "time": 400.0,
+   "largest_cluster": 276,
+   "wall_s": 2286.7
+  },
+  {
+   "step": 225000,
+   "time": 450.0,
+   "largest_cluster": 251,
+   "wall_s": 2540.7
+  },
+  {
+   "step": 250000,
+   "time": 500.0,
+   "largest_cluster": 264,
+   "wall_s": 2794.7
+  },
+  {
+   "step": 275000,
+   "time": 550.0,
+   "largest_cluster": 246,
+   "wall_s": 3050.0
+  },
+  {
+   "step": 300000,
+   "time": 600.0,
+   "largest_cluster": 272,
+   "wall_s": 3308.9
+  }
+ ]
+}

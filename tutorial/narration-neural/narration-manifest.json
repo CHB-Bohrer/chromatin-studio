@@ -19,9 +19,11 @@
   },
   "time_stretch": false,
   "narration_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa",
-  "storyboard_sha256": "d652fb3143b79adc7a8ffe21e4ef30ed4f3b6b304969dd85b1a7ef3a83e6027e",
+  "storyboard_sha256": "49f1f9828f4f713545440ac59598aa4e6201b28c23568ac9d2b792aed5b415b3",
   "preserved_scene_ids": [
+    "01-overview",
     "02-build-and-learn",
+    "20-files-and-engines",
     "13-confinement",
     "03-genome",
     "16-remodelers",
@@ -40,28 +42,28 @@
     "12-cluster"
   ],
   "complete": true,
-  "total_seconds": 764.92,
+  "total_seconds": 978.5066666666667,
   "scenes": [
     {
       "voice": "af_heart",
-      "source_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a stretch of DNA, and its size is a model setting. This walkthrough uses one size throughout: two hundred base pairs per bead, about one nucleosome and its linker. The example is Manuscript hypotheses at eighty kilobases: four hundred beads of two hundred base pairs each. Coarser presets also exist, where one bead stands for ten kilobases and many nucleosomes, but they are not used here. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
-      "spoken_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a stretch of D N A, and its size is a model setting. This walkthrough uses one size throughout: two hundred base pairs per bead, about one nucleosome and its linker. The example is Manuscript hypotheses at eighty kilobases: four hundred beads of two hundred base pairs each. Coarser presets also exist, where one bead stands for ten kilobases and many nucleosomes, but they are not used here. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
-      "word_count": 116,
+      "source_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a stretch of DNA, and its size is a model setting. This walkthrough uses one size throughout: two hundred base pairs per bead, about one nucleosome and its linker. The example is Manuscript hypotheses at eighty kilobases: four hundred beads of two hundred base pairs each. The default model and the small presets all use this size. Only the twenty-megabase presets keep coarse ten-kilobase beads, each standing for many nucleosomes, and they are not shown here. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
+      "spoken_text": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a stretch of D N A, and its size is a model setting. This walkthrough uses one size throughout: two hundred base pairs per bead, about one nucleosome and its linker. The example is Manuscript hypotheses at eighty kilobases: four hundred beads of two hundred base pairs each. The default model and the small presets all use this size. Only the twenty-megabase presets keep coarse ten-kilobase beads, each standing for many nucleosomes, and they are not shown here. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
+      "word_count": 126,
       "target_words_per_minute": 155.0,
-      "words_per_minute": 150.64065566201086,
+      "words_per_minute": 151.32913419451265,
       "model_speed": 0.9,
-      "duration_seconds": 46.702666666666666,
-      "speech_seconds": 46.202666666666666,
+      "duration_seconds": 50.45733333333333,
+      "speech_seconds": 49.95733333333333,
       "sample_rate": 24000,
       "padding_seconds": 0.5,
-      "peak_before_attenuation": 0.7370302081108093,
+      "peak_before_attenuation": 0.7258948683738708,
       "gain": 1.0,
       "attempts": [
         {
           "model_speed": 0.9,
-          "seconds": 46.202666666666666,
-          "words_per_minute": 150.64065566201086,
-          "inference_seconds": 13.76500000001397
+          "seconds": 49.95733333333333,
+          "words_per_minute": 151.32913419451265,
+          "inference_seconds": 25.0
         }
       ],
       "within_target_pace": true,
@@ -70,8 +72,8 @@
       "speech_truncated": false,
       "id": "01-overview",
       "file": "01-overview.wav",
-      "fingerprint": "159d2a4c9447b9962dcb48aac352a816ce0730997da71916e6d37802dc738f60",
-      "wav_sha256": "da51984aef8d24705e9034a180cecdf5da8db7930efd0fca311125798426079d",
+      "fingerprint": "362070ccdc707d7c4f4b74588e93068a5a47968df1b9b837d31ec73d706571fa",
+      "wav_sha256": "d417cc6ac4dae64f7de73e1dcd5342d0531075ea90b144f392b4e192642d7bb6",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     },
     {
@@ -116,6 +118,38 @@
       "file": "02-build-and-learn.wav",
       "fingerprint": "f362e42ff85a46f96c63a063f3594896b10f244550d72bb8e8ffa1a212c8c3bd",
       "wav_sha256": "ccf1cf2a0c4fd799c7eb9eb08daf0cd7c7673cb2b4740a068f7c8a1c2bed9def",
+      "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+    },
+    {
+      "voice": "af_heart",
+      "source_text": "Three everyday tools sit in the top bar. Import loads a model file into the draft, and Export saves the draft as a model file, so an experiment can be shared or rebuilt exactly. Save run downloads the applied model together with its current state and the history the server recorded. That is one snapshot plus measurements, not a full trajectory. Beside the Experiment menu, Engine chooses how the run is integrated. Brownian reference is the built-in engine used throughout this tutorial. Polychrom with OpenMM is an integration adapter: forces and reactions still run on the CPU. The Model tab lists which engines are installed here. Model size is no longer capped. In this example the chain was raised to five thousand beads, one megabase. The model still runs, but the notes below the observables now include a Large model warning, because the live engine and the 3D view were sized for about four thousand beads and six thousand particles. Open these model notes whenever you change a model.",
+      "spoken_text": "Three everyday tools sit in the top bar. Import loads a model file into the draft, and Export saves the draft as a model file, so an experiment can be shared or rebuilt exactly. Save run downloads the applied model together with its current state and the history the server recorded. That is one snapshot plus measurements, not a full trajectory. Beside the Experiment menu, Engine chooses how the run is integrated. Brownian reference is the built-in engine used throughout this tutorial. Polychrom with OpenMM is an integration adapter: forces and reactions still run on the C P U. The Model tab lists which engines are installed here. Model size is no longer capped. In this example the chain was raised to five thousand beads, one megabase. The model still runs, but the notes below the observables now include a Large model warning, because the live engine and the 3D view were sized for about four thousand beads and six thousand particles. Open these model notes whenever you change a model.",
+      "word_count": 171,
+      "target_words_per_minute": 155.0,
+      "words_per_minute": 149.47552447552448,
+      "model_speed": 0.9,
+      "duration_seconds": 69.14,
+      "speech_seconds": 68.64,
+      "sample_rate": 24000,
+      "padding_seconds": 0.5,
+      "peak_before_attenuation": 1.020951271057129,
+      "gain": 0.9598891032137836,
+      "attempts": [
+        {
+          "model_speed": 0.9,
+          "seconds": 68.64,
+          "words_per_minute": 149.47552447552448,
+          "inference_seconds": 34.0
+        }
+      ],
+      "within_target_pace": true,
+      "phoneme_overrides": [],
+      "time_stretch": false,
+      "speech_truncated": false,
+      "id": "20-files-and-engines",
+      "file": "20-files-and-engines.wav",
+      "fingerprint": "51446e0d7180a72c1b811e73049e5b247f7a8ec554c7cb3bb91686cb4bc1d24a",
+      "wav_sha256": "636fee3dcfd0cbdc28d2a4d8f66fd853b13cfcc603929cfa4b9798f7a2b1dfcb",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     },
     {
@@ -328,36 +362,36 @@
     },
     {
       "voice": "af_heart",
-      "source_text": "The interaction view shows the current molecular network. Distinguish molecules with their own chromatin bond from those tethered indirectly through another protein. Protein pairs can bind while both are free, while one is directly chromatin-bound, or while both are bound. The affinity calculator explores an ideal diffusion-limited association estimate after physical scales are supplied. Its nominal dissociation rate follows the requested Kd under independent, well-mixed assumptions. It does not turn the simulator's local encounter hazard into a measured molar association rate.",
-      "spoken_text": "The interaction view shows the current molecular network. Distinguish molecules with their own chromatin bond from those tethered indirectly through another protein. Protein pairs can bind while both are free, while one is directly chromatin-bound, or while both are bound. The affinity calculator explores an ideal diffusion-limited association estimate after physical scales are supplied. Its nominal dissociation rate follows the requested K D under independent, well-mixed assumptions. It does not turn the simulator's local encounter hazard into a measured molar association rate.",
-      "word_count": 82,
+      "source_text": "The interaction view shows the current molecular network. Distinguish molecules with their own chromatin bond from those tethered indirectly through another protein. Protein pairs can bind while both are free, while one is directly chromatin-bound, or while both are bound. These are bond-mode links, the default. A pair can instead use attraction mode, which forms no bonds; the phase separation chapter covers it. The affinity calculator explores an ideal diffusion-limited association estimate after physical scales are supplied. Its nominal dissociation rate follows the requested Kd under independent, well-mixed assumptions. It does not turn the simulator's local encounter hazard into a measured molar association rate.",
+      "spoken_text": "The interaction view shows the current molecular network. Distinguish molecules with their own chromatin bond from those tethered indirectly through another protein. Protein pairs can bind while both are free, while one is directly chromatin-bound, or while both are bound. These are bond-mode links, the default. A pair can instead use attraction mode, which forms no bonds; the phase separation chapter covers it. The affinity calculator explores an ideal diffusion-limited association estimate after physical scales are supplied. Its nominal dissociation rate follows the requested K D under independent, well-mixed assumptions. It does not turn the simulator's local encounter hazard into a measured molar association rate.",
+      "word_count": 105,
       "target_words_per_minute": 155.0,
-      "words_per_minute": 157.88122539791203,
-      "model_speed": 1.27555574721396,
-      "duration_seconds": 31.662666666666667,
-      "speech_seconds": 31.162666666666667,
+      "words_per_minute": 151.3840830449827,
+      "model_speed": 1.1581959254462082,
+      "duration_seconds": 42.116,
+      "speech_seconds": 41.616,
       "sample_rate": 24000,
       "padding_seconds": 0.5,
-      "peak_before_attenuation": 0.7143639326095581,
+      "peak_before_attenuation": 0.8504832983016968,
       "gain": 1.0,
       "attempts": [
         {
           "model_speed": 0.9,
-          "seconds": 40.54933333333334,
-          "words_per_minute": 121.3336840720768,
-          "inference_seconds": 8.82240983308293
+          "seconds": 48.57066666666667,
+          "words_per_minute": 129.70791698693313,
+          "inference_seconds": 23.891000000061467
         },
         {
-          "model_speed": 1.1497219512195123,
-          "seconds": 35.216,
-          "words_per_minute": 139.70922308041798,
-          "inference_seconds": 7.763212834019214
+          "model_speed": 1.0754933333333334,
+          "seconds": 43.77066666666666,
+          "words_per_minute": 143.93200926038747,
+          "inference_seconds": 21.515999999945052
         },
         {
-          "model_speed": 1.27555574721396,
-          "seconds": 31.162666666666667,
-          "words_per_minute": 157.88122539791203,
-          "inference_seconds": 7.113753832993098
+          "model_speed": 1.1581959254462082,
+          "seconds": 41.616,
+          "words_per_minute": 151.3840830449827,
+          "inference_seconds": 20.530999999959022
         }
       ],
       "within_target_pace": true,
@@ -366,8 +400,8 @@
       "speech_truncated": false,
       "id": "05-interactions",
       "file": "05-interactions.wav",
-      "fingerprint": "5661e098a9b1fa88f0159d56e3a99d6e96fff73a22a0b83c2781b558aa56c3a3",
-      "wav_sha256": "17139425f9c271975f581969ed4a710dad7c2c8479592ea05da0e5842b79212c",
+      "fingerprint": "3d5d58a50b64c0f05b67db0d2720f1780058b86f196acd74da2004857ad70712",
+      "wav_sha256": "22250b24835974aa8d7052b8b052f6902e404ef35ca044a613453c37aee06690",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     },
     {
@@ -562,6 +596,38 @@
       "file": "09-architecture.wav",
       "fingerprint": "6f56d5dae67644a3111cf919b7d1ebf4729db91d9d91ef09b2852331669ba86d",
       "wav_sha256": "69a5c3195c16aafb22fb4114f988fc12a785744e70869b18c3aad75352e55db0",
+      "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
+    },
+    {
+      "voice": "af_heart",
+      "source_text": "Phase separation at eighty kilobases shows a second way proteins can interact. Choose it from the Experiment menu. Around the same four hundred bead chain it places six hundred scaffold proteins and one hundred fifty clients, each a single bead. Open Interactions. These pairs use attraction mode: instead of forming bonds, two nearby proteins feel a shallow energy well. Here, Link strength is the well depth at contact, one and a half kT between scaffolds and nine tenths between client and scaffold, and Encounter radius is where the well ends. The association and dissociation rates are not used in this mode. This model needs hundreds of thousands of steps, more than the live engine reaches in a session, so the next states were advanced with the native engine and then opened in the workbench for display. At the preset's six hundred scaffolds, clusters of up to about forty molecules formed and dissolved again over four hundred thousand steps. Next, raise the scaffold count to one thousand and apply. Now dense droplets of about two hundred fifty molecules appear within about fifty thousand steps and persist, while about a fifth of their members are replaced every twenty-five thousand steps. Several droplets formed and had not merged by three hundred thousand steps. That contrast is what to look for: a dense phase that coexists with a dilute one, appears only above a threshold concentration, and keeps exchanging molecules. These are single runs, and an earlier GPU check did form one droplet at six hundred scaffolds, so the preset sits close to the threshold. Largest assembly stays at one, because it counts bonds. The well depth is not a measured affinity.",
+      "spoken_text": "Phase separation at eighty kilobases shows a second way proteins can interact. Choose it from the Experiment menu. Around the same four hundred bead chain it places six hundred scaffold proteins and one hundred fifty clients, each a single bead. Open Interactions. These pairs use attraction mode: instead of forming bonds, two nearby proteins feel a shallow energy well. Here, Link strength is the well depth at contact, one and a half kT between scaffolds and nine tenths between client and scaffold, and Encounter radius is where the well ends. The association and dissociation rates are not used in this mode. This model needs hundreds of thousands of steps, more than the live engine reaches in a session, so the next states were advanced with the native engine and then opened in the workbench for display. At the preset's six hundred scaffolds, clusters of up to about forty molecules formed and dissolved again over four hundred thousand steps. Next, raise the scaffold count to one thousand and apply. Now dense droplets of about two hundred fifty molecules appear within about fifty thousand steps and persist, while about a fifth of their members are replaced every twenty-five thousand steps. Several droplets formed and had not merged by three hundred thousand steps. That contrast is what to look for: a dense phase that coexists with a dilute one, appears only above a threshold concentration, and keeps exchanging molecules. These are single runs, and an earlier G P U check did form one droplet at six hundred scaffolds, so the preset sits close to the threshold. Largest assembly stays at one, because it counts bonds. The well depth is not a measured affinity.",
+      "word_count": 280,
+      "target_words_per_minute": 155.0,
+      "words_per_minute": 152.85326086956522,
+      "model_speed": 0.9,
+      "duration_seconds": 110.40933333333334,
+      "speech_seconds": 109.90933333333334,
+      "sample_rate": 24000,
+      "padding_seconds": 0.5,
+      "peak_before_attenuation": 0.7645999193191528,
+      "gain": 1.0,
+      "attempts": [
+        {
+          "model_speed": 0.9,
+          "seconds": 109.90933333333334,
+          "words_per_minute": 152.85326086956522,
+          "inference_seconds": 47.03200000000652
+        }
+      ],
+      "within_target_pace": true,
+      "phoneme_overrides": [],
+      "time_stretch": false,
+      "speech_truncated": false,
+      "id": "19-phase-separation",
+      "file": "19-phase-separation.wav",
+      "fingerprint": "c4837c4cf78deb7ec43a9d32ce47042b2cdb86584515802545a687b938a1efad",
+      "wav_sha256": "6812656ae3970b2e8a53f3707582ab1cb0f594645f6772541f8e2aa123b078d5",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     },
     {
@@ -778,30 +844,30 @@
     },
     {
       "voice": "af_heart",
-      "source_text": "Evidence shows the component tests that were actually run. Each study switches on one mechanism and compares the engine with its own rule, a closed-form result, or a published measurement. Those three levels are counted separately. The page only reads saved reports, so it runs nothing and leaves your simulation untouched. Select a study to see its figures. In the nucleosome kinetics study, based on Donovan and colleagues, blocking the site alone makes Reb1 and Cbf1 bind far too weakly. Matching their titrations requires slower release from the nucleosome. Hover for values, or open the table. Every check shows its accepted window, and experimental checks say whether they are input-matched, tuned, or a prediction. A pass under the provisional unit mapping is not a calibration.",
-      "spoken_text": "Evidence shows the component tests that were actually run. Each study switches on one mechanism and compares the engine with its own rule, a closed-form result, or a published measurement. Those three levels are counted separately. The page only reads saved reports, so it runs nothing and leaves your simulation untouched. Select a study to see its figures. In the nucleosome kinetics study, based on Donovan and colleagues, blocking the site alone makes Reb1 and Cbf1 bind far too weakly. Matching their titrations requires slower release from the nucleosome. Hover for values, or open the table. Every check shows its accepted window, and experimental checks say whether they are input-matched, tuned, or a prediction. A pass under the provisional unit mapping is not a calibration.",
-      "word_count": 125,
+      "source_text": "Evidence shows the component tests that were actually run. Each study switches on one mechanism and compares the engine with its own rule, a closed-form result, or a published measurement. Those three levels are counted separately. The page only reads saved reports, so it runs nothing and leaves your simulation untouched. Select a study to see its figures. In the nucleosome kinetics study, based on Donovan and colleagues, blocking the site alone makes Reb1 and Cbf1 bind far too weakly. Matching their titrations requires slower release from the nucleosome. Hover for values, or open the table. Every check shows its accepted window, and experimental checks say whether they are input-matched, tuned, or a prediction. A pass under the provisional unit mapping is not a calibration. For a plain-language account of every mechanism and the check behind it, read the software paper in the docs folder.",
+      "spoken_text": "Evidence shows the component tests that were actually run. Each study switches on one mechanism and compares the engine with its own rule, a closed-form result, or a published measurement. Those three levels are counted separately. The page only reads saved reports, so it runs nothing and leaves your simulation untouched. Select a study to see its figures. In the nucleosome kinetics study, based on Donovan and colleagues, blocking the site alone makes Reb1 and Cbf1 bind far too weakly. Matching their titrations requires slower release from the nucleosome. Hover for values, or open the table. Every check shows its accepted window, and experimental checks say whether they are input-matched, tuned, or a prediction. A pass under the provisional unit mapping is not a calibration. For a plain-language account of every mechanism and the check behind it, read the software paper in the docs folder.",
+      "word_count": 145,
       "target_words_per_minute": 155.0,
-      "words_per_minute": 151.35615111398127,
-      "model_speed": 0.9530143999999999,
-      "duration_seconds": 50.052,
-      "speech_seconds": 49.552,
+      "words_per_minute": 148.32242225859247,
+      "model_speed": 0.9942234482758621,
+      "duration_seconds": 59.156,
+      "speech_seconds": 58.656,
       "sample_rate": 24000,
       "padding_seconds": 0.5,
-      "peak_before_attenuation": 0.6574496030807495,
+      "peak_before_attenuation": 0.7836126685142517,
       "gain": 1.0,
       "attempts": [
         {
           "model_speed": 0.9,
-          "seconds": 51.23733333333333,
-          "words_per_minute": 146.37764130321642,
-          "inference_seconds": 30.25
+          "seconds": 62.00533333333333,
+          "words_per_minute": 140.3105109237915,
+          "inference_seconds": 29.09299999999348
         },
         {
-          "model_speed": 0.9530143999999999,
-          "seconds": 49.552,
-          "words_per_minute": 151.35615111398127,
-          "inference_seconds": 28.5
+          "model_speed": 0.9942234482758621,
+          "seconds": 58.656,
+          "words_per_minute": 148.32242225859247,
+          "inference_seconds": 27.5
         }
       ],
       "within_target_pace": true,
@@ -810,36 +876,36 @@
       "speech_truncated": false,
       "id": "18-evidence",
       "file": "18-evidence.wav",
-      "fingerprint": "b831b4ada416739445bdc44cbb2f996291027491ff813a9eaf9b8c86e8da46a1",
-      "wav_sha256": "01c151fc44d41fdf3d4d6ee5498b221e40490cfe98437dba8194f6f41723420e",
+      "fingerprint": "ea37648a6c923f4336ed896785596757c1bf39c84dcde3d08be79fe5f408aab2",
+      "wav_sha256": "e84e09fbe2935140b3ae14d735ca4e6a7507eedad24c9fceab41ea1f821156d5",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     },
     {
       "voice": "af_heart",
-      "source_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU integration is partial: only bare-polymer models run fully on the device, while forces, reactions and RNA for models with proteins still run on the CPU; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
-      "spoken_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. G P U integration is partial: only bare-polymer models run fully on the device, while forces, reactions and R N A for models with proteins still run on the C P U; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
-      "word_count": 103,
+      "source_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU use in an exported job is partial: forces, reactions and RNA run on the CPU, and only the integrator runs on the device, so speedup is not established. The faster native GPU engine, which runs bare polymers and the phase separation model, is used from Python and is not yet part of the exported job. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
+      "spoken_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. G P U use in an exported job is partial: forces, reactions and R N A run on the C P U, and only the integrator runs on the device, so speedup is not established. The faster native G P U engine, which runs bare polymers and the phase separation model, is used from Python and is not yet part of the exported job. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
+      "word_count": 131,
       "target_words_per_minute": 155.0,
-      "words_per_minute": 148.57674060777023,
-      "model_speed": 1.007770873786408,
-      "duration_seconds": 42.09466666666667,
-      "speech_seconds": 41.59466666666667,
+      "words_per_minute": 150.22935779816513,
+      "model_speed": 0.966442748091603,
+      "duration_seconds": 52.82,
+      "speech_seconds": 52.32,
       "sample_rate": 24000,
       "padding_seconds": 0.5,
-      "peak_before_attenuation": 0.7620583176612854,
+      "peak_before_attenuation": 0.8128350973129272,
       "gain": 1.0,
       "attempts": [
         {
           "model_speed": 0.9,
-          "seconds": 44.64533333333333,
-          "words_per_minute": 138.4243220642695,
-          "inference_seconds": 12.671999999904074
+          "seconds": 54.45333333333333,
+          "words_per_minute": 144.3437806072478,
+          "inference_seconds": 26.891000000061467
         },
         {
-          "model_speed": 1.007770873786408,
-          "seconds": 41.59466666666667,
-          "words_per_minute": 148.57674060777023,
-          "inference_seconds": 11.719000000040978
+          "model_speed": 0.966442748091603,
+          "seconds": 52.32,
+          "words_per_minute": 150.22935779816513,
+          "inference_seconds": 24.671999999904074
         }
       ],
       "within_target_pace": true,
@@ -848,8 +914,8 @@
       "speech_truncated": false,
       "id": "12-cluster",
       "file": "12-cluster.wav",
-      "fingerprint": "221eb9e95b4deb6ee1f27aa1aee7d3f1216c4161a91ff7483155b5faa5dd1ae0",
-      "wav_sha256": "09e98c1ea14f586f94d30d58691c04e3a7066b4646648fd99fe521a0016eace4",
+      "fingerprint": "ed500796cf8842ae32a22b38f3758f7511b7598240654c4e9247cd9e2b2276a6",
+      "wav_sha256": "25b658ea900602433c13833918b92e62e10b1518834c0f28bc02bf44cc73e934",
       "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
     }
   ],

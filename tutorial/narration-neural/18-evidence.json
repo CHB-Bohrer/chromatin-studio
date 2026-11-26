@@ -1,29 +1,29 @@
 {
   "voice": "af_heart",
-  "source_text": "Evidence shows the component tests that were actually run. Each study switches on one mechanism and compares the engine with its own rule, a closed-form result, or a published measurement. Those three levels are counted separately. The page only reads saved reports, so it runs nothing and leaves your simulation untouched. Select a study to see its figures. In the nucleosome kinetics study, based on Donovan and colleagues, blocking the site alone makes Reb1 and Cbf1 bind far too weakly. Matching their titrations requires slower release from the nucleosome. Hover for values, or open the table. Every check shows its accepted window, and experimental checks say whether they are input-matched, tuned, or a prediction. A pass under the provisional unit mapping is not a calibration.",
-  "spoken_text": "Evidence shows the component tests that were actually run. Each study switches on one mechanism and compares the engine with its own rule, a closed-form result, or a published measurement. Those three levels are counted separately. The page only reads saved reports, so it runs nothing and leaves your simulation untouched. Select a study to see its figures. In the nucleosome kinetics study, based on Donovan and colleagues, blocking the site alone makes Reb1 and Cbf1 bind far too weakly. Matching their titrations requires slower release from the nucleosome. Hover for values, or open the table. Every check shows its accepted window, and experimental checks say whether they are input-matched, tuned, or a prediction. A pass under the provisional unit mapping is not a calibration.",
-  "word_count": 125,
+  "source_text": "Evidence shows the component tests that were actually run. Each study switches on one mechanism and compares the engine with its own rule, a closed-form result, or a published measurement. Those three levels are counted separately. The page only reads saved reports, so it runs nothing and leaves your simulation untouched. Select a study to see its figures. In the nucleosome kinetics study, based on Donovan and colleagues, blocking the site alone makes Reb1 and Cbf1 bind far too weakly. Matching their titrations requires slower release from the nucleosome. Hover for values, or open the table. Every check shows its accepted window, and experimental checks say whether they are input-matched, tuned, or a prediction. A pass under the provisional unit mapping is not a calibration. For a plain-language account of every mechanism and the check behind it, read the software paper in the docs folder.",
+  "spoken_text": "Evidence shows the component tests that were actually run. Each study switches on one mechanism and compares the engine with its own rule, a closed-form result, or a published measurement. Those three levels are counted separately. The page only reads saved reports, so it runs nothing and leaves your simulation untouched. Select a study to see its figures. In the nucleosome kinetics study, based on Donovan and colleagues, blocking the site alone makes Reb1 and Cbf1 bind far too weakly. Matching their titrations requires slower release from the nucleosome. Hover for values, or open the table. Every check shows its accepted window, and experimental checks say whether they are input-matched, tuned, or a prediction. A pass under the provisional unit mapping is not a calibration. For a plain-language account of every mechanism and the check behind it, read the software paper in the docs folder.",
+  "word_count": 145,
   "target_words_per_minute": 155.0,
-  "words_per_minute": 151.35615111398127,
-  "model_speed": 0.9530143999999999,
-  "duration_seconds": 50.052,
-  "speech_seconds": 49.552,
+  "words_per_minute": 148.32242225859247,
+  "model_speed": 0.9942234482758621,
+  "duration_seconds": 59.156,
+  "speech_seconds": 58.656,
   "sample_rate": 24000,
   "padding_seconds": 0.5,
-  "peak_before_attenuation": 0.6574496030807495,
+  "peak_before_attenuation": 0.7836126685142517,
   "gain": 1.0,
   "attempts": [
     {
       "model_speed": 0.9,
-      "seconds": 51.23733333333333,
-      "words_per_minute": 146.37764130321642,
-      "inference_seconds": 30.25
+      "seconds": 62.00533333333333,
+      "words_per_minute": 140.3105109237915,
+      "inference_seconds": 29.09299999999348
     },
     {
-      "model_speed": 0.9530143999999999,
-      "seconds": 49.552,
-      "words_per_minute": 151.35615111398127,
-      "inference_seconds": 28.5
+      "model_speed": 0.9942234482758621,
+      "seconds": 58.656,
+      "words_per_minute": 148.32242225859247,
+      "inference_seconds": 27.5
     }
   ],
   "within_target_pace": true,
@@ -32,7 +32,7 @@
   "speech_truncated": false,
   "id": "18-evidence",
   "file": "18-evidence.wav",
-  "fingerprint": "b831b4ada416739445bdc44cbb2f996291027491ff813a9eaf9b8c86e8da46a1",
-  "wav_sha256": "01c151fc44d41fdf3d4d6ee5498b221e40490cfe98437dba8194f6f41723420e",
+  "fingerprint": "ea37648a6c923f4336ed896785596757c1bf39c84dcde3d08be79fe5f408aab2",
+  "wav_sha256": "e84e09fbe2935140b3ae14d735ca4e6a7507eedad24c9fceab41ea1f821156d5",
   "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
 }

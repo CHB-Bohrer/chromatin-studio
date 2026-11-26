@@ -1,0 +1,105 @@
+{
+ "preset": "phase_separation",
+ "engine": "openmm-native",
+ "platform": "CPU",
+ "seed": 42,
+ "substeps": 9,
+ "log": [
+  {
+   "step": 25000,
+   "time": 50.0,
+   "largest_cluster": 6,
+   "wall_s": 164.9
+  },
+  {
+   "step": 50000,
+   "time": 100.0,
+   "largest_cluster": 8,
+   "wall_s": 326.0
+  },
+  {
+   "step": 75000,
+   "time": 150.0,
+   "largest_cluster": 15,
+   "wall_s": 498.8
+  },
+  {
+   "step": 100000,
+   "time": 200.0,
+   "largest_cluster": 10,
+   "wall_s": 648.9
+  },
+  {
+   "step": 125000,
+   "time": 250.0,
+   "largest_cluster": 9,
+   "wall_s": 801.9
+  },
+  {
+   "step": 150000,
+   "time": 300.0,
+   "largest_cluster": 42,
+   "wall_s": 953.9
+  },
+  {
+   "step": 175000,
+   "time": 350.0,
+   "largest_cluster": 44,
+   "wall_s": 1110.5
+  },
+  {
+   "step": 200000,
+   "time": 400.0,
+   "largest_cluster": 15,
+   "wall_s": 1265.7
+  },
+  {
+   "step": 225000,
+   "time": 450.0,
+   "largest_cluster": 43,
+   "wall_s": 1421.8
+  },
+  {
+   "step": 250000,
+   "time": 500.0,
+   "largest_cluster": 35,
+   "wall_s": 1578.7
+  },
+  {
+   "step": 275000,
+   "time": 550.0,
+   "largest_cluster": 22,
+   "wall_s": 1732.1
+  },
+  {
+   "step": 300000,
+   "time": 600.0,
+   "largest_cluster": 12,
+   "wall_s": 1887.6
+  },
+  {
+   "step": 325000,
+   "time": 650.0,
+   "largest_cluster": 7,
+   "wall_s": 2042.6
+  },
+  {
+   "step": 350000,
+   "time": 700.0,
+   "largest_cluster": 7,
+   "wall_s": 2198.3
+  },
+  {
+   "step": 375000,
+   "time": 750.0,
+   "largest_cluster": 8,
+   "wall_s": 2353.8
+  },
+  {
+   "step": 400000,
+   "time": 800.0,
+   "largest_cluster": 10,
+   "wall_s": 2513.5
+  }
+ ]
+}

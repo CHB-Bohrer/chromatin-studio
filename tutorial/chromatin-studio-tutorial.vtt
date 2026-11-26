@@ -1,225 +1,257 @@
 WEBVTT
 
 1
-00:00:00.000 --> 00:00:14.990
+00:00:00.000 --> 00:00:16.167
 Build on the left. Inspect the applied model in the center. Follow measurements and events.
 
 2
-00:00:14.990 --> 00:00:32.977
+00:00:16.167 --> 00:00:35.567
 Bead size is a setting. This tutorial uses 200 bp per bead throughout: about one nucleosome and its linker. 400 beads = 80 kb.
 
 3
-00:00:32.977 --> 00:00:47.967
+00:00:35.567 --> 00:00:51.733
 Draft settings and the current run are different. Check the scale and calibration status first.
 
 4
-00:00:47.967 --> 00:01:00.533
+00:00:51.733 --> 00:01:04.300
 “Manuscript hypotheses · 80 kb” is the main example, with nucleosome occupancy and individual RNA.
 
 5
-00:01:00.533 --> 00:01:13.100
+00:01:04.300 --> 00:01:16.867
 1 bead = 200 bp = one coarse nucleosome unit (occupied or vacant); 400 beads = 80 kb. No wrapped-DNA or histone-tail geometry.
 
 6
-00:01:13.100 --> 00:01:25.667
+00:01:16.867 --> 00:01:29.433
 “How it works” is a separate learning sandbox. Its controls leave the simulation unchanged.
 
 7
-00:01:25.667 --> 00:01:38.578
-The soft wall pushes inward outside R: U = ½k max(r − R, 0)².
+00:01:29.433 --> 00:01:52.449
+Import and Export move the draft model as a JSON file. Save run adds the current state and recorded history: one snapshot, not a trajectory.
 
 8
-00:01:38.578 --> 00:01:51.489
-Wall strength 0 disables confinement. Small penetrations are allowed and reported.
+00:01:52.449 --> 00:02:15.464
+Engine: Brownian reference (used here) or Polychrom/OpenMM, which still computes forces and reactions on the CPU.
 
 9
-00:01:51.489 --> 00:02:04.400
-The modeled domain is not automatically the whole nucleus. Control packing and wall effects.
+00:02:15.464 --> 00:02:39.833
+No hard size cap. Above about 4,000 beads or 6,000 particles the model still runs, with a Large model note.
 
 10
-00:02:04.400 --> 00:02:29.211
-“Live nucleosome access · 25.6 kb”: a 25.6 kb region, 128 beads × 200 bp, built to show how nucleosomes control binding.
+00:02:39.833 --> 00:02:52.744
+The soft wall pushes inward outside R: U = ½k max(r − R, 0)².
 
 11
-00:02:29.211 --> 00:02:54.022
-Live binding, then Binding detail, shows individual sites. Each marker is a real bond; proximity alone is not binding.
+00:02:52.744 --> 00:03:05.656
+Wall strength 0 disables confinement. Small penetrations are allowed and reported.
 
 12
-00:02:54.022 --> 00:03:18.833
-Association hazard: how often a nearby molecule binds. Release hazard: how often a bound one lets go; 1/release = mean time bound.
+00:03:05.656 --> 00:03:18.567
+The modeled domain is not automatically the whole nucleus. Control packing and wall effects.
 
 13
-00:03:18.833 --> 00:03:35.050
-An initially vacant interval creates a starting gap. Reassembly and remodeling can change it later.
+00:03:18.567 --> 00:03:43.378
+“Live nucleosome access · 25.6 kb”: a 25.6 kb region, 128 beads × 200 bp, built to show how nucleosomes control binding.
 
 14
-00:03:35.050 --> 00:03:51.267
-Set occupied/vacant capture and release independently for each species. A gap need not favor every protein.
+00:03:43.378 --> 00:04:08.189
+Live binding, then Binding detail, shows individual sites. Each marker is a real bond; proximity alone is not binding.
 
 15
-00:03:51.267 --> 00:04:07.483
-Eviction clears marks; reassembly starts unmarked; sliding moves occupancy and marks to an adjacent vacant bead.
+00:04:08.189 --> 00:04:33.000
+Association hazard: how often a nearby molecule binds. Release hazard: how often a bound one lets go; 1/release = mean time bound.
 
 16
-00:04:07.483 --> 00:04:23.700
-Inspect actual recorded events. Sliding conserves nucleosome number; the recent event buffer is not a full trajectory.
+00:04:33.000 --> 00:04:49.217
+An initially vacant interval creates a starting gap. Reassembly and remodeling can change it later.
 
 17
-00:04:23.700 --> 00:04:40.533
-Bodies → Whole nucleus adds a soft envelope. The region meets it on the side away from the nucleolus, which faces the nuclear interior.
+00:04:49.217 --> 00:05:05.433
+Set occupied/vacant capture and release independently for each species. A gap need not favor every protein.
 
 18
-00:04:40.533 --> 00:04:57.367
-Tethering elements are genomic intervals. Beads within the capture distance attach stochastically and feel a spring to a fixed anchor.
+00:05:05.433 --> 00:05:21.650
+Eviction clears marks; reassembly starts unmarked; sliding moves occupancy and marks to an adjacent vacant bead.
 
 19
-00:04:57.367 --> 00:05:14.200
-Attachment can require a mark and an occupied nucleosome; vacant sites can release faster.
+00:05:21.650 --> 00:05:37.867
+Inspect actual recorded events. Sliding conserves nucleosome number; the recent event buffer is not a full trajectory.
 
 20
-00:05:14.200 --> 00:05:31.033
-1D genome shows attached beads per element and every vacant nucleosome site. Tethers are phenomenological anchors.
+00:05:37.867 --> 00:05:54.700
+Bodies → Whole nucleus adds a soft envelope. The region meets it on the side away from the nucleolus, which faces the nuclear interior.
 
 21
-00:05:31.033 --> 00:05:43.632
-Use “Expand builder” to inspect each species’ abundance, free mobility, valence and chromatin preferences.
+00:05:54.700 --> 00:06:11.533
+Tethering elements are genomic intervals. Beads within the capture distance attach stochastically and feel a spring to a fixed anchor.
 
 22
-00:05:43.632 --> 00:05:57.201
-Writer, eraser and remodeling settings connect protein binding to chromatin-state changes.
+00:06:11.533 --> 00:06:28.367
+Attachment can require a mark and an occupied nucleosome; vacant sites can release faster.
 
 23
-00:05:57.201 --> 00:06:09.800
-IDRs are coarse domain-and-sticker chains. Biological names do not imply fitted molecular parameters.
+00:06:28.367 --> 00:06:45.200
+1D genome shows attached beads per element and every vacant nucleosome site. Tethers are phenomenological anchors.
 
 24
-00:06:09.800 --> 00:06:20.279
-Inspect free, directly bound and indirectly tethered molecules in the current binding network.
+00:06:45.200 --> 00:06:57.799
+Use “Expand builder” to inspect each species’ abundance, free mobility, valence and chromatin preferences.
 
 25
-00:06:20.279 --> 00:06:31.506
-Higher-order assemblies can contain free–free, bound–free and bound–bound protein contacts.
+00:06:57.799 --> 00:07:11.368
+Writer, eraser and remodeling settings connect protein binding to chromatin-state changes.
 
 26
-00:06:31.506 --> 00:06:42.733
-The Kd calculator is an ideal physical estimate. It does not calibrate multivalent avidity or microscopic hazards.
+00:07:11.368 --> 00:07:23.967
+IDRs are coarse domain-and-sticker chains. Biological names do not imply fitted molecular parameters.
 
 27
-00:06:42.733 --> 00:06:53.965
-Nucleosome eviction can alter TF access and local stiffness, while clearing local histone marks.
+00:07:23.967 --> 00:07:37.765
+Inspect free, directly bound and indirectly tethered molecules in the current binding network.
 
 28
-00:06:53.965 --> 00:07:05.999
-Protein mark preferences and chromatin–chromatin attraction are separate model mechanisms.
+00:07:37.765 --> 00:07:52.549
+Assemblies can contain free–free, bound–free and bound–bound links. These are bond-mode links; attraction mode forms none.
 
 29
-00:07:05.999 --> 00:07:18.033
-Compare occupied and vacant states in the guide, then inspect the corresponding applied-model tracks.
+00:07:52.549 --> 00:08:07.333
+The Kd calculator is an ideal physical estimate. It does not calibrate multivalent avidity or microscopic hazards.
 
 30
-00:07:18.033 --> 00:07:30.444
-Define an enhancer’s interval, TF, coactivator and target gene in the Regulation builder.
+00:08:07.333 --> 00:08:18.565
+Nucleosome eviction can alter TF access and local stiffness, while clearing local histone marks.
 
 31
-00:07:30.444 --> 00:07:42.856
-Follow the causal map: recruitment × environment × mark gate determine effective activation.
+00:08:18.565 --> 00:08:30.599
+Protein mark preferences and chromatin–chromatin attraction are separate model mechanisms.
 
 32
-00:07:42.856 --> 00:07:55.267
-Transcription is stochastic. Losing contact removes a rate gain; it does not instantly switch an ON promoter OFF.
+00:08:30.599 --> 00:08:42.633
+Compare occupied and vacant states in the guide, then inspect the corresponding applied-model tracks.
 
 33
-00:07:55.267 --> 00:08:07.611
-Initiations use actual time spent ON. New polymerases elongate only after their birth.
+00:08:42.633 --> 00:08:55.044
+Define an enhancer’s interval, TF, coactivator and target gene in the Regulation builder.
 
 34
-00:08:07.611 --> 00:08:19.956
-Advance real simulation time, pause, then select a molecule to inspect its identity and progress.
+00:08:55.044 --> 00:09:07.456
+Follow the causal map: recruitment × environment × mark gate determine effective activation.
 
 35
-00:08:19.956 --> 00:08:32.300
-Promoter ON, nascent-positive, released and processed RNA are distinct observables.
+00:09:07.456 --> 00:09:19.867
+Transcription is stochastic. Losing contact removes a rate gain; it does not instantly switch an ON promoter OFF.
 
 36
-00:08:32.300 --> 00:08:43.642
-Cohesin moves tethered anchors along chromatin; protein assemblies emerge from finite-valence bonds.
+00:09:19.867 --> 00:09:32.211
+Initiations use actual time spent ON. New polymerases elongate only after their birth.
 
 37
-00:08:43.642 --> 00:08:55.858
-Speckles and nucleolus are imposed affinity fields. Their size and position are prescribed.
+00:09:32.211 --> 00:09:44.556
+Advance real simulation time, pause, then select a molecule to inspect its identity and progress.
 
 38
-00:08:55.858 --> 00:09:07.200
-Body responses, mechanical affinity and RNA processing are separate hypotheses; multiplier 1 is neutral.
+00:09:44.556 --> 00:09:56.900
+Promoter ON, nascent-positive, released and processed RNA are distinct observables.
 
 39
-00:09:07.200 --> 00:09:16.383
-Import a condition-specific Hansen reference. A matched equilibrated simulation and independent length evidence are still required.
+00:09:56.900 --> 00:10:08.242
+Cohesin moves tethered anchors along chromatin; protein assemblies emerge from finite-valence bonds.
 
 40
-00:09:16.383 --> 00:09:28.628
-Practice with the synthetic fit: inspect the overlay, residuals and slopes. Synthetic results remain demonstrations.
+00:10:08.242 --> 00:10:20.458
+Speckles and nucleolus are imposed affinity fields. Their size and position are prescribed.
 
 41
-00:09:28.628 --> 00:09:43.933
-A shared clock converts units, not every biological parameter. Empirical mappings retain sources and a baseline-model fingerprint.
+00:10:20.458 --> 00:10:31.800
+Body responses, mechanical affinity and RNA processing are separate hypotheses; multiplier 1 is neutral.
 
 42
-00:09:43.933 --> 00:09:54.582
-Compare sampled reference trajectories with analytical curves, then inspect the saved checks and provenance.
+00:10:31.800 --> 00:10:52.103
+Phase separation · 80 kb: 400 × 200 bp chain, 600 one-bead scaffolds and 150 clients.
 
 43
-00:09:54.582 --> 00:10:06.051
-Gaussian-chain reference fixtures test the Brownian integrator, not every production-model coupling.
+00:10:52.103 --> 00:11:16.467
+Attraction mode: Link strength = well depth at contact (1.5 kT scaffold–scaffold, 0.9 kT client–scaffold); Encounter radius = where the well ends. Rates are unused.
 
 44
-00:10:06.051 --> 00:10:16.700
-Implementation agreement, empirical calibration and published-figure replication are separate achievements.
+00:11:16.467 --> 00:11:38.800
+Native-engine states opened in the workbench for display. At 600 scaffolds: clusters of up to ~40 form and dissolve.
 
 45
-00:10:16.700 --> 00:10:29.856
-Four promoters represent two homolog pairs within each cell.
+00:11:38.800 --> 00:12:01.133
+Raise scaffolds to 1,000 and apply: droplets of ~250 molecules persist and keep exchanging members.
 
 46
-00:10:29.856 --> 00:10:43.011
-Compare competition, homolog-specific environments and cell-wide variation separately.
+00:12:01.133 --> 00:12:23.467
+Phase separation = dense + dilute coexistence, a concentration threshold and exchange. Single runs; well depth is not a measured affinity.
 
 47
-00:10:43.011 --> 00:10:56.167
-Isolated study runs preserve the live simulation. The reference contains no spatial polymer.
+00:12:23.467 --> 00:12:32.650
+Import a condition-specific Hansen reference. A matched equilibrated simulation and independent length evidence are still required.
 
 48
-00:10:56.167 --> 00:11:08.456
-Φcis and Φtrans share the same cells. ΔΦ = Φcis − Φtrans.
+00:12:32.650 --> 00:12:44.894
+Practice with the synthetic fit: inspect the overlay, residuals and slopes. Synthetic results remain demonstrations.
 
 49
-00:11:08.456 --> 00:11:20.744
-Nascent-positive ≠ promoter ON. Detection assumptions affect observed correlations.
+00:12:44.894 --> 00:13:00.200
+A shared clock converts units, not every biological parameter. Empirical mappings retain sources and a baseline-model fingerprint.
 
 50
-00:11:20.744 --> 00:11:33.033
-The one-chain spatial pilot has no matched trans alleles; its replica null is labeled separately.
+00:13:00.200 --> 00:13:10.849
+Compare sampled reference trajectories with analytical curves, then inspect the saved checks and provenance.
 
 51
-00:11:33.033 --> 00:11:50.144
-Numerical checks, closed-form references and published measurements are counted separately.
+00:13:10.849 --> 00:13:22.317
+Gaussian-chain reference fixtures test the Brownian integrator, not every production-model coupling.
 
 52
-00:11:50.144 --> 00:12:07.256
-Donovan et al.: occlusion alone is too weak for Reb1 and Cbf1; slower release from the nucleosome matches.
+00:13:22.317 --> 00:13:32.967
+Implementation agreement, empirical calibration and published-figure replication are separate achievements.
 
 53
-00:12:07.256 --> 00:12:24.367
-Each check shows its window and basis: input-matched, tuned or prediction. A pass is not a calibration.
+00:13:32.967 --> 00:13:46.122
+Four promoters represent two homolog pairs within each cell.
 
 54
-00:12:24.367 --> 00:12:38.461
-Configure independent replicas, platform, sampling intervals and resources. Preview before exporting.
+00:13:46.122 --> 00:13:59.278
+Compare competition, homolog-specific environments and cell-wide variation separately.
 
 55
-00:12:38.461 --> 00:12:53.639
-A portable bundle starts fresh from the draft. GPU integration is partial; speedup still needs measurement.
+00:13:59.278 --> 00:14:12.433
+Isolated study runs preserve the live simulation. The reference contains no spatial polymer.
 
 56
-00:12:53.639 --> 00:13:07.733
+00:14:12.433 --> 00:14:24.722
+Φcis and Φtrans share the same cells. ΔΦ = Φcis − Φtrans.
+
+57
+00:14:24.722 --> 00:14:37.011
+Nascent-positive ≠ promoter ON. Detection assumptions affect observed correlations.
+
+58
+00:14:37.011 --> 00:14:49.300
+The one-chain spatial pilot has no matched trans alleles; its replica null is labeled separately.
+
+59
+00:14:49.300 --> 00:15:09.444
+Numerical checks, closed-form references and published measurements are counted separately.
+
+60
+00:15:09.444 --> 00:15:29.589
+Donovan et al.: occlusion alone is too weak for Reb1 and Cbf1; slower release from the nucleosome matches.
+
+61
+00:15:29.589 --> 00:15:49.733
+Each check shows its window and basis. A pass is not a calibration. The software paper (docs/paper) explains every check.
+
+62
+00:15:49.733 --> 00:16:07.316
+Configure independent replicas, platform, sampling intervals and resources. Preview before exporting.
+
+63
+00:16:07.316 --> 00:16:26.251
+A bundle starts fresh from the draft. Exported jobs run only the integrator on the GPU; the native GPU engine is used from Python.
+
+64
+00:16:26.251 --> 00:16:43.833
 Build → inspect → calibrate → test. Preserve seeds, model provenance and controlled comparisons.

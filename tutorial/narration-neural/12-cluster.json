@@ -1,29 +1,29 @@
 {
   "voice": "af_heart",
-  "source_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU integration is partial: only bare-polymer models run fully on the device, while forces, reactions and RNA for models with proteins still run on the CPU; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
-  "spoken_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. G P U integration is partial: only bare-polymer models run fully on the device, while forces, reactions and R N A for models with proteins still run on the C P U; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
-  "word_count": 103,
+  "source_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU use in an exported job is partial: forces, reactions and RNA run on the CPU, and only the integrator runs on the device, so speedup is not established. The faster native GPU engine, which runs bare polymers and the phase separation model, is used from Python and is not yet part of the exported job. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
+  "spoken_text": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. G P U use in an exported job is partial: forces, reactions and R N A run on the C P U, and only the integrator runs on the device, so speedup is not established. The faster native G P U engine, which runs bare polymers and the phase separation model, is used from Python and is not yet part of the exported job. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
+  "word_count": 131,
   "target_words_per_minute": 155.0,
-  "words_per_minute": 148.57674060777023,
-  "model_speed": 1.007770873786408,
-  "duration_seconds": 42.09466666666667,
-  "speech_seconds": 41.59466666666667,
+  "words_per_minute": 150.22935779816513,
+  "model_speed": 0.966442748091603,
+  "duration_seconds": 52.82,
+  "speech_seconds": 52.32,
   "sample_rate": 24000,
   "padding_seconds": 0.5,
-  "peak_before_attenuation": 0.7620583176612854,
+  "peak_before_attenuation": 0.8128350973129272,
   "gain": 1.0,
   "attempts": [
     {
       "model_speed": 0.9,
-      "seconds": 44.64533333333333,
-      "words_per_minute": 138.4243220642695,
-      "inference_seconds": 12.671999999904074
+      "seconds": 54.45333333333333,
+      "words_per_minute": 144.3437806072478,
+      "inference_seconds": 26.891000000061467
     },
     {
-      "model_speed": 1.007770873786408,
-      "seconds": 41.59466666666667,
-      "words_per_minute": 148.57674060777023,
-      "inference_seconds": 11.719000000040978
+      "model_speed": 0.966442748091603,
+      "seconds": 52.32,
+      "words_per_minute": 150.22935779816513,
+      "inference_seconds": 24.671999999904074
     }
   ],
   "within_target_pace": true,
@@ -32,7 +32,7 @@
   "speech_truncated": false,
   "id": "12-cluster",
   "file": "12-cluster.wav",
-  "fingerprint": "221eb9e95b4deb6ee1f27aa1aee7d3f1216c4161a91ff7483155b5faa5dd1ae0",
-  "wav_sha256": "09e98c1ea14f586f94d30d58691c04e3a7066b4646648fd99fe521a0016eace4",
+  "fingerprint": "ed500796cf8842ae32a22b38f3758f7511b7598240654c4e9247cd9e2b2276a6",
+  "wav_sha256": "25b658ea900602433c13833918b92e62e10b1518834c0f28bc02bf44cc73e934",
   "generator_script_sha256": "9ac7ae6022f0dafcc1af869da57545493f6d0f84da2303dd6871dba3a34283fa"
 }

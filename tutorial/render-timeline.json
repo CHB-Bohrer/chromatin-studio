@@ -4,7 +4,7 @@
   "subtitle": "An editable walkthrough of the actual application",
   "language": "en",
   "playback_speed": 1,
-  "normal_duration_seconds": 787.7333333333333,
+  "normal_duration_seconds": 1003.8333333333334,
   "delivery": {
     "preferred_resolution": "1920x1080",
     "frame_rate": 30,
@@ -46,30 +46,30 @@
     {
       "id": "01-overview",
       "title": "Start with the workbench",
-      "normal_duration_seconds": 47.96666666666667,
+      "normal_duration_seconds": 51.733333333333334,
       "primary_capture": "01-overview.png",
-      "narration": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a stretch of DNA, and its size is a model setting. This walkthrough uses one size throughout: two hundred base pairs per bead, about one nucleosome and its linker. The example is Manuscript hypotheses at eighty kilobases: four hundred beads of two hundred base pairs each. Coarser presets also exist, where one bead stands for ten kilobases and many nucleosomes, but they are not used here. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
+      "narration": "Chromatin Studio connects a model builder, a spatial simulation, and measurements from the current run. Each chromatin bead is a stretch of DNA, and its size is a model setting. This walkthrough uses one size throughout: two hundred base pairs per bead, about one nucleosome and its linker. The example is Manuscript hypotheses at eighty kilobases: four hundred beads of two hundred base pairs each. The default model and the small presets all use this size. Only the twenty-megabase presets keep coarse ten-kilobase beads, each standing for many nucleosomes, and they are not shown here. The center shows the applied model. Builder changes belong to the draft until they are applied. Begin by checking the bead size, the run status, and the physical-clock label.",
       "captions": [
         {
           "start": 0.0,
-          "end": 14.989583333333334,
+          "end": 16.166666666666668,
           "text": "Build on the left. Inspect the applied model in the center. Follow measurements and events."
         },
         {
-          "start": 14.989583333333334,
-          "end": 32.97708333333333,
+          "start": 16.166666666666668,
+          "end": 35.56666666666667,
           "text": "Bead size is a setting. This tutorial uses 200 bp per bead throughout: about one nucleosome and its linker. 400 beads = 80 kb."
         },
         {
-          "start": 32.97708333333333,
-          "end": 47.96666666666667,
+          "start": 35.56666666666667,
+          "end": 51.733333333333334,
           "text": "Draft settings and the current run are different. Check the scale and calibration status first."
         }
       ],
       "keyframes": [
         {
           "capture": "01-overview.png",
-          "duration": 26.981250000000003,
+          "duration": 29.1,
           "actions": [
             "Open the recording instance with Manuscript hypotheses · 80 kb (400 beads × 200 bp), paused after a short genuine run.",
             "Show the 3D nucleus, genomic-scale label, and run controls."
@@ -77,7 +77,7 @@
         },
         {
           "capture": "01-overview-inspector.png",
-          "duration": 20.985416666666666,
+          "duration": 22.633333333333333,
           "actions": [
             "Select Gene A from the gene activity list.",
             "Show its inspector alongside the paused run."
@@ -85,21 +85,21 @@
         }
       ],
       "accuracy_notes": [
-        "Every chapter uses 200 bp beads. Coarse 10 kb presets are mentioned but not shown.",
+        "Every chapter uses 200 bp beads. The default model and all small presets use 200 bp; only the 20 Mb presets use coarse 10 kb beads, and they are mentioned but not shown.",
         "Do not call reduced time seconds unless the applied model has a documented calibration record."
       ],
       "source_duration_seconds": 32.0,
       "narration_audio": {
         "path": "narration-neural/01-overview.wav",
-        "sha256": "da51984aef8d24705e9034a180cecdf5da8db7930efd0fca311125798426079d",
+        "sha256": "d417cc6ac4dae64f7de73e1dcd5342d0531075ea90b144f392b4e192642d7bb6",
         "voice": "af_heart",
         "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
-        "duration_seconds": 46.702666666666666,
-        "words_per_minute": 150.64065566201086,
+        "duration_seconds": 50.45733333333333,
+        "words_per_minute": 151.32913419451265,
         "acceleration": 1,
         "time_stretch": false,
         "speech_truncated": false,
-        "reading_pause_seconds": 1.264000000000003
+        "reading_pause_seconds": 1.2760000000000034
       }
     },
     {
@@ -161,6 +161,78 @@
         "time_stretch": false,
         "speech_truncated": false,
         "reading_pause_seconds": 1.2800000000000011
+      }
+    },
+    {
+      "id": "20-files-and-engines",
+      "title": "Save your work, pick an engine, and grow a model",
+      "normal_duration_seconds": 70.4,
+      "primary_capture": "20-files.png",
+      "narration": "Three everyday tools sit in the top bar. Import loads a model file into the draft, and Export saves the draft as a model file, so an experiment can be shared or rebuilt exactly. Save run downloads the applied model together with its current state and the history the server recorded. That is one snapshot plus measurements, not a full trajectory. Beside the Experiment menu, Engine chooses how the run is integrated. Brownian reference is the built-in engine used throughout this tutorial. Polychrom with OpenMM is an integration adapter: forces and reactions still run on the CPU. The Model tab lists which engines are installed here. Model size is no longer capped. In this example the chain was raised to five thousand beads, one megabase. The model still runs, but the notes below the observables now include a Large model warning, because the live engine and the 3D view were sized for about four thousand beads and six thousand particles. Open these model notes whenever you change a model.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 23.015384615384615,
+          "text": "Import and Export move the draft model as a JSON file. Save run adds the current state and recorded history: one snapshot, not a trajectory."
+        },
+        {
+          "start": 23.015384615384615,
+          "end": 46.03076923076923,
+          "text": "Engine: Brownian reference (used here) or Polychrom/OpenMM, which still computes forces and reactions on the CPU."
+        },
+        {
+          "start": 46.03076923076923,
+          "end": 70.4,
+          "text": "No hard size cap. Above about 4,000 beads or 6,000 particles the model still runs, with a Large model note."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "20-files.png",
+          "duration": 23.015384615384615,
+          "focus_rect": [
+            0,
+            0,
+            1707,
+            280
+          ],
+          "actions": [
+            "Show the top bar: Import, Export and Save run, and the Experiment and Engine menus, with the 80 kb manuscript example applied."
+          ]
+        },
+        {
+          "capture": "20-engines.png",
+          "duration": 23.015384615384615,
+          "actions": [
+            "Open the Model tab with Expand builder and show the engine cards, their local availability and the engine limitations."
+          ]
+        },
+        {
+          "capture": "20-large-model.png",
+          "duration": 24.36923076923077,
+          "actions": [
+            "In Chromatin, set Chromatin beads to 5,000, then Apply and restart.",
+            "Open the model notes and show the Large model warning beside the 5,112 / 6,000 particle counter."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "Save run exports the applied configuration, the current state and the server-recorded history; it is not a trajectory and cannot supply an MSD.",
+        "The Polychrom/OpenMM adapter integrates on OpenMM but computes forces and reactions on the CPU. The native GPU engine is not selectable from the Engine menu.",
+        "Size limits are advisory since 2026-11-25: validation warns above the old sizes instead of rejecting the model. The 5,000-bead capture came from an isolated recording instance."
+      ],
+      "source_duration_seconds": 52.0,
+      "narration_audio": {
+        "path": "narration-neural/20-files-and-engines.wav",
+        "sha256": "636fee3dcfd0cbdc28d2a4d8f66fd853b13cfcc603929cfa4b9798f7a2b1dfcb",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 69.14,
+        "words_per_minute": 149.47552447552448,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2600000000000051
       }
     },
     {
@@ -572,30 +644,30 @@
     {
       "id": "05-interactions",
       "title": "Inspect binding in its context",
-      "normal_duration_seconds": 32.93333333333333,
+      "normal_duration_seconds": 43.36666666666667,
       "primary_capture": "05-interactions.png",
-      "narration": "The interaction view shows the current molecular network. Distinguish molecules with their own chromatin bond from those tethered indirectly through another protein. Protein pairs can bind while both are free, while one is directly chromatin-bound, or while both are bound. The affinity calculator explores an ideal diffusion-limited association estimate after physical scales are supplied. Its nominal dissociation rate follows the requested Kd under independent, well-mixed assumptions. It does not turn the simulator's local encounter hazard into a measured molar association rate.",
+      "narration": "The interaction view shows the current molecular network. Distinguish molecules with their own chromatin bond from those tethered indirectly through another protein. Protein pairs can bind while both are free, while one is directly chromatin-bound, or while both are bound. These are bond-mode links, the default. A pair can instead use attraction mode, which forms no bonds; the phase separation chapter covers it. The affinity calculator explores an ideal diffusion-limited association estimate after physical scales are supplied. Its nominal dissociation rate follows the requested Kd under independent, well-mixed assumptions. It does not turn the simulator's local encounter hazard into a measured molar association rate.",
       "captions": [
         {
           "start": 0.0,
-          "end": 10.478787878787879,
+          "end": 13.798484848484849,
           "text": "Inspect free, directly bound and indirectly tethered molecules in the current binding network."
         },
         {
-          "start": 10.478787878787879,
-          "end": 21.706060606060603,
-          "text": "Higher-order assemblies can contain free–free, bound–free and bound–bound protein contacts."
+          "start": 13.798484848484849,
+          "end": 28.582575757575757,
+          "text": "Assemblies can contain free–free, bound–free and bound–bound links. These are bond-mode links; attraction mode forms none."
         },
         {
-          "start": 21.706060606060603,
-          "end": 32.93333333333333,
+          "start": 28.582575757575757,
+          "end": 43.36666666666667,
           "text": "The Kd calculator is an ideal physical estimate. It does not calibrate multivalent avidity or microscopic hazards."
         }
       ],
       "keyframes": [
         {
           "capture": "05-interactions.png",
-          "duration": 16.466666666666665,
+          "duration": 21.683333333333334,
           "actions": [
             "Advance the recording simulation if needed, then pause.",
             "Open Interactions and select a species or existing assembly.",
@@ -604,7 +676,7 @@
         },
         {
           "capture": "05-binding-estimate.png",
-          "duration": 16.466666666666665,
+          "duration": 21.683333333333334,
           "actions": [
             "Open the binding estimate or the learning Binding → Ideal physical estimate pane.",
             "Show the equations, physical assumptions and estimate-only notice.",
@@ -614,20 +686,21 @@
       ],
       "accuracy_notes": [
         "The local on_rate is a per-eligible-pair inverse-time hazard, not M⁻¹ s⁻¹.",
-        "A visible assembly is not by itself evidence of liquid–liquid phase separation."
+        "A visible assembly is not by itself evidence of liquid–liquid phase separation.",
+        "Attraction-mode pairs form no bonds, so they never appear in this bond network or in the Largest assembly count."
       ],
       "source_duration_seconds": 44.0,
       "narration_audio": {
         "path": "narration-neural/05-interactions.wav",
-        "sha256": "17139425f9c271975f581969ed4a710dad7c2c8479592ea05da0e5842b79212c",
+        "sha256": "22250b24835974aa8d7052b8b052f6902e404ef35ca044a613453c37aee06690",
         "voice": "af_heart",
         "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
-        "duration_seconds": 31.662666666666667,
-        "words_per_minute": 157.88122539791203,
+        "duration_seconds": 42.116,
+        "words_per_minute": 151.3840830449827,
         "acceleration": 1,
         "time_stretch": false,
         "speech_truncated": false,
-        "reading_pause_seconds": 1.2706666666666635
+        "reading_pause_seconds": 1.2506666666666675
       }
     },
     {
@@ -887,6 +960,96 @@
       }
     },
     {
+      "id": "19-phase-separation",
+      "title": "Grow droplets from attraction alone",
+      "normal_duration_seconds": 111.66666666666667,
+      "primary_capture": "19-phase-droplet.png",
+      "narration": "Phase separation at eighty kilobases shows a second way proteins can interact. Choose it from the Experiment menu. Around the same four hundred bead chain it places six hundred scaffold proteins and one hundred fifty clients, each a single bead. Open Interactions. These pairs use attraction mode: instead of forming bonds, two nearby proteins feel a shallow energy well. Here, Link strength is the well depth at contact, one and a half kT between scaffolds and nine tenths between client and scaffold, and Encounter radius is where the well ends. The association and dissociation rates are not used in this mode. This model needs hundreds of thousands of steps, more than the live engine reaches in a session, so the next states were advanced with the native engine and then opened in the workbench for display. At the preset's six hundred scaffolds, clusters of up to about forty molecules formed and dissolved again over four hundred thousand steps. Next, raise the scaffold count to one thousand and apply. Now dense droplets of about two hundred fifty molecules appear within about fifty thousand steps and persist, while about a fifth of their members are replaced every twenty-five thousand steps. Several droplets formed and had not merged by three hundred thousand steps. That contrast is what to look for: a dense phase that coexists with a dilute one, appears only above a threshold concentration, and keeps exchanging molecules. These are single runs, and an earlier GPU check did form one droplet at six hundred scaffolds, so the preset sits close to the threshold. Largest assembly stays at one, because it counts bonds. The well depth is not a measured affinity.",
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 20.303030303030305,
+          "text": "Phase separation · 80 kb: 400 × 200 bp chain, 600 one-bead scaffolds and 150 clients."
+        },
+        {
+          "start": 20.303030303030305,
+          "end": 44.666666666666664,
+          "text": "Attraction mode: Link strength = well depth at contact (1.5 kT scaffold–scaffold, 0.9 kT client–scaffold); Encounter radius = where the well ends. Rates are unused."
+        },
+        {
+          "start": 44.666666666666664,
+          "end": 67.0,
+          "text": "Native-engine states opened in the workbench for display. At 600 scaffolds: clusters of up to ~40 form and dissolve."
+        },
+        {
+          "start": 67.0,
+          "end": 89.33333333333333,
+          "text": "Raise scaffolds to 1,000 and apply: droplets of ~250 molecules persist and keep exchanging members."
+        },
+        {
+          "start": 89.33333333333333,
+          "end": 111.66666666666667,
+          "text": "Phase separation = dense + dilute coexistence, a concentration threshold and exchange. Single runs; well depth is not a measured affinity."
+        }
+      ],
+      "keyframes": [
+        {
+          "capture": "19-phase-preset.png",
+          "duration": 20.303030303030305,
+          "actions": [
+            "Select Phase separation · 80 kb in an isolated recording instance and show the start of the run (1,150 particles)."
+          ]
+        },
+        {
+          "capture": "19-phase-interactions.png",
+          "duration": 24.363636363636363,
+          "actions": [
+            "Open Interactions with Expand builder and show the link strength matrix and the scaffold–scaffold pair card."
+          ]
+        },
+        {
+          "capture": "19-phase-cluster.png",
+          "duration": 22.333333333333332,
+          "actions": [
+            "Show the 600-scaffold state at step 175,000, advanced by the native engine and loaded into the workbench for display, with transient clusters."
+          ]
+        },
+        {
+          "capture": "19-phase-count.png",
+          "duration": 22.333333333333332,
+          "actions": [
+            "In Proteins, set Condensate scaffold molecules to 1,000 and show the unapplied draft before Apply & restart."
+          ]
+        },
+        {
+          "capture": "19-phase-droplet.png",
+          "duration": 22.333333333333332,
+          "actions": [
+            "Show the 1,000-scaffold state at step 300,000, advanced by the native engine and loaded into the workbench for display, with dense droplets and a dilute phase."
+          ]
+        }
+      ],
+      "accuracy_notes": [
+        "States at 175,000 and 300,000 steps came from NativePolymerSimulation on the OpenMM CPU platform (seed 42, 9 substeps) and were loaded into an isolated workbench instance only for display; logs are recording-phase-run-600.json and recording-phase-run-1000.json.",
+        "Cluster sizes use a 0.8 link distance between protein beads. 600 scaffolds: largest cluster 6-44 over 400,000 steps. 1,000 scaffolds: largest 240-276 from 75,000 steps, about 73-83% of members kept per 25,000 steps; several droplets had not merged.",
+        "The builder has no mode field yet: attraction-mode pairs show Link strength (well depth) and Encounter radius (well range), and their rate fields are unused.",
+        "Single seeds. PROJECT_STATUS records one droplet at 600 scaffolds in a CUDA check; the preset is near the threshold."
+      ],
+      "source_duration_seconds": 110.0,
+      "narration_audio": {
+        "path": "narration-neural/19-phase-separation.wav",
+        "sha256": "6812656ae3970b2e8a53f3707582ab1cb0f594645f6772541f8e2aa123b078d5",
+        "voice": "af_heart",
+        "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
+        "duration_seconds": 110.40933333333334,
+        "words_per_minute": 152.85326086956522,
+        "acceleration": 1,
+        "time_stretch": false,
+        "speech_truncated": false,
+        "reading_pause_seconds": 1.2573333333333352
+      }
+    },
+    {
       "id": "10-calibration",
       "title": "Give the polymer a defensible physical clock",
       "normal_duration_seconds": 36.733333333333334,
@@ -1134,44 +1297,44 @@
     {
       "id": "18-evidence",
       "title": "Check what the component tests actually showed",
-      "normal_duration_seconds": 51.333333333333336,
+      "normal_duration_seconds": 60.43333333333333,
       "primary_capture": "18-evidence-overview.png",
-      "narration": "Evidence shows the component tests that were actually run. Each study switches on one mechanism and compares the engine with its own rule, a closed-form result, or a published measurement. Those three levels are counted separately. The page only reads saved reports, so it runs nothing and leaves your simulation untouched. Select a study to see its figures. In the nucleosome kinetics study, based on Donovan and colleagues, blocking the site alone makes Reb1 and Cbf1 bind far too weakly. Matching their titrations requires slower release from the nucleosome. Hover for values, or open the table. Every check shows its accepted window, and experimental checks say whether they are input-matched, tuned, or a prediction. A pass under the provisional unit mapping is not a calibration.",
+      "narration": "Evidence shows the component tests that were actually run. Each study switches on one mechanism and compares the engine with its own rule, a closed-form result, or a published measurement. Those three levels are counted separately. The page only reads saved reports, so it runs nothing and leaves your simulation untouched. Select a study to see its figures. In the nucleosome kinetics study, based on Donovan and colleagues, blocking the site alone makes Reb1 and Cbf1 bind far too weakly. Matching their titrations requires slower release from the nucleosome. Hover for values, or open the table. Every check shows its accepted window, and experimental checks say whether they are input-matched, tuned, or a prediction. A pass under the provisional unit mapping is not a calibration. For a plain-language account of every mechanism and the check behind it, read the software paper in the docs folder.",
       "captions": [
         {
           "start": 0.0,
-          "end": 17.11111111111111,
+          "end": 20.144444444444442,
           "text": "Numerical checks, closed-form references and published measurements are counted separately."
         },
         {
-          "start": 17.11111111111111,
-          "end": 34.22222222222222,
+          "start": 20.144444444444442,
+          "end": 40.288888888888884,
           "text": "Donovan et al.: occlusion alone is too weak for Reb1 and Cbf1; slower release from the nucleosome matches."
         },
         {
-          "start": 34.22222222222222,
-          "end": 51.33333333333333,
-          "text": "Each check shows its window and basis: input-matched, tuned or prediction. A pass is not a calibration."
+          "start": 40.288888888888884,
+          "end": 60.43333333333332,
+          "text": "Each check shows its window and basis. A pass is not a calibration. The software paper (docs/paper) explains every check."
         }
       ],
       "keyframes": [
         {
           "capture": "18-evidence-overview.png",
-          "duration": 17.11111111111111,
+          "duration": 20.144444444444442,
           "actions": [
             "Open Evidence and show the totals by evidence level and the list of studies with saved reports."
           ]
         },
         {
           "capture": "18-evidence-figure.png",
-          "duration": 17.11111111111111,
+          "duration": 20.144444444444442,
           "actions": [
             "Select the nucleosome kinetics study and hover the Reb1 affinity point to show its tooltip."
           ]
         },
         {
           "capture": "18-evidence-checks.png",
-          "duration": 17.11111111111111,
+          "duration": 20.144444444444442,
           "actions": [
             "Scroll to the experimental checks and show their accepted windows and basis tags."
           ]
@@ -1184,44 +1347,44 @@
       "source_duration_seconds": 48.0,
       "narration_audio": {
         "path": "narration-neural/18-evidence.wav",
-        "sha256": "01c151fc44d41fdf3d4d6ee5498b221e40490cfe98437dba8194f6f41723420e",
+        "sha256": "e84e09fbe2935140b3ae14d735ca4e6a7507eedad24c9fceab41ea1f821156d5",
         "voice": "af_heart",
         "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
-        "duration_seconds": 50.052,
-        "words_per_minute": 151.35615111398127,
+        "duration_seconds": 59.156,
+        "words_per_minute": 148.32242225859247,
         "acceleration": 1,
         "time_stretch": false,
         "speech_truncated": false,
-        "reading_pause_seconds": 1.281333333333336
+        "reading_pause_seconds": 1.2773333333333312
       }
     },
     {
       "id": "12-cluster",
       "title": "Export a reproducible cluster experiment",
-      "normal_duration_seconds": 43.36666666666667,
+      "normal_duration_seconds": 54.1,
       "primary_capture": "12-cluster.png",
-      "narration": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU integration is partial: only bare-polymer models run fully on the device, while forces, reactions and RNA for models with proteins still run on the CPU; speedup is not established. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
+      "narration": "When the model is ready, open Cluster job. Choose the device platform, independent replicas, output intervals and resource requests, then preview the scripts before exporting. The bundle carries the draft configuration, code, seeds and validation workflow for a fresh run. It does not resume the current live state. GPU use in an exported job is partial: forces, reactions and RNA run on the CPU, and only the integrator runs on the device, so speedup is not established. The faster native GPU engine, which runs bare polymers and the phase separation model, is used from Python and is not yet part of the exported job. Keep the model, inputs and results together, and use controlled comparisons to turn a visual hypothesis into testable evidence.",
       "captions": [
         {
           "start": 0.0,
-          "end": 14.094166666666668,
+          "end": 17.5825,
           "text": "Configure independent replicas, platform, sampling intervals and resources. Preview before exporting."
         },
         {
-          "start": 14.094166666666668,
-          "end": 29.2725,
-          "text": "A portable bundle starts fresh from the draft. GPU integration is partial; speedup still needs measurement."
+          "start": 17.5825,
+          "end": 36.5175,
+          "text": "A bundle starts fresh from the draft. Exported jobs run only the integrator on the GPU; the native GPU engine is used from Python."
         },
         {
-          "start": 29.2725,
-          "end": 43.36666666666667,
+          "start": 36.5175,
+          "end": 54.1,
           "text": "Build → inspect → calibrate → test. Preserve seeds, model provenance and controlled comparisons."
         }
       ],
       "keyframes": [
         {
           "capture": "12-cluster.png",
-          "duration": 20.59916666666667,
+          "duration": 25.6975,
           "actions": [
             "Open Cluster job and show platform, replicas, output intervals and scheduler settings.",
             "Keep the hybrid CPU/GPU limitation and fresh-run notice visible."
@@ -1229,7 +1392,7 @@
         },
         {
           "capture": "12-cluster-preview.png",
-          "duration": 22.767500000000002,
+          "duration": 28.4025,
           "actions": [
             "Preview the actual draft job and show the generated script, seeds and warnings.",
             "Optionally export a local ZIP as a demonstration; do not imply cluster upload, submission, or successful GPU execution."
@@ -1238,21 +1401,22 @@
       ],
       "accuracy_notes": [
         "Each GPU replica uses one device; the job does not distribute one polymer across multiple GPUs.",
-        "20 Mb at 200 bp per bead requires 100,000 beads and remains beyond the currently supported scale.",
-        "Do not depict the local export as a completed cluster run."
+        "20 Mb at 200 bp per bead requires 100,000 beads. Size limits are now advisory warnings, but the CPU engine and live view are far too slow at that size.",
+        "Do not depict the local export as a completed cluster run.",
+        "Cluster jobs use the Polychrom/OpenMM adapter (forces and reactions on CPU). The native engine (openmm_native.py) is not selectable from the workbench or the cluster export."
       ],
       "source_duration_seconds": 40.0,
       "narration_audio": {
         "path": "narration-neural/12-cluster.wav",
-        "sha256": "09e98c1ea14f586f94d30d58691c04e3a7066b4646648fd99fe521a0016eace4",
+        "sha256": "25b658ea900602433c13833918b92e62e10b1518834c0f28bc02bf44cc73e934",
         "voice": "af_heart",
         "engine": "Kokoro-82M v1.0 / ONNX Runtime CPU",
-        "duration_seconds": 42.09466666666667,
-        "words_per_minute": 148.57674060777023,
+        "duration_seconds": 52.82,
+        "words_per_minute": 150.22935779816513,
         "acceleration": 1,
         "time_stretch": false,
         "speech_truncated": false,
-        "reading_pause_seconds": 1.2719999999999985
+        "reading_pause_seconds": 1.2800000000000011
       }
     }
   ],
@@ -1278,5 +1442,5 @@
       "The 25.6 kb binding/remodeling example is explicitly distinguished from the 80 kb manuscript example. Event records retain their real identities and interval timing."
     ]
   },
-  "rendered_duration_seconds": 787.7333333333333
+  "rendered_duration_seconds": 1003.8333333333334
 }

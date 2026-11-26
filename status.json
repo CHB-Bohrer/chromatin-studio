@@ -4,7 +4,7 @@
   "tagline": "A visual builder and simulator for chromatin, reacting proteins, histone marks, cohesin and transcription.",
   "kind": "Research software",
   "stage": "Research prototype",
-  "as_of": "2026-11-24",
+  "as_of": "2026-11-25",
   "repo": "CHB-Bohrer/chromatin-studio",
   "links": [
     {
@@ -41,8 +41,8 @@
       "label": "Python tests pass on the development branch (22 Nov 2026); the other is a Windows-only skip. Browser interface tests were not rerun"
     },
     {
-      "value": "18",
-      "label": "narrated tutorial chapters, about 13 minutes, built from real captured states of the app"
+      "value": "20",
+      "label": "narrated tutorial chapters, about 17 minutes, built from real captured states of the app"
     },
     {
       "value": "2,894",
@@ -125,7 +125,7 @@
           {
             "name": "Narrated tutorial",
             "state": "built",
-            "note": "A scripted walkthrough of genuine captured states, not continuous simulation footage. Re-rendered on 2026-11-24 with 18 chapters, all at 200 bp per bead (about one nucleosome), with plainer explanations of binding and release rates. Not yet reviewed at 1×."
+            "note": "A scripted walkthrough of genuine captured states, not continuous simulation footage. Re-rendered on 2026-11-25 with 20 chapters, all at 200 bp per bead (about one nucleosome). New chapters cover saving and importing models, choosing an engine and size warnings, and coarse phase separation with attraction-mode proteins. Not yet reviewed at 1×."
           }
         ]
       },
