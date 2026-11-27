@@ -37,6 +37,23 @@ These files can also be supplied explicitly to an AI that does not automatically
 - Run data (trajectories, calibration reports, run scripts) lives outside the repository. Before reading or writing run data, check for a gitignored `LOCAL_DATA.md` at the repository root; it records where this machine keeps the data. If it is missing, ask the user. Never commit run data or `LOCAL_DATA.md`.
 - Task ownership is temporary. Coordinate concurrent edits, but do not infer permanent ownership from names in an earlier chat.
 
+## Owner's standing preferences (added 2026-11-27)
+- **Short status page.** `STATUS.md` is the one-page view of where the project stands and what is next. [docs/PROJECT_STATUS.md](docs/PROJECT_STATUS.md) stays the detailed record; keep the two consistent.
+  Rewrite it at the end of a session (under 40 lines; replace, do not append).
+- **Parked thoughts.** When the owner mentions an idea that is not for now ("park this", "note for later", an aside outside the
+  current task), add it to `THOUGHTS.md` in their words with a concrete **Revisit when** condition, and say in one line which
+  condition you recorded. Do not act on it. List the entries with `python tools/thoughts.py` at the start of a session and at wrap-up;
+  when the current work meets an entry's condition, raise it in a sentence or two and let the owner decide, then record it as
+  adopted or dropped. Never delete an entry.
+- **Do the obvious next thing, at most two.** When the next step is clear, do it instead of asking: it follows directly from the
+  task or is tagged `[auto]` in `STATUS.md` (`python tools/next_steps.py --auto`), git can undo it, it needs no long GPU run, money or
+  new dependency, and it does not change the scientific direction or what a result means. After the task the owner asked for, do
+  at most TWO such follow-ups per session and write every other one into `STATUS.md` under Next as `- [auto] ...`; they are
+  picked up next session, or all at once when the owner says "go ahead with the next steps". Ask first for anything tagged
+  `[ask]`, a choice between scientific alternatives, deleting data, publishing, or changing a tolerance or expected value so a
+  check passes. Note self-started work in `STATUS.md` under Last session with `(auto)`. Everything under "Scientific distinctions to preserve" and "Working rules" above still binds: the roadmap is not permission to launch long simulations.
+- **Git.** The owner wants git updates to just happen: after a completed unit of work with the matching checks passing, commit with a clear message and push to `main` without asking for confirmation. Never force-push or rewrite history. Publishing releases, data or manuscript material still needs the owner's explicit approval, as stated above. In force until the owner says otherwise.
+
 ## At the end of substantive work
 
 Update [PROJECT_STATUS.md](docs/PROJECT_STATUS.md) with the date, completed behavior, evidence, remaining work and the next concrete step. Update the contract when interfaces or semantics change. Keep old reports attributable to the source that produced them; do not alter an old result to make it look current.

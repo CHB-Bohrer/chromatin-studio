@@ -6,6 +6,10 @@ The application is a functioning local research prototype with a visual model bu
 
 The production presets remain in **reduced units**. No accepted empirical length/time fit, full-model GPU performance validation, 20 Mb nucleosome-resolution run or complete published-figure reproduction has been completed. These are unfinished milestones, not hidden capabilities.
 
+## Project housekeeping (2026-11-27)
+
+Added a one-page [STATUS.md](../STATUS.md), a parked-thoughts file [THOUGHTS.md](../THOUGHTS.md) with `tools/thoughts.py` and `tools/next_steps.py`, and an "Owner's standing preferences" section in [AGENTS.md](../AGENTS.md) (parked thoughts, at most two self-started follow-ups per session, commit and push without confirmation). Documentation only: no engine, schema, study, tutorial or paper content changed, and no tests or simulations were run for it. This file remains the detailed record.
+
 ## Intended scientific scope
 
 Support reusable models across diverse loci, from a small nucleosome-unit region to a coarse 20 Mb domain. The intended system connects protein diffusion and multivalent binding, chromatin state and mechanics, enhancer/promoter regulation, cohesin, nuclear environments and stochastic transcription. Users should be able to inspect mechanisms, disable them for controlled comparisons, export reproducible cluster experiments and calibrate against matching experimental observables.
